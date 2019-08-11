@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/text_margin"
+                                    xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    xmlns:tools="http://schemas.android.com/tools">
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ImageView android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   android:id="@+id/image"
+                   tools:ignore="ContentDescription"/>
+        <TextView android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:textStyle="bold"
+                  android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                  android:textSize="30sp"
+                  android:layout_margin="@dimen/text_margin"
+                  app:layout_constraintStart_toEndOf="@+id/image"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  android:id="@+id/header"/>
+        <TextView android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="@dimen/text_margin"
+                  app:layout_constraintStart_toEndOf="@+id/image"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toBottomOf="@id/header"
+                  android:id="@+id/content"/>
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

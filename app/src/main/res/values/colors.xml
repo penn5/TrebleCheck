@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="arch_64_bit">#43A047</color>
+    <color name="arch_32_bit">#D50000</color>
+    <color name="arch_32_64_bit">#1976D2</color>
+    <color name="arch_unknown">#FFB300</color>
+    <color name="sar_true">#43A047</color>
+    <color name="sar_false">#D50000</color>
+</resources>
