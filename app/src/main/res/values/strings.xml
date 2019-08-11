@@ -40,4 +40,8 @@
         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt\n
         https://github.com/penn5/TrebleCheck/blob/master/LICENSE\n
     </string>
+    <string name="support_header">Support</string>
+    <string name="support">Please don\'t leave a bad review if I left a bug, I wrote the whole app in 1 day! Instead
+        contact me via Telegram: https://t.me/hackintosh5. Tell me about your issue and I will endeavour to help.
+    </string>
 </resources>

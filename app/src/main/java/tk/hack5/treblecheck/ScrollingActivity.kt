@@ -10,9 +10,10 @@
 
 package tk.hack5.treblecheck
 
+import android.content.Intent
 import android.content.res.ColorStateList
+import android.net.Uri
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v4.widget.ImageViewCompat
 import android.support.v7.app.AppCompatActivity
@@ -21,6 +22,7 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_scrolling.*
 import kotlinx.android.synthetic.main.content_scrolling.*
 
+
 class ScrollingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +30,8 @@ class ScrollingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_scrolling)
         setSupportActionBar(toolbar)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://t.me/hackintosh5"))
+            startActivity(browserIntent)
         }
         sar_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.system_as_root_header)
         arch_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.arch_header)
