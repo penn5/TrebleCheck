@@ -30,7 +30,7 @@ object MountDetector {
         for (line in mountsStream.lineSequence()) {
             lines.add(parseLine(line))
         }
-        return lines.any { it.device == "/dev/root" }
+        return lines.any { it.device == "/dev/root" } || !lines.any { it.mountpoint == "/system" }
     }
 
     private fun parseLine(line: String): Mount {
