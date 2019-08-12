@@ -44,4 +44,10 @@
     <string name="support">Please don\'t leave a bad review if I left a bug, I wrote the whole app in 1 day! Instead
         contact me via Telegram: https://t.me/hackintosh5. Tell me about your issue and I will endeavour to help.
     </string>
+    <string name="treble_false">Your device does not support Project Treble</string>
+    <string name="treble_legacy">Your device supports the legacy version of Project Treble, using VNDK version %1$d.%2$d
+    </string>
+    <string name="treble_modern">Your device supports the modern version of Project Treble, using VNDK version %1$d.%2$d
+    </string>
+    <string name="treble_header"><![CDATA[Treble & VNDK]]></string>
 </resources>

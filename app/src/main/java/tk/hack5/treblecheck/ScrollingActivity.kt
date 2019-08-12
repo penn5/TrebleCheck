@@ -33,11 +33,21 @@ class ScrollingActivity : AppCompatActivity() {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://t.me/hackintosh5"))
             startActivity(browserIntent)
         }
+        treble_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.treble_header)
         sar_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.system_as_root_header)
         arch_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.arch_header)
+        val treble = TrebleDetector.getVndkData()
         val arch = ArchDetector.getArch()
         val sar = MountDetector.isSAR()
 
+        var trebleText = resources.getText(when (treble?.first) {
+            null -> R.string.treble_false
+            true -> R.string.treble_legacy
+            false -> R.string.treble_modern
+        }) as String
+        treble?.let {
+            trebleText = trebleText.format(it.second, it.third)
+        }
         val archText = resources.getText(
             when (arch) {
                 Arch.ARM64 -> R.string.arch_arm64
@@ -48,6 +58,13 @@ class ScrollingActivity : AppCompatActivity() {
         )
         val sarText = resources.getText(if (sar) R.string.sar_true else R.string.sar_false)
 
+        val trebleImage = resources.getDrawable(
+            when (treble?.first) {
+                null -> R.drawable.treble_false
+                true -> R.drawable.treble_legacy
+                false -> R.drawable.treble_modern
+            }, theme
+        )
         val archImage = resources.getDrawable(
             when (arch) {
                 Arch.ARM64 -> R.drawable.arch_64_bit
@@ -58,6 +75,15 @@ class ScrollingActivity : AppCompatActivity() {
         )
         val sarImage = resources.getDrawable(if (sar) R.drawable.sar_true else R.drawable.sar_false, theme)
 
+        val trebleTint = ColorStateList.valueOf(
+            ResourcesCompat.getColor(
+                resources, when (treble?.first) {
+                    null -> R.color.treble_false
+                    true -> R.color.treble_legacy
+                    false -> R.color.treble_modern
+                }, theme
+            )
+        )
         val archTint = ColorStateList.valueOf(
             ResourcesCompat.getColor(
                 resources, when (arch) {
@@ -74,13 +100,15 @@ class ScrollingActivity : AppCompatActivity() {
                 if (sar) R.color.sar_true else R.color.sar_false, theme
             )
         )
-
+        treble_card.findViewById<TextView>(R.id.content).text = trebleText
         arch_card.findViewById<TextView>(R.id.content).text = archText
         sar_card.findViewById<TextView>(R.id.content).text = sarText
 
+        treble_card.findViewById<ImageView>(R.id.image).setImageDrawable(trebleImage)
         arch_card.findViewById<ImageView>(R.id.image).setImageDrawable(archImage)
         sar_card.findViewById<ImageView>(R.id.image).setImageDrawable(sarImage)
 
+        ImageViewCompat.setImageTintList(treble_card.findViewById(R.id.image), trebleTint)
         ImageViewCompat.setImageTintList(arch_card.findViewById(R.id.image), archTint)
         ImageViewCompat.setImageTintList(sar_card.findViewById(R.id.image), sarTint)
     }
