@@ -16,11 +16,18 @@ import java.io.File
 import android.util.Log
 
 object TrebleDetector {
+    fun property_get(prop: String): String {
+        val c = Class.forName("android.os.SystemProperties")
+        val g = c.getMethod("get", String::class.java, String::class.java)
+        return g.invoke(null, prop, "") as String
+    }
+
     private const val MANIFEST_PATH = "/vendor/etc/vintf/manifest.xml"
     private const val MANIFEST_PATH_LEGACY = "/vendor/manifest.xml"
     private const val TARGET_ELEMENT = "sepolicy"
     fun getVndkData(): Triple<Boolean /*legacy*/, Int /*VNDK*/, Int /*subversion*/>? {
         //TODO @phhusson check if the device is ro.treble.enabled and return null if not
+        if(property_get("ro.treble.enabled") != "true") return null
 
         var legacy = false
         var manifest = File(MANIFEST_PATH)
