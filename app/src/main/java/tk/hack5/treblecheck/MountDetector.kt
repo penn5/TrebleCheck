@@ -30,8 +30,9 @@ object MountDetector {
         for (line in mountsStream.lineSequence()) {
             lines.add(parseLine(line))
         }
-        return lines.any { it.device == "/dev/root" } ||
-                lines.none { it.mountpoint == "/system" && it.type != "tmpfs" && it.device != "none" }
+        return lines.any { it.device == "/dev/root" && it.mountpoint == "/" } ||
+                lines.none { it.mountpoint == "/system" && it.type != "tmpfs" && it.device != "none" } ||
+                lines.any { it.mountpoint == "/system_root" && it.type != "tmpfs" }
     }
 
     private fun parseLine(line: String): Mount {
