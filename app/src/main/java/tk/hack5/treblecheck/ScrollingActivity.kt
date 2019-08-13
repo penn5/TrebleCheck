@@ -43,8 +43,8 @@ class ScrollingActivity : AppCompatActivity() {
         license_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.license)
         Linkify.addLinks(license_card.findViewById<TextView>(R.id.content), Linkify.WEB_URLS)
         support_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.support)
-        license_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.foss_license))
-        support_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.contact_support))
+        license_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.foss_license, theme))
+        support_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.support, theme))
 
         val treble = TrebleDetector.getVndkData()
         val arch = ArchDetector.getArch()
