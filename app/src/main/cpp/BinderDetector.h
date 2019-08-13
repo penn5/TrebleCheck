@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <cerrno>
 #include <fcntl.h>
+#include <unistd.h>
 
 struct binder_version {
     __s32 protocol_version;

@@ -26,7 +26,6 @@ object TrebleDetector {
     private const val MANIFEST_PATH_LEGACY = "/vendor/manifest.xml"
     private const val TARGET_ELEMENT = "sepolicy"
     fun getVndkData(): Triple<Boolean /*legacy*/, Int /*VNDK*/, Int /*subversion*/>? {
-        //TODO @phhusson check if the device is ro.treble.enabled and return null if not
         if(property_get("ro.treble.enabled") != "true") return null
 
         var legacy = false
@@ -72,6 +71,3 @@ object TrebleDetector {
         return Triple(legacy, vndkVersion, vndkSubVersion)
     }
 }
-
-class ParseException(reason: String, exception: Exception? = null) : RuntimeException(reason, exception)
-

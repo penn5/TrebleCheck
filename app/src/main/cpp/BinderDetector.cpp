@@ -22,6 +22,7 @@ Java_tk_hack5_treblecheck_BinderDetector_get_1binder_1version(JNIEnv *env, jobje
     fd = open(BINDER_PATH, O_CLOEXEC | O_RDWR); // NOLINT(hicpp-signed-bitwise)
     if (fd < 0) return -errno;
     ret = ioctl(fd, BINDER_VERSION, &version);
+    close(fd);
     if (ret < 0) return -abs(ret);
     return version.protocol_version;
 }
