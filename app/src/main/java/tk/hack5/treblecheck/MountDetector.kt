@@ -50,5 +50,3 @@ data class Mount(
     constructor(device: String, mountpoint: String, type: String, flags: String, dummy0: String, dummy1: String) :
             this(device, mountpoint, type, flags.split(","), dummy0.toInt(), dummy1.toInt())
 }
-
-class ParseException(reason: String, exception: Exception? = null) : RuntimeException(reason, exception)
