@@ -9,18 +9,6 @@
   -->
 
 <resources>
-    <!--
-            /*
-            * Sub-licenses:
-            *         https://github.com/google/material-design-icons/blob/master/LICENSE
-            *         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
-            *         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt
-            * This project:
-            *         Copyright (C) 2019 Penn Mackintosh
-            *         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
-            */
-    -->
-
     <string name="app_name">Treble Info</string>
     <string name="system_as_root_header">System as Root</string>
     <string name="arch_header">Architecture</string>
@@ -34,11 +22,7 @@
     <string name="sar_true">Your device supports System-as-Root. Use an A/B operating system.</string>
     <string name="sar_false">Your device does not support System-as-Root. Use an A-only Operating System.</string>
     <string name="license_header">Licenses</string>
-    <string name="license">
-        https://github.com/google/material-design-icons/blob/master/LICENSE\n
-        https://github.com/Templarian/MaterialDesign/blob/master/LICENSE\n
-        https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt\n
-        https://github.com/penn5/TrebleCheck/blob/master/LICENSE\n
+    <string name="license">https://github.com/penn5/TrebleCheck/blob/master/LICENSE
     </string>
     <string name="support_header">Support</string>
     <string name="support">Please don\'t leave a bad review if I left a bug, I wrote the whole app in 1 day! Instead
