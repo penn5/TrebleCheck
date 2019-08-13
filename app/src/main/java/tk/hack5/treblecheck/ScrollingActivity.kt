@@ -19,6 +19,7 @@ import android.support.v4.widget.ImageViewCompat
 import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
 import android.widget.TextView
+import android.text.util.Linkify
 import kotlinx.android.synthetic.main.activity_scrolling.*
 import kotlinx.android.synthetic.main.content_scrolling.*
 
@@ -36,6 +37,15 @@ class ScrollingActivity : AppCompatActivity() {
         treble_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.treble_header)
         sar_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.system_as_root_header)
         arch_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.arch_header)
+
+        license_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.license_header)
+        support_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.support_header)
+        license_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.license)
+        Linkify.addLinks(license_card.findViewById<TextView>(R.id.content), Linkify.WEB_URLS)
+        support_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.support)
+        license_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.foss_license))
+        support_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.contact_support))
+
         val treble = TrebleDetector.getVndkData()
         val arch = ArchDetector.getArch()
         val sar = MountDetector.isSAR()
