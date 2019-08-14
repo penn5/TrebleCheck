@@ -34,4 +34,8 @@
     <string name="treble_modern">Your device supports the modern version of Project Treble, using VNDK version %1$d.%2$d
     </string>
     <string name="treble_header"><![CDATA[Treble & VNDK]]></string>
+    <string name="theme_day">Light Theme</string>
+    <string name="theme_night">Dark Theme</string>
+    <string name="theme_auto">Auto-select Theme</string>
+    <string name="theme_header">Theme</string>
 </resources>

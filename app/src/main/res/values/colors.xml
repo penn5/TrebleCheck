@@ -9,7 +9,7 @@
   ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
   -->
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#38DE8F</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="arch_64_bit">#43A047</color>

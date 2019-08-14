@@ -9,15 +9,15 @@
   ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
   -->
 
-<android.support.v7.widget.CardView android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="@dimen/text_margin"
-                                    android:foreground="?android:attr/selectableItemBackground"
-                                    android:clickable="true"
-                                    xmlns:android="http://schemas.android.com/apk/res/android"
-                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                    xmlns:tools="http://schemas.android.com/tools">
-    <android.support.constraint.ConstraintLayout
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_margin="@dimen/text_margin"
+                                   android:foreground="?android:attr/selectableItemBackground"
+                                   android:clickable="true"
+                                   xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <ImageView android:layout_width="100dp"
@@ -44,5 +44,5 @@
                   app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintTop_toBottomOf="@id/header"
                   android:id="@+id/content"/>
-    </android.support.constraint.ConstraintLayout>
-</android.support.v7.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

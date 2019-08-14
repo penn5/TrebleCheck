@@ -9,7 +9,7 @@
   ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
   -->
 
-<android.support.v4.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -25,17 +25,18 @@
         <include layout="@layout/card" android:id="@+id/treble_card"/>
         <include layout="@layout/card" android:id="@+id/sar_card"/>
         <include layout="@layout/card" android:id="@+id/arch_card"/>
+        <include layout="@layout/card" android:id="@+id/theme_card"/>
         <include layout="@layout/card" android:id="@+id/license_card"/>
         <include layout="@layout/card" android:id="@+id/support_card"/>
-        <android.support.v7.widget.CardView android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_margin="@dimen/text_margin"
-                                            android:foreground="?android:attr/selectableItemBackground"
-                                            android:clickable="true"
-                                            android:id="@+id/donate_card" >
+        <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:layout_margin="@dimen/text_margin"
+                                           android:foreground="?android:attr/selectableItemBackground"
+                                           android:clickable="true"
+                                           android:id="@+id/donate_card" >
             <FrameLayout android:layout_width="match_parent"
                          android:layout_height="match_parent"
                          android:id="@+id/donate_container" />
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

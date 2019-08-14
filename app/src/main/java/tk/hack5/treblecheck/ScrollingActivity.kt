@@ -10,13 +10,16 @@
 
 package tk.hack5.treblecheck
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.support.v4.content.res.ResourcesCompat
-import android.support.v4.widget.ImageViewCompat
-import android.support.v7.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.widget.ImageViewCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import android.widget.ImageView
 import android.widget.TextView
 import android.text.util.Linkify
@@ -40,11 +43,14 @@ class ScrollingActivity : AppCompatActivity() {
 
         license_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.license_header)
         support_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.support_header)
+        theme_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.theme_header)
         license_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.license)
         Linkify.addLinks(license_card.findViewById<TextView>(R.id.content), Linkify.WEB_URLS)
         support_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.support)
+        updateThemeText(false)
         license_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.foss_license, theme))
         support_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.support, theme))
+        theme_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.theme, theme))
 
         val treble = TrebleDetector.getVndkData()
         val arch = ArchDetector.getArch()
@@ -122,15 +128,43 @@ class ScrollingActivity : AppCompatActivity() {
         ImageViewCompat.setImageTintList(arch_card.findViewById(R.id.image), archTint)
         ImageViewCompat.setImageTintList(sar_card.findViewById(R.id.image), sarTint)
 
-        val fragmentTransaction = supportFragmentManager.beginTransaction();
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
         val playStoreMode = getPlayStoreMode()
         val donateFragment = DonationsFragment.newInstance(true, false, null, null, null, !playStoreMode, "hackintoshfive@gmail.com", "GBP", "Donation for TrebleCheck", false, null, null, false, null)
         fragmentTransaction.replace(R.id.donate_container, donateFragment, "donationsFragment")
         fragmentTransaction.commit()
     }
 
-    fun getPlayStoreMode(): Boolean {
-        val referrer = applicationContext.getPackageManager().getInstallerPackageName(applicationContext.getPackageName())
+    private fun getPlayStoreMode(): Boolean {
+        val referrer = applicationContext.packageManager.getInstallerPackageName(applicationContext.packageName)
         return referrer == "com.android.vending"
+    }
+
+    private fun updateThemeText(change: Boolean) {
+        val sharedPrefs = getPreferences(Context.MODE_PRIVATE)
+        var current = sharedPrefs.getInt("daynight", 2)
+
+        if (change)
+            current = (current + 1) % 3
+            with (sharedPrefs.edit()) {
+                putInt("daynight", current)
+                apply()
+            }
+
+        theme_card.findViewById<TextView>(R.id.content).text = resources.getText(
+            when (current) {
+                0 -> R.string.theme_day
+                1 -> R.string.theme_night
+                else -> R.string.theme_auto
+            }
+        )
+        AppCompatDelegate.setDefaultNightMode(
+            when (current) {
+                0 -> AppCompatDelegate.MODE_NIGHT_YES
+                1 -> AppCompatDelegate.MODE_NIGHT_NO
+                else -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+                    else AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
+            }
+        )
     }
 }
