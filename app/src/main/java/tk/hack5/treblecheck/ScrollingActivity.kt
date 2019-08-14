@@ -22,7 +22,7 @@ import android.widget.TextView
 import android.text.util.Linkify
 import kotlinx.android.synthetic.main.activity_scrolling.*
 import kotlinx.android.synthetic.main.content_scrolling.*
-
+import org.sufficientlysecure.donations.DonationsFragment
 
 class ScrollingActivity : AppCompatActivity() {
 
@@ -121,5 +121,16 @@ class ScrollingActivity : AppCompatActivity() {
         ImageViewCompat.setImageTintList(treble_card.findViewById(R.id.image), trebleTint)
         ImageViewCompat.setImageTintList(arch_card.findViewById(R.id.image), archTint)
         ImageViewCompat.setImageTintList(sar_card.findViewById(R.id.image), sarTint)
+
+        val fragmentTransaction = supportFragmentManager.beginTransaction();
+        val playStoreMode = getPlayStoreMode()
+        val donateFragment = DonationsFragment.newInstance(true, false, null, null, null, !playStoreMode, "hackintoshfive@gmail.com", "GBP", "Donation for TrebleCheck", false, null, null, false, null)
+        fragmentTransaction.replace(R.id.donate_container, donateFragment, "donationsFragment")
+        fragmentTransaction.commit()
+    }
+
+    fun getPlayStoreMode(): Boolean {
+        val referrer = applicationContext.getPackageManager().getInstallerPackageName(applicationContext.getPackageName())
+        return referrer == "com.android.vending"
     }
 }
