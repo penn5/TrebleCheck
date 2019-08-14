@@ -48,6 +48,7 @@ class ScrollingActivity : AppCompatActivity() {
         Linkify.addLinks(license_card.findViewById<TextView>(R.id.content), Linkify.WEB_URLS)
         support_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.support)
         updateThemeText(false)
+        theme_card.setOnClickListener { updateThemeText(true) }
         license_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.foss_license, theme))
         support_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.support, theme))
         theme_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.theme, theme))
@@ -160,8 +161,8 @@ class ScrollingActivity : AppCompatActivity() {
         )
         AppCompatDelegate.setDefaultNightMode(
             when (current) {
-                0 -> AppCompatDelegate.MODE_NIGHT_YES
-                1 -> AppCompatDelegate.MODE_NIGHT_NO
+                0 -> AppCompatDelegate.MODE_NIGHT_NO
+                1 -> AppCompatDelegate.MODE_NIGHT_YES
                 else -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
                     else AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
             }
