@@ -16,7 +16,7 @@
     <string name="arch_arm32">Your device is ARM32</string>
     <string name="arch_binder64">Your device is ARM32 but uses a 64-bit binder. This usually indicates that the hardware
         supports 64-bit but the software does not. In this scenario you should use an image named \"binder64\" or
-        \"a32\"
+        \"a64\"
     </string>
     <string name="arch_unknown">Unable to detect architecture</string>
     <string name="sar_true">Your device supports System-as-Root. Use an A/B operating system.</string>
