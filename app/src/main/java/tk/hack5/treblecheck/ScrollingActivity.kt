@@ -131,12 +131,13 @@ class ScrollingActivity : AppCompatActivity() {
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val playStoreMode = getPlayStoreMode()
-        val donateFragment = DonationsFragment.newInstance(true, false, null, null, null, !playStoreMode, "hackintoshfive@gmail.com", "GBP", "Donation for TrebleCheck", false, null, null, false, null)
+        val donateFragment = DonationsFragment.newInstance(BuildConfig.GPLAY_DEBUG, playStoreMode, BuildConfig.GPLAY_PUBK, BuildConfig.GPLAY_KEYS, BuildConfig.GPLAY_VALS, !playStoreMode, BuildConfig.PAYPAL_EMAIL, BuildConfig.PAYPAL_CURRENCY, BuildConfig.PAYPAL_DESCRIPTION, false, null, null, false, null)
         fragmentTransaction.replace(R.id.donate_container, donateFragment, "donationsFragment")
         fragmentTransaction.commit()
     }
 
     private fun getPlayStoreMode(): Boolean {
+        return true
         val referrer = applicationContext.packageManager.getInstallerPackageName(applicationContext.packageName)
         return referrer == "com.android.vending"
     }

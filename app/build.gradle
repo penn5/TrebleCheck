@@ -14,10 +14,37 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+            apply from: 'signing.properties'
+            storeFile file(releaseStoreFile)
+            storePassword releaseStorePassword
+            keyAlias releaseKeyAlias
+            keyPassword releaseKeyPassword
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            buildConfigField "boolean", "GPLAY_DEBUG", "false"
+            apply from: 'billing.properties'
+            buildConfigField "String", "GPLAY_PUBK", gplayPubk
+            buildConfigField "String[]", "GPLAY_KEYS", gplayKeys
+            buildConfigField "String[]", "GPLAY_VALS", gplayVals
+            buildConfigField "String", "PAYPAL_EMAIL", paypalEmail
+            buildConfigField "String", "PAYPAL_CURRENCY", paypalCurrency
+            buildConfigField "String", "PAYPAL_DESCRIPTION", paypalDescription
+        }
+        debug {
+            buildConfigField "boolean", "GPLAY_DEBUG", "true"
+            buildConfigField "String", "GPLAY_PUBK", "\"\""
+            buildConfigField "String[]", "GPLAY_KEYS", "{}"
+            buildConfigField "String[]", "GPLAY_VALS", "{}"
+            buildConfigField "String", "PAYPAL_EMAIL", "\"example@example.com\""
+            buildConfigField "String", "PAYPAL_CURRENCY", "\"USD\""
+            buildConfigField "String", "PAYPAL_DESCRIPTION", "\"Testing!\""
         }
     }
     externalNativeBuild {
