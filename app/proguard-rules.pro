@@ -19,3 +19,7 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keepnames public class org.sufficientlysecure.donations.DonationsFragment { *; }
+-keepnames public class tk.hack5.treblecheck.BinderDetector { *; }
+-keepnames public class androidx.fragment.app.Fragment { *; }

@@ -137,9 +137,8 @@ class ScrollingActivity : AppCompatActivity() {
     }
 
     private fun getPlayStoreMode(): Boolean {
-        return true
-        val referrer = applicationContext.packageManager.getInstallerPackageName(applicationContext.packageName)
-        return referrer == "com.android.vending"
+        val referrer: String? = applicationContext.packageManager.getInstallerPackageName(applicationContext.packageName)
+        return referrer?.startsWith("com.android.vending") ?: false
     }
 
     private fun updateThemeText(change: Boolean) {
