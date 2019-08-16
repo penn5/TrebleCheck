@@ -46,6 +46,7 @@ class ScrollingActivity : AppCompatActivity() {
         theme_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.theme_header)
         license_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.license)
         Linkify.addLinks(license_card.findViewById<TextView>(R.id.content), Linkify.WEB_URLS)
+        license_card.findViewById<TextView>(R.id.content).setLinkTextColor(license_card.findViewById<TextView>(R.id.content).getTextColors())
         support_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.support)
         updateThemeText(false)
         theme_card.setOnClickListener { updateThemeText(true) }

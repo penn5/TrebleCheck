@@ -22,11 +22,12 @@
     <string name="sar_true">Your device supports System-as-Root. Use an A/B operating system.</string>
     <string name="sar_false">Your device does not support System-as-Root. Use an A-only Operating System.</string>
     <string name="license_header">Licenses</string>
-    <string name="license">https://github.com/penn5/TrebleCheck/blob/master/LICENSE
+    <string name="license">License: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\n
+        Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md
     </string>
     <string name="support_header">Support</string>
-    <string name="support">Please don\'t leave a bad review if I left a bug, I wrote the whole app in 1 day! Instead
-        contact me via Telegram: https://t.me/hackintosh5. Tell me about your issue and I will endeavour to help.
+    <string name="support">Please don\'t leave a bad review if I left a bug; I wrote the whole app in a week! Instead
+        contact me via Telegram using the button in the top right. Tell me about your issue and I will endeavour to help.
     </string>
     <string name="treble_false">Your device does not support Project Treble</string>
     <string name="treble_legacy">Your device supports the legacy version of Project Treble, using VNDK version %1$d.%2$d
