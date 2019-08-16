@@ -131,7 +131,8 @@ class ScrollingActivity : AppCompatActivity() {
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val playStoreMode = getPlayStoreMode()
-        val donateFragment = DonationsFragment.newInstance(BuildConfig.DONATIONS_DEBUG, playStoreMode || BuildConfig.DONATIONS_DEBUG, BuildConfig.GPLAY_PUBK, BuildConfig.GPLAY_KEYS, BuildConfig.GPLAY_VALS, !playStoreMode || BuildConfig.DONATIONS_DEBUG, BuildConfig.PAYPAL_EMAIL, BuildConfig.PAYPAL_CURRENCY, BuildConfig.PAYPAL_DESCRIPTION, false, null, null, false, null)
+        val allModes = BuildConfig.BUILD_TYPE == "debug" || BuildConfig.DONATIONS_DEBUG
+        val donateFragment = DonationsFragment.newInstance(BuildConfig.DONATIONS_DEBUG, playStoreMode || allModes, BuildConfig.GPLAY_PUBK, BuildConfig.GPLAY_KEYS, BuildConfig.GPLAY_VALS, !playStoreMode || allModes, BuildConfig.PAYPAL_EMAIL, BuildConfig.PAYPAL_CURRENCY, BuildConfig.PAYPAL_DESCRIPTION, false, null, null, false, null)
         fragmentTransaction.replace(R.id.donate_container, donateFragment, "donationsFragment")
         fragmentTransaction.commit()
     }
