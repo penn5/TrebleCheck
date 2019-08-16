@@ -32,7 +32,7 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-            buildConfigField "boolean", "GPLAY_DEBUG", "false"
+            buildConfigField "boolean", "DONATIONS_DEBUG", "false"
             apply from: 'billing.properties'
             buildConfigField "String", "GPLAY_PUBK", gplayPubk
             buildConfigField "String[]", "GPLAY_KEYS", gplayKeys
@@ -42,7 +42,7 @@ android {
             buildConfigField "String", "PAYPAL_DESCRIPTION", paypalDescription
         }
         debug {
-            buildConfigField "boolean", "GPLAY_DEBUG", "true"
+            buildConfigField "boolean", "DONATIONS_DEBUG", "true"
             buildConfigField "String", "GPLAY_PUBK", "\"\""
             buildConfigField "String[]", "GPLAY_KEYS", "{}"
             buildConfigField "String[]", "GPLAY_VALS", "{}"
