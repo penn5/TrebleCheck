@@ -144,6 +144,7 @@ class ScrollingActivity : AppCompatActivity() {
     }
 
     private fun getPlayStoreMode(): Boolean {
+        return true
         val referrer: String? = applicationContext.packageManager.getInstallerPackageName(applicationContext.packageName)
         return referrer?.startsWith("com.android.vending") ?: false
     }
