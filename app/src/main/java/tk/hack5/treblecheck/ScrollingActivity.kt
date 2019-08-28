@@ -38,8 +38,6 @@ class ScrollingActivity : AppCompatActivity() {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://t.me/hackintosh5"))
             startActivity(browserIntent)
         }
-        val playStoreMode = getPlayStoreMode()
-
         treble_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.treble_header)
         sar_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.system_as_root_header)
         arch_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.arch_header)
@@ -133,20 +131,17 @@ class ScrollingActivity : AppCompatActivity() {
         ImageViewCompat.setImageTintList(arch_card.findViewById(R.id.image), archTint)
         ImageViewCompat.setImageTintList(sar_card.findViewById(R.id.image), sarTint)
 
-        if (!playStoreMode) {
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
-            val allModes = BuildConfig.BUILD_TYPE == "debug" || BuildConfig.DONATIONS_DEBUG
-            val donateFragment = DonationsFragment.newInstance(BuildConfig.DONATIONS_DEBUG, playStoreMode || allModes, BuildConfig.GPLAY_PUBK, BuildConfig.GPLAY_KEYS, BuildConfig.GPLAY_VALS, !playStoreMode || allModes, BuildConfig.PAYPAL_EMAIL, BuildConfig.PAYPAL_CURRENCY, BuildConfig.PAYPAL_DESCRIPTION, false, null, null, false, null)
-            fragmentTransaction.replace(R.id.donate_container, donateFragment, "donationsFragment")
-            fragmentTransaction.commit()
-        } else
-            donate_card.visibility = View.GONE
+        val playStoreMode = getPlayStoreMode()
+
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        val allModes = BuildConfig.DONATIONS_DEBUG
+        val donateFragment = DonationsFragment.newInstance(BuildConfig.DONATIONS_DEBUG, playStoreMode || allModes, BuildConfig.GPLAY_PUBK, BuildConfig.GPLAY_KEYS, BuildConfig.GPLAY_VALS, !playStoreMode || allModes, BuildConfig.PAYPAL_EMAIL, BuildConfig.PAYPAL_CURRENCY, BuildConfig.PAYPAL_DESCRIPTION, false, null, null, false, null)
+        fragmentTransaction.replace(R.id.donate_container, donateFragment, "donationsFragment")
+        fragmentTransaction.commit()
     }
 
     private fun getPlayStoreMode(): Boolean {
-        return true
-        val referrer: String? = applicationContext.packageManager.getInstallerPackageName(applicationContext.packageName)
-        return referrer?.startsWith("com.android.vending") ?: false
+        return packageManager.getApplicationInfo("com.android.vending", 0).enabled
     }
 
     private fun updateThemeText(change: Boolean) {
