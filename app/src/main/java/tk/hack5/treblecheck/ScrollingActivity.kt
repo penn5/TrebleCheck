@@ -13,6 +13,7 @@ package tk.hack5.treblecheck
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -141,7 +142,11 @@ class ScrollingActivity : AppCompatActivity() {
     }
 
     private fun getPlayStoreMode(): Boolean {
-        return packageManager.getApplicationInfo("com.android.vending", 0).enabled
+        try {
+            return packageManager.getApplicationInfo("com.android.vending", 0).enabled
+        } catch (e: PackageManager.NameNotFoundException) {
+            return false
+        }
     }
 
     private fun updateThemeText(change: Boolean) {
