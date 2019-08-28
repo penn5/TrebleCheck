@@ -14,6 +14,7 @@
                                    android:layout_margin="@dimen/text_margin"
                                    android:foreground="?android:attr/selectableItemBackground"
                                    android:clickable="true"
+                                   android:focusable="true"
                                    xmlns:android="http://schemas.android.com/apk/res/android"
                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                    xmlns:tools="http://schemas.android.com/tools">
@@ -22,6 +23,7 @@
             android:layout_height="match_parent">
         <ImageView android:layout_width="50dp"
                    android:layout_height="50dp"
+                   android:layout_margin="@dimen/text_margin"
                    app:layout_constraintTop_toTopOf="parent"
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintBottom_toBottomOf="parent"
