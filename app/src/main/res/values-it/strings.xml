@@ -1,0 +1,42 @@
+<!--
+  ~ Sub-licenses:
+  ~         https://github.com/google/material-design-icons/blob/master/LICENSE
+  ~         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
+  ~         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt
+  ~ This project:
+  ~         Copyright (C) 2019 Penn Mackintosh
+  ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
+  -->
+
+<resources>
+    <string name="app_name">Treble Info</string>
+    <string name="system_as_root_header">Sistema come Root</string>
+    <string name="arch_header">Architettura</string>
+    <string name="arch_arm64">L'architettura di questo dispositivo è ARM64</string>
+    <string name="arch_arm32">L'architettura di questo dispositivo è ARM32</string>
+    <string name="arch_binder64">Il tuo dispostivo è ARM32 ma usa un 64-bit binder. Questo incdica che l'hardware
+        supporta 64-bit ma il software no. In questo caso ci dovrebbe essere un immagine con \"binder64\" o
+        \"a64\"
+    </string>
+    <string name="arch_unknown">Impossibile rilevare l'architettura</string>
+    <string name="sar_true">Il tuo dispostivo supporta System-as-Root. Utilizzare un sistema operativo A / B.</string>
+    <string name="sar_false">Il dispositivo non supporta System-as-Root. Utilizzare un sistema operativo A-Only.</string>
+    <string name="license_header">Licenses</string>
+    <string name="license">Licenza: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\n
+        Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md
+    </string>
+    <string name="support_header">Support</string>
+    <string name="support">Per favore non lasciare una recensione negativa se ho lasciato un bug; Ho scritto l'intera app in una settimana! Anziché
+        contattami tramite Telegram utilizzando il pulsante in alto a destra. Parlami del tuo problema e cercherò di aiutarti.
+    </string>
+    <string name="treble_false">Il tuo dispostivo supporta Project Treble</string>
+    <string name="treble_legacy">Il tuo dispostivo supporta la versione legacy di Project Treble, usando VNDK versione %1$d.%2$d
+    </string>
+    <string name="treble_modern">Il dispositivo supporta la versione moderna di Project Treble, utilizzando la versione VNDK %1$d.%2$d
+    </string>
+    <string name="treble_header"><![CDATA[Treble & VNDK]]></string>
+    <string name="theme_day">Tema Bianco</string>
+    <string name="theme_night">Tema Nero</string>
+    <string name="theme_auto">Auto selezione del tema</string>
+    <string name="theme_header">Tema</string>
+</resources>
