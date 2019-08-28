@@ -12,13 +12,13 @@
     <string name="app_name">Treble Info</string>
     <string name="system_as_root_header">Sistema come Root</string>
     <string name="arch_header">Architettura</string>
-    <string name="arch_arm64">L'architettura di questo dispositivo è ARM64</string>
-    <string name="arch_arm32">L'architettura di questo dispositivo è ARM32</string>
-    <string name="arch_binder64">Il tuo dispostivo è ARM32 ma usa un 64-bit binder. Questo incdica che l'hardware
+    <string name="arch_arm64">L\'architettura di questo dispositivo è ARM64</string>
+    <string name="arch_arm32">L\'architettura di questo dispositivo è ARM32</string>
+    <string name="arch_binder64">Il tuo dispostivo è ARM32 ma usa un 64-bit binder. Questo incdica che l\'hardware
         supporta 64-bit ma il software no. In questo caso ci dovrebbe essere un immagine con \"binder64\" o
         \"a64\"
     </string>
-    <string name="arch_unknown">Impossibile rilevare l'architettura</string>
+    <string name="arch_unknown">Impossibile rilevare l\'architettura</string>
     <string name="sar_true">Il tuo dispostivo supporta System-as-Root. Utilizzare un sistema operativo A / B.</string>
     <string name="sar_false">Il dispositivo non supporta System-as-Root. Utilizzare un sistema operativo A-Only.</string>
     <string name="license_header">Licenses</string>
@@ -26,7 +26,7 @@
         Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md
     </string>
     <string name="support_header">Support</string>
-    <string name="support">Per favore non lasciare una recensione negativa se ho lasciato un bug; Ho scritto l'intera app in una settimana! Anziché
+    <string name="support">Per favore non lasciare una recensione negativa se ho lasciato un bug; Ho scritto l\'intera app in una settimana! Anziché
         contattami tramite Telegram utilizzando il pulsante in alto a destra. Parlami del tuo problema e cercherò di aiutarti.
     </string>
     <string name="treble_false">Il tuo dispostivo supporta Project Treble</string>
