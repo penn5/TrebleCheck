@@ -13,3 +13,4 @@
 .externalNativeBuild
 app/signing.properties
 app/billing.properties
+app/.cxx
