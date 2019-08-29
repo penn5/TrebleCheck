@@ -12,19 +12,18 @@ package tk.hack5.treblecheck
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.widget.ImageViewCompat
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
+import android.text.util.Linkify
 import android.widget.ImageView
 import android.widget.TextView
-import android.text.util.Linkify
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.widget.ImageViewCompat
 import kotlinx.android.synthetic.main.activity_scrolling.*
 import kotlinx.android.synthetic.main.content_scrolling.*
 import org.sufficientlysecure.donations.DonationsFragment
@@ -48,7 +47,8 @@ class ScrollingActivity : AppCompatActivity() {
         theme_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.theme_header)
         license_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.license)
         Linkify.addLinks(license_card.findViewById<TextView>(R.id.content), Linkify.WEB_URLS)
-        license_card.findViewById<TextView>(R.id.content).setLinkTextColor(license_card.findViewById<TextView>(R.id.content).getTextColors())
+        license_card.findViewById<TextView>(R.id.content)
+            .setLinkTextColor(license_card.findViewById<TextView>(R.id.content).textColors)
         support_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.support)
         updateThemeText(false)
         theme_card.setOnClickListener { updateThemeText(true) }
@@ -142,10 +142,10 @@ class ScrollingActivity : AppCompatActivity() {
     }
 
     private fun getPlayStoreMode(): Boolean {
-        try {
-            return packageManager.getApplicationInfo("com.android.vending", 0).enabled
+        return try {
+            packageManager.getApplicationInfo("com.android.vending", 0).enabled
         } catch (e: PackageManager.NameNotFoundException) {
-            return false
+            false
         }
     }
 

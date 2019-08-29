@@ -33,6 +33,7 @@
                                            android:layout_margin="@dimen/text_margin"
                                            android:foreground="?android:attr/selectableItemBackground"
                                            android:clickable="true"
+                android:focusable="true"
                                            android:id="@+id/donate_card" >
             <FrameLayout android:layout_width="match_parent"
                          android:layout_height="match_parent"

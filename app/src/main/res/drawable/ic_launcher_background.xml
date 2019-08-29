@@ -8,8 +8,9 @@
   ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
   -->
 
-<vector
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:ignore="UnusedResources"
         android:height="108dp"
         android:width="108dp"
         android:viewportHeight="108"

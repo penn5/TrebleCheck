@@ -10,6 +10,8 @@
 
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:aapt="http://schemas.android.com/aapt"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:ignore="UnusedResources"
         android:width="108dp"
         android:height="108dp"
         android:viewportHeight="108"

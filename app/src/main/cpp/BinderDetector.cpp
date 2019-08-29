@@ -8,11 +8,13 @@
  *         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
  */
 
+#include <climits>
 #include "BinderDetector.h"
 
 extern "C" JNIEXPORT jint JNICALL
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
+__unused
 Java_tk_hack5_treblecheck_BinderDetector_get_1binder_1version(JNIEnv *env, jobject instance) {
 #pragma clang diagnostic pop
     struct binder_version version{};

@@ -10,13 +10,14 @@
 
 package tk.hack5.treblecheck
 
+import android.annotation.SuppressLint
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
 import java.io.File
-import android.util.Log
 
 object TrebleDetector {
-    fun property_get(prop: String): String {
+    @SuppressLint("PrivateApi") // Oh well.
+    fun propertyGet(prop: String): String {
         val c = Class.forName("android.os.SystemProperties")
         val g = c.getMethod("get", String::class.java, String::class.java)
         return g.invoke(null, prop, "") as String
@@ -26,7 +27,7 @@ object TrebleDetector {
     private const val MANIFEST_PATH_LEGACY = "/vendor/manifest.xml"
     private const val TARGET_ELEMENT = "sepolicy"
     fun getVndkData(): Triple<Boolean /*legacy*/, Int /*VNDK*/, Int /*subversion*/>? {
-        if(property_get("ro.treble.enabled") != "true") return null
+        if (propertyGet("ro.treble.enabled") != "true") return null
 
         var legacy = false
         var manifest = File(MANIFEST_PATH)
