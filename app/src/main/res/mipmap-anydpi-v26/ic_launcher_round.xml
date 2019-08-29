@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Sub-licenses:
+  ~         https://github.com/google/material-design-icons/blob/master/LICENSE
+  ~         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
+  ~         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt
+  ~ This project:
+  ~         Copyright (C) 2019 Penn Mackintosh
+  ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
+  -->
+
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
     <background android:drawable="@mipmap/ic_launcher_background"/>
     <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
