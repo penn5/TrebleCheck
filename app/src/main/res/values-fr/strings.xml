@@ -30,7 +30,7 @@
         Veuillez au contraire me contactacter via Telegram en utilisant le button dans le coin droit. Raconter moi le problème et je vais m\'éfforcer de le fixer.
     </string>
     <string name="treble_false">Votre appareil ne supporte pas le projet Treble</string>
-    <string name="treble_legacy">Votre appareil supporte l'ancienne version du projet Treble, utilisant la version du VNDK %1$d.%2$d
+    <string name="treble_legacy">Votre appareil supporte l\'ancienne version du projet Treble, utilisant la version du VNDK %1$d.%2$d
     </string>
     <string name="treble_modern">Votre appareil supporte la version moderne du projet Treble, utilisant la version du VNDK %1$d.%2$d
     </string>
@@ -38,5 +38,5 @@
     <string name="theme_day">Thème clair</string>
     <string name="theme_night">Thème sombre</string>
     <string name="theme_auto">Thème automatisé</string>
-    <string name="theme_header">Thème</string
+    <string name="theme_header">Thème</string>
 </resources>
