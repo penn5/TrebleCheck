@@ -30,9 +30,9 @@
 	Kontaktiere mich stattdessen via Telegram über den Button oben rechts, schilder mir dein Problem und ich bemühe mich, dir zu helfen.
     </string>
     <string name="treble_false">Das Gerät ist nicht Treble-kompatibel.</string>
-    <string name="treble_legacy">Das Gerät unterstützt eine alte Version von Project Treble mit VNDK version %1$d.%2$d
+    <string name="treble_legacy">Das Gerät unterstützt eine alte Version von Project Treble mit VNDK %1$3version %1$d.%2$d
     </string>
-    <string name="treble_modern">Das Gerät unterstützt die moderne Version von Project Treble mit VNDK version %1$d.%2$d
+    <string name="treble_modern">Das Gerät unterstützt die moderne Version von Project Treble mit VNDK %1$3version %1$d.%2$d
     </string>
     <string name="treble_header"><![CDATA[Treble & VNDK]]></string>
     <string name="theme_day">Helles Theme</string>
