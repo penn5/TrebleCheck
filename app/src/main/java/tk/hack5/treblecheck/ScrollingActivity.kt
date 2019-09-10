@@ -18,8 +18,10 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.util.Linkify
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
@@ -42,31 +44,33 @@ class ScrollingActivity : AppCompatActivity() {
         sar_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.system_as_root_header)
         arch_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.arch_header)
 
+        theme_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.theme_header)
         license_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.license_header)
         support_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.support_header)
-        theme_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.theme_header)
         license_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.license)
-        Linkify.addLinks(license_card.findViewById<TextView>(R.id.content), Linkify.WEB_URLS)
+
         license_card.findViewById<TextView>(R.id.content)
             .setLinkTextColor(license_card.findViewById<TextView>(R.id.content).textColors)
+        Linkify.addLinks(license_card.findViewById<TextView>(R.id.content), Linkify.WEB_URLS)
         support_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.support)
         updateThemeText(false)
         theme_card.setOnClickListener { updateThemeText(true) }
         license_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.foss_license, theme))
         support_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.support, theme))
         theme_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.theme, theme))
+        donate_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.donate, theme))
 
         val treble = TrebleDetector.getVndkData()
         val arch = ArchDetector.getArch()
         val sar = MountDetector.isSAR()
 
-        var trebleText = resources.getText(when (treble?.first) {
+        var trebleText = resources.getText(when (treble?.legacy) {
             null -> R.string.treble_false
             true -> R.string.treble_legacy
             false -> R.string.treble_modern
         }) as String
         treble?.let {
-            trebleText = trebleText.format(it.second, it.third)
+            trebleText = trebleText.format(it.vndkVersion, it.vndkSubVersion, if (it.lite) "Lite " else "")
         }
         val archText = resources.getText(
             when (arch) {
@@ -79,10 +83,10 @@ class ScrollingActivity : AppCompatActivity() {
         val sarText = resources.getText(if (sar) R.string.sar_true else R.string.sar_false)
 
         val trebleImage = resources.getDrawable(
-            when (treble?.first) {
+            when (treble?.legacy) {
                 null -> R.drawable.treble_false
                 true -> R.drawable.treble_legacy
-                false -> R.drawable.treble_modern
+                false -> if (!treble.lite) R.drawable.treble_modern else R.drawable.treble_legacy
             }, theme
         )
         val archImage = resources.getDrawable(
@@ -97,10 +101,10 @@ class ScrollingActivity : AppCompatActivity() {
 
         val trebleTint = ColorStateList.valueOf(
             ResourcesCompat.getColor(
-                resources, when (treble?.first) {
+                resources, when (treble?.legacy) {
                     null -> R.color.treble_false
                     true -> R.color.treble_legacy
-                    false -> R.color.treble_modern
+                    false -> if (!treble.lite) R.color.treble_modern else R.color.treble_legacy
                 }, theme
             )
         )
@@ -134,10 +138,16 @@ class ScrollingActivity : AppCompatActivity() {
 
         val playStoreMode = getPlayStoreMode()
 
+        donate_card.findViewById<TextView>(R.id.header).visibility = View.GONE
+        donate_card.findViewById<TextView>(R.id.content).visibility = View.GONE
+        val container = donate_card.findViewById<FrameLayout>(R.id.frame)
+        container.visibility = View.VISIBLE
+        container.setId(View.generateViewId())
+
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val allModes = BuildConfig.DONATIONS_DEBUG
         val donateFragment = DonationsFragment.newInstance(BuildConfig.DONATIONS_DEBUG, playStoreMode || allModes, BuildConfig.GPLAY_PUBK, BuildConfig.GPLAY_KEYS, BuildConfig.GPLAY_VALS, !playStoreMode || allModes, BuildConfig.PAYPAL_EMAIL, BuildConfig.PAYPAL_CURRENCY, BuildConfig.PAYPAL_DESCRIPTION, false, null, null, false, null)
-        fragmentTransaction.replace(R.id.donate_container, donateFragment, "donationsFragment")
+        fragmentTransaction.replace(container.getId(), donateFragment, "donationsFragment")
         fragmentTransaction.commit()
     }
 

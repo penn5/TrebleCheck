@@ -15,6 +15,9 @@ import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
 import java.io.File
 
+data class TrebleData(val legacy: Boolean, val lite: Boolean,
+                      val vndkVersion: Int, val vndkSubVersion: Int)
+
 object TrebleDetector {
     @SuppressLint("PrivateApi") // Oh well.
     fun propertyGet(prop: String): String {
@@ -26,8 +29,14 @@ object TrebleDetector {
     private const val MANIFEST_PATH = "/vendor/etc/vintf/manifest.xml"
     private const val MANIFEST_PATH_LEGACY = "/vendor/manifest.xml"
     private const val TARGET_ELEMENT = "sepolicy"
-    fun getVndkData(): Triple<Boolean /*legacy*/, Int /*VNDK*/, Int /*subversion*/>? {
+    fun getVndkData(): TrebleData? {
         if (propertyGet("ro.treble.enabled") != "true") return null
+
+        val lite = when (propertyGet("ro.vndk.lite")) {
+            "true" -> true
+            "false" -> false
+            else -> false // error, assume its not lite
+        }
 
         var legacy = false
         var manifest = File(MANIFEST_PATH)
@@ -69,6 +78,6 @@ object TrebleDetector {
         val vndkVersion = versions[0].toInt(10)
         val vndkSubVersion = versions[1].toInt(10)
 
-        return Triple(legacy, vndkVersion, vndkSubVersion)
+        return TrebleData(legacy, lite, vndkVersion, vndkSubVersion)
     }
 }
