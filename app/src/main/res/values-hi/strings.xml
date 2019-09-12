@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name"></string>
+    <string name="system_as_root_header"></string>
+    <string name="arch_header"></string>
+    <string name="arch_arm64"></string>
+    <string name="arch_arm32"></string>
+    <string name="arch_binder64"></string>
+    <string name="arch_unknown"></string>
+    <string name="sar_true"></string>
+    <string name="sar_false"></string>
+    <string name="license_header"></string>
+    <string name="license"></string>
+    <string name="support_header"></string>
+    <string name="support"></string>
+    <string name="treble_false"></string>
+    <string name="treble_legacy"></string>
+    <string name="treble_modern"></string>
+    <string name="treble_header"></string>
+    <string name="theme_day"></string>
+    <string name="theme_night"></string>
+    <string name="theme_auto"></string>
+    <string name="theme_header"></string>
+</resources>
