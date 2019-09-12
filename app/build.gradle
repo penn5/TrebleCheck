@@ -18,6 +18,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'poeditor-android'
+
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -94,6 +96,12 @@ android {
         }
     }
 }
+
+if (file('poeditor.properties').exists()) {
+    apply from: 'poeditor.properties' // Should contain `poeditor.apiToken = "123"`
+}
+
+project.poeditor.projectId = 285385
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
