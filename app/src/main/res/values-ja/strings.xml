@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name"></string>
-    <string name="system_as_root_header"></string>
-    <string name="arch_header"></string>
-    <string name="arch_arm64"></string>
-    <string name="arch_arm32"></string>
-    <string name="arch_binder64"></string>
-    <string name="arch_unknown"></string>
-    <string name="sar_true"></string>
-    <string name="sar_false"></string>
-    <string name="license_header"></string>
-    <string name="license"></string>
-    <string name="support_header"></string>
-    <string name="support"></string>
-    <string name="treble_false"></string>
-    <string name="treble_legacy"></string>
-    <string name="treble_modern"></string>
-    <string name="treble_header"></string>
-    <string name="theme_day"></string>
-    <string name="theme_night"></string>
-    <string name="theme_auto"></string>
-    <string name="theme_header"></string>
+    <string name="app_name">"Project Treble 情報"</string>
+    <string name="system_as_root_header">"システムアズルート（ルートとしてのシステム）"</string>
+    <string name="arch_header">"アーキテクチャー"</string>
+    <string name="arch_arm64">"ARM64のデバイスです"</string>
+    <string name="arch_arm32">"ARM32のデバイスです"</string>
+    <string name="arch_binder64">"デバイスはARM32ですが、64ビットバインダーを使用します。これは通常、ハードウェアが 64ビットをサポートしていますが、ソフトウェアはサポートしていません。このシナリオでは、「binder64」または、「a64」という名前のイメージを使用する必要があります。
+        "</string>
+    <string name="arch_unknown">"アーキテクチャを検出できません。"</string>
+    <string name="sar_true">"デバイスは、システムとしてのルートをサポートしています。 A / Bオペレーティングシステムを使用します。"</string>
+    <string name="sar_false">"お使いのデバイスはSystem-as-Rootをサポートしていません。 Aのみのオペレーティングシステムを使用しています。"</string>
+    <string name="license_header">"ライセンス"</string>
+    <string name="license">"ライセンス：https://github.com/penn5/TrebleCheck/blob/master/LICENSE
+プライバシー：https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
+    <string name="support_header">"サポート"</string>
+    <string name="support">"バグを見つけた場合、悪いレビューを残さないでください。（私一人でアプリを作ったので！）代わりに右上のボタンを押してTelegram（テレグラム）で私に連絡してください。あなたの問題について教えてください、私は助けるために出来るだけ努力します。日本語で連絡したい場いい、TELEGRAMを使い、@YukiSuter に連絡をお願い致します。"</string>
+    <string name="treble_false">"お使いのデバイスはProject Trebleをサポートしていません"</string>
+    <string name="treble_legacy">"この電話は、VNDK %3$sversion %1$d.%2$d を使用して、Project Trebleのレガシーバージョン（古いバージョン）をサポートしています。
+"</string>
+    <string name="treble_modern">"この電話は、VNDK %3$sversion %1$d.%2$d を使用して、Project Trebleの最新バージョンをサポートしています。"</string>
+    <string name="treble_header">"Treble &amp; VNDK"</string>
+    <string name="theme_day">"明るいテーマ
+"</string>
+    <string name="theme_night">"暗いテーマ"</string>
+    <string name="theme_auto">"テーマの自動設定"</string>
+    <string name="theme_header">"テーマ"</string>
 </resources>

@@ -16,11 +16,13 @@ https://github.com/penn5/TrebleCheck/blob/master/LICENSE
 Polityka prywatności:
 https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="support_header">"Wsparcie"</string>
+
+    <!-- Fuzzy -->
     <string name="support">"Jeżeli znajdziesz błąd w aplikacji, nie wystawiaj jej złej opinii; Napisałem całą aplikację w ciągu tygodnia! Zamiast tego skontaktuj się ze mną za pomocą Telegrama używając przycisku znajdującego się po prawej stronie na górze. Opowiedz mi o swoim problemie a spróbuję pomóc go rozwiązać."</string>
     <string name="treble_false">"Twoje urządzenie nie wspiera Projektu \"Treble\""</string>
     <string name="treble_legacy">"Twoje urządzenie wspiera przestarzałą wersję Projektu \"Treble\", używając VNDK %3$sw wersji %1$d.%2$d"</string>
     <string name="treble_modern">"Twoje urządzenia wspiera nowoczesną wersję Projektu \"Treble\", używając VNDK %3$sw wersji %1$d.%2$d"</string>
-    <string name="treble_header"><![CDATA[Treble i VNDK]]></string>
+    <string name="treble_header">"Treble i VNDK"</string>
     <string name="theme_day">"Jasny motyw"</string>
     <string name="theme_night">"Ciemny motyw"</string>
     <string name="theme_auto">"Automatyczny wybór motywu"</string>

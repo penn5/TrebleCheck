@@ -11,14 +11,15 @@
     <string name="sar_false">"Uw apparaat ondersteund geen Systeem als root. Gebruik een A-only besturingssysteem."</string>
     <string name="license_header">"Licenties"</string>
     <string name="license">"Licentie: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-
 Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="support_header">"Ondersteuning"</string>
-    <string name="support">"Als er nog een bug is laat dan alsjeblieft geen slecht review achter; ik heb deze hele app in een week gemaakt! In plaats hiervan kan je me bereiken via Telegram met de knop in de rechter hoek. Leg je probleem aan me uit en ik ga proberen te helpen."</string>
+
+    <!-- Fuzzy -->
+    <string name="support">"Als er nog een bug is laat dan alsjeblieft geen slecht review achter; ik heb deze hele app in m'n eentje gemaakt! In plaats hiervan kan je me bereiken via Telegram met de knop in de rechter hoek. Leg je probleem aan me uit en ik ga proberen te helpen."</string>
     <string name="treble_false">"Uw apparaat ondersteund geen Project Treble"</string>
     <string name="treble_legacy">"Uw apparaat ondersteund de legacy versie van Project Treble, gebruik hiervoor VNDK %3$sversie %1$d.%2$d"</string>
     <string name="treble_modern">"Uw apparaat  ondersteund de moderne versie van Project Treble, gebruik hiervoor VNDK %3$sversie %1$d.%2$d"</string>
-    <string name="treble_header"><![CDATA[Treble & VNDK]]></string>
+    <string name="treble_header">"Treble &amp; VNDK"</string>
     <string name="theme_day">"Licht Thema"</string>
     <string name="theme_night">"Donker Thema"</string>
     <string name="theme_auto">"Selecteer Thema automatisch
