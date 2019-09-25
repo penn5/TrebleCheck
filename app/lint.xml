@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+  <issue id="StringFormatInvalid" severity="ignore" />
+  <issue id="StringFormatMatches" severity="ignore" />
+  <issue id="StringFormatCount" severity="ignore" />
+  <issue id="MissingTranslation" severity="ignore" />
+</lint>
