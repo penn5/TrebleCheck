@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">"Treble Info"</string>
+    <string name="system_as_root_header">"System as Root"</string>
+    <string name="arch_header">"Architecture"</string>
+    <string name="arch_arm64">"你的"</string>
+    <string name="treble_header">"Treble &amp; VNDK"</string>
+</resources>
