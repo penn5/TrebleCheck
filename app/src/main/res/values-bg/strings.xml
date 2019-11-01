@@ -8,7 +8,7 @@
     <string name="arch_binder64">"Вашето устройство е \"ARM32\" но използва 64 битов binder. Това най-вероятно означава че хардуера на устройството ви подържа 64-бита но софтуера (андроид) не. В този случай вие би трябвало да използвате файл който е предназначен за \"binder64\" или \"a64\""</string>
     <string name="arch_unknown">"Не успяхме да намерим архитектурата ви"</string>
     <string name="sar_true">"Вашето устройство поддържа \"System-as-Root\". Използвайте A/B операционна система."</string>
-    <string name="sar_false">"Вашето устройство не поддържа \"System-as-Root. Използвайте A-само операционна система."</string>
+    <string name="sar_false">"Вашето устройство не поддържа \"System-as-Root\". Използвайте A-само операционна система."</string>
     <string name="license_header">"Лицензи"</string>
     <string name="license">"Лиценз:
 https://github.com/penn5/TrebleCheck/blob/master/LICENSE
@@ -27,6 +27,6 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="treble_unknown">"Не успяхме да засечем дали устройството ви поддържа \"Treble\". Моля свържете се със разработчика, понеже приложението няма да изпрати проблема автоматично."</string>
     <string name="ab_true">"\"Seamless Updates\" се поддържат! Вашето устройство може да се актуализира без да трябва да чакате за актуализацията да се инсталира докато телефона е изключен."</string>
     <string name="ab_false">"\"Seamless Updates\" не се поддържат от устройството. Ще трябва да влизате във \"recovery\" за да инсталирате актуализации, и има по-голям риск сравнено със поддържаните устройства."</string>
-    <string name="ab_header">"\"Seamless Upgrades\""</string>
+    <string name="ab_header">"Seamless Upgrades"</string>
     <string name="sar_unknown">"Не успяхме да засечем дали устройството ви подържа \"System-as-Root\". Моля свържете се с разработчика за да уведомите за проблема."</string>
 </resources>
