@@ -19,13 +19,6 @@ data class TrebleData(val legacy: Boolean, val lite: Boolean,
                       val vndkVersion: Int, val vndkSubVersion: Int)
 
 object TrebleDetector {
-    @SuppressLint("PrivateApi") // Oh well.
-    fun propertyGet(prop: String): String {
-        val c = Class.forName("android.os.SystemProperties")
-        val g = c.getMethod("get", String::class.java, String::class.java)
-        return g.invoke(null, prop, "") as String
-    }
-
     private const val MANIFEST_PATH = "/vendor/etc/vintf/manifest.xml"
     private const val MANIFEST_PATH_LEGACY = "/vendor/manifest.xml"
     private const val TARGET_ELEMENT = "sepolicy"
@@ -35,7 +28,7 @@ object TrebleDetector {
         val lite = when (propertyGet("ro.vndk.lite")) {
             "true" -> true
             "false" -> false
-            else -> false // error, assume its not lite
+            else -> false // notset, assume its not lite
         }
 
         var legacy = false

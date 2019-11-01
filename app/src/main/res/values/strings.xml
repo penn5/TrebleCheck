@@ -22,4 +22,9 @@ Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="theme_night">"Dark Theme"</string>
     <string name="theme_auto">"Auto-select Theme"</string>
     <string name="theme_header">"Theme"</string>
+    <string name="treble_unknown">"Unable to detect Treble support status. Please contact the developer, as the app will not automatically send a bug report."</string>
+    <string name="ab_true">"Seamless Upgrades are supported! Your device can upgrade between different Android versions without needing any downtime for the update."</string>
+    <string name="ab_false">"Seamless Upgrades are not supported. Your device must enter recovery to install upgrades and there is an increased risk of failure, compared to Seamless-supporting devices."</string>
+    <string name="ab_header">"Seamless Upgrades"</string>
+    <string name="sar_unknown">"Unable to detect System-as-Root support status. Please contact the developer to report a bug."</string>
 </resources>

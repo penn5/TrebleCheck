@@ -22,4 +22,9 @@ Privatsphäre: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</str
     <string name="theme_night">"Dunkles Theme"</string>
     <string name="theme_auto">"Automatisch auswählen"</string>
     <string name="theme_header">"Theme"</string>
+    <string name="treble_unknown">"Treble-Status konnte nicht erkannt werden. Bitte kontaktiere den Entwickler, da die App keine automatischen Fehlerberichte sendet."</string>
+    <string name="ab_true">"Nahtlose Aktualisierungen werden unterstützt! Ihr Gerät kann auf verschiedene Android-Versionen aktualisieren, ohne dass für das Update Ausfallzeiten anfallen."</string>
+    <string name="ab_false">"Nahtlose Aktualisierungen werden nicht unterstützt. Das Gerät muss ins Recovery starten, um Updates zu installieren und fehleranfälliger als nahtlos-unterstützenden Geräten."</string>
+    <string name="ab_header">"Nahtlose Aktualisierungen"</string>
+    <string name="sar_unknown">"Der System-as-Root-Status konnte nicht erkannt werden. Bitte kontaktiere den Entwickler, um einen Fehler zu melden."</string>
 </resources>

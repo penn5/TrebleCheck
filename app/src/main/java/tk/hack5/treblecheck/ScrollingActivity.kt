@@ -18,6 +18,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.util.Linkify
+import android.util.Log
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
@@ -43,7 +44,7 @@ class ScrollingActivity : AppCompatActivity() {
         treble_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.treble_header)
         sar_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.system_as_root_header)
         arch_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.arch_header)
-
+        ab_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.ab_header)
         theme_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.theme_header)
         license_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.license_header)
         support_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.support_header)
@@ -60,11 +61,25 @@ class ScrollingActivity : AppCompatActivity() {
         theme_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.theme, theme))
         donate_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.donate, theme))
 
-        val treble = TrebleDetector.getVndkData()
-        val arch = ArchDetector.getArch()
-        val sar = MountDetector.isSAR()
 
-        var trebleText = resources.getText(when (treble?.legacy) {
+        var trebleFail = false
+        val treble = try {
+            TrebleDetector.getVndkData()
+        } catch (e: ParseException) {
+            Log.e(tag, "Treble checks failed", e)
+            trebleFail = true
+            null
+        }
+        val arch = ArchDetector.getArch()
+        val sar = try {
+            MountDetector.isSAR()
+        } catch (e: ParseException) {
+            Log.e(tag, "SAR checks failed", e)
+            null
+        }
+        val ab = ABDetector.checkAB()
+
+        var trebleText = resources.getText(if (trebleFail) R.string.treble_unknown else when (treble?.legacy) {
             null -> R.string.treble_false
             true -> R.string.treble_legacy
             false -> R.string.treble_modern
@@ -80,9 +95,16 @@ class ScrollingActivity : AppCompatActivity() {
                 Arch.UNKNOWN -> R.string.arch_unknown
             }
         )
-        val sarText = resources.getText(if (sar) R.string.sar_true else R.string.sar_false)
+        val sarText = resources.getText(
+            when (sar) {
+                true -> R.string.sar_true
+                false -> R.string.sar_false
+                null -> R.string.sar_unknown
+            }
+        )
+        val abText = resources.getText(if (ab) R.string.ab_true else R.string.ab_false)
 
-        val trebleImage = resources.getDrawable(
+        val trebleImage = resources.getDrawable(if (trebleFail) R.drawable.unknown else
             when (treble?.legacy) {
                 null -> R.drawable.treble_false
                 true -> R.drawable.treble_legacy
@@ -94,18 +116,25 @@ class ScrollingActivity : AppCompatActivity() {
                 Arch.ARM64 -> R.drawable.arch_64_bit
                 Arch.ARM32 -> R.drawable.arch_32_bit
                 Arch.ARM32BINDER64 -> R.drawable.arch_32_64_bit
-                Arch.UNKNOWN -> R.drawable.arch_unknown
+                Arch.UNKNOWN -> R.drawable.unknown
             }, theme
         )
-        val sarImage = resources.getDrawable(if (sar) R.drawable.sar_true else R.drawable.sar_false, theme)
+        val sarImage = resources.getDrawable(
+            when (sar) {
+                true -> R.drawable.sar_true
+                false -> R.drawable.sar_false
+                null -> R.drawable.unknown
+            }, theme)
+        val abImage = resources.getDrawable(if (ab) R.drawable.ab_true else R.drawable.ab_false, theme)
 
         val trebleTint = ColorStateList.valueOf(
             ResourcesCompat.getColor(
-                resources, when (treble?.legacy) {
-                    null -> R.color.treble_false
-                    true -> R.color.treble_legacy
-                    false -> if (!treble.lite) R.color.treble_modern else R.color.treble_legacy
-                }, theme
+                resources, if (trebleFail) R.color.unknown else
+                    when (treble?.legacy) {
+                        null -> R.color.treble_false
+                        true -> R.color.treble_legacy
+                        false -> if (!treble.lite) R.color.treble_modern else R.color.treble_legacy
+                    }, theme
             )
         )
         val archTint = ColorStateList.valueOf(
@@ -114,27 +143,37 @@ class ScrollingActivity : AppCompatActivity() {
                     Arch.ARM64 -> R.color.arch_64_bit
                     Arch.ARM32 -> R.color.arch_32_bit
                     Arch.ARM32BINDER64 -> R.color.arch_32_64_bit
-                    Arch.UNKNOWN -> R.color.arch_unknown
+                    Arch.UNKNOWN -> R.color.unknown
                 }, theme
             )
         )
         val sarTint = ColorStateList.valueOf(
             ResourcesCompat.getColor(
                 resources,
-                if (sar) R.color.sar_true else R.color.sar_false, theme
+                when (sar) {
+                    true -> R.color.sar_true
+                    false -> R.color.sar_false
+                    null -> R.color.unknown
+                }, theme
             )
         )
+        val abTint = ColorStateList.valueOf(ResourcesCompat.getColor(
+            resources, if (ab) R.color.ab_true else R.color.ab_false, theme))
+
         treble_card.findViewById<TextView>(R.id.content).text = trebleText
         arch_card.findViewById<TextView>(R.id.content).text = archText
         sar_card.findViewById<TextView>(R.id.content).text = sarText
+        ab_card.findViewById<TextView>(R.id.content).text = abText
 
         treble_card.findViewById<ImageView>(R.id.image).setImageDrawable(trebleImage)
         arch_card.findViewById<ImageView>(R.id.image).setImageDrawable(archImage)
         sar_card.findViewById<ImageView>(R.id.image).setImageDrawable(sarImage)
+        ab_card.findViewById<ImageView>(R.id.image).setImageDrawable(abImage)
 
         ImageViewCompat.setImageTintList(treble_card.findViewById(R.id.image), trebleTint)
         ImageViewCompat.setImageTintList(arch_card.findViewById(R.id.image), archTint)
         ImageViewCompat.setImageTintList(sar_card.findViewById(R.id.image), sarTint)
+        ImageViewCompat.setImageTintList(ab_card.findViewById(R.id.image), abTint)
 
         val playStoreMode = getPlayStoreMode()
 
@@ -142,12 +181,12 @@ class ScrollingActivity : AppCompatActivity() {
         donate_card.findViewById<TextView>(R.id.content).visibility = View.GONE
         val container = donate_card.findViewById<FrameLayout>(R.id.frame)
         container.visibility = View.VISIBLE
-        container.setId(View.generateViewId())
+        container.id = View.generateViewId()
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val allModes = BuildConfig.DONATIONS_DEBUG
         val donateFragment = DonationsFragment.newInstance(BuildConfig.DONATIONS_DEBUG, playStoreMode || allModes, BuildConfig.GPLAY_PUBK, BuildConfig.GPLAY_KEYS, BuildConfig.GPLAY_VALS, !playStoreMode || allModes, BuildConfig.PAYPAL_EMAIL, BuildConfig.PAYPAL_CURRENCY, BuildConfig.PAYPAL_DESCRIPTION, false, null)
-        fragmentTransaction.replace(container.getId(), donateFragment, "donationsFragment")
+        fragmentTransaction.replace(container.id, donateFragment, "donationsFragment")
         fragmentTransaction.commit()
     }
 
@@ -185,5 +224,9 @@ class ScrollingActivity : AppCompatActivity() {
                     else AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
             }
         )
+    }
+
+    companion object {
+        private const val tag = "TrebleInfo"
     }
 }

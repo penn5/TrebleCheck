@@ -10,16 +10,8 @@
 
 package tk.hack5.treblecheck
 
-object BinderDetector {
-    private var loaded = false
-
-
-
-    fun getBinderVersion(): Int {
-        if (!loaded) System.loadLibrary("binderdetector")
-        return get_binder_version()
+object ABDetector {
+    fun checkAB(): Boolean {
+        return propertyGet("ro.boot.slot_suffix").isNotEmpty()
     }
-
-    @Suppress("FunctionName")
-    private external fun get_binder_version(): Int
 }

@@ -10,16 +10,12 @@
 
 package tk.hack5.treblecheck
 
-object BinderDetector {
-    private var loaded = false
+import android.annotation.SuppressLint
 
 
-
-    fun getBinderVersion(): Int {
-        if (!loaded) System.loadLibrary("binderdetector")
-        return get_binder_version()
-    }
-
-    @Suppress("FunctionName")
-    private external fun get_binder_version(): Int
+@SuppressLint("PrivateApi") // Oh well.
+fun propertyGet(prop: String): String {
+    val c = Class.forName("android.os.SystemProperties")
+    val g = c.getMethod("get", String::class.java, String::class.java)
+    return g.invoke(null, prop, "") as String
 }

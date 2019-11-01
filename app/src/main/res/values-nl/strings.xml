@@ -25,4 +25,9 @@ Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="theme_auto">"Selecteer Thema automatisch
 "</string>
     <string name="theme_header">"Thema"</string>
+    <string name="treble_unknown">"Niet in staat Treble ondersteuning status te detecteren. Neem alsjeblieft contact op met de ontwikkelaar, want de app verstuurd geen automatische bugreport."</string>
+    <string name="ab_true">"Naadloze upgrades zijn ondersteund! Uw apparaat kan upgraden tussen verschillende Android versies zonder downtime voor de update."</string>
+    <string name="ab_false">"Naadloze updates zijn niet ondersteund. Om updates te installeren moet uw apparaat in de recovery openen en hierdoor is er een vergrootte kans op falen in vergelijking met naadloos ondersteunde apparaten."</string>
+    <string name="ab_header">"Naadloze upgrades"</string>
+    <string name="sar_unknown">"Niet in staat om de Systeem-als-Root ondersteuningsstatus te detecteren. Neem alsjeblieft contact op met de ontwikkelaar om een bug te rapporteren."</string>
 </resources>

@@ -14,10 +14,14 @@ import android.os.Build
 
 object ArchDetector {
     fun getArch(): Arch {
-        val binderArch = when (BinderDetector.get_binder_version()) {
-            7 -> Arch.ARM32
-            8 -> Arch.ARM64
-            else -> Arch.UNKNOWN
+        val binderArch = try {
+            when (BinderDetector.getBinderVersion()) {
+                7 -> Arch.ARM32
+                8 -> Arch.ARM64
+                else -> Arch.UNKNOWN
+            }
+        } catch (e: UnsatisfiedLinkError) {
+            Arch.UNKNOWN
         }
 
         val cpu = Build.SUPPORTED_ABIS

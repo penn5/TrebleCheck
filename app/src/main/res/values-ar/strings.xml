@@ -15,7 +15,7 @@ https://github.com/penn5/TrebleCheck/blob/master/LICENSE
 الخصوصية:
 https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="support_header">"الدعم"</string>
-    <string name="support">"من فضلك لا تترك تقييما سيئا للتطبيق في حالة وجود خلل ما. هذا التطبيق مكتوب من الصفر بواسطتي! بدلا من ذلك بمكنك مراسلتي عبر تليجرام باستخدام الزر فى اﻷعلى وإخباري بمشكلتي وسأحاول جاهدا مساعدتك."</string>
+    <string name="support">"من فضلك لا تترك تقييما سيئا للتطبيق في حالة وجود خلل ما. هذا التطبيق كُتب من الصفر بنفسي! بدلا من ذلك بمكنك مراسلتي عبر تليجرام باستخدام الزر فى اﻷعلى وإخباري بمشكلتك وسأحاول جاهدا مساعدتك."</string>
     <string name="treble_false">"جهازك لا يدعم مشروع Treble"</string>
     <string name="treble_legacy">"جهازك يدعم اﻹصدار القديم من مشروع Treble، باستخدامVNDK %3$sالنسخة %1$d.%2$d"</string>
     <string name="treble_modern">"جهازك يدعم اﻹصدار الحديث من مشروع Treble، باستخدامVNDK %3$sالنسخة %1$d.%2$d"</string>
@@ -24,4 +24,10 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="theme_night">"السمة المظلمة"</string>
     <string name="theme_auto">"الاختيار التلقائي للسمة"</string>
     <string name="theme_header">"السمة"</string>
+    <string name="treble_unknown">"تعذر اكتشاف حالة دعم مشروع Treble. من فضلك تواصل مع المطور ﻷن التطبيق لن يرسل تقريرا بالخطأ تلقائيا."</string>
+    <string name="ab_true">"جهازك يدعم الترقيات السلسة! يمكنك الترقية إلى إصدارات أندرويد أخرى دون الحاجة إلى وقت يتوقف فيه الهاتف عن العمل لتثبيت التحديث. "</string>
+    <string name="ab_false">"جهازك لا يدعم الترقيات السلسة! يحتاج هاتفك إلى الدخول لوضع الاسترداد لتثبيت التحديثات. توجد احتمالية أكبر للفشل أثناء التحديث عند استخدام وضع الاسترداد مقارنة بالترقية السلسة.
+."</string>
+    <string name="ab_header">"الترقيات السلسة"</string>
+    <string name="sar_unknown">"تعذر التعرف على حالة دعم \"النظام كـ الجذر\". من فضلك تواصل مع المطور للإبلاغ عن المشكلة."</string>
 </resources>

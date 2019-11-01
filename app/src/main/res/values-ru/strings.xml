@@ -4,12 +4,20 @@
     <string name="system_as_root_header">"System as Root"</string>
     <string name="arch_header">"Архитектура"</string>
     <string name="arch_arm64">"Ваше устройство — ARM64"</string>
+
+    <!-- В данном контексте имеется ввиду архитектура устройства, и нужно или полностью написать или только архитектура. Аналогично предыдущему. -->
     <string name="arch_arm32">"Ваше устройство — ARM32"</string>
     <string name="arch_binder64">"Ваше устройство — ARM32, но использует 64-битную привязку. Обычно это означает, что аппаратное обеспечение поддерживает 64-битную архитектуру, а ПО — нет. В таком случае используйте образ \"binder64\" или \"a64\""</string>
+
+    <!-- Вместо обнаружить, должно быть определить. -->
+    <!-- Fuzzy -->
     <string name="arch_unknown">"Не удалось обнаружить архитектуру"</string>
     <string name="sar_true">"Ваше устройство поддерживает System-as-Root. Используйте A/B операционную систему"</string>
     <string name="sar_false">"Ваше устройство не поддерживает System-as-Root. Используйте A-only операционную систему"</string>
     <string name="license_header">"Лицензии"</string>
+
+    <!-- Не приватность, а конфиденциальность. -->
+    <!-- Fuzzy -->
     <string name="license">"Лицензия:
 https://github.com/penn5/TrebleCheck/blob/master/LICENSE
 Приватность:

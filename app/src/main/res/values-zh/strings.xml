@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">"Treble 信息"</string>
+    <string name="system_as_root_header">"系统目录为主目录"</string>
+    <string name="arch_arm64">"您的设备的架构为64-位ARM"</string>
+    <string name="arch_arm32">"您的设备的架构为32-位ARM"</string>
+    <string name="arch_binder64">"您的设备架构是32-位ARM设备，但是使用的是64-位Binder。这个一般表明您的设备硬件是64-位的，但是软件为32-位。这时应该使用“binder64“镜相。"</string>
+    <string name="arch_unknown">"无法判断架构"</string>
+    <string name="sar_true">"您的设备可以将系统目录分为主目录。使用一个A/B操作系统。"</string>
+    <string name="license_header">"许可证"</string>
+    <string name="license">"许可证：
+https://github.com/penn5/TrebleCheck/blob/master/LICENSE
+隐私：
+https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
+    <string name="support">"程序中有问题麻烦不要打差评；整个应用都是我写的。需要帮助请您通过Telegram通知我，我将会尽量帮助您。"</string>
+    <string name="treble_false">"您的设备不支持Treble"</string>
+    <string name="treble_legacy">"您的设备支持旧版Treble （VNDK%3$s版本%1$d.%2$d）"</string>
+    <string name="treble_modern">"您的设备支持最新版本Treble（VNDK%3$s版本%1$d.%2$d）"</string>
+    <string name="treble_header">"Treble 和 VNDK"</string>
+    <string name="theme_day">"白色主题"</string>
+    <string name="theme_night">"黑色主题"</string>
+    <string name="theme_header">"应用主题"</string>
+    <string name="treble_unknown">"无法判定Treble状态。请您联系开发者。"</string>
+    <string name="ab_true">"您的设备支持无延更新！您更新时不需进入还原模式"</string>
+    <string name="ab_false">"您的设备不支持无延迟更新；更新将更容易失败"</string>
+    <string name="ab_header">"无延更新"</string>
+</resources>

@@ -27,4 +27,9 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="theme_night">"Ciemny motyw"</string>
     <string name="theme_auto">"Automatyczny wybór motywu"</string>
     <string name="theme_header">"Motyw"</string>
+    <string name="treble_unknown">"Nie udało się wykryć wsparcia Treble. Skontaktuj się z deweloperem, ponieważ aplikacja sama nie wyśle raportu błędu."</string>
+    <string name="ab_true">"Bezpośrednie aktualizacje są wspierane! Twoje urządzenie może aktualizować się pomiędzy różnymi wersjami Androida bez marnowania czasu na aktualizację."</string>
+    <string name="ab_false">"Bezpośrednie aktualizacje nie są wspierane. Twoje urządzenie w celu aktualizacji musi wchodzić do trybu recovery, skutkuje to podwyższonym ryzykiem w porównaniu do urządzeń wspierających bezpośrednie aktualizacje."</string>
+    <string name="ab_header">"Bezpośrednie aktualizacje"</string>
+    <string name="sar_unknown">"Nie udało się wykryć wsparcia System-as-Root. Skontaktuj się z deweloperem aby zgłosić błąd."</string>
 </resources>

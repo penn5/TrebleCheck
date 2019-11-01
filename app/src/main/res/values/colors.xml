@@ -15,10 +15,12 @@
     <color name="arch_64_bit">#43A047</color>
     <color name="arch_32_bit">#D50000</color>
     <color name="arch_32_64_bit">#1976D2</color>
-    <color name="arch_unknown">#FFB300</color>
+    <color name="unknown">#FFB300</color>
     <color name="sar_true">#43A047</color>
     <color name="sar_false">#D50000</color>
     <color name="treble_false">#D50000</color>
     <color name="treble_legacy">#FFB300</color>
     <color name="treble_modern">#43A047</color>
+    <color name="ab_false">#D50000</color>
+    <color name="ab_true">#43A047</color>
 </resources>
