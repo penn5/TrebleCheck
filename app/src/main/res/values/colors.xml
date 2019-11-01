@@ -23,4 +23,5 @@
     <color name="treble_modern">@color/colorPrimary</color>
     <color name="ab_false">@color/colorAccent</color>
     <color name="ab_true">@color/colorPrimary</color>
+    <color name="text">#303030</color>
 </resources>
