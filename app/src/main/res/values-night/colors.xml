@@ -10,7 +10,7 @@
   -->
 
 <resources>
-    <color name="colorPrimary">#050</color>
+    <!--<color name="colorPrimary">#050</color>
     <color name="colorPrimaryDark">#020</color>
-    <color name="colorAccent">#580940</color>
+    <color name="colorAccent">#580940</color>-->
 </resources>

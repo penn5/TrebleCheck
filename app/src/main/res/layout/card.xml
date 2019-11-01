@@ -11,7 +11,6 @@
 
 <androidx.cardview.widget.CardView android:layout_width="match_parent"
                                    android:layout_height="wrap_content"
-                                   android:layout_margin="@dimen/text_margin"
                                    android:foreground="?android:attr/selectableItemBackground"
                                    android:clickable="true"
                                    android:focusable="true"
@@ -21,8 +20,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <ImageView android:layout_width="50dp"
-                   android:layout_height="50dp"
+
+        <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                    android:layout_margin="@dimen/text_margin"
                    app:layout_constraintTop_toTopOf="parent"
                    app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +37,7 @@
                   android:layout_marginRight="@dimen/text_margin"
                   android:textStyle="bold"
                   android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                  android:textSize="30sp"
+                android:textSize="25sp"
                   app:layout_constraintStart_toEndOf="@+id/image"
                   app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintTop_toTopOf="parent"

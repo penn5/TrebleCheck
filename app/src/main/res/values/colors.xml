@@ -9,18 +9,18 @@
   ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
   -->
 <resources>
-    <color name="colorPrimary">#38DE8F</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="arch_64_bit">#43A047</color>
-    <color name="arch_32_bit">#D50000</color>
-    <color name="arch_32_64_bit">#1976D2</color>
+    <color name="colorPrimary">#69F67F</color>
+    <color name="colorPrimaryDark">#2D9AFF</color>
+    <color name="colorAccent">#ED5C5C</color>
+    <color name="arch_64_bit">@color/colorPrimary</color>
+    <color name="arch_32_bit">@color/colorAccent</color>
+    <color name="arch_32_64_bit">#2D9AFF</color>
     <color name="unknown">#FFB300</color>
-    <color name="sar_true">#43A047</color>
-    <color name="sar_false">#D50000</color>
-    <color name="treble_false">#D50000</color>
+    <color name="sar_true">@color/colorPrimary</color>
+    <color name="sar_false">@color/colorAccent</color>
+    <color name="treble_false">@color/colorAccent</color>
     <color name="treble_legacy">#FFB300</color>
-    <color name="treble_modern">#43A047</color>
-    <color name="ab_false">#D50000</color>
-    <color name="ab_true">#43A047</color>
+    <color name="treble_modern">@color/colorPrimary</color>
+    <color name="ab_false">@color/colorAccent</color>
+    <color name="ab_true">@color/colorPrimary</color>
 </resources>
