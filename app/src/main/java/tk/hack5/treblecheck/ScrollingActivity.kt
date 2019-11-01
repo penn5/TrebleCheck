@@ -39,7 +39,7 @@ class ScrollingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_scrolling)
         setSupportActionBar(toolbar)
         fab.setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://t.me/hackintosh5"))
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/hackintosh5"))
             startActivity(browserIntent)
         }
         treble_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.treble_header)
