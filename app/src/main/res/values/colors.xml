@@ -9,19 +9,24 @@
   ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
   -->
 <resources>
-    <color name="colorPrimary">#69F67F</color>
-    <color name="colorPrimaryDark">#2D9AFF</color>
-    <color name="colorAccent">#ED5C5C</color>
-    <color name="arch_64_bit">@color/colorPrimary</color>
-    <color name="arch_32_bit">@color/colorAccent</color>
-    <color name="arch_32_64_bit">#2D9AFF</color>
-    <color name="unknown">#FFB300</color>
-    <color name="sar_true">@color/colorPrimary</color>
-    <color name="sar_false">@color/colorAccent</color>
-    <color name="treble_false">@color/colorAccent</color>
-    <color name="treble_legacy">#FFB300</color>
-    <color name="treble_modern">@color/colorPrimary</color>
-    <color name="ab_false">@color/colorAccent</color>
-    <color name="ab_true">@color/colorPrimary</color>
-    <color name="text">#303030</color>
+    <color name="green">#69F67F</color>
+    <color name="blue">#4282F2</color>
+    <color name="yellow">#FFC42C</color>
+    <color name="red">#ED5C5C</color>
+    <color name="colorPrimary">@color/green</color>
+    <color name="colorPrimaryDark">@color/blue</color>
+    <color name="colorAccent">@color/red</color>
+    <color name="arch_64_bit">@color/green</color>
+    <color name="arch_32_bit">@color/red</color>
+    <color name="arch_32_64_bit">@color/blue</color>
+    <color name="unknown">@color/yellow</color>
+    <color name="sar_true">@color/green</color>
+    <color name="sar_false">@color/red</color>
+    <color name="treble_false">@color/red</color>
+    <color name="treble_legacy">@color/yellow</color>
+    <color name="treble_modern">@color/green</color>
+    <color name="ab_false">@color/red</color>
+    <color name="ab_true">@color/green</color>
+    <color name="text">#2E2E2E</color>
+    <color name="background">@color/cardview_light_background</color>
 </resources>

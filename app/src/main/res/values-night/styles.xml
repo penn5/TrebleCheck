@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Sub-licenses:
   ~         https://github.com/google/material-design-icons/blob/master/LICENSE
   ~         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
@@ -10,7 +9,6 @@
   -->
 
 <resources>
-    <color name="colorPrimary">#092F42</color>
-    <color name="text">#FFFFFF</color>
-    <color name="background">#000000</color>
+
+    <style name="AppTheme" parent="BaseAppTheme" />
 </resources>

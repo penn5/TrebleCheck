@@ -30,16 +30,5 @@
         <include layout="@layout/card" android:id="@+id/license_card"/>
         <include layout="@layout/card" android:id="@+id/support_card"/>
         <include layout="@layout/card" android:id="@+id/donate_card"/>
-        <!--<androidx.cardview.widget.CardView android:layout_width="match_parent"
-                                           android:layout_height="wrap_content"
-                                           android:layout_margin="@dimen/text_margin"
-                                           android:foreground="?android:attr/selectableItemBackground"
-                                           android:clickable="true"
-                android:focusable="true"
-                                           android:id="@+id/donate_card" >
-            <FrameLayout android:layout_width="match_parent"
-                         android:layout_height="match_parent"
-                         android:id="@+id/donate_container" />
-        </androidx.cardview.widget.CardView>-->
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

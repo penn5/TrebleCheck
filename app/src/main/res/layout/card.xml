@@ -10,13 +10,15 @@
   -->
 
 <androidx.cardview.widget.CardView android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:foreground="?android:attr/selectableItemBackground"
-                                   android:clickable="true"
-                                   android:focusable="true"
-                                   xmlns:android="http://schemas.android.com/apk/res/android"
-                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                   xmlns:tools="http://schemas.android.com/tools">
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="0dp"
+        app:cardBackgroundColor="@color/background"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -24,45 +26,51 @@
         <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                   android:layout_margin="@dimen/text_margin"
-                   app:layout_constraintTop_toTopOf="parent"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintBottom_toBottomOf="parent"
-                   android:id="@+id/image"
-                   tools:ignore="ContentDescription"/>
-        <TextView android:layout_width="0dp"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="@dimen/text_margin"
-                  android:layout_marginLeft="@dimen/text_margin"
-                  android:layout_marginRight="@dimen/text_margin"
-                  android:textStyle="bold"
-                  android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:layout_margin="@dimen/text_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/image"
+                tools:ignore="ContentDescription" />
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textSize="25sp"
-                  app:layout_constraintStart_toEndOf="@+id/image"
-                  app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintBottom_toTopOf="@id/content"
-                  android:id="@+id/header"/>
-        <TextView android:layout_width="0dp"
-                  android:layout_height="wrap_content"
-                  android:layout_marginBottom="@dimen/text_margin"
-                  android:layout_marginLeft="@dimen/text_margin"
-                  android:layout_marginRight="@dimen/text_margin"
-                  app:layout_constraintStart_toEndOf="@id/image"
-                  app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintTop_toBottomOf="@id/header"
-                  app:layout_constraintBottom_toBottomOf="parent"
-                  android:id="@+id/content"/>
-        <FrameLayout android:layout_width="0dp"
-                     android:layout_height="wrap_content"
-                     android:layout_marginBottom="@dimen/text_margin"
-                     android:layout_marginLeft="@dimen/text_margin"
-                     android:layout_marginRight="@dimen/text_margin"
-                     android:visibility="gone"
-                     app:layout_constraintStart_toEndOf="@id/image"
-                     app:layout_constraintEnd_toEndOf="parent"
-                     app:layout_constraintTop_toTopOf="parent"
-                     app:layout_constraintBottom_toBottomOf="parent"
-                     android:id="@+id/frame"/>
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/content"
+                android:id="@+id/header" />
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/content" />
+
+        <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/frame" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

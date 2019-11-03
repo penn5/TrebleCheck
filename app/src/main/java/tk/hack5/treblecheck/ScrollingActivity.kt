@@ -35,7 +35,6 @@ class ScrollingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.statusBarColor = ResourcesCompat.getColor(resources, R.color.colorPrimary, theme)
         setContentView(R.layout.activity_scrolling)
         setSupportActionBar(toolbar)
         fab.setOnClickListener {
