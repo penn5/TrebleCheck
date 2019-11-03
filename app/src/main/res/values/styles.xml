@@ -21,6 +21,7 @@
         <item name="android:textColorSecondary">@color/text</item>
         <item name="android:textColorTertiary">@color/text</item>
         <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="materialButtonStyle">@style/ButtonColor</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -34,4 +35,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
+    <style name="ButtonColor" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/text</item>
+    </style>
 </resources>
