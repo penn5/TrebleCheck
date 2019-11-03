@@ -14,7 +14,7 @@
     <string name="license">"ライセンス：https://github.com/penn5/TrebleCheck/blob/master/LICENSE
 プライバシー：https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="support_header">"サポート"</string>
-    <string name="support">"バグを見つけた場合、悪いレビューを残さないでください。（私一人でアプリを作ったので！）代わりに右上のボタンを押してTelegram（テレグラム）で私に連絡してください。あなたの問題について教えてください、私は助けるために出来るだけ努力します。日本語で連絡したい場いい、TELEGRAMを使い、@YukiSuter に連絡をお願い致します。"</string>
+    <string name="support">"バグを見つけた場合、悪いレビューを残さないでください。（私一人でアプリを作ったので！）代わりに右上のボタンを押してTelegram（テレグラム）で私に連絡してください。あなたの問題について教えてください、私は助けるために出来るだけ努力します。日本語で連絡したい場いい、または日本語の打ち間違いがある場いい、TELEGRAMを使い、@YukiSuter に連絡をお願い致します。"</string>
     <string name="treble_false">"お使いのデバイスはProject Trebleをサポートしていません"</string>
     <string name="treble_legacy">"この電話は、VNDK %3$sversion %1$d.%2$d を使用して、Project Trebleのレガシーバージョン（古いバージョン）をサポートしています。
 "</string>
@@ -25,4 +25,10 @@
     <string name="theme_night">"暗いテーマ"</string>
     <string name="theme_auto">"テーマの自動設定"</string>
     <string name="theme_header">"テーマ"</string>
+    <string name="treble_unknown">"自動的にレーポートは送られないので開発者にご連絡ください。"</string>
+    <string name="ab_true">"シームレスなアップグレードがサポートされています！ デバイスは、更新のためのダウンタイムを必要とせずに、異なるAndroidバージョン間でアップグレードできます。"</string>
+    <string name="ab_false">"シームレスアップグレードはサポートされていません。 デバイスは、アップグレードをインストールするためにリカバリを開始する必要があり、シームレスアップグレードはサポートされてるデバイスとちがって、失敗する可能性は高くなります。"</string>
+    <string name="ab_header">"シームレスアップグレード
+"</string>
+    <string name="sar_unknown">"システムとしてのルートはサポートされている華道家の状態は検出できません。開発者にご連絡ください。"</string>
 </resources>

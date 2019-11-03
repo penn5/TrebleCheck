@@ -11,7 +11,7 @@
 
     <!-- Вместо обнаружить, должно быть определить. -->
     <!-- Fuzzy -->
-    <string name="arch_unknown">"Не удалось обнаружить архитектуру"</string>
+    <string name="arch_unknown">"Не удалось определить архитектуру"</string>
     <string name="sar_true">"Ваше устройство поддерживает System-as-Root. Используйте A/B операционную систему"</string>
     <string name="sar_false">"Ваше устройство не поддерживает System-as-Root. Используйте A-only операционную систему"</string>
     <string name="license_header">"Лицензии"</string>
@@ -32,4 +32,9 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="theme_night">"Тёмная тема"</string>
     <string name="theme_auto">"Автоматический выбор темы"</string>
     <string name="theme_header">"Тема"</string>
+    <string name="treble_unknown">"Невозможно определить поддержку Treble. Пожалуйста, обратитесь к разработчику."</string>
+    <string name="ab_true">"Бесшовные обновления поддерживаются! Устройство может обновляться между разными версиями Андроид без траты времени на бездействие."</string>
+    <string name="ab_false">"Бесшовные обновления не поддерживаются! Ваше устройство должно зайти в рекавери для установки обновления, риск ошибки больше чем при бесшовных обновлениях"</string>
+    <string name="ab_header">"Бесшовные обновления"</string>
+    <string name="sar_unknown">"Невозможно определить поддержку System-as-Root. Пожалуйста, сообщите разработчику об ошибке."</string>
 </resources>
