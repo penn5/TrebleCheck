@@ -28,5 +28,5 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="ab_true">"您的设备支持无缝系统更新！您可以在系统更新时继续使用手机，且升级失败的风险极低。"</string>
     <string name="ab_false">"您的设备不支持无缝系统更新。和无缝系统更新的机型不同，系统更新时必须重启到 Recovery 模式，在这期间您无法使用手机，且升级失败的风险相比无缝系统更新较高。"</string>
     <string name="ab_header">"无缝系统更新"</string>
-    <string name="sar_unknown">"无法判定设备SAR状态。清联系开发者报错。"</string>
+    <string name="sar_unknown">"无法判定设备SAR状态。请联系开发者报错。"</string>
 </resources>
