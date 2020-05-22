@@ -15,18 +15,22 @@ Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="support_header">"Supporto"</string>
 
     <!-- Fuzzy -->
-    <string name="support">"Per favore non lasciare una recensione negativa se ho lasciato un bug; Ho scritto l'intera app in una settimana! Anziché contattami tramite Telegram utilizzando il pulsante in alto a destra. Parlami del tuo problema e cercherò di aiutarti."</string>
+    <string name="support">"Per favore non lasciare una recensione negativa se ho lasciato un bug; Ho scritto l'intera app da solo! Contattami su Telegram utilizzando il pulsante in alto a destra e spiegami il tuo problema, cercherò di aiutarti."</string>
     <string name="treble_false">"Il tuo dispostivo non supporta Project Treble"</string>
     <string name="treble_legacy">"Il tuo dispostivo supporta la versione legacy di Project Treble, usando VNDK %3$sversione %1$d,%2$d"</string>
     <string name="treble_modern">"Il dispositivo supporta la versione moderna di Project Treble, utilizzando la versione VNDK %3$s %1$d,%2$d"</string>
     <string name="treble_header">"Treble &amp; VNDK"</string>
     <string name="theme_day">"Tema Bianco"</string>
     <string name="theme_night">"Tema Nero"</string>
-    <string name="theme_auto">"Auto selezione del tema"</string>
+    <string name="theme_auto">"Automatico"</string>
     <string name="theme_header">"Tema"</string>
     <string name="treble_unknown">"Impossibile determinare il supporto a Treble. Per favore contattare lo sviluppatore, perché l'app non invierà automaticamente i bug report"</string>
     <string name="ab_true">"Gli Aggiornamenti Silenziosi sono supportati! Il tuo dispositivo può aggiornare versione di Android senza aver bisogno di perdere tempo."</string>
     <string name="ab_false">"Gli Aggiornamenti Silenziosi non sono supportati. Il tuo dispositivo dovrà entrare in modalità recovery per installare nuovi aggiornamenti aumentando il rischio di fallimento, rispetto agli Aggiornamenti Silenziosi."</string>
     <string name="ab_header">"Aggiornamenti Silenziosi"</string>
     <string name="sar_unknown">"Impossibile rilevare il supporto a System-as-root. Per favore contatta lo sviluppatore per segnalare il bug."</string>
+    <string name="arch_x86_64">"L'architettura di questo dispositivo è x86_64 (AMD64)"</string>
+    <string name="arch_x86_binder64">"L'architettura di questo dispositivo è x86 ma utilizza un binder a 64-bit"</string>
+    <string name="arch_x86">"L'architettura di questo dispositivo è x86"</string>
+    <string name="no_browser">"Per favore installa un browser."</string>
 </resources>

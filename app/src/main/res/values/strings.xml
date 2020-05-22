@@ -27,4 +27,8 @@ Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="ab_false">"Seamless Upgrades are not supported. Your device must enter recovery to install upgrades and there is an increased risk of failure, compared to Seamless-supporting devices."</string>
     <string name="ab_header">"Seamless Upgrades"</string>
     <string name="sar_unknown">"Unable to detect System-as-Root support status. Please contact the developer to report a bug."</string>
+    <string name="arch_x86_64">"Your device is x86_64"</string>
+    <string name="arch_x86_binder64">"Your device is x86, but uses a 64-bit binder"</string>
+    <string name="arch_x86">"Your device is x86"</string>
+    <string name="no_browser">"Please install a web browser."</string>
 </resources>

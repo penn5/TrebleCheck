@@ -5,26 +5,29 @@
     <string name="arch_header">"Architektur"</string>
     <string name="arch_arm64">"Das Gerät nutzt die ARM64-Architektur."</string>
     <string name="arch_arm32">"Das Gerät nutzt die ARM32-Architektur."</string>
-    <string name="arch_binder64">"Das Gerät ist ARM32, nutzt jedoch einen 64-Bit-binder. Normalerweiser weist dies darauf hin, dass die Hardware 64-bit unterstützt, die Software jedoch nicht. Bei diesem Szenario solltest du ein Image mit dem Namen \"binder64\" oder \"a64\" nutzen."</string>
-    <string name="arch_unknown">"Fehler beim Erkennen der Architektur!"</string>
+    <string name="arch_binder64">"Das Gerät ist ARM32, nutzt jedoch einen 64-Bit Binder. Normalerweise weist dies darauf hin, dass die Hardware 64-bit unterstützt, die Software jedoch nicht. Bei diesem Szenario solltest du ein Image mit dem Namen \"binder64\" oder \"a64\" nutzen."</string>
+    <string name="arch_unknown">"Fehler beim Bestimmen der Architektur!"</string>
     <string name="sar_true">"Das Gerät unterstützt System-as-Root. Benutze ein A/B-OS."</string>
     <string name="sar_false">"Das Gerät unterstützt System-as-Root nicht. Benutze ein A-only-OS."</string>
     <string name="license_header">"Lizenzen"</string>
     <string name="license">"Lizenz: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Privatsphäre: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
+Datenschutz-Bestimmungen: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="support_header">"Support"</string>
-    <string name="support">"Solltest du auf Bugs stoßen, hinterlasse bitte keine schlechte Bewertung. Ich habe diese App in einer Woche programmiert! Kontaktiere mich stattdessen via Telegram über den Button oben rechts, schilder mir dein Problem und ich bemühe mich, dir zu helfen."</string>
+    <string name="support">"Solltest du auf Bugs stoßen, hinterlasse bitte keine schlechte Bewertung. Ich habe diese App komplett selber programmiert! Kontaktiere mich stattdessen via Telegram über den Button oben rechts, schilder mir dein Problem und ich bemühe mich, dir zu helfen."</string>
     <string name="treble_false">"Das Gerät ist nicht Treble-kompatibel."</string>
     <string name="treble_legacy">"Das Gerät unterstützt eine alte Version von Project Treble mit VNDK %3$sversion %1$d.%2$d"</string>
     <string name="treble_modern">"Das Gerät unterstützt die moderne Version von Project Treble mit VNDK %3$sversion %1$d.%2$d"</string>
     <string name="treble_header">"Treble &amp; VNDK"</string>
-    <string name="theme_day">"Helles Theme"</string>
-    <string name="theme_night">"Dunkles Theme"</string>
+    <string name="theme_day">"Helles Design"</string>
+    <string name="theme_night">"Dunkles Design"</string>
     <string name="theme_auto">"Automatisch auswählen"</string>
-    <string name="theme_header">"Theme"</string>
+    <string name="theme_header">"Design"</string>
     <string name="treble_unknown">"Treble-Status konnte nicht erkannt werden. Bitte kontaktiere den Entwickler, da die App keine automatischen Fehlerberichte sendet."</string>
     <string name="ab_true">"Nahtlose Aktualisierungen werden unterstützt! Ihr Gerät kann auf verschiedene Android-Versionen aktualisieren, ohne dass für das Update Ausfallzeiten anfallen."</string>
-    <string name="ab_false">"Nahtlose Aktualisierungen werden nicht unterstützt. Das Gerät muss ins Recovery starten, um Updates zu installieren und fehleranfälliger als nahtlos-unterstützenden Geräten."</string>
+    <string name="ab_false">"Nahtlose Aktualisierungen werden nicht unterstützt. Das Gerät muss ins Recovery starten, um Updates zu installieren. Dieser Prozess ist fehleranfälliger als auf nahtlos-unterstützenden Geräten."</string>
     <string name="ab_header">"Nahtlose Aktualisierungen"</string>
-    <string name="sar_unknown">"Der System-as-Root-Status konnte nicht erkannt werden. Bitte kontaktiere den Entwickler, um einen Fehler zu melden."</string>
+    <string name="sar_unknown">"Der System-as-Root-Status konnte nicht erkannt werden. Bitte kontaktiere den Entwickler, um Fehler zu melden."</string>
+    <string name="arch_x86_64">"Das Gerät nutzt die x86_64 Architektur"</string>
+    <string name="arch_x86_binder64">"Das Gerät nutzt die x86 Architektur, aber ein 64-bit Binder."</string>
+    <string name="arch_x86">"Das Gerät nutzt die x86 Architektur."</string>
 </resources>

@@ -25,4 +25,7 @@ Vie privée: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</strin
     <string name="theme_night">"Thème sombre"</string>
     <string name="theme_auto">"Thème automatisé"</string>
     <string name="theme_header">"Thème"</string>
+    <string name="arch_x86_64">"Votre appareil est un x86_64"</string>
+    <string name="arch_x86_binder64">"Votre appareil est un x86 mais utilise le système de binder en 64-bit"</string>
+    <string name="arch_x86">"Votre appareil est un x86"</string>
 </resources>

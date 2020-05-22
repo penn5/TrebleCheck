@@ -27,4 +27,8 @@ Privacidad: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string
     <string name="ab_false">"Las actualizaciones en segundo plano no están soportadas. Tu dispositivo debe entrar en el modo de recuperación para instalar actualizaciones y hay un riesgo más elevado de fallos, comparado con los dispositivos que soportan las actualizaciones en segundo plano."</string>
     <string name="ab_header">"Actualizaciones en segundo plano"</string>
     <string name="sar_unknown">"Imposible detectar el soporte de Sistema como Root. Por favor, contacta con el desarrollador para reportar el fallo"</string>
+    <string name="arch_x86_64">"Tu dispositivo es x86_64"</string>
+    <string name="arch_x86_binder64">"Tu dispositivo es x86, pero usa un binder de 64-bits"</string>
+    <string name="arch_x86">"Tu dispositivo es x86"</string>
+    <string name="no_browser">"Por favor, instala un navegador de internet"</string>
 </resources>

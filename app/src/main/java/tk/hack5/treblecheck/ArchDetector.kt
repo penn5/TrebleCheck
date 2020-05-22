@@ -14,33 +14,40 @@ import android.os.Build
 
 object ArchDetector {
     fun getArch(): Arch {
-        val binderArch = try {
-            when (BinderDetector.getBinderVersion()) {
-                7 -> Arch.ARM32
-                8 -> Arch.ARM64
-                else -> Arch.UNKNOWN
-            }
+        val binderVersion = try {
+            BinderDetector.getBinderVersion()
         } catch (e: UnsatisfiedLinkError) {
-            Arch.UNKNOWN
+            return Arch.UNKNOWN(null, null)
         }
 
-        val cpu = Build.SUPPORTED_ABIS
-        var cpuArch = Arch.UNKNOWN
-        if (cpu.any { it == "arm64-v8a" }) cpuArch = Arch.ARM64
-        else if (cpu.any { it == "armeabi-v7a" }) cpuArch = Arch.ARM32
-
-        if (cpuArch == Arch.UNKNOWN || binderArch == Arch.UNKNOWN)
-            return Arch.UNKNOWN
-        if (cpuArch == Arch.ARM32 && binderArch == Arch.ARM64) {
-            return Arch.ARM32BINDER64
-        }
-        return cpuArch
+        val cpu = Build.SUPPORTED_ABIS.first()
+        return Arch(cpu, binderVersion)
     }
 }
 
-enum class Arch {
-    ARM64,
-    ARM32BINDER64,
-    ARM32,
-    UNKNOWN
+@Suppress("ClassName")
+sealed class Arch(val cpuBits: Int?, val binderBits: Int? = cpuBits) {
+    object ARM64 : Arch(64)
+    object ARM32_BINDER64 : Arch(64, 32)
+    object ARM32 : Arch(32)
+    object X86_64 : Arch(64)
+    object X86_BINDER64 : Arch(64, 32)
+    object X86 : Arch(32)
+
+    class UNKNOWN(cpuBits: Int?, binderBits: Int?) : Arch(cpuBits, binderBits)
+
+    companion object {
+        operator fun invoke(cpuArch: String, binderVersion: Int): Arch =
+            when {
+                cpuArch == "arm64-v8a" && binderVersion == 7 -> UNKNOWN(64, 32)
+                cpuArch == "armeabi-v7a" && binderVersion == 7 -> ARM32
+                cpuArch == "arm64-v8a" && binderVersion == 8 -> ARM64
+                cpuArch == "armeabi-v7a" && binderVersion == 8 -> ARM32_BINDER64
+                cpuArch == "x86_64" && binderVersion == 7 -> UNKNOWN(64, 32)
+                cpuArch == "x86_64" && binderVersion == 8 -> X86_64
+                cpuArch == "x86" && binderVersion == 7 -> X86
+                cpuArch == "x86" && binderVersion == 8 -> X86_BINDER64
+                else -> UNKNOWN(null, null)
+            }
+    }
 }

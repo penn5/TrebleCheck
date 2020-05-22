@@ -32,4 +32,7 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="ab_false">"Bezpośrednie aktualizacje nie są wspierane. Twoje urządzenie w celu aktualizacji musi wchodzić do trybu recovery, skutkuje to podwyższonym ryzykiem w porównaniu do urządzeń wspierających bezpośrednie aktualizacje."</string>
     <string name="ab_header">"Bezpośrednie aktualizacje"</string>
     <string name="sar_unknown">"Nie udało się wykryć wsparcia System-as-Root. Skontaktuj się z deweloperem aby zgłosić błąd."</string>
+    <string name="arch_x86_64">"Twoje urządzenie używa architektury x86_64"</string>
+    <string name="arch_x86_binder64">"Twoje urządzenie używa architektury x86 i 64 bitowego bindera"</string>
+    <string name="arch_x86">"Twoje urządzenie używa architektury x86"</string>
 </resources>

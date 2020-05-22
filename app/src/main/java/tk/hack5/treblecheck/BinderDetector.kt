@@ -13,10 +13,12 @@ package tk.hack5.treblecheck
 object BinderDetector {
     private var loaded = false
 
-
-
+    @Synchronized
     fun getBinderVersion(): Int {
-        if (!loaded) System.loadLibrary("binderdetector")
+        if (!loaded) {
+            System.loadLibrary("binderdetector")
+            loaded = true
+        }
         return get_binder_version()
     }
 

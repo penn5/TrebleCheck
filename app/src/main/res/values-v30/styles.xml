@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Sub-licenses:
+  ~         https://github.com/google/material-design-icons/blob/master/LICENSE
+  ~         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
+  ~         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt
+  ~ This project:
+  ~         Copyright (C) 2020 Penn Mackintosh
+  ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
+  -->
+
+<resources>
+
+    <!--
+    Support for API 30 required
+        <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+            <item name="android:textColorPrimary">@color/text</item>
+            <item name="android:windowLayoutInDisplayCutoutMode">always</item>
+        </style>
+    -->
+</resources>

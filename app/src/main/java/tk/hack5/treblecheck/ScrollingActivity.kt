@@ -10,6 +10,8 @@
 
 package tk.hack5.treblecheck
 
+import android.app.AlertDialog
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -20,26 +22,38 @@ import android.os.Bundle
 import android.text.util.Linkify
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.ViewCompat
 import androidx.core.widget.ImageViewCompat
 import kotlinx.android.synthetic.main.activity_scrolling.*
 import kotlinx.android.synthetic.main.content_scrolling.*
 import org.sufficientlysecure.donations.DonationsFragment
 
 class ScrollingActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scrolling)
         setSupportActionBar(toolbar)
         fab.setOnClickListener {
+            AlertDialog.Builder(this).run {
+                setTitle("test")
+                setMessage("hi")
+                show()
+            }
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/hackintosh5"))
-            startActivity(browserIntent)
+            try {
+                startActivity(browserIntent)
+            } catch (e: ActivityNotFoundException) {
+                Log.e(tag, "Launch t.me failed")
+                Toast.makeText(this, R.string.no_browser, Toast.LENGTH_LONG).show()
+            }
         }
         treble_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.treble_header)
         sar_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.system_as_root_header)
@@ -71,6 +85,9 @@ class ScrollingActivity : AppCompatActivity() {
             null
         }
         val arch = ArchDetector.getArch()
+        if (arch is Arch.UNKNOWN) {
+            Log.e(tag, "Unknown arch - ${arch.cpuBits}:${arch.binderBits}")
+        }
         val sar = try {
             MountDetector.isSAR()
         } catch (e: ParseException) {
@@ -91,8 +108,11 @@ class ScrollingActivity : AppCompatActivity() {
             when (arch) {
                 Arch.ARM64 -> R.string.arch_arm64
                 Arch.ARM32 -> R.string.arch_arm32
-                Arch.ARM32BINDER64 -> R.string.arch_binder64
-                Arch.UNKNOWN -> R.string.arch_unknown
+                Arch.ARM32_BINDER64 -> R.string.arch_binder64
+                Arch.X86_64 -> R.string.arch_x86_64
+                Arch.X86_BINDER64 -> R.string.arch_x86_binder64
+                Arch.X86 -> R.string.arch_x86
+                is Arch.UNKNOWN -> R.string.arch_unknown
             }
         )
         val sarText = resources.getText(
@@ -113,10 +133,10 @@ class ScrollingActivity : AppCompatActivity() {
         )
         val archImage = resources.getDrawable(
             when (arch) {
-                Arch.ARM64 -> R.drawable.arch_64_bit
-                Arch.ARM32 -> R.drawable.arch_32_bit
-                Arch.ARM32BINDER64 -> R.drawable.arch_32_64_bit
-                Arch.UNKNOWN -> R.drawable.unknown
+                Arch.ARM64, Arch.X86_64 -> R.drawable.arch_64_bit
+                Arch.ARM32, Arch.X86 -> R.drawable.arch_32_bit
+                Arch.ARM32_BINDER64, Arch.X86_BINDER64 -> R.drawable.arch_32_64_bit
+                is Arch.UNKNOWN -> R.drawable.unknown
             }, theme
         )
         val sarImage = resources.getDrawable(
@@ -140,10 +160,10 @@ class ScrollingActivity : AppCompatActivity() {
         val archTint = ColorStateList.valueOf(
             ResourcesCompat.getColor(
                 resources, when (arch) {
-                    Arch.ARM64 -> R.color.arch_64_bit
-                    Arch.ARM32 -> R.color.arch_32_bit
-                    Arch.ARM32BINDER64 -> R.color.arch_32_64_bit
-                    Arch.UNKNOWN -> R.color.unknown
+                    Arch.ARM64, Arch.X86_64 -> R.color.arch_64_bit
+                    Arch.ARM32, Arch.X86 -> R.color.arch_32_bit
+                    Arch.ARM32_BINDER64, Arch.X86_BINDER64 -> R.color.arch_32_64_bit
+                    is Arch.UNKNOWN -> R.color.unknown
                 }, theme
             )
         )
@@ -182,12 +202,16 @@ class ScrollingActivity : AppCompatActivity() {
         val container = donate_card.findViewById<FrameLayout>(R.id.frame)
         container.visibility = View.VISIBLE
         container.id = View.generateViewId()
-
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val allModes = BuildConfig.DONATIONS_DEBUG
         val donateFragment = DonationsFragment.newInstance(BuildConfig.DONATIONS_DEBUG, playStoreMode || allModes, BuildConfig.GPLAY_PUBK, BuildConfig.GPLAY_KEYS, BuildConfig.GPLAY_VALS, !playStoreMode || allModes, BuildConfig.PAYPAL_EMAIL, BuildConfig.PAYPAL_CURRENCY, BuildConfig.PAYPAL_DESCRIPTION, false, null)
         fragmentTransaction.replace(container.id, donateFragment, "donationsFragment")
         fragmentTransaction.commit()
+
+        window.decorView.setOnApplyWindowInsetsListener { view, insets ->
+            fitToCutout()
+            view.onApplyWindowInsets(insets)
+        }
     }
 
     private fun getPlayStoreMode(): Boolean {
@@ -226,7 +250,25 @@ class ScrollingActivity : AppCompatActivity() {
         )
     }
 
-    companion object {
-        private const val tag = "TrebleInfo"
+    private fun fitToCutout() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            window.decorView.rootWindowInsets?.displayCutout?.run {
+                val titleIsRtl = ViewCompat.getLayoutDirection(toolbar) == ViewCompat.LAYOUT_DIRECTION_RTL
+                Log.d(tag, titleIsRtl.toString())
+                Log.d(tag, safeInsetLeft.toString())
+                Log.d(tag, safeInsetRight.toString())
+                val newLayoutParams = toolbar_layout.layoutParams as ViewGroup.MarginLayoutParams
+                newLayoutParams.setMargins(if (titleIsRtl) 0 else safeInsetLeft, 0,
+                    if (titleIsRtl) safeInsetRight else 0, 0)
+                toolbar_layout.layoutParams = newLayoutParams
+                val fabLayoutParams = fab.layoutParams as ViewGroup.MarginLayoutParams
+                fabLayoutParams.setMargins(
+                    resources.getDimensionPixelOffset(R.dimen.fab_margin) + safeInsetLeft, 0,
+                    resources.getDimensionPixelOffset(R.dimen.fab_margin) + safeInsetRight, 0
+                )
+            }
+        }
     }
 }
+
+private const val tag = "TrebleInfo"

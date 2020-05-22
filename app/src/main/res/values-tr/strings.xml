@@ -24,4 +24,13 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="theme_night">"Karanlık Tema"</string>
     <string name="theme_auto">"Temayı otomatik seç"</string>
     <string name="theme_header">"Tema"</string>
+    <string name="treble_unknown">"Treble destek bilgisi bulunamadı. Lütfen geliştirici ile iletişim kurun, uygulama otomatik hata raporu göndermeyecek."</string>
+    <string name="ab_true">"Pürüzsüz Yükseltmeler destekleniyor! Cihazınız Android versiyonlar arası yükseltmelerde kapalı iken beklemeyecek."</string>
+    <string name="ab_false">"Pürüzsüz Yükseltmeler desteklenmiyor. Cihazınız kurtarma moduna girmeli, bu Pürüzsüz Yükseltmeye göre daha riskli."</string>
+    <string name="ab_header">"Pürüzsüz Yükseltmeler"</string>
+    <string name="sar_unknown">"Kök olarak Sistem desteği denetlenemedi. Lütfen geliştirici ile iletişime geçin."</string>
+    <string name="arch_x86_64">"Cihazınız x86_64"</string>
+    <string name="arch_x86_binder64">"Cihazınız x86 ama 64-bit bağ kullanıyor"</string>
+    <string name="arch_x86">"Cihazınız x86"</string>
+    <string name="no_browser">"Lütfen bir web tarayıcısı yükleyin."</string>
 </resources>

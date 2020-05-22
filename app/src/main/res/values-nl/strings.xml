@@ -30,4 +30,7 @@ Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="ab_false">"Naadloze updates zijn niet ondersteund. Om updates te installeren moet uw apparaat in de recovery openen en hierdoor is er een vergrootte kans op falen in vergelijking met naadloos ondersteunde apparaten."</string>
     <string name="ab_header">"Naadloze upgrades"</string>
     <string name="sar_unknown">"Niet in staat om de Systeem-als-Root ondersteuningsstatus te detecteren. Neem alsjeblieft contact op met de ontwikkelaar om een bug te rapporteren."</string>
+    <string name="arch_x86_64">"Uw apparaat is x86_64"</string>
+    <string name="arch_x86_binder64">"Uw apparaat is x86, maar gebruikt een 64-bit binder"</string>
+    <string name="arch_x86">"Uw apparaat is x86"</string>
 </resources>

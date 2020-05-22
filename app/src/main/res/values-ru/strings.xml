@@ -37,4 +37,8 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="ab_false">"Бесшовные обновления не поддерживаются! Ваше устройство должно зайти в рекавери для установки обновления, риск ошибки больше чем при бесшовных обновлениях"</string>
     <string name="ab_header">"Бесшовные обновления"</string>
     <string name="sar_unknown">"Невозможно определить поддержку System-as-Root. Пожалуйста, сообщите разработчику об ошибке."</string>
+    <string name="arch_x86_64">"Ваше устройство — x86_64"</string>
+    <string name="arch_x86_binder64">"Ваше устройство — x86, но использует 64-битную привязку"</string>
+    <string name="arch_x86">"Ваше устройство — x86"</string>
+    <string name="no_browser">"Пожалуйста, установите браузер."</string>
 </resources>
