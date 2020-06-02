@@ -27,7 +27,9 @@
     <string name="ab_false">"आपाका फोन seamless Upgrades समर्थन न कर्ता है। आप को को recovery से अपडेट insta करण पडगेन।"</string>
     <string name="ab_header">"Seamless Upgrades"</string>
     <string name="sar_unknown">"System-as-root स्थिति का पता लगाओ ना पे। इसे रिपोर्ट करने के लिए कृपया हमसे संपर्क करें।"</string>
-    <string name="arch_x86_64">"आपका फोन x86-64 है"</string>
+    <string name="arch_x86_64">"आपका फोन x86–64 है"</string>
     <string name="arch_x86_binder64">"आपा फोन x86 है, 64-बिट बाइंडर अपयोग कर्ता है"</string>
     <string name="arch_x86">"आपका फोन x86 है"</string>
+    <string name="no_browser">"कृपया एक वेब ब्राउज़र स्थापित करें"</string>
+    <string name="donate">"दान करना"</string>
 </resources>

@@ -30,4 +30,9 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
 ."</string>
     <string name="ab_header">"الترقيات السلسة"</string>
     <string name="sar_unknown">"تعذر التعرف على حالة دعم \"النظام كـ الجذر\". من فضلك تواصل مع المطور للإبلاغ عن المشكلة."</string>
+    <string name="arch_x86_64">"معمارية جهازك هي x86_64"</string>
+    <string name="arch_x86_binder64">"معمارية جهازك هي x86 لكنه يستخدم غلاف 64-bit."</string>
+    <string name="arch_x86">"معمارية جهازك هي x86"</string>
+    <string name="no_browser">"من فضلك قم بتثبيت متصفح ويب."</string>
+    <string name="donate">"التبرع"</string>
 </resources>

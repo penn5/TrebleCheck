@@ -10,12 +10,12 @@
 
 package tk.hack5.treblecheck
 
-import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -23,6 +23,7 @@ import android.text.util.Linkify
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsets
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
@@ -42,11 +43,6 @@ class ScrollingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_scrolling)
         setSupportActionBar(toolbar)
         fab.setOnClickListener {
-            AlertDialog.Builder(this).run {
-                setTitle("test")
-                setMessage("hi")
-                show()
-            }
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/hackintosh5"))
             try {
                 startActivity(browserIntent)
@@ -197,7 +193,7 @@ class ScrollingActivity : AppCompatActivity() {
 
         val playStoreMode = getPlayStoreMode()
 
-        donate_card.findViewById<TextView>(R.id.header).visibility = View.GONE
+        donate_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.donate)
         donate_card.findViewById<TextView>(R.id.content).visibility = View.GONE
         val container = donate_card.findViewById<FrameLayout>(R.id.frame)
         container.visibility = View.VISIBLE
@@ -207,10 +203,19 @@ class ScrollingActivity : AppCompatActivity() {
         val donateFragment = DonationsFragment.newInstance(BuildConfig.DONATIONS_DEBUG, playStoreMode || allModes, BuildConfig.GPLAY_PUBK, BuildConfig.GPLAY_KEYS, BuildConfig.GPLAY_VALS, !playStoreMode || allModes, BuildConfig.PAYPAL_EMAIL, BuildConfig.PAYPAL_CURRENCY, BuildConfig.PAYPAL_DESCRIPTION, false, null)
         fragmentTransaction.replace(container.id, donateFragment, "donationsFragment")
         fragmentTransaction.commit()
-
         window.decorView.setOnApplyWindowInsetsListener { view, insets ->
-            fitToCutout()
+            fitToCutout(insets)
             view.onApplyWindowInsets(insets)
+            insets
+        }
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION // TODO deprecated in R
+        window.navigationBarColor = ResourcesCompat.getColor(resources, android.R.color.transparent, theme)
+
+        val nightMode = resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+            && nightMode != Configuration.UI_MODE_NIGHT_YES) {
+            window.decorView.systemUiVisibility = window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
     }
 
@@ -250,24 +255,26 @@ class ScrollingActivity : AppCompatActivity() {
         )
     }
 
-    private fun fitToCutout() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            window.decorView.rootWindowInsets?.displayCutout?.run {
+    private fun fitToCutout(insets: WindowInsets) = insets.run {
                 val titleIsRtl = ViewCompat.getLayoutDirection(toolbar) == ViewCompat.LAYOUT_DIRECTION_RTL
-                Log.d(tag, titleIsRtl.toString())
-                Log.d(tag, safeInsetLeft.toString())
-                Log.d(tag, safeInsetRight.toString())
                 val newLayoutParams = toolbar_layout.layoutParams as ViewGroup.MarginLayoutParams
-                newLayoutParams.setMargins(if (titleIsRtl) 0 else safeInsetLeft, 0,
-                    if (titleIsRtl) safeInsetRight else 0, 0)
+                newLayoutParams.setMargins(if (titleIsRtl) 0 else systemWindowInsetLeft, 0,
+                    if (titleIsRtl) systemWindowInsetRight else 0, 0)
                 toolbar_layout.layoutParams = newLayoutParams
                 val fabLayoutParams = fab.layoutParams as ViewGroup.MarginLayoutParams
                 fabLayoutParams.setMargins(
-                    resources.getDimensionPixelOffset(R.dimen.fab_margin) + safeInsetLeft, 0,
-                    resources.getDimensionPixelOffset(R.dimen.fab_margin) + safeInsetRight, 0
+                    resources.getDimensionPixelOffset(R.dimen.fab_margin) + systemWindowInsetLeft, 0,
+                    resources.getDimensionPixelOffset(R.dimen.fab_margin) + systemWindowInsetRight, 0
                 )
-            }
-        }
+                fab.layoutParams = fabLayoutParams
+                for (i in 0 until cards.childCount) {
+                    (cards.getChildAt(i) as ViewGroup).getChildAt(0).setPadding(
+                        systemWindowInsetLeft,
+                        0,
+                        systemWindowInsetRight,
+                        if (i == cards.childCount - 1) systemWindowInsetBottom else 0
+                    )
+                }
     }
 }
 

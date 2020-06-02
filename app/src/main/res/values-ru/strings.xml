@@ -41,4 +41,7 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="arch_x86_binder64">"Ваше устройство — x86, но использует 64-битную привязку"</string>
     <string name="arch_x86">"Ваше устройство — x86"</string>
     <string name="no_browser">"Пожалуйста, установите браузер."</string>
+
+    <!-- Fuzzy -->
+    <string name="donate">"Задонатить"</string>
 </resources>

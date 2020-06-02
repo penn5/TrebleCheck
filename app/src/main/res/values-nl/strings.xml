@@ -33,4 +33,5 @@ Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="arch_x86_64">"Uw apparaat is x86_64"</string>
     <string name="arch_x86_binder64">"Uw apparaat is x86, maar gebruikt een 64-bit binder"</string>
     <string name="arch_x86">"Uw apparaat is x86"</string>
+    <string name="no_browser">"Installeer een internetbrowser"</string>
 </resources>

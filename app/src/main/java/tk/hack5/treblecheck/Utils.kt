@@ -19,3 +19,9 @@ fun propertyGet(prop: String): String {
     val g = c.getMethod("get", String::class.java, String::class.java)
     return g.invoke(null, prop, "") as String
 }
+
+operator fun <A1 : Comparable<A2>, B1 : Comparable<B2>, A2, B2>Pair<A1, B1>.compareTo(other: Pair<A2, B2>): Int =
+    if (first == other.first)
+        second.compareTo(other.second)
+    else
+        first.compareTo(other.first)

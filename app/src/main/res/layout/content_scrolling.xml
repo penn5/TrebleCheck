@@ -21,7 +21,8 @@
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:orientation="vertical">
+                  android:orientation="vertical"
+                  android:id="@+id/cards">
         <include layout="@layout/card" android:id="@+id/treble_card"/>
         <include layout="@layout/card" android:id="@+id/sar_card"/>
         <include layout="@layout/card" android:id="@+id/arch_card"/>

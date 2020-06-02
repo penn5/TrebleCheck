@@ -24,9 +24,14 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="theme_night">"Tema Gelap"</string>
     <string name="theme_auto">"Pilih Tema Auto"</string>
     <string name="theme_header">"Tema"</string>
-    <string name="treble_unknown">"Tidak dapat mendeteksi status dukungan Treble. Silahkan hubungi pengembang, dimana aplikasi tidak akan mengirim laporan bug secara otomatis."</string>
-    <string name="ab_true">"Seamless Upgrade didukung! Piranti Anda bisa tetap menggunakan piramlnti Anda saat diupgrade ke versi Android berbeda."</string>
+    <string name="treble_unknown">"Tidak dapat mendeteksi status dukungan Treble. Silahkan hubungi pengembang, karena aplikasi tidak akan mengirim laporan bug secara otomatis"</string>
+    <string name="ab_true">"Seamless Upgrade didukung! Piranti Anda dapat diupgrade ke versi Android berbeda tanpa perlu dimatikan"</string>
     <string name="ab_false">"Seamless Upgrade tidak didukung. Piranti anda harus dalam modus recovery untuk melakukan upgrade dan resiko kegagalan akan meningkat, jika dibandingkan dengan piranti yang mendukung Seamless Upgrade"</string>
     <string name="ab_header">"Seamless Upgrade"</string>
-    <string name="sar_unknown">"Tidak dapat mendetekai status dukungan System-as-Root. Silahkan hubungi pengembang untuk melaporkan bug."</string>
+    <string name="sar_unknown">"Tidak dapat mendetekai status dukungan System-sebagai-Root. Silahkan hubungi pengembang untuk melaporkan bug."</string>
+    <string name="arch_x86_64">"Piranti Anda adalah x86_64"</string>
+    <string name="arch_x86_binder64">"Piranti Anda adalah x86, tetapi memakai sebuah 64-bit binder"</string>
+    <string name="arch_x86">"Piranti Anda adalah x86"</string>
+    <string name="no_browser">"Mohon install web browser"</string>
+    <string name="donate">"Donasi"</string>
 </resources>

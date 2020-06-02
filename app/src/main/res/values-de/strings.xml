@@ -30,4 +30,6 @@ Datenschutz-Bestimmungen: https://github.com/penn5/TrebleCheck/blob/master/PRIVA
     <string name="arch_x86_64">"Das Gerät nutzt die x86_64 Architektur"</string>
     <string name="arch_x86_binder64">"Das Gerät nutzt die x86 Architektur, aber ein 64-bit Binder."</string>
     <string name="arch_x86">"Das Gerät nutzt die x86 Architektur."</string>
+    <string name="no_browser">"Bitte installiere einen Webbrowser."</string>
+    <string name="donate">"Spenden"</string>
 </resources>
