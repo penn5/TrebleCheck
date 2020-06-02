@@ -75,22 +75,33 @@ class ScrollingActivity : AppCompatActivity() {
         var trebleFail = false
         val treble = try {
             TrebleDetector.getVndkData()
-        } catch (e: ParseException) {
+        } catch (e: Exception) {
             Log.e(tag, "Treble checks failed", e)
             trebleFail = true
             null
         }
-        val arch = ArchDetector.getArch()
-        if (arch is Arch.UNKNOWN) {
-            Log.e(tag, "Unknown arch - ${arch.cpuBits}:${arch.binderBits}")
+        val arch = try {
+            ArchDetector.getArch().also {
+                if (it is Arch.UNKNOWN) {
+                    Log.e(tag, "Unknown arch - ${it.cpuBits}:${it.binderBits}")
+                }
+            }
+        } catch (e: Exception) {
+            Log.e(tag, "Arch checks failed", e)
+            Arch.UNKNOWN(null, null)
         }
         val sar = try {
             MountDetector.isSAR()
-        } catch (e: ParseException) {
+        } catch (e: Exception) {
             Log.e(tag, "SAR checks failed", e)
             null
         }
-        val ab = ABDetector.checkAB()
+        val ab = try {
+            ABDetector.checkAB()
+        } catch (e: Exception) {
+            Log.e(tag, "AB checks failed", e)
+            false
+        }
 
         var trebleText = resources.getText(if (trebleFail) R.string.treble_unknown else when (treble?.legacy) {
             null -> R.string.treble_false
