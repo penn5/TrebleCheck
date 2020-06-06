@@ -38,9 +38,12 @@ object TrebleDetector {
         val legacy = !manifest.exists() // this will pass even when unreadable
         if (!manifest.exists())
             manifest = File(MANIFEST_PATH_LEGACY)
-        if (!manifest.exists() || !manifest.canRead()) {
-            // Try to parse props or cils instead, as this can happen when permissions are denied
-            return parseSelinuxData(legacy, lite) ?: TrebleData(
+        if (!manifest.exists())
+            return null
+        // Try to parse cils, as this is more accurate
+        parseSelinuxData(legacy, lite)?.let { return it }
+        if (!manifest.canRead())
+            return TrebleData(
                 legacy,
                 lite,
                 propertyGet("ro.vndk.version").toIntOrNull() ?:
@@ -48,7 +51,6 @@ object TrebleDetector {
                 0, // the props above were added in sdk 28
                 0
             )
-        }
 
         val factory = XmlPullParserFactory.newInstance()
         factory.isNamespaceAware = false
@@ -87,7 +89,7 @@ object TrebleDetector {
         var version = Pair(-1, -1)
         @Suppress("RedundantLambdaArrow") // KT-37567
         val it = File(SELINUX_PATH).listFiles { it -> it.canRead() && it.extension == SELINUX_EXT }
-        it!!.forEach { file -> // TODO investigate why !! is required (i suspect a language bug)
+        it?.forEach { file ->
             file.bufferedReader().lineSequence().forEach { line ->
                 SELINUX_REGEX.findAll(line).forEach { match ->
                     Pair(match.groupValues[1].toInt(), match.groupValues[2].toInt()).let {

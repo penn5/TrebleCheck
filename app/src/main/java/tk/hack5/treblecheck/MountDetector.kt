@@ -17,7 +17,7 @@ import java.io.IOException
 
 object MountDetector {
     private const val MOUNTS_PATH = "/proc/mounts"
-    fun isSAR(): Boolean {
+    private fun checkMounts(check: (List<Mount>) -> Boolean): Boolean {
         val mountsStream: BufferedReader
         try {
             mountsStream = File(MOUNTS_PATH).inputStream().bufferedReader()
@@ -26,11 +26,14 @@ object MountDetector {
         } catch (e: IOException) {
             throw ParseException("Failed to open and read /proc/mounts", e)
         }
-        val lines = ArrayList<Mount>()
-        for (line in mountsStream.lineSequence()) {
-            lines.add(parseLine(line))
+        val lines = mountsStream.lineSequence().map {
+            parseLine(it)
         }
-        return lines.any { it.device == "/dev/root" && it.mountpoint == "/" } ||
+        return check(lines.toList())
+    }
+
+    fun isSAR(): Boolean = checkMounts { lines ->
+        lines.any { it.device == "/dev/root" && it.mountpoint == "/" } ||
                 lines.none { it.mountpoint == "/system" && it.type != "tmpfs" && it.device != "none" } ||
                 lines.any { it.mountpoint == "/system_root" && it.type != "tmpfs" }
     }
