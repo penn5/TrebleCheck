@@ -1,56 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">"Treble Info"</string>
-    <string name="system_as_root_header">"System as Root"</string>
-    <string name="arch_header">"Architecture"</string>
-    <string name="arch_arm64">"Your device is ARM64"</string>
-    <string name="arch_arm32">"Your device is ARM32"</string>
-    <string name="arch_binder64">"Your device is ARM32 but uses a 64-bit binder. This usually indicates that the hardware supports 64-bit but the software does not. In this scenario you should use an image named \"binder64\" or \"a64\""</string>
-    <string name="arch_unknown">"Unable to detect architecture"</string>
-    <string name="sar_true">"Your device supports System-as-Root. Use an A/B operating system."</string>
-    <string name="sar_false">"Your device does not support System-as-Root. Use an A-only Operating System."</string>
-    <string name="license_header">"Licenses"</string>
-    <string name="license">"License: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
-    <string name="support_header">"Support"</string>
-    <string name="support">"Please don't leave a bad review if I left a bug; I wrote the whole app on my own! Instead contact me via Telegram using the button in the top right. Tell me about your issue and I will endeavour to help."</string>
-    <string name="treble_false">"Your device does not support Project Treble"</string>
-    <string name="treble_legacy">"Your device supports the legacy version of Project Treble, using VNDK %3$sversion %1$d.%2$d"</string>
-    <string name="treble_modern">"Your device supports the modern version of Project Treble, using VNDK %3$sversion %1$d.%2$d"</string>
-    <string name="treble_header">"Treble &amp; VNDK"</string>
-    <string name="theme_day">"Light Theme"</string>
-    <string name="theme_night">"Dark Theme"</string>
-    <string name="theme_auto">"Auto-select Theme"</string>
-    <string name="theme_header">"Theme"</string>
-    <string name="treble_unknown">"Unable to detect Treble support status. Please contact the developer, as the app will not automatically send a bug report."</string>
-    <string name="ab_true">"Seamless Upgrades are supported! Your device can upgrade between different Android versions without needing any downtime for the update."</string>
-    <string name="ab_false">"Seamless Upgrades are not supported. Your device must enter recovery to install upgrades and there is an increased risk of failure, compared to Seamless-supporting devices."</string>
-    <string name="ab_header">"Seamless Upgrades"</string>
-    <string name="sar_unknown">"Unable to detect System-as-Root support status. Please contact the developer to report a bug."</string>
-    <string name="arch_x86_64">"Your device is x86_64"</string>
-    <string name="arch_x86_binder64">"Your device is x86, but uses a 64-bit binder"</string>
-    <string name="arch_x86">"Your device is x86"</string>
-    <string name="no_browser">"Please install a web browser."</string>
-    <string name="donate">"Donate"</string>
-
-    <!-- For Google Play, max length 80 chars -->
-    <string name="short_description">"Helps you check Project Treble, A/B and Architecture for GSI installation"</string>
-
-    <!-- For Google Play, max length 4000 chars -->
-    <string name="full_description">"This applications allows you to check the Treble GSI requirements and determine the correct GSI type for your device.
-
-Key features:
-* Check Treble support status
-* Check Treble/VNDK version
-* Check system architecture
-* Check A-Only or A/B status
-* Check for binder64
-* Check for System-as-Root
-* Does not require root access
-* Supports dark theme and MD2 :D
-
-You can download GSIs from all over the internet. Check the XDA Forums (not affiliated) for some easy tutorials.
-
-Source Code: https://github.com/penn5/TrebleCheck
-Translations: https://poeditor.com/join/project/Ol1euLyZSr and https://poeditor.com/join/project/XE92nUJKqN (they require approval from me to prevent spam, contact me via the in-app button to get approved)"</string>
+	<string name="app_name">Treble Info</string>
+	<string name="system_as_root_header">System as Root</string>
+	<string name="arch_header">Architecture</string>
+	<string name="arch_arm64">Your device is ARM64</string>
+	<string name="arch_arm32">Your device is ARM32</string>
+	<string name="arch_binder64">Your device is ARM32 but uses a 64-bit binder. This usually indicates that the hardware supports 64-bit but the software does not. In this scenario you should use an image named \&quot;binder64\&quot; or \&quot;a64\&quot;</string>
+	<string name="arch_unknown">Unable to detect architecture</string>
+	<string name="sar_true">Your device supports System-as-Root. Use an A/B operating system.</string>
+	<string name="sar_false">Your device does not support System-as-Root. Use an A-only Operating System.</string>
+	<string name="license_header">Licenses</string>
+	<string name="license">License: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
+Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="support_header">Support</string>
+	<string name="support">Please don\&apos;t leave a bad review if I left a bug; I wrote the whole app on my own! Instead contact me via Telegram using the button in the top right. Tell me about your issue and I will endeavour to help.</string>
+	<string name="treble_false">Your device does not support Project Treble</string>
+	<string name="treble_legacy">Your device supports the legacy version of Project Treble, using VNDK %3$sversion %1$d.%2$d</string>
+	<string name="treble_modern">Your device supports the modern version of Project Treble, using VNDK %3$sversion %1$d.%2$d</string>
+	<string name="treble_header">Treble &amp; VNDK</string>
+	<string name="theme_day">Light Theme</string>
+	<string name="theme_night">Dark Theme</string>
+	<string name="theme_auto">Auto-select Theme</string>
+	<string name="theme_header">Theme</string>
+	<string name="treble_unknown">Unable to detect Treble support status. Please contact the developer, as the app will not automatically send a bug report.</string>
+	<string name="ab_true">Seamless Upgrades are supported! Your device can upgrade between different Android versions without needing any downtime for the update.</string>
+	<string name="ab_false">Seamless Upgrades are not supported. Your device must enter recovery to install upgrades and there is an increased risk of failure, compared to Seamless-supporting devices.</string>
+	<string name="ab_header">Seamless Upgrades</string>
+	<string name="sar_unknown">Unable to detect System-as-Root support status. Please contact the developer to report a bug.</string>
+	<string name="arch_x86_64">Your device is x86_64</string>
+	<string name="arch_x86_binder64">Your device is x86, but uses a 64-bit binder</string>
+	<string name="arch_x86">Your device is x86</string>
+	<string name="no_browser">Please install a web browser.</string>
+	<string name="donate">Donate</string>
 </resources>

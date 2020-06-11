@@ -1,57 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">"Treble Info"</string>
-    <string name="system_as_root_header">"System as Root"</string>
-    <string name="arch_header">"Architektur"</string>
-    <string name="arch_arm64">"Das Gerät nutzt die ARM64-Architektur."</string>
-    <string name="arch_arm32">"Das Gerät nutzt die ARM32-Architektur."</string>
-    <string name="arch_binder64">"Das Gerät ist ARM32, nutzt jedoch einen 64-Bit Binder. Normalerweise weist dies darauf hin, dass die Hardware 64-bit unterstützt, die Software jedoch nicht. Bei diesem Szenario solltest du ein Image mit dem Namen \"binder64\" oder \"a64\" nutzen."</string>
-    <string name="arch_unknown">"Fehler beim Bestimmen der Architektur!"</string>
-    <string name="sar_true">"Das Gerät unterstützt System-as-Root. Benutze ein A/B-OS."</string>
-    <string name="sar_false">"Das Gerät unterstützt System-as-Root nicht. Benutze ein A-only-OS."</string>
-    <string name="license_header">"Lizenzen"</string>
-    <string name="license">"Lizenz: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Datenschutz-Bestimmungen: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
-    <string name="support_header">"Support"</string>
-    <string name="support">"Solltest du auf Bugs stoßen, hinterlasse bitte keine schlechte Bewertung. Ich habe diese App komplett selber programmiert! Kontaktiere mich stattdessen via Telegram über den Button oben rechts, schilder mir dein Problem und ich bemühe mich, dir zu helfen."</string>
-    <string name="treble_false">"Das Gerät ist nicht Treble-kompatibel."</string>
-    <string name="treble_legacy">"Das Gerät unterstützt eine alte Version von Project Treble mit VNDK %3$sversion %1$d.%2$d"</string>
-    <string name="treble_modern">"Das Gerät unterstützt die moderne Version von Project Treble mit VNDK %3$sversion %1$d.%2$d"</string>
-    <string name="treble_header">"Treble &amp; VNDK"</string>
-    <string name="theme_day">"Helles Design"</string>
-    <string name="theme_night">"Dunkles Design"</string>
-    <string name="theme_auto">"Automatisch auswählen"</string>
-    <string name="theme_header">"Design"</string>
-    <string name="treble_unknown">"Treble-Status konnte nicht erkannt werden. Bitte kontaktiere den Entwickler, da die App keine automatischen Fehlerberichte sendet."</string>
-    <string name="ab_true">"Nahtlose Aktualisierungen werden unterstützt! Ihr Gerät kann auf verschiedene Android-Versionen aktualisieren, ohne dass für das Update Ausfallzeiten anfallen."</string>
-    <string name="ab_false">"Nahtlose Aktualisierungen werden nicht unterstützt. Das Gerät muss ins Recovery starten, um Updates zu installieren. Dieser Prozess ist fehleranfälliger als auf nahtlos-unterstützenden Geräten."</string>
-    <string name="ab_header">"Nahtlose Aktualisierungen"</string>
-    <string name="sar_unknown">"Der System-as-Root-Status konnte nicht erkannt werden. Bitte kontaktiere den Entwickler, um Fehler zu melden."</string>
-    <string name="arch_x86_64">"Das Gerät nutzt die x86_64 Architektur"</string>
-    <string name="arch_x86_binder64">"Das Gerät nutzt die x86 Architektur, aber ein 64-bit Binder."</string>
-    <string name="arch_x86">"Das Gerät nutzt die x86 Architektur."</string>
-    <string name="no_browser">"Bitte installiere einen Webbrowser."</string>
-    <string name="donate">"Spenden"</string>
-
-    <!-- For Google Play, max length 80 chars -->
-    <string name="short_description">"Hilft dir, Project Treble, A/B und die GSI-Architektur zu überprüfen"</string>
-
-    <!-- For Google Play, max length 4000 chars -->
-    <string name="full_description">"Diese App erlaubt es dir, die Treble GSI-Anforderungen zu überprüfen und den korrekten GSI Typen festzustellen.
-
-Schlüsselfunktionen:
-* Überprüfen der Treble Unterstützung
-* Überprüfen der Treble/VNDK-Version
-* Überprüfen der Systemarchitektur
-* Überprüfen des A-only oder A/B-Statusses
-* Überprüfen von binder64
-* Überprüfen von System-as-Root
-* Benötigt keinen Rootzugriff
-* Unterstützt das Dark Theme und MD2 :D
-
-Du kannst GSIs überall im Internet herunterladen. Überprüfe die XDA Foren (keine Werbung) für einfache Anleitungen.
-
-Quelle:
-https://github.com/penn5/TrebleCheck
-Übersetzungen: https://poeditor.com/join/project/Ol1euLyZSr and https://poeditor.com/join/project/XE92nUJKqN (Zur Vermeidung von Spam wird eine Genehmigung benötigt. Kontaktiere mich dazu über die Taste in der App)"</string>
+	<string name="app_name">Treble Info</string>
+	<string name="system_as_root_header">System as Root</string>
+	<string name="arch_header">Architektur</string>
+	<string name="arch_arm64">Das Gerät nutzt die ARM64-Architektur.</string>
+	<string name="arch_arm32">Das Gerät nutzt die ARM32-Architektur.</string>
+	<string name="arch_binder64">Das Gerät ist ARM32, nutzt jedoch einen 64-Bit Binder. Normalerweise weist dies darauf hin, dass die Hardware 64-bit unterstützt, die Software jedoch nicht. Bei diesem Szenario solltest du ein Image mit dem Namen \&quot;binder64\&quot; oder \&quot;a64\&quot; nutzen.</string>
+	<string name="arch_unknown">Fehler beim Bestimmen der Architektur!</string>
+	<string name="sar_true">Das Gerät unterstützt System-as-Root. Benutze ein A/B-OS.</string>
+	<string name="sar_false">Das Gerät unterstützt System-as-Root nicht. Benutze ein A-only-OS.</string>
+	<string name="license_header">Lizenzen</string>
+	<string name="license">Lizenz: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
+Datenschutz-Bestimmungen: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="support_header">Support</string>
+	<string name="support">Solltest du auf Bugs stoßen, hinterlasse bitte keine schlechte Bewertung. Ich habe diese App komplett selber programmiert! Kontaktiere mich stattdessen via Telegram über den Button oben rechts, schilder mir dein Problem und ich bemühe mich, dir zu helfen.</string>
+	<string name="treble_false">Das Gerät ist nicht Treble-kompatibel.</string>
+	<string name="treble_legacy">Das Gerät unterstützt eine alte Version von Project Treble mit VNDK %3$sversion %1$d.%2$d</string>
+	<string name="treble_modern">Das Gerät unterstützt die moderne Version von Project Treble mit VNDK %3$sversion %1$d.%2$d</string>
+	<string name="treble_header">Treble &amp; VNDK</string>
+	<string name="theme_day">Helles Design</string>
+	<string name="theme_night">Dunkles Design</string>
+	<string name="theme_auto">Automatisch auswählen</string>
+	<string name="theme_header">Design</string>
+	<string name="treble_unknown">Treble-Status konnte nicht erkannt werden. Bitte kontaktiere den Entwickler, da die App keine automatischen Fehlerberichte sendet.</string>
+	<string name="ab_true">Nahtlose Aktualisierungen werden unterstützt! Ihr Gerät kann auf verschiedene Android-Versionen aktualisieren, ohne dass für das Update Ausfallzeiten anfallen.</string>
+	<string name="ab_false">Nahtlose Aktualisierungen werden nicht unterstützt. Das Gerät muss ins Recovery starten, um Updates zu installieren. Dieser Prozess ist fehleranfälliger als auf nahtlos-unterstützenden Geräten.</string>
+	<string name="ab_header">Nahtlose Aktualisierungen</string>
+	<string name="sar_unknown">Der System-as-Root-Status konnte nicht erkannt werden. Bitte kontaktiere den Entwickler, um Fehler zu melden.</string>
+	<string name="arch_x86_64">Das Gerät nutzt die x86_64 Architektur</string>
+	<string name="arch_x86_binder64">Das Gerät nutzt die x86 Architektur, aber ein 64-bit Binder.</string>
+	<string name="arch_x86">Das Gerät nutzt die x86 Architektur.</string>
+	<string name="no_browser">Bitte installiere einen Webbrowser.</string>
+	<string name="donate">Spenden</string>
 </resources>

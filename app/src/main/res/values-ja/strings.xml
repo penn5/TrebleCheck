@@ -1,26 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">"Trebleチェッカー"</string>
-    <string name="arch_header">"アーキテクチャ"</string>
-    <string name="arch_arm64">"あなたのデバイスはARM64です"</string>
-    <string name="arch_arm32">"あなたのデバイスはARM32です"</string>
-    <string name="arch_binder64">"デバイスはARM32ですが、64ビットbinderを使用しています。通常、ハードウェアは64ビットをサポートしていますが、ソフトウェアはサポートしていないことを示しています。このシナリオでは、「binder64」または「A64」という名前のイメージを使用する必要があります"</string>
-    <string name="arch_unknown">"アーキテクチャを検出できません"</string>
-    <string name="license_header">"ライセンス"</string>
-    <string name="license">"ライセンス：
+	<string name="app_name">Trebleチェッカー</string>
+	<string name="arch_header">アーキテクチャ</string>
+	<string name="arch_arm64">あなたのデバイスはARM64です</string>
+	<string name="arch_arm32">あなたのデバイスはARM32です</string>
+	<string name="arch_binder64">デバイスはARM32ですが、64ビットbinderを使用しています。通常、ハードウェアは64ビットをサポートしていますが、ソフトウェアはサポートしていないことを示しています。このシナリオでは、「binder64」または「A64」という名前のイメージを使用する必要があります</string>
+	<string name="arch_unknown">アーキテクチャを検出できません</string>
+	<string name="license_header">ライセンス</string>
+	<string name="license">ライセンス：
 https://github.com/penn5/TrebleCheck/blob/master/LICENSE
 プライバシー：
-https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
-    <string name="support_header">"サポート"</string>
-    <string name="theme_day">"
-ライトテーマ"</string>
-    <string name="theme_night">"ダークモード"</string>
-    <string name="theme_auto">"自動選択テーマ"</string>
-    <string name="theme_header">"テーマ"</string>
-    <string name="no_browser">"ブラウザをインストールしてください。"</string>
-    <string name="donate">"寄付"</string>
-
-    <!-- For Google Play, max length 80 chars -->
-
-    <!-- For Google Play, max length 4000 chars -->
+https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="support_header">サポート</string>
+	<string name="theme_day">
+ライトテーマ</string>
+	<string name="theme_night">ダークモード</string>
+	<string name="theme_auto">自動選択テーマ</string>
+	<string name="theme_header">テーマ</string>
+	<string name="no_browser">ブラウザをインストールしてください。</string>
+	<string name="donate">寄付</string>
 </resources>

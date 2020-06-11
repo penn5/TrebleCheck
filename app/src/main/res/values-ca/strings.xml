@@ -1,57 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">"Treble Info"</string>
-    <string name="system_as_root_header">"Sistema com a Root"</string>
-    <string name="arch_header">"Arquitectura"</string>
-    <string name="arch_arm64">"El teu dispositiu és ARM64"</string>
-    <string name="arch_arm32">"El teu dispositiu és ARM32"</string>
-    <string name="arch_binder64">"El teu dispositiu és ARM32 però fa servir un binder de 64 bits. Això normalment vol dir que el hardware suporta 64 bits però el software no. En aquest cas hauries de fer servir una imatge anomenada \"binder64\" o \"a64\""</string>
-    <string name="arch_unknown">"No es pot detectar l'arquitectura"</string>
-    <string name="sar_true">"El teu dispositiu suporta Sistema com a Root. Fes servir un sistema operatiu \"A/B\"."</string>
-    <string name="sar_false">"El teu dispositiu no suporta Sistema com a Root. Fes servir un sistema operatiu \"A-only\"."</string>
-    <string name="license_header">"Llicències"</string>
-    <string name="license">"Llicència: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Privacitat: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
-    <string name="support_header">"Suport"</string>
-    <string name="support">"Si us plau si trobes un bug no deixis una opinió dolenta; he escrit tota l'aplicació sencera jo sol! En canvi, contacta amb mi per Telegram fent servir el botó que hi ha a dalt a la dreta. Explica'm el teu problema i faré tot el possible per ajudar-te."</string>
-    <string name="treble_false">"El teu dispositiu no suporta Project Treble"</string>
-    <string name="treble_legacy">"El teu dispositiu és compatible amb la versió antiga de Project Treble, fent servir VNDK %3$sversion %1$d.%2$d"</string>
-    <string name="treble_modern">"El teu dispositiu és compatible amb la versió nova de Project Treble, fent servir VNDK %3$sversion %1$d.%2$d"</string>
-    <string name="treble_header">"Treble i VNDK"</string>
-    <string name="theme_day">"Tema clar"</string>
-    <string name="theme_night">"Tema fosc"</string>
-    <string name="theme_auto">"Selecciona el tema automàticament"</string>
-    <string name="theme_header">"Tema"</string>
-    <string name="treble_unknown">"No es pot detectar l'estat de suport de Treble. Poseu-vos en contacte amb el desenvolupador, ja que l’aplicació no enviarà automàticament un informe d’errors."</string>
-    <string name="ab_true">"S'admeten actualitzacions en segon pla. El teu dispositiu pot actualitzar entre diferents versions d'Android sense necessitat de temps d'inactivitat per a l'actualització."</string>
-    <string name="ab_false">"Actualitzacions en segon pla no suportades. El teu dispositiu ha d'entrar en el mode de recuperació per instal·lar les actualitzacions i existeix un risc elevat que hi hagi un error comparat amb les actualitzacions en segon pla."</string>
-    <string name="ab_header">"Actualitzacions en segon pla."</string>
-    <string name="sar_unknown">"No es pot detectar l'estat de Sistema com a Root. Poseu-vos en contacte amb el desenvolupador per informar de l'error."</string>
-    <string name="arch_x86_64">"El teu dispositiu és x86_64"</string>
-    <string name="arch_x86_binder64">"El teu dispositiu és x86 però fa servir un binder de 64 bits"</string>
-    <string name="arch_x86">"El teu dispositiu és x86"</string>
-    <string name="no_browser">"Si us plau instal·la un navegador web."</string>
-    <string name="donate">"Donar"</string>
-
-    <!-- For Google Play, max length 80 chars -->
-    <string name="short_description">"Verifica Project Treble, A/B i l'arquitectura per a la instal·lació d'un GSI."</string>
-
-    <!-- For Google Play, max length 4000 chars -->
-    <string name="full_description">"Aquesta aplicació us permet comprovar els requisits GSI de Treble i determinar el tipus de GSI correcte per al vostre dispositiu.
-
-Característiques clau:
-* Comprova l'estat de suport de Treble
-* Comprova la versió de Treble / VNDK
-* Comprova l'arquitectura del sistema
-* Comprova l'estat A-Only o A / B
-* Comprova binder64
-* Comprova el Sistema com a Root
-* No requereix accés root
-* Admet el tema fosc i MD2 :D
-
-Podeu descarregar GSIs des de tot Internet. Comproveu els fòrums XDA (no afiliats) per trobar un tutorial fàcil.
-
-Codi Font: https://github.com/penn5/TrebleCheck
-Traduccions: https://poeditor.com/join/project/Ol1euLyZSr and https://poeditor.com/join/project/XE92nUJKqN (necessiten la meva aprovació per evitar el \"spam\", posa't en contacte amb mi mitjançant el botó integrat a l'aplicació per obtenir l'aprovació)
-"</string>
+	<string name="app_name">Treble Info</string>
+	<string name="system_as_root_header">Sistema com a Root</string>
+	<string name="arch_header">Arquitectura</string>
+	<string name="arch_arm64">El teu dispositiu és ARM64</string>
+	<string name="arch_arm32">El teu dispositiu és ARM32</string>
+	<string name="arch_binder64">El teu dispositiu és ARM32 però fa servir un binder de 64 bits. Això normalment vol dir que el hardware suporta 64 bits però el software no. En aquest cas hauries de fer servir una imatge anomenada \&quot;binder64\&quot; o \&quot;a64\&quot;</string>
+	<string name="arch_unknown">No es pot detectar l\&apos;arquitectura</string>
+	<string name="sar_true">El teu dispositiu suporta Sistema com a Root. Fes servir un sistema operatiu \&quot;A/B\&quot;.</string>
+	<string name="sar_false">El teu dispositiu no suporta Sistema com a Root. Fes servir un sistema operatiu \&quot;A-only\&quot;.</string>
+	<string name="license_header">Llicències</string>
+	<string name="license">Llicència: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
+Privacitat: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="support_header">Suport</string>
+	<string name="support">Si us plau si trobes un bug no deixis una opinió dolenta; he escrit tota l\&apos;aplicació sencera jo sol! En canvi, contacta amb mi per Telegram fent servir el botó que hi ha a dalt a la dreta. Explica\&apos;m el teu problema i faré tot el possible per ajudar-te.</string>
+	<string name="treble_false">El teu dispositiu no suporta Project Treble</string>
+	<string name="treble_legacy">El teu dispositiu és compatible amb la versió antiga de Project Treble, fent servir VNDK %3$sversion %1$d.%2$d</string>
+	<string name="treble_modern">El teu dispositiu és compatible amb la versió nova de Project Treble, fent servir VNDK %3$sversion %1$d.%2$d</string>
+	<string name="treble_header">Treble i VNDK</string>
+	<string name="theme_day">Tema clar</string>
+	<string name="theme_night">Tema fosc</string>
+	<string name="theme_auto">Selecciona el tema automàticament</string>
+	<string name="theme_header">Tema</string>
+	<string name="treble_unknown">No es pot detectar l\&apos;estat de suport de Treble. Poseu-vos en contacte amb el desenvolupador, ja que l’aplicació no enviarà automàticament un informe d’errors.</string>
+	<string name="ab_true">S\&apos;admeten actualitzacions en segon pla. El teu dispositiu pot actualitzar entre diferents versions d\&apos;Android sense necessitat de temps d\&apos;inactivitat per a l\&apos;actualització.</string>
+	<string name="ab_false">Actualitzacions en segon pla no suportades. El teu dispositiu ha d\&apos;entrar en el mode de recuperació per instal·lar les actualitzacions i existeix un risc elevat que hi hagi un error comparat amb les actualitzacions en segon pla.</string>
+	<string name="ab_header">Actualitzacions en segon pla.</string>
+	<string name="sar_unknown">No es pot detectar l\&apos;estat de Sistema com a Root. Poseu-vos en contacte amb el desenvolupador per informar de l\&apos;error.</string>
+	<string name="arch_x86_64">El teu dispositiu és x86_64</string>
+	<string name="arch_x86_binder64">El teu dispositiu és x86 però fa servir un binder de 64 bits</string>
+	<string name="arch_x86">El teu dispositiu és x86</string>
+	<string name="no_browser">Si us plau instal·la un navegador web.</string>
+	<string name="donate">Donar</string>
 </resources>

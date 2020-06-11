@@ -1,55 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">"Treble 信息"</string>
-    <string name="system_as_root_header">"System-as-Root"</string>
-    <string name="arch_header">"处理器架构"</string>
-    <string name="arch_arm64">"您的设备是 ARM64 架构。"</string>
-    <string name="arch_arm32">"您的设备是 ARM32 架构。"</string>
-    <string name="arch_binder64">"您的设备是 ARM32 架构，但是使用到了 64-bit binder。这说明您的设备的处理器是 64 位，但操作系统是 32 位，无法执行 64 位程序。这种情况下您应当需要刷写带有 \"binder64\" 或 \"a64\" 后缀的镜像。"</string>
-    <string name="arch_unknown">"无法检测设备架构。"</string>
-    <string name="sar_true">"您的设备支持 System-as-Root 且使用 A/B 无缝系统更新方式。这种情况下，该设备没有独立的 Recovery 分区。"</string>
-    <string name="sar_false">"您的设备不支持 System-as-Root 且使用 A-Only 传统系统更新方式。这种情况下，该设备具有独立的 Recovery 分区。"</string>
-    <string name="license_header">"许可证"</string>
-    <string name="license">"许可证：
+	<string name="app_name">Treble 信息</string>
+	<string name="system_as_root_header">System-as-Root</string>
+	<string name="arch_header">处理器架构</string>
+	<string name="arch_arm64">您的设备是 ARM64 架构。</string>
+	<string name="arch_arm32">您的设备是 ARM32 架构。</string>
+	<string name="arch_binder64">您的设备是 ARM32 架构，但是使用到了 64-bit binder。这说明您的设备的处理器是 64 位，但操作系统是 32 位，无法执行 64 位程序。这种情况下您应当需要刷写带有 \&quot;binder64\&quot; 或 \&quot;a64\&quot; 后缀的镜像。</string>
+	<string name="arch_unknown">无法检测设备架构。</string>
+	<string name="sar_true">您的设备支持 System-as-Root 且使用 A/B 无缝系统更新方式。这种情况下，该设备没有独立的 Recovery 分区。</string>
+	<string name="sar_false">您的设备不支持 System-as-Root 且使用 A-Only 传统系统更新方式。这种情况下，该设备具有独立的 Recovery 分区。</string>
+	<string name="license_header">许可证</string>
+	<string name="license">许可证：
 https://github.com/penn5/TrebleCheck/blob/master/LICENSE
 隐私保护政策：
-https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
-    <string name="support_header">"支持作者"</string>
-    <string name="support">"如果遇到 BUG，请不要轻易留下差评。本应用是我独自完成的！您可以通过点击右上角的按钮在 Telegram 联系我（仅使用英文），从而向我反馈 BUG，我会很乐意帮助您。"</string>
-    <string name="treble_false">"您的手机不支持 Project Treble。也许您可以寻求第三方方案实现 Project Treble。"</string>
-    <string name="treble_legacy">"您的手机支持旧版本的 Project Treble，VNDK %3$s 版本号为 %1$d.%2$d。"</string>
-    <string name="treble_modern">"您的手机支持新版本的 Project Treble，VNDK %3$s 版本号为 %1$d.%2$d。"</string>
-    <string name="treble_header">"Treble 及 VNDK"</string>
-    <string name="theme_day">"浅色"</string>
-    <string name="theme_night">"暗色"</string>
-    <string name="theme_auto">"自动选择"</string>
-    <string name="theme_header">"主题"</string>
-    <string name="treble_unknown">"无法检测 Treble 状态。由于该应用不会发送报告，请主动联系开发者反馈问题（仅使用英文）。"</string>
-    <string name="ab_true">"您的设备支持无缝系统更新！您可以在系统更新时继续使用手机，且升级失败的风险极低。"</string>
-    <string name="ab_false">"您的设备不支持无缝系统更新。和无缝系统更新的机型不同，系统更新时必须重启到 Recovery 模式，在这期间您无法使用手机，且升级失败的风险相比无缝系统更新较高。"</string>
-    <string name="ab_header">"无缝系统更新"</string>
-    <string name="sar_unknown">"无法判定设备SAR状态。清联系开发者报错。"</string>
-    <string name="arch_x86_64">"你的设备为 x86_64 架构"</string>
-    <string name="arch_x86_binder64">"你的设备为 x86 但使用了 64 位 binder"</string>
-    <string name="arch_x86">"你的设备为 x86"</string>
-    <string name="no_browser">"必须安装一个有效的网页浏览器"</string>
-    <string name="donate">"捐赠"</string>
-
-    <!-- For Google Play, max length 80 chars -->
-    <string name="short_description">"帮助您在安装通用系统镜像（GSI）之前检查设备的架构、是否支持 Project Treble 以及是否 A/B 更新。"</string>
-
-    <!-- For Google Play, max length 4000 chars -->
-    <string name="full_description">"这个应用可以帮助您检查您的设备是否符合 Treble 通用系统镜像（GSI）的运行需求，以及为您的设备确定匹配的通用系统镜像类别。
-
-主要功能：
-* 检查 Treble 支持情况
-* 检查 Treble/VNDK 版本
-* 检查系统架构
-* 检查机器为传统 A-Only 形式还是 A/B 格式
-* 检查是否带 binder64
-* 检查是否为 System-as-Root
-* 无需 Root 权限
-* 支持暗黑模式和 MD2
-
-你可以在网络上找到通用系统映像"</string>
+https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="support_header">支持作者</string>
+	<string name="support">如果遇到 BUG，请不要轻易留下差评。本应用是我独自完成的！您可以通过点击右上角的按钮在 Telegram 联系我（仅使用英文），从而向我反馈 BUG，我会很乐意帮助您。</string>
+	<string name="treble_false">您的手机不支持 Project Treble。也许您可以寻求第三方方案实现 Project Treble。</string>
+	<string name="treble_legacy">您的手机支持旧版本的 Project Treble，VNDK %3$s 版本号为 %1$d.%2$d。</string>
+	<string name="treble_modern">您的手机支持新版本的 Project Treble，VNDK %3$s 版本号为 %1$d.%2$d。</string>
+	<string name="treble_header">Treble 及 VNDK</string>
+	<string name="theme_day">浅色</string>
+	<string name="theme_night">暗色</string>
+	<string name="theme_auto">自动选择</string>
+	<string name="theme_header">主题</string>
+	<string name="treble_unknown">无法检测 Treble 状态。由于该应用不会发送报告，请主动联系开发者反馈问题（仅使用英文）。</string>
+	<string name="ab_true">您的设备支持无缝系统更新！您可以在系统更新时继续使用手机，且升级失败的风险极低。</string>
+	<string name="ab_false">您的设备不支持无缝系统更新。和无缝系统更新的机型不同，系统更新时必须重启到 Recovery 模式，在这期间您无法使用手机，且升级失败的风险相比无缝系统更新较高。</string>
+	<string name="ab_header">无缝系统更新</string>
+	<string name="sar_unknown">无法判定设备SAR状态。清联系开发者报错。</string>
+	<string name="arch_x86_64">你的设备为 x86_64 架构</string>
+	<string name="arch_x86_binder64">你的设备为 x86 但使用了 64 位 binder</string>
+	<string name="arch_x86">你的设备为 x86</string>
+	<string name="no_browser">必须安装一个有效的网页浏览器</string>
+	<string name="donate">捐赠</string>
 </resources>

@@ -1,59 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">"معلومات Treble"</string>
-    <string name="system_as_root_header">"النظام كـ الجذر"</string>
-    <string name="arch_header">"المعمارية"</string>
-    <string name="arch_arm64">"معمارية جهازك هي ARM64"</string>
-    <string name="arch_arm32">"معمارية جهازك هي ARM32"</string>
-    <string name="arch_binder64">"معمارية جهازك هي ARM32 لكنه يستخدم غلاف 64-bit. يشير هذا عادة إلى أن عتاد الجهاز يدعم معمارية 64-bit لكن نظام التشغيل لا يدعم. وفي هذه الحالة يجب أن تستخدم النسخ المسماه \"binder64\" أو \"a64\"."</string>
-    <string name="arch_unknown">"تعذر التعرف على معمارية الجهاز"</string>
-    <string name="sar_true">"جهازك يدعم \"النظام كـ الجذر\". استخدم نظام تشغيل A/B."</string>
-    <string name="sar_false">"جهازك لا يدعم \"النظام كـ الجذر\". استخدم نظام تشغيل A فقط."</string>
-    <string name="license_header">"التراخيص"</string>
-    <string name="license">"الترخيص:
+	<string name="app_name">معلومات Treble</string>
+	<string name="system_as_root_header">النظام كـ الجذر</string>
+	<string name="arch_header">المعمارية</string>
+	<string name="arch_arm64">معمارية جهازك هي ARM64</string>
+	<string name="arch_arm32">معمارية جهازك هي ARM32</string>
+	<string name="arch_binder64">معمارية جهازك هي ARM32 لكنه يستخدم غلاف 64-bit. يشير هذا عادة إلى أن عتاد الجهاز يدعم معمارية 64-bit لكن نظام التشغيل لا يدعم. وفي هذه الحالة يجب أن تستخدم النسخ المسماه \&quot;binder64\&quot; أو \&quot;a64\&quot;.</string>
+	<string name="arch_unknown">تعذر التعرف على معمارية الجهاز</string>
+	<string name="sar_true">جهازك يدعم \&quot;النظام كـ الجذر\&quot;. استخدم نظام تشغيل A/B.</string>
+	<string name="sar_false">جهازك لا يدعم \&quot;النظام كـ الجذر\&quot;. استخدم نظام تشغيل A فقط.</string>
+	<string name="license_header">التراخيص</string>
+	<string name="license">الترخيص:
 https://github.com/penn5/TrebleCheck/blob/master/LICENSE
 الخصوصية:
-https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
-    <string name="support_header">"الدعم"</string>
-    <string name="support">"من فضلك لا تترك تقييما سيئا للتطبيق في حالة وجود خلل ما. هذا التطبيق كُتب من الصفر بنفسي! بدلا من ذلك بمكنك مراسلتي عبر تليجرام باستخدام الزر فى اﻷعلى وإخباري بمشكلتك وسأحاول جاهدا مساعدتك."</string>
-    <string name="treble_false">"جهازك لا يدعم مشروع Treble"</string>
-    <string name="treble_legacy">"جهازك يدعم اﻹصدار القديم من مشروع Treble، باستخدامVNDK %3$sالنسخة %1$d.%2$d"</string>
-    <string name="treble_modern">"جهازك يدعم اﻹصدار الحديث من مشروع Treble، باستخدامVNDK %3$sالنسخة %1$d.%2$d"</string>
-    <string name="treble_header">"Treble و VNDK"</string>
-    <string name="theme_day">"السمة الفاتحة"</string>
-    <string name="theme_night">"السمة المظلمة"</string>
-    <string name="theme_auto">"الاختيار التلقائي للسمة"</string>
-    <string name="theme_header">"السمة"</string>
-    <string name="treble_unknown">"تعذر اكتشاف حالة دعم مشروع Treble. من فضلك تواصل مع المطور ﻷن التطبيق لن يرسل تقريرا بالخطأ تلقائيا."</string>
-    <string name="ab_true">"جهازك يدعم الترقيات السلسة! يمكنك الترقية إلى إصدارات أندرويد أخرى دون الحاجة إلى وقت يتوقف فيه الهاتف عن العمل لتثبيت التحديث. "</string>
-    <string name="ab_false">"جهازك لا يدعم الترقيات السلسة! يحتاج هاتفك إلى الدخول لوضع الاسترداد لتثبيت التحديثات. توجد احتمالية أكبر للفشل أثناء التحديث عند استخدام وضع الاسترداد مقارنة بالترقية السلسة.
-."</string>
-    <string name="ab_header">"الترقيات السلسة"</string>
-    <string name="sar_unknown">"تعذر التعرف على حالة دعم \"النظام كـ الجذر\". من فضلك تواصل مع المطور للإبلاغ عن المشكلة."</string>
-    <string name="arch_x86_64">"معمارية جهازك هي x86_64"</string>
-    <string name="arch_x86_binder64">"معمارية جهازك هي x86 لكنه يستخدم غلاف 64-bit."</string>
-    <string name="arch_x86">"معمارية جهازك هي x86"</string>
-    <string name="no_browser">"من فضلك قم بتثبيت متصفح ويب."</string>
-    <string name="donate">"التبرع"</string>
-
-    <!-- For Google Play, max length 80 chars -->
-    <string name="short_description">"اكشتف هل هاتفك يدعم Project Treble أم لا"</string>
-
-    <!-- For Google Play, max length 4000 chars -->
-    <string name="full_description">"يمكنك هذا التطبيق من التحقق من متطلبات تثبيت نسخة النظام الموحدة GSI ومعرفة أي نوع منها هو الملائم لجهازك.
-
-مميزات التطبيق:
-* التحقق من دعم مشروع Treble
-* التحقق من إصدار Treble وVNDK
-* التحقق من معمارية النظام
-* التحقق من تفسم الهاتف (A-Only أو A/B)
-* التحقق من binder64
-* التحقق من كون الهاتف يستخدم \"النظام كـ الجذر\"
-* لا يحتاج إلى صلاحيات الرووت
-* يدعم الثيم الداكن ومصمم طبقا ل MD2
-
-يمكنك تحميل نسخ GSI من خلال العديد من المواقع على اﻹنترنت (مثل XDA)، كما ستجد هناك تعليمات التثبيت.
-
-كود التطبيق المصدري: https://github.com/penn5/TrebleCheck
-ترجمة التطبيق: https://poeditor.com/join/project/Ol1euLyZSr و https://poeditor.com/join/project/XE92nUJKqN (يجب أن يتم الموافقة على طلبك أولا لتتمكن من المساهمة في الترجمة)"</string>
+https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="support_header">الدعم</string>
+	<string name="support">من فضلك لا تترك تقييما سيئا للتطبيق في حالة وجود خلل ما. هذا التطبيق كُتب من الصفر بنفسي! بدلا من ذلك بمكنك مراسلتي عبر تليجرام باستخدام الزر فى اﻷعلى وإخباري بمشكلتك وسأحاول جاهدا مساعدتك.</string>
+	<string name="treble_false">جهازك لا يدعم مشروع Treble</string>
+	<string name="treble_legacy">جهازك يدعم اﻹصدار القديم من مشروع Treble، باستخدامVNDK %3$sالنسخة %1$d.%2$d</string>
+	<string name="treble_modern">جهازك يدعم اﻹصدار الحديث من مشروع Treble، باستخدامVNDK %3$sالنسخة %1$d.%2$d</string>
+	<string name="treble_header">Treble و VNDK</string>
+	<string name="theme_day">السمة الفاتحة</string>
+	<string name="theme_night">السمة المظلمة</string>
+	<string name="theme_auto">الاختيار التلقائي للسمة</string>
+	<string name="theme_header">السمة</string>
+	<string name="treble_unknown">تعذر اكتشاف حالة دعم مشروع Treble. من فضلك تواصل مع المطور ﻷن التطبيق لن يرسل تقريرا بالخطأ تلقائيا.</string>
+	<string name="ab_true">جهازك يدعم الترقيات السلسة! يمكنك الترقية إلى إصدارات أندرويد أخرى دون الحاجة إلى وقت يتوقف فيه الهاتف عن العمل لتثبيت التحديث. </string>
+	<string name="ab_false">جهازك لا يدعم الترقيات السلسة! يحتاج هاتفك إلى الدخول لوضع الاسترداد لتثبيت التحديثات. توجد احتمالية أكبر للفشل أثناء التحديث عند استخدام وضع الاسترداد مقارنة بالترقية السلسة.
+.</string>
+	<string name="ab_header">الترقيات السلسة</string>
+	<string name="sar_unknown">تعذر التعرف على حالة دعم \&quot;النظام كـ الجذر\&quot;. من فضلك تواصل مع المطور للإبلاغ عن المشكلة.</string>
+	<string name="arch_x86_64">معمارية جهازك هي x86_64</string>
+	<string name="arch_x86_binder64">معمارية جهازك هي x86 لكنه يستخدم غلاف 64-bit.</string>
+	<string name="arch_x86">معمارية جهازك هي x86</string>
+	<string name="no_browser">من فضلك قم بتثبيت متصفح ويب.</string>
+	<string name="donate">التبرع</string>
 </resources>
