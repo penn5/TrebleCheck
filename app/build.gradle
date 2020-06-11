@@ -21,11 +21,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'poeditor-android'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
         applicationId "tk.hack5.treblecheck"
         minSdkVersion 22
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode androidGitVersion.code()
         versionName androidGitVersion.name()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
