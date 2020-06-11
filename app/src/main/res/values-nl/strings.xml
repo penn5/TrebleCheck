@@ -34,4 +34,27 @@ Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="arch_x86_binder64">"Uw apparaat is x86, maar gebruikt een 64-bit binder"</string>
     <string name="arch_x86">"Uw apparaat is x86"</string>
     <string name="no_browser">"Installeer een internetbrowser"</string>
+    <string name="donate">"Doneer"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"Helpt je controleren naar Project Treble, A/B en architectuur voor GSI install"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"Met deze applicatie kan je checken of jouw apparaat voldoet aan de vereisten voor project Treble, ook kan je kijken welk type GSI je gebruiken moet.
+
+Belangrijkste functies:
+* Check Treble ondersteuningsstatus
+* Check Treble/VNDK versie
+* Check systeem architectuur
+* Check A-Only of A/B status
+* Check voor binder64
+* Check voor System-as-Root
+* Heeft geen root nodig
+* Heeft een donkere modus en MD2 :D
+
+Je kan GSIs van internet downloaden. Check het XDA Forum (geen partner)
+voor goed te begrijpen instructies
+
+Source Code: https://github.com/penn5/TrebleCheck
+Translations: https://poeditor.com/join/project/Ol1euLyZSr and https://poeditor.com/join/project/XE92nUJKqN (om spam te voorkomen heb je goedkeuring nodig, om contact op te nemen gebruik de knop in de app) "</string>
 </resources>

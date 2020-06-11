@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">"Treble जानकारी"</string>
+    <string name="app_name">"ट्रेबल इन्फ़ो"</string>
     <string name="system_as_root_header">"System as Root"</string>
-    <string name="arch_header">"Architecture"</string>
-    <string name="arch_arm64">"आपका device ARM64 है"</string>
-    <string name="arch_arm32">"आपका device ARM32 है"</string>
-    <string name="arch_binder64">"आपका डिवाइस ARM32 है लेकिन 64-bit binder का उपयोग करता है। मतलब hardware 64-बिट का  उपयोग कर सकता है, लेकिन सॉफ्टवेयर नहीं करता है। इस परिदृश्य में आपको \"binder64\" नामक image का उपयोग करे या \"A64\""</string>
-    <string name="arch_unknown">"architecture पता नहीं  लग रहा"</string>
+    <string name="arch_header">"आर्किटेक्चर"</string>
+    <string name="arch_arm64">"आपका डिवाइस ARM64 है"</string>
+    <string name="arch_arm32">"आपका डिवाइस ARM32 है"</string>
+    <string name="arch_binder64">"आपका डिवाइस ARM32 है लेकिन 64-bit binder का उपयोग करता है। मतलब hardware 64-बिट का  उपयोग कर सकता है, लेकिन सॉफ्टवेयर नहीं करता है। इस परिदृश्य में आपको \"binder64\" नामक ईमेज का उपयोग करे या \"A64\""</string>
+    <string name="arch_unknown">"
+आर्किटेक्चर पता नहीं  लग रहा"</string>
     <string name="sar_true">"आपका device System-as-Root का उपयोग करता है। A / B  Operating System का उपयोग करें।"</string>
     <string name="sar_false">"आपका device System-as-Root का उपयोग नहीं करता है। A-only  Operating System का उपयोग करें।"</string>
-    <string name="license_header">"Licenses"</string>
-    <string name="license">"License: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
+    <string name="license_header">"लाइसेंस"</string>
+    <string name="license">"लाइसेंस: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
 गोपनीयता: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="support_header">"मदद"</string>
     <string name="support">"कुछ bug पे कृपया कर बुरी समीक्षा न छोड़े; मैंने यह app अपने आप से लिखा है! telegram में संम्पर्क करे (दायां शीर्ष बटन द्वारा) । वहां अपने समस्याओ का समाधान करे"</string>
-    <string name="treble_false">"आपका device Project Treble का उपयोग नहीं करता है"</string>
-    <string name="treble_legacy">"आपका device VNDK%3$sversion%1$d.%2$$ के सहायता से  Project Treble की विरासत (Legacy) संस्करण का उपयोग करता है।"</string>
-    <string name="treble_modern">"आपका डिवाइस VNDK %3$sसंस्करण %1$d.%2$d का उपयोग करके प्रोजेक्ट ट्रेबल के आधुनिक संस्करण का समर्थन करता है"</string>
-    <string name="treble_header">"Treble &amp; VNDK"</string>
-    <string name="theme_day">"प्रकाश Theme"</string>
-    <string name="theme_night">"अँधेरा Theme"</string>
-    <string name="theme_auto">"ऑटो-सेलेक्ट Theme"</string>
-    <string name="theme_header">"Theme"</string>
+    <string name="treble_false">"आपका डिवाइस प्रोजेक्ट ट्रेबल का उपयोग नहीं करता है"</string>
+    <string name="treble_legacy">"आपका डिवाइस VNDK %3$sversion %1$d.%2$$ के सहायता से  Project Treble की विरासत (Legacy) संस्करण का उपयोग करता है।"</string>
+    <string name="treble_modern">"आपका डिवाइस VNDK %3$sversion %1$d.%2$d का उपयोग करके प्रोजेक्ट ट्रेबल के आधुनिक संस्करण का समर्थन करता है"</string>
+    <string name="treble_header">"ट्रेबल और VNDK"</string>
+    <string name="theme_day">"लाईट थीम"</string>
+    <string name="theme_night">"डार्क थीम"</string>
+    <string name="theme_auto">"ऑटो-सेलेक्ट थीम"</string>
+    <string name="theme_header">"थीम"</string>
     <string name="treble_unknown">"Treble पता नहीं चल रहा है। कृपया हमसे संपर्क करें क्योंकि ऐप स्वचालित रूप से बग रिपोर्ट नहीं भेजेगा"</string>
     <string name="ab_true">"आपका डिवाइस seamless updates support नहीं करता है"</string>
     <string name="ab_false">"आपाका फोन seamless Upgrades समर्थन न कर्ता है। आप को को recovery से अपडेट insta करण पडगेन।"</string>
@@ -31,5 +32,26 @@
     <string name="arch_x86_binder64">"आपा फोन x86 है, 64-बिट बाइंडर अपयोग कर्ता है"</string>
     <string name="arch_x86">"आपका फोन x86 है"</string>
     <string name="no_browser">"कृपया एक वेब ब्राउज़र स्थापित करें"</string>
-    <string name="donate">"दान करना"</string>
+    <string name="donate">"दान करे"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"GSI के लिए प्रोजेक्ट ट्रेबल, A/B और आर्किटेक्चर की जांच करने में मदद करता है"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"यह एप्लिकेशन आपको ट्रेबल GSI आवश्यकताओं की जांच करने और आपके डिवाइस के लिए सही GSI प्रकार निर्धारित करने देता है।
+
+प्रमुख विशेषताऐं:
+* ट्रेबल समर्थन स्थिति की जाँच करें
+* चेक ट्रेबल / VNDK संस्करण
+* सिस्टम आर्किटेक्चर की जाँच करें
+* A-ओनली या A/B स्थिति जांचें
+* बाइंडर 64 के लिए जाँच करें
+* सिस्टम-ए-रूट के लिए जाँच करें
+* रूट एक्सेस की आवश्यकता नहीं है
+* डार्क थीम और MD 2 का समर्थन करता है :D
+
+आप GSI को इंटरनेट से डाउनलोड कर सकते हैं। कुछ आसान ट्यूटोरियल के लिए XDA फ़ोरम (संबद्ध नहीं) की जाँच करें।
+
+सोर्स कोड: https://github.com/penn5/TrebleCheck
+अनुवाद: https://poeditor.com/join/project/Ol1euLyZSr और https://poeditor.com/join/project/XE92nUJKqN (उन्हें स्पैम करने से रोकने के लिए मुझसे अनुमति की आवश्यकता है, अनुमति प्राप्त करने के लिए इन-ऐप बटन के माध्यम से मुझसे संपर्क करें)"</string>
 </resources>

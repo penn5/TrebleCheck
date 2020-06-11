@@ -32,4 +32,26 @@ Datenschutz-Bestimmungen: https://github.com/penn5/TrebleCheck/blob/master/PRIVA
     <string name="arch_x86">"Das Gerät nutzt die x86 Architektur."</string>
     <string name="no_browser">"Bitte installiere einen Webbrowser."</string>
     <string name="donate">"Spenden"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"Hilft dir, Project Treble, A/B und die GSI-Architektur zu überprüfen"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"Diese App erlaubt es dir, die Treble GSI-Anforderungen zu überprüfen und den korrekten GSI Typen festzustellen.
+
+Schlüsselfunktionen:
+* Überprüfen der Treble Unterstützung
+* Überprüfen der Treble/VNDK-Version
+* Überprüfen der Systemarchitektur
+* Überprüfen des A-only oder A/B-Statusses
+* Überprüfen von binder64
+* Überprüfen von System-as-Root
+* Benötigt keinen Rootzugriff
+* Unterstützt das Dark Theme und MD2 :D
+
+Du kannst GSIs überall im Internet herunterladen. Überprüfe die XDA Foren (keine Werbung) für einfache Anleitungen.
+
+Quelle:
+https://github.com/penn5/TrebleCheck
+Übersetzungen: https://poeditor.com/join/project/Ol1euLyZSr and https://poeditor.com/join/project/XE92nUJKqN (Zur Vermeidung von Spam wird eine Genehmigung benötigt. Kontaktiere mich dazu über die Taste in der App)"</string>
 </resources>

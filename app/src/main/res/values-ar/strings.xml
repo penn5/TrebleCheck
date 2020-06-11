@@ -35,4 +35,25 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="arch_x86">"معمارية جهازك هي x86"</string>
     <string name="no_browser">"من فضلك قم بتثبيت متصفح ويب."</string>
     <string name="donate">"التبرع"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"اكشتف هل هاتفك يدعم Project Treble أم لا"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"يمكنك هذا التطبيق من التحقق من متطلبات تثبيت نسخة النظام الموحدة GSI ومعرفة أي نوع منها هو الملائم لجهازك.
+
+مميزات التطبيق:
+* التحقق من دعم مشروع Treble
+* التحقق من إصدار Treble وVNDK
+* التحقق من معمارية النظام
+* التحقق من تفسم الهاتف (A-Only أو A/B)
+* التحقق من binder64
+* التحقق من كون الهاتف يستخدم \"النظام كـ الجذر\"
+* لا يحتاج إلى صلاحيات الرووت
+* يدعم الثيم الداكن ومصمم طبقا ل MD2
+
+يمكنك تحميل نسخ GSI من خلال العديد من المواقع على اﻹنترنت (مثل XDA)، كما ستجد هناك تعليمات التثبيت.
+
+كود التطبيق المصدري: https://github.com/penn5/TrebleCheck
+ترجمة التطبيق: https://poeditor.com/join/project/Ol1euLyZSr و https://poeditor.com/join/project/XE92nUJKqN (يجب أن يتم الموافقة على طلبك أولا لتتمكن من المساهمة في الترجمة)"</string>
 </resources>

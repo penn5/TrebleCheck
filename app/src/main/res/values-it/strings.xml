@@ -33,4 +33,25 @@ senza aver bisogno di perdere tempo."</string>
     <string name="arch_x86">"L'architettura di questo dispositivo è x86"</string>
     <string name="no_browser">"Per favore installa un browser."</string>
     <string name="donate">"Dona"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"Ti aiuta a controllare Project Treble, A / B e Architecture per installare GSI"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"Questa applicazione consente di verificare i requisiti delle GSI Treble e determina il tipo di GSI corretto per il dispositivo.
+
+Caratteristiche principali:
+* Controlla lo stato del supporto degli acuti
+* Controlla la versione Treble / VNDK
+* Controlla l'architettura del sistema
+* Controlla lo stato A-Only o A / B
+* Controlla binder64
+* Controlla System-as-Root
+* Non richiede l'accesso come root
+* Supporta tema scuro e MD2 :D
+
+Puoi scaricare GSI ovunque da Internet. Controlla i forum XDA (non affiliati) per alcuni tutorial facili.
+
+Codice sorgente: https://github.com/penn5/TrebleCheck
+Traduzioni: https://poeditor.com/join/project/Ol1euLyZSr e https://poeditor.com/join/project/XE92nUJKqN (richiedono l'approvazione da parte mia per prevenire lo spam, contattami tramite il pulsante in-app per ottenere l'approvazione )"</string>
 </resources>

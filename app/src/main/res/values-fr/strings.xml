@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">"Treble Info"</string>
+    <string name="app_name">"Infos Treble"</string>
     <string name="system_as_root_header">"Système en tant que racine"</string>
     <string name="arch_header">"Architecture"</string>
     <string name="arch_arm64">"Votre appareil est un ARM64"</string>
     <string name="arch_arm32">"Votre appareil est un ARM32"</string>
-    <string name="arch_binder64">"Votre appareil est un ARM32 mais utilise le système de binder en 64-bit. Cela indique habituellement que le matériel supporte le 64-bit mais que le logiciel quant à lui ne le supporte pas. Dans ce scénario vous devez utililser un image appelée \"binder64\" ou \"a64\""</string>
+    <string name="arch_binder64">"Votre appareil est un ARM32 mais utilise le système 'binder' en 64-bit. Cela indique habituellement que le matériel supporte le 64-bit mais que le logiciel, quant à lui, ne le supporte pas. Vous devez alors utililser une image appelée \"binder64\" ou \"a64\""</string>
     <string name="arch_unknown">"Impossible de détecter l'architecture"</string>
-    <string name="sar_true">"Votre appareil a ses fichiers systèmes à la racine de sa mémoire interne. Veuillez utilisez un système d'éxploitation A/B."</string>
+    <string name="sar_true">"Votre appareil a ses fichiers système à la racine de sa mémoire interne. Veuillez utiliser un système d'éxploitation A/B."</string>
 
     <!-- Fuzzy -->
-    <string name="sar_false">"Votre appareil n'a pas ses fichiers système à la racine de sa mémoire interne. Veuillez utilisez un système d'éxploitation uniquement A."</string>
+    <string name="sar_false">"Votre appareil n'a pas ses fichiers système à la racine de sa mémoire interne. Veuillez utiliser un système d'éxploitation uniquement A."</string>
     <string name="license_header">"Licenses"</string>
     <string name="license">"License: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Vie privée: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
-    <string name="support_header">"Support"</string>
-    <string name="support">"Si vous rencontrer un bug veuillez à ne pas me donner une mauvaise appréciaion car j'ai écris l'application entièrement en une semaine seulement!
-        Veuillez au contraire me contactacter via Telegram en utilisant le button dans le coin droit. Raconter moi le problème et je vais m'éfforcer de le fixer."</string>
+Confidentialité: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
+    <string name="support_header">"Assistance"</string>
+    <string name="support">"Si vous rencontrer un bug merci de ne pas donner une mauvaise appréciation ; j'ai écris l'application seul en une semaine!
+Veuillez, au contraire, me contactacter via Telegram en utilisant le button dans le coin supérieur droit. Expliquez moi le problème rencontré et je le corrigerai."</string>
     <string name="treble_false">"Votre appareil ne supporte pas le projet Treble"</string>
-    <string name="treble_legacy">"Votre appareil supporte l'ancienne version du projet Treble, utilisant la version du VNDK %3$s %1$d.%2$d"</string>
-    <string name="treble_modern">"Votre appareil supporte la version moderne du projet Treble, utilisant la version du VNDK %3$s %1$d.%2$d"</string>
+    <string name="treble_legacy">"Votre appareil supporte l'ancienne version du projet Treble, utilisant la version VNDK %3$s %1$d.%2$d"</string>
+    <string name="treble_modern">"Votre appareil supporte la version moderne du projet Treble, utilisant la version VNDK %3$s %1$d.%2$d"</string>
     <string name="treble_header">"Treble &amp; VNDK"</string>
     <string name="theme_day">"Thème clair"</string>
     <string name="theme_night">"Thème sombre"</string>
-    <string name="theme_auto">"Thème automatisé"</string>
+    <string name="theme_auto">"Thème automatique"</string>
     <string name="theme_header">"Thème"</string>
+    <string name="treble_unknown">"Impossible de déterminer si le projet Treble est supporté. Merci de contacter le développeur."</string>
+    <string name="ab_true">"Les mises à jours directes sont supportées ! Votre appareil peut être mis à jour vers une version Android différente en arrière-plan."</string>
+    <string name="ab_false">"Les mises à jours directes ne sont pas supportées. Votre appareil doit entrer en mode récupération pour installer les mises à jour. Le risque d'échec est accru comparé aux appareils supportant le processus en arrière-plan."</string>
+    <string name="ab_header">"Mises à jour en arrière-plan"</string>
+    <string name="sar_unknown">"Impossible de détecter si le système est monté en tant que racine. Merci de contacter le développeur pour indiquer un bug."</string>
     <string name="arch_x86_64">"Votre appareil est un x86_64"</string>
-    <string name="arch_x86_binder64">"Votre appareil est un x86 mais utilise le système de binder en 64-bit"</string>
+    <string name="arch_x86_binder64">"Votre appareil est un x86 mais utilise le système de 'binder' en 64-bit"</string>
     <string name="arch_x86">"Votre appareil est un x86"</string>
+    <string name="no_browser">"Veuillez installer un navigateur"</string>
+    <string name="donate">"Faire un don"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"Vérifier la compatibilité Treble, partitions A/B et l'architecture pour les GSIs"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"Cette application vous permet de vérifier les exigences Treble des images système génériques (GSI) et de déterminer le type adapté à votre appareil.
+
+ Principales caractéristiques:
+ * Vérifier le support du projet Treble
+ * Vérifier la version Treble/VNDK
+ * Vérifier l'architecture du système
+ * Vérifier le statut 'A-Only' ou 'A/B'
+ * Détecter l'utilisation du 'binder64'
+ * Détecter le système en tant que racine
+ * Ne nécessite pas l'accès racine (root)
+ * Prend en charge le thème sombre et MD2: D
+
+ Vous pouvez télécharger des images système génériques (GSI) partout sur Internet.  Consultez les forums XDA (non affiliés) pour des tutoriels simples.
+
+ Code source: https://github.com/penn5/TrebleCheck
+ Traductions: https://poeditor.com/join/project/Ol1euLyZSr et https://poeditor.com/join/project/XE92nUJKqN (nécessite une approbation de ma part pour éviter le spam, contactez-moi via le bouton dans l'application pour être approuvé)"</string>
 </resources>

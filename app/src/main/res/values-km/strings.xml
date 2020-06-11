@@ -32,4 +32,25 @@
     <string name="arch_x86">"ឧបករណ៍​របស់​អ្នក​គឺ​ x86"</string>
     <string name="no_browser">"សូមដំឡើងកម្មវិធីអ៊ីនធឺណិត។"</string>
     <string name="donate">"បរិច្ចាគ"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"ជួយអ្នកពិនិត្យមើល Project Treble, A / B និងស្ថាបត្យកម្មសម្រាប់តំឡើង GSI"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"កម្មវិធីនេះអនុញ្ញាតឱ្យអ្នកពិនិត្យមើលតម្រូវការ Treble GSI និងកំណត់ប្រភេទ GSI ត្រឹមត្រូវសម្រាប់ឧបករណ៍របស់អ្នក។
+
+ លក្ខណៈ​ពិសេស:
+ * ពិនិត្យមើលស្ថានភាពគាំទ្រ Treble
+ * ពិនិត្យមើល Treble / VNDK
+ * ពិនិត្យស្ថាបត្យកម្មប្រព័ន្ធ
+ * ពិនិត្យស្ថានភាពអេ - អេឬខ
+ * ពិនិត្យរក binder64
+ * ពិនិត្យរក System-as-Root
+ * មិនត្រូវការការចូលជា root ទេ
+ * គាំទ្រស្បែកខ្មៅនិង MD2: ឃ
+
+ អ្នកអាចទាញយកជីអេសអាយពីទូទាំងអ៊ីនធឺណិត។  ពិនិត្យវេទិកា XDA (មិនទាក់ទង) សម្រាប់ការបង្រៀនងាយៗ។
+
+ប្រភព៖ https://github.com/penn5/TrebleCheck
+ការបកប្រែ៖ https://poeditor.com/join/project/Ol1euLyZSr និង https://poeditor.com/join/project/XE92nUJKqN (ពួកគេត្រូវការការយល់ព្រមពីខ្ញុំដើម្បីការពារសារឥតបានការសូមទាក់ទងខ្ញុំតាមរយៈប៊ូតុងក្នុងកម្មវិធីដើម្បីទទួលបានការយល់ព្រម)"</string>
 </resources>

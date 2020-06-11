@@ -35,4 +35,34 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="arch_x86_64">"Twoje urządzenie używa architektury x86_64"</string>
     <string name="arch_x86_binder64">"Twoje urządzenie używa architektury x86 i 64 bitowego bindera"</string>
     <string name="arch_x86">"Twoje urządzenie używa architektury x86"</string>
+    <string name="no_browser">"Proszę zainstaluj przeglądarke. "</string>
+    <string name="donate">"Donate"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"Pomaga ci sprawdzić Projekt Treble, A/B i architekture na instalację GSI"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"
+Ta aplikacja pozwala ci sprawdzić wymagania Treble GSI i potwierdzić
+ obsługiw any typ GSI na twoje urządzenie.
+
+
+Funkcje:
+
+* Sprawdzić czy obsługuje Project Treble
+* Sprawdzić wersję Treble/VDNK
+* Sprawdzić architekture systemu
+* Sprawdzić czy obsługuje A-Only czy A/B
+* Sprawdzić Binder64
+* Sprawdzić System As Root
+* Nie wymaga roota
+* Obsługuje Ciemny Motyw i MD2 :D
+
+Moszesz pobrać systemy GSI z całego internetu. Sprawdź Fory XDA (nie jesteśmy z tym wspólny) na łatwe poradniki.
+
+Kod Źródłowy:
+https://github.com/penn5/TrebleCheck
+Tłumaczenia:
+https://wpoeditor.com/join/project/Ol1euLyZSr and https://poeditor.com/join/project/XE92nUJKqN
+(wymagają potwierdzenia odemnie aby pozbyć się spamu, skontaktuj mnie przez przyciak w aplikacji żeby dostać potwierdzony) "</string>
 </resources>

@@ -29,4 +29,31 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="ab_false">"\"Seamless Updates\" не се поддържат от устройството. Ще трябва да влизате във \"recovery\" за да инсталирате актуализации, и има по-голям риск сравнено със поддържаните устройства."</string>
     <string name="ab_header">"Seamless Upgrades"</string>
     <string name="sar_unknown">"Не успяхме да засечем дали устройството ви подържа \"System-as-Root\". Моля свържете се с разработчика за да уведомите за проблема."</string>
+    <string name="arch_x86_64">"Вашето устройство е \"x86_64\""</string>
+    <string name="arch_x86_binder64">"Вашето устройство е \"x86\" но използва 64 битов биндер (binder)"</string>
+    <string name="arch_x86">"Вашето устройство е \"x86\""</string>
+    <string name="no_browser">"Моля изтеглете уеб браузър."</string>
+    <string name="donate">"Дарете"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"Помага ви да видите дали вашето устройство поддържа \"Project Treble\"."</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"Това приложение ви позволява да проверите изискванията за \"GSI\" и намерите верния \"GSI\" вариант за вашето устройство.
+
+
+Ключови функций:
+* Проверка за поддръжка на \"treble\" статус
+* Проверка на версията на Treble/VNDK
+* Проверка на архитектурата
+* Проверка дали устройството е \"A-only\" или \"A/B\"
+* Проверка за \"binder64\"
+* Проверка за \"System-as-Root\"
+* Не е нужен руут
+* Поддържа тъмен режим
+
+Можете да изтеглите \"GSIs\" от много места. Проверете XDA форумите за още информация.
+
+Програмен код: https://github.com/penn5/TrebleCheck
+Преводи: https://poeditor.com/join/project/Ol1euLyZSr and https://poeditor.com/join/project/XE92nUJKqN"</string>
 </resources>

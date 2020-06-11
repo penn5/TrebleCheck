@@ -29,4 +29,33 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="ab_false">"Немає підтримки Seamless оновлень - доведеться користуватися recovery, та завжди є шанс на невдачу."</string>
     <string name="ab_header">"Seamless оновлення"</string>
     <string name="sar_unknown">"Не вдається визначити стан System-as-Root. Будь ласка, повідомте про це розробникові!"</string>
+    <string name="arch_x86_64">"Пристрій має архітектуру x86_64"</string>
+    <string name="arch_x86_binder64">"Пристрій х86, але використовує 64-bit binder"</string>
+    <string name="arch_x86">"Пристрій має архітектуру х86"</string>
+    <string name="no_browser">"Будь ласка, встановіть веб-браузер."</string>
+    <string name="donate">"Донат"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"Визначає сумісність з Project Treble, A/B, та архітектуру для GSI"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"Цей додаток допоможе Вам перевірити сумісність вашого пристрою з Project Treble, та визначити правильний варіант GSI для вашого пристрою.
+
+Ключові особливості:
+* Перевірка статусу підтримки Treble
+* Перевірка версіі Treble/VNDK
+* Перевірка архітектури системи
+* Перевірка статусу A-only або A/B
+* Перевірка binder64
+* Перевірка статусу System-As-Root
+* Не потребує Root- доступу
+* Підтримка темної теми та MD2 :D
+
+Ви можете знайти та скачати GSI в Інтернеті. Ви можете знайти прості інструкції для встановлення GSI на форумах XDA.
+
+Вихідний код:
+https://github.com/penn5/TrebleCheck
+Переклад:
+https://poeditor.com/join/project/Ol1euLyZSr та https://poeditor.com/join/project/XE92nUJKqN
+(Зв'яжіться зі мною через кнопку в додатку щоб отримати доступ)"</string>
 </resources>

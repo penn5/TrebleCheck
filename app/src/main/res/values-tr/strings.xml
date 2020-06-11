@@ -33,4 +33,8 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="arch_x86_binder64">"Cihazınız x86 ama 64-bit bağ kullanıyor"</string>
     <string name="arch_x86">"Cihazınız x86"</string>
     <string name="no_browser">"Lütfen bir web tarayıcısı yükleyin."</string>
+
+    <!-- For Google Play, max length 80 chars -->
+
+    <!-- For Google Play, max length 4000 chars -->
 </resources>

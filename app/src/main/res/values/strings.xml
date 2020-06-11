@@ -32,4 +32,25 @@ Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="arch_x86">"Your device is x86"</string>
     <string name="no_browser">"Please install a web browser."</string>
     <string name="donate">"Donate"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"Helps you check Project Treble, A/B and Architecture for GSI installation"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"This applications allows you to check the Treble GSI requirements and determine the correct GSI type for your device.
+
+Key features:
+* Check Treble support status
+* Check Treble/VNDK version
+* Check system architecture
+* Check A-Only or A/B status
+* Check for binder64
+* Check for System-as-Root
+* Does not require root access
+* Supports dark theme and MD2 :D
+
+You can download GSIs from all over the internet. Check the XDA Forums (not affiliated) for some easy tutorials.
+
+Source Code: https://github.com/penn5/TrebleCheck
+Translations: https://poeditor.com/join/project/Ol1euLyZSr and https://poeditor.com/join/project/XE92nUJKqN (they require approval from me to prevent spam, contact me via the in-app button to get approved)"</string>
 </resources>

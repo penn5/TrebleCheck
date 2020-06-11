@@ -29,4 +29,27 @@ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="ab_false">"您的设备不支持无缝系统更新。和无缝系统更新的机型不同，系统更新时必须重启到 Recovery 模式，在这期间您无法使用手机，且升级失败的风险相比无缝系统更新较高。"</string>
     <string name="ab_header">"无缝系统更新"</string>
     <string name="sar_unknown">"无法判定设备SAR状态。清联系开发者报错。"</string>
+    <string name="arch_x86_64">"你的设备为 x86_64 架构"</string>
+    <string name="arch_x86_binder64">"你的设备为 x86 但使用了 64 位 binder"</string>
+    <string name="arch_x86">"你的设备为 x86"</string>
+    <string name="no_browser">"必须安装一个有效的网页浏览器"</string>
+    <string name="donate">"捐赠"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"帮助您在安装通用系统镜像（GSI）之前检查设备的架构、是否支持 Project Treble 以及是否 A/B 更新。"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"这个应用可以帮助您检查您的设备是否符合 Treble 通用系统镜像（GSI）的运行需求，以及为您的设备确定匹配的通用系统镜像类别。
+
+主要功能：
+* 检查 Treble 支持情况
+* 检查 Treble/VNDK 版本
+* 检查系统架构
+* 检查机器为传统 A-Only 形式还是 A/B 格式
+* 检查是否带 binder64
+* 检查是否为 System-as-Root
+* 无需 Root 权限
+* 支持暗黑模式和 MD2
+
+你可以在网络上找到通用系统映像"</string>
 </resources>

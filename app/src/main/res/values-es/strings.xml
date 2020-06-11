@@ -5,7 +5,7 @@
     <string name="arch_header">"Arquitectura"</string>
     <string name="arch_arm64">"Tu dispositivo es ARM64"</string>
     <string name="arch_arm32">"Tu dispositivo es ARM32"</string>
-    <string name="arch_binder64">"Tu dispositivo es ARM32 pero usa binder de 64 bit. Esto generalmente indica que tu hardware soporta 64 bits, pero tú software no. En este escenario, utiliza imágenes llamadas \"binder64\" o \"a64\""</string>
+    <string name="arch_binder64">"Tu dispositivo es ARM32 pero usa binder de 64 bit. Esto generalmente indica que tu hardware soporta 64 bits, pero tú software no. En este caso, utiliza las imágenes llamadas \"binder64\" o \"a64\""</string>
     <string name="arch_unknown">"No es posible detectar la arquitectura"</string>
     <string name="sar_true">"Tu dispositivo soporta Sistema como Root. Usa un sistema operativo A/B"</string>
     <string name="sar_false">"Tu dispositivo no soporta Sistema como Root. Usa un sistema operativo A-only"</string>
@@ -13,7 +13,7 @@
     <string name="license">"Licencia: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
 Privacidad: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string>
     <string name="support_header">"Soporte"</string>
-    <string name="support">"Por favor, no dejes una mala opinión si me he dejado algún bug, he escrito toda la aplicación yo solo. En su lugar, contáctame vía Telegram con el botón de arriba (usa Inglés). Coméntame acerca de tu error y estaré encantado de ayudar."</string>
+    <string name="support">"Por favor, si encuentras un bug no dejes una mala opinión, he escrito toda la aplicación yo solo. En su lugar, contáctame vía Telegram con el botón de arriba (usa Inglés). Coméntame acerca de tu error y estaré encantado de ayudar."</string>
     <string name="treble_false">"Tu dispositivo no soporta el proyecto Treble"</string>
     <string name="treble_legacy">"Tu dispositivo soporta la versión de legado del proyecto Treble, usando VNDK %3$sversion %1$d.%2$d"</string>
     <string name="treble_modern">"Tu dispositivo soporta la versión moderna del proyecto Treble, usando VNDK %3$sversion %1$d.%2$d"</string>
@@ -23,7 +23,7 @@ Privacidad: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string
     <string name="theme_auto">"Tema automático"</string>
     <string name="theme_header">"Tema"</string>
     <string name="treble_unknown">"No fué posible detectar el estado del soporte de Treble. Por favor contacta con el desarrollador, ya que la aplicación no mandará automáticamente un reporte de bug."</string>
-    <string name="ab_true">"¡Seamless Upgrades están soportadas! Tu dispositivo puede actualizar entre diferentes versiones de Android sin tener que apagarlo."</string>
+    <string name="ab_true">"¡Las actualizaciones en segundo plano están soportadas! Tu dispositivo puede actualizar entre diferentes versiones de Android sin tener que apagarlo."</string>
     <string name="ab_false">"Las actualizaciones en segundo plano no están soportadas. Tu dispositivo debe entrar en el modo de recuperación para instalar actualizaciones y hay un riesgo más elevado de fallos, comparado con los dispositivos que soportan las actualizaciones en segundo plano."</string>
     <string name="ab_header">"Actualizaciones en segundo plano"</string>
     <string name="sar_unknown">"Imposible detectar el soporte de Sistema como Root. Por favor, contacta con el desarrollador para reportar el fallo"</string>
@@ -31,4 +31,26 @@ Privacidad: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md"</string
     <string name="arch_x86_binder64">"Tu dispositivo es x86, pero usa un binder de 64-bits"</string>
     <string name="arch_x86">"Tu dispositivo es x86"</string>
     <string name="no_browser">"Por favor, instala un navegador de internet"</string>
+    <string name="donate">"Donar"</string>
+
+    <!-- For Google Play, max length 80 chars -->
+    <string name="short_description">"Le ayuda a verificar Treble, A/B y Arquitectura para instalar GSI"</string>
+
+    <!-- For Google Play, max length 4000 chars -->
+    <string name="full_description">"Esta App te permite verificar los requisitos de Treble GSI y determinar el tipo correcto de GSI para el dispositivo.
+
+Características clave:
+* Verifica el status Treble
+* Verifica la version Treble/VNDK
+* Verifica la arquitectura de sistema
+* Verifica se es A-only o A/B
+* Procura por binder64
+* Procura por System-as-root
+* No necessita de acesso root
+* Suporta tema oscuro y MD2 :D
+
+Puedes descargar GSIs en la Internet. Visita XDA Forums (no afiliados) para tutoriales fáciles.
+
+Código fuente: https://github.com/penn5/TrebleCheck
+Traduciones: https://poeditor.com/join/project/Ol1euLyZSr and https://poeditor.com/join/project/XE92nUJKqN (necessitan de mi aprobación para evitar spam, contáctame via el botón in-app para tu aprobación)"</string>
 </resources>
