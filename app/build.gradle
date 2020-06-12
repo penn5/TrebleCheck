@@ -96,6 +96,13 @@ android {
             path file('src/main/cpp/CMakeLists.txt')
         }
     }
+    dependenciesInfo {
+        // Disables dependency metadata when building APKs.
+        includeInApk = false
+        // Disables dependency metadata when building Android App Bundles.
+        includeInBundle = false
+    }
+
 }
 
 if (file('poeditor.properties').exists()) {
