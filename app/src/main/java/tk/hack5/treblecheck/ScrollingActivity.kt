@@ -15,7 +15,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
-import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -42,12 +41,13 @@ class ScrollingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scrolling)
         setSupportActionBar(toolbar)
+        toolbar_layout.setCollapsedTitleTypeface(null) // prevent text going bold when collapsed
         fab.setOnClickListener {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/hackintosh5"))
             try {
                 startActivity(browserIntent)
             } catch (e: ActivityNotFoundException) {
-                Log.e(tag, "Launch t.me failed")
+                Log.e(tag, "Launch t.me failed", e)
                 Toast.makeText(this, R.string.no_browser, Toast.LENGTH_LONG).show()
             }
         }
@@ -219,14 +219,11 @@ class ScrollingActivity : AppCompatActivity() {
             view.onApplyWindowInsets(insets)
             insets
         }
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION // TODO deprecated in R
-        window.navigationBarColor = ResourcesCompat.getColor(resources, android.R.color.transparent, theme)
-
-        val nightMode = resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-            && nightMode != Configuration.UI_MODE_NIGHT_YES) {
-            window.decorView.systemUiVisibility = window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.setDecorFitsSystemWindows(false)
+        } else {
+            @Suppress("DEPRECATION")
+            window.decorView.systemUiVisibility = window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
         }
     }
 
@@ -267,25 +264,41 @@ class ScrollingActivity : AppCompatActivity() {
     }
 
     private fun fitToCutout(insets: WindowInsets) = insets.run {
-                val titleIsRtl = ViewCompat.getLayoutDirection(toolbar) == ViewCompat.LAYOUT_DIRECTION_RTL
-                val newLayoutParams = toolbar_layout.layoutParams as ViewGroup.MarginLayoutParams
-                newLayoutParams.setMargins(if (titleIsRtl) 0 else systemWindowInsetLeft, 0,
-                    if (titleIsRtl) systemWindowInsetRight else 0, 0)
-                toolbar_layout.layoutParams = newLayoutParams
-                val fabLayoutParams = fab.layoutParams as ViewGroup.MarginLayoutParams
-                fabLayoutParams.setMargins(
-                    resources.getDimensionPixelOffset(R.dimen.fab_margin) + systemWindowInsetLeft, 0,
-                    resources.getDimensionPixelOffset(R.dimen.fab_margin) + systemWindowInsetRight, 0
-                )
-                fab.layoutParams = fabLayoutParams
-                for (i in 0 until cards.childCount) {
-                    (cards.getChildAt(i) as ViewGroup).getChildAt(0).setPadding(
-                        systemWindowInsetLeft,
-                        0,
-                        systemWindowInsetRight,
-                        if (i == cards.childCount - 1) systemWindowInsetBottom else 0
-                    )
-                }
+        val titleIsRtl = ViewCompat.getLayoutDirection(toolbar) == ViewCompat.LAYOUT_DIRECTION_RTL
+        val newLayoutParams = toolbar_layout.layoutParams as ViewGroup.MarginLayoutParams
+        val systemWindowInsetLeftCompat: Int
+        val systemWindowInsetRightCompat: Int
+        val systemWindowInsetBottomCompat: Int
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val systemWindowInsets = getInsets(WindowInsets.Type.systemBars() or WindowInsets.Type.displayCutout())
+            systemWindowInsetLeftCompat = systemWindowInsets.left
+            systemWindowInsetRightCompat = systemWindowInsets.right
+            systemWindowInsetBottomCompat = systemWindowInsets.bottom
+        } else {
+            @Suppress("DEPRECATION")
+            systemWindowInsetLeftCompat = systemWindowInsetLeft
+            @Suppress("DEPRECATION")
+            systemWindowInsetRightCompat = systemWindowInsetRight
+            @Suppress("DEPRECATION")
+            systemWindowInsetBottomCompat = systemWindowInsetBottom
+        }
+        newLayoutParams.setMargins(if (titleIsRtl) 0 else systemWindowInsetLeftCompat, 0,
+            if (titleIsRtl) systemWindowInsetRightCompat else 0, 0)
+        toolbar_layout.layoutParams = newLayoutParams
+        val fabLayoutParams = fab.layoutParams as ViewGroup.MarginLayoutParams
+        fabLayoutParams.setMargins(
+            resources.getDimensionPixelOffset(R.dimen.fab_margin) + systemWindowInsetLeftCompat, 0,
+            resources.getDimensionPixelOffset(R.dimen.fab_margin) + systemWindowInsetRightCompat, 0
+        )
+        fab.layoutParams = fabLayoutParams
+        for (i in 0 until cards.childCount) {
+            (cards.getChildAt(i) as ViewGroup).getChildAt(0).setPadding(
+                systemWindowInsetLeftCompat,
+                0,
+                systemWindowInsetRightCompat,
+                if (i == cards.childCount - 1) systemWindowInsetBottomCompat else 0
+            )
+        }
     }
 }
 

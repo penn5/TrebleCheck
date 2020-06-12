@@ -10,8 +10,7 @@
   -->
 
 <resources>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
-        <item name="android:textColorPrimary">@color/text</item>
-        <item name="android:windowLayoutInDisplayCutoutMode">always</item>
+    <style name="AppTheme" parent="BaseAppTheme.27">
+        <item name="android:windowLightNavigationBar">false</item>
     </style>
 </resources>

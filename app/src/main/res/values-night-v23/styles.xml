@@ -10,8 +10,8 @@
   -->
 
 <resources>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
-        <item name="android:textColorPrimary">@color/text</item>
-        <item name="android:windowLayoutInDisplayCutoutMode">always</item>
+
+    <style name="BaseAppTheme.23" parent="BaseAppTheme">
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 </resources>

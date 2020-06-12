@@ -9,9 +9,10 @@
   ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
   -->
 
-<resources>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
-        <item name="android:textColorPrimary">@color/text</item>
-        <item name="android:windowLayoutInDisplayCutoutMode">always</item>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="BaseAppTheme.27" parent="BaseAppTheme.23">
+        <!-- DO NOT TOUCH - b/158777985 -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
     </style>
 </resources>

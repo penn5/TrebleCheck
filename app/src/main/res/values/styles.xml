@@ -25,11 +25,15 @@
         <item name="materialAlertDialogTheme">@style/DialogTheme</item>
 
         <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
+        <!-- DO NOT TOUCH - b/158777985 -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
-    <style name="AppTheme" parent="BaseAppTheme" />
+    <style name="BaseAppTheme.23" parent="BaseAppTheme" />
+    <style name="BaseAppTheme.27" parent="BaseAppTheme.23" />
+
+    <style name="AppTheme" parent="BaseAppTheme.27" />
 
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
