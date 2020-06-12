@@ -29,4 +29,5 @@
     <color name="ab_true">@color/green</color>
     <color name="text">#2E2E2E</color>
     <color name="background">@color/cardview_light_background</color>
+    <color name="translucent">#55000000</color>
 </resources>
