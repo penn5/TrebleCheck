@@ -10,10 +10,7 @@
 	<string name="sar_true">Є підтримка функції System-as-Root - обирайте A/B систему.</string>
 	<string name="sar_false">Пристрій не підтримує функцію System-as-Root, обирайте систему A-only.</string>
 	<string name="license_header">Ліцензії</string>
-	<string name="license">Ліцензія:
-https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Конфіденційність:
-https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Ліцензія:\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\nКонфіденційність:\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">Підтримка</string>
 	<string name="support">Будь ласка, коли вам здається, що додаток не працює належним чином - не лишайте негативних оцінок. Я розробляв його власноруч, кожен може помилитися! Натомість пишіть мені у Telegram (правий-верхній кут), назовіть вашу проблему, та я спробую допомогти.</string>
 	<string name="treble_false">Пристрій не є сумісним із проектом Treble</string>

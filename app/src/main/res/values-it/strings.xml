@@ -10,8 +10,7 @@
 	<string name="sar_true">Il tuo dispostivo supporta System-as-Root. Utilizzare un sistema operativo A/B.</string>
 	<string name="sar_false">Il dispositivo non supporta System-as-Root. Utilizzare un sistema operativo A-Only.</string>
 	<string name="license_header">Licenze</string>
-	<string name="license">Licenza: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Licenza: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nPrivacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">Supporto</string>
 	<string name="support">Per favore non lasciare una recensione negativa se ho lasciato un bug; Ho scritto l\&apos;intera app da solo! Contattami su Telegram utilizzando il pulsante in alto a destra e spiegami il tuo problema, cercherò di aiutarti.</string>
 	<string name="treble_false">Il tuo dispostivo non supporta Project Treble</string>
@@ -23,8 +22,7 @@ Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="theme_auto">Automatico</string>
 	<string name="theme_header">Tema</string>
 	<string name="treble_unknown">Impossibile determinare il supporto a Treble. Per favore contattare lo sviluppatore, perché l\&apos;app non invierà automaticamente i bug report</string>
-	<string name="ab_true">Gli Aggiornamenti Silenziosi sono supportati! Il tuo dispositivo può aggiornarsi 
-senza aver bisogno di perdere tempo.</string>
+	<string name="ab_true">Gli Aggiornamenti Silenziosi sono supportati! Il tuo dispositivo può aggiornarsi \nsenza aver bisogno di perdere tempo.</string>
 	<string name="ab_false">Gli Aggiornamenti Silenziosi non sono supportati. Il tuo dispositivo dovrà entrare in modalità recovery per installare nuovi aggiornamenti aumentando il rischio di fallimento, rispetto agli Aggiornamenti Silenziosi.</string>
 	<string name="ab_header">Aggiornamenti Silenziosi</string>
 	<string name="sar_unknown">Impossibile rilevare il supporto a System-as-root. Per favore contatta lo sviluppatore per segnalare il bug.</string>

@@ -10,10 +10,7 @@
 	<string name="sar_true">Cihazınız \&quot;Kök Olarak Sistem\&quot;i destekliyor. A/B işletim sistemi kullanın.</string>
 	<string name="sar_false">Cihazınız \&quot;Kök Olarak Sistem\&quot;i desteklemiyor. Sadece A (A-only) işletim sistemi kullanın.</string>
 	<string name="license_header">Lisanslar</string>
-	<string name="license">Lisans
-https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Gizlilik:
-https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Lisans\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\nGizlilik:\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">Destek</string>
 	<string name="support">Bir hata yapmışsam lütfen kötü bir yorum bırakmayın; tüm uygulamayı tek başıma yazdım! Bunun yerine sağ üstteki tuş yardımıyla bana ulaşın. Derdinizi anlatırsanız memnuniyetle yardım ederim.</string>
 	<string name="treble_false">Cihazınız Treble Projesi\&apos;ni desteklemiyor</string>

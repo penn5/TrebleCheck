@@ -10,8 +10,7 @@
 	<string name="sar_true">Das Gerät unterstützt System-as-Root. Benutze ein A/B-OS.</string>
 	<string name="sar_false">Das Gerät unterstützt System-as-Root nicht. Benutze ein A-only-OS.</string>
 	<string name="license_header">Lizenzen</string>
-	<string name="license">Lizenz: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Datenschutz-Bestimmungen: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Lizenz: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nDatenschutz-Bestimmungen: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">Support</string>
 	<string name="support">Solltest du auf Bugs stoßen, hinterlasse bitte keine schlechte Bewertung. Ich habe diese App komplett selber programmiert! Kontaktiere mich stattdessen via Telegram über den Button oben rechts, schilder mir dein Problem und ich bemühe mich, dir zu helfen.</string>
 	<string name="treble_false">Das Gerät ist nicht Treble-kompatibel.</string>

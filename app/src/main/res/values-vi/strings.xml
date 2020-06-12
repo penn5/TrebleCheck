@@ -10,8 +10,7 @@
 	<string name="sar_true">Thiết bị của bạn có hỗ trợ System-as-Root. Hãy sử dụng hệ điều hành có hỗ trợ phân vùng A/B.</string>
 	<string name="sar_false">Thiết bị của bạn không hỗ trợ System-as-Root. Hãy sử dụng hệ điều hành chỉ hỗ trợ phân vùng A (A-only).</string>
 	<string name="license_header">Bản quyền</string>
-	<string name="license">Bản quyền: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Thông tin về quyền riêng tư: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Bản quyền: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nThông tin về quyền riêng tư: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">Hỗ trợ</string>
 	<string name="support">Xin đừng đánh giá thấp ứng dụng này. Tôi đã bỏ nhiều thời gian để viết ứng dụng này! Thay vì để lại đánh giá thấp thì hãy liên hệ với tôi qua Telegram bằng cái nút ở góc trên cùng bên phải. Vui lòng miêu tả lỗi của ứng dụng và tôi sẽ sẵn lòng giúp bạn!</string>
 	<string name="treble_false">Thiết bị của bạn không hỗ trợ Project Treble</string>

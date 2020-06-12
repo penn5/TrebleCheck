@@ -10,8 +10,7 @@
 	<string name="sar_true">Uw apparaat ondersteund Systeem als Root. Gebruik een A/B besturingssysteem.</string>
 	<string name="sar_false">Uw apparaat ondersteund geen Systeem als root. Gebruik een A-only besturingssysteem.</string>
 	<string name="license_header">Licenties</string>
-	<string name="license">Licentie: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Licentie: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nPrivacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">Ondersteuning</string>
 	<string name="support">Als er nog een bug is laat dan alsjeblieft geen slecht review achter; ik heb deze hele app in m\&apos;n eentje gemaakt! In plaats hiervan kan je me bereiken via Telegram met de knop in de rechter hoek. Leg je probleem aan me uit en ik ga proberen te helpen.</string>
 	<string name="treble_false">Uw apparaat ondersteund geen Project Treble</string>
@@ -20,8 +19,7 @@ Privacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="treble_header">Treble &amp; VNDK</string>
 	<string name="theme_day">Licht Thema</string>
 	<string name="theme_night">Donker Thema</string>
-	<string name="theme_auto">Selecteer Thema automatisch
-</string>
+	<string name="theme_auto">Selecteer Thema automatisch\n</string>
 	<string name="theme_header">Thema</string>
 	<string name="treble_unknown">Niet in staat Treble ondersteuning status te detecteren. Neem alsjeblieft contact op met de ontwikkelaar, want de app verstuurd geen automatische bugreport.</string>
 	<string name="ab_true">Naadloze upgrades zijn ondersteund! Uw apparaat kan upgraden tussen verschillende Android versies zonder downtime voor de update.</string>

@@ -10,11 +10,9 @@
 	<string name="sar_true">Votre appareil a ses fichiers système à la racine de sa mémoire interne. Veuillez utiliser un système d\&apos;éxploitation A/B.</string>
 	<string name="sar_false">Votre appareil n\&apos;a pas ses fichiers système à la racine de sa mémoire interne. Veuillez utiliser un système d\&apos;éxploitation uniquement A.</string>
 	<string name="license_header">Licenses</string>
-	<string name="license">License: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Confidentialité: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">License: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nConfidentialité: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">Assistance</string>
-	<string name="support">Si vous rencontrer un bug merci de ne pas donner une mauvaise appréciation ; j\&apos;ai écris l\&apos;application seul en une semaine!
-Veuillez, au contraire, me contactacter via Telegram en utilisant le button dans le coin supérieur droit. Expliquez moi le problème rencontré et je le corrigerai.</string>
+	<string name="support">Si vous rencontrer un bug merci de ne pas donner une mauvaise appréciation ; j\&apos;ai écris l\&apos;application seul en une semaine!\nVeuillez, au contraire, me contactacter via Telegram en utilisant le button dans le coin supérieur droit. Expliquez moi le problème rencontré et je le corrigerai.</string>
 	<string name="treble_false">Votre appareil ne supporte pas le projet Treble</string>
 	<string name="treble_legacy">Votre appareil supporte l\&apos;ancienne version du projet Treble, utilisant la version VNDK %3$s %1$d.%2$d</string>
 	<string name="treble_modern">Votre appareil supporte la version moderne du projet Treble, utilisant la version VNDK %3$s %1$d.%2$d</string>

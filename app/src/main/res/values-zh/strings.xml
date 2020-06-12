@@ -10,10 +10,7 @@
 	<string name="sar_true">您的设备支持 System-as-Root 且使用 A/B 无缝系统更新方式。这种情况下，该设备没有独立的 Recovery 分区。</string>
 	<string name="sar_false">您的设备不支持 System-as-Root 且使用 A-Only 传统系统更新方式。这种情况下，该设备具有独立的 Recovery 分区。</string>
 	<string name="license_header">许可证</string>
-	<string name="license">许可证：
-https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-隐私保护政策：
-https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">许可证：\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\n隐私保护政策：\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">支持作者</string>
 	<string name="support">如果遇到 BUG，请不要轻易留下差评。本应用是我独自完成的！您可以通过点击右上角的按钮在 Telegram 联系我（仅使用英文），从而向我反馈 BUG，我会很乐意帮助您。</string>
 	<string name="treble_false">您的手机不支持 Project Treble。也许您可以寻求第三方方案实现 Project Treble。</string>

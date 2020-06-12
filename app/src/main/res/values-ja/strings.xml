@@ -7,13 +7,9 @@
 	<string name="arch_binder64">デバイスはARM32ですが、64ビットbinderを使用しています。通常、ハードウェアは64ビットをサポートしていますが、ソフトウェアはサポートしていないことを示しています。このシナリオでは、「binder64」または「A64」という名前のイメージを使用する必要があります</string>
 	<string name="arch_unknown">アーキテクチャを検出できません</string>
 	<string name="license_header">ライセンス</string>
-	<string name="license">ライセンス：
-https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-プライバシー：
-https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">ライセンス：\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\nプライバシー：\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">サポート</string>
-	<string name="theme_day">
-ライトテーマ</string>
+	<string name="theme_day">\nライトテーマ</string>
 	<string name="theme_night">ダークモード</string>
 	<string name="theme_auto">自動選択テーマ</string>
 	<string name="theme_header">テーマ</string>

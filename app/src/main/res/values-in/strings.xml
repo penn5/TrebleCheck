@@ -10,10 +10,7 @@
 	<string name="sar_true">Piranti Anda mendukung System-as-Root. Gunakan sebuah sistem operasi A/B</string>
 	<string name="sar_false">Piranti Anda tidak mendukung System-as-Root. Gunakan sebuah sistem operasi A-only</string>
 	<string name="license_header">Lisensi</string>
-	<string name="license">Lisensi :
-https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Privasi :
-https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Lisensi :\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\nPrivasi :\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">Dukungan</string>
 	<string name="support">Mohon jangan meninggalkan review buruk jika ada bug; Saya menulis keseluruhan aplikasi ini sendirian! Hubungi saya melalui Telegram dengan menggunakan tombol di kanan atas. Beritahukan masalah Anda dan Saya akan berupaya untuk membantu.</string>
 	<string name="treble_false">Piranti Anda tidak mendukung Project Treble</string>

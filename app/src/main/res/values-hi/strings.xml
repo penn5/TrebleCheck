@@ -6,13 +6,11 @@
 	<string name="arch_arm64">आपका डिवाइस ARM64 है</string>
 	<string name="arch_arm32">आपका डिवाइस ARM32 है</string>
 	<string name="arch_binder64">आपका डिवाइस ARM32 है लेकिन 64-bit binder का उपयोग करता है। मतलब hardware 64-बिट का  उपयोग कर सकता है, लेकिन सॉफ्टवेयर नहीं करता है। इस परिदृश्य में आपको \&quot;binder64\&quot; नामक ईमेज का उपयोग करे या \&quot;A64\&quot;</string>
-	<string name="arch_unknown">
-आर्किटेक्चर पता नहीं  लग रहा</string>
+	<string name="arch_unknown">\nआर्किटेक्चर पता नहीं  लग रहा</string>
 	<string name="sar_true">आपका device System-as-Root का उपयोग करता है। A / B  Operating System का उपयोग करें।</string>
 	<string name="sar_false">आपका device System-as-Root का उपयोग नहीं करता है। A-only  Operating System का उपयोग करें।</string>
 	<string name="license_header">लाइसेंस</string>
-	<string name="license">लाइसेंस: https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-गोपनीयता: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">लाइसेंस: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nगोपनीयता: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">मदद</string>
 	<string name="support">कुछ bug पे कृपया कर बुरी समीक्षा न छोड़े; मैंने यह app अपने आप से लिखा है! telegram में संम्पर्क करे (दायां शीर्ष बटन द्वारा) । वहां अपने समस्याओ का समाधान करे</string>
 	<string name="treble_false">आपका डिवाइस प्रोजेक्ट ट्रेबल का उपयोग नहीं करता है</string>

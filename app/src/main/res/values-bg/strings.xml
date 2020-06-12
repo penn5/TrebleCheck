@@ -10,10 +10,7 @@
 	<string name="sar_true">Вашето устройство поддържа \&quot;System-as-Root\&quot;. Използвайте A/B операционна система.</string>
 	<string name="sar_false">Вашето устройство не поддържа \&quot;System-as-Root\&quot;. Използвайте A-само операционна система.</string>
 	<string name="license_header">Лицензи</string>
-	<string name="license">Лиценз:
-https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Политика за поверителност:
-https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Лиценз:\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\nПолитика за поверителност:\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">Поддържка</string>
 	<string name="support">Моля не оставяйте лош коментар ако има бъгове; Направих приложението сам! Вместо това ми пишете със Telegram използвайки бутона в горе-дясно. Кажете ми проблема и ще помогна да го оправите.</string>
 	<string name="treble_false">Вашето устройство не поддържа \&quot;Project Treble\&quot;</string>

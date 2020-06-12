@@ -10,10 +10,7 @@
 	<string name="sar_true">O seu dispositivo suporta System-as-root. Use um sistema operativo A/B.</string>
 	<string name="sar_false">O seu dispositivo não suporta System-as-root. Use um sistema operativo A only.</string>
 	<string name="license_header">Licenças</string>
-	<string name="license">Licença:
-https://github.com/penn5/TrebleCheck/blob/master/LICENSE
-Privacidade:
-https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Licença:\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\nPrivacidade:\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">Suporte</string>
 	<string name="support">Por favor não deixe um comentário negativo no caso de encontrar algum bug, visto que desenvolvi a app sozinho! Nesse caso, contate-me no Telegram através do botão no canto superior direito. Descreva o seu problema e eu vou esforçar-me para ajudar.</string>
 	<string name="treble_false">O seu dispositivo não suporta o Project Treble</string>
