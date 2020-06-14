@@ -9,7 +9,7 @@
 ## Permissions breakdown
 
 - com.android.vending.BILLING
-  - Used only if the installation referrer is Google Play, this permission allows in-app billing for donations
+  - Used only if Google Play is installed, this permission allows in-app billing for donations
   - This permission is only used if you click the donation button
 
 ## Financial data
