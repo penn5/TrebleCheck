@@ -14,13 +14,13 @@ import android.annotation.SuppressLint
 
 
 @SuppressLint("PrivateApi") // Oh well.
-fun propertyGet(prop: String): String {
+fun propertyGet(prop: String): String? {
     return try {
         val c = Class.forName("android.os.SystemProperties")
         val g = c.getMethod("get", String::class.java, String::class.java)
         g.invoke(null, prop, "") as String
     } catch (e: Exception) {
-        ""
+        null
     }
 }
 

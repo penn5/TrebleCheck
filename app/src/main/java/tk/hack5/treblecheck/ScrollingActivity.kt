@@ -15,61 +15,64 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
+import android.content.res.Resources
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.Spanned
 import android.text.util.Linkify
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.widget.ImageViewCompat
-import kotlinx.android.synthetic.main.activity_scrolling.*
-import kotlinx.android.synthetic.main.content_scrolling.*
 import org.sufficientlysecure.donations.DonationsFragment
+import tk.hack5.treblecheck.databinding.ActivityScrollingBinding
+import tk.hack5.treblecheck.databinding.ContentScrollingBinding
 
 class ScrollingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityScrollingBinding
+    private lateinit var content: ContentScrollingBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scrolling)
-        setSupportActionBar(toolbar)
-        toolbar_layout.setCollapsedTitleTypeface(null) // prevent text going bold when collapsed
-        fab.setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/hackintosh5"))
+        binding = ActivityScrollingBinding.inflate(layoutInflater)
+        content = ContentScrollingBinding.bind(binding.root.getChildAt(0))
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+
+
+        binding.toolbarLayout.setCollapsedTitleTypeface(null) // prevent text going bold when collapsed
+        binding.fab.setOnClickListener {
+            val telegramIntent = Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=hackintosh5"))
             try {
-                startActivity(browserIntent)
+                startActivity(telegramIntent)
             } catch (e: ActivityNotFoundException) {
-                Log.e(tag, "Launch t.me failed", e)
-                Toast.makeText(this, R.string.no_browser, Toast.LENGTH_LONG).show()
+                Log.e(tag, "Launch tg:// failed", e)
+                val emailIntent = Intent(Intent.ACTION_SEND)
+                    .putExtra(Intent.EXTRA_EMAIL, "treble@hack5.dev")
+                    .addCategory(Intent.CATEGORY_APP_EMAIL)
+                try {
+                    startActivity(emailIntent)
+                } catch (e: ActivityNotFoundException) {
+                    Log.e(tag, "Launch email failed", e)
+                    val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/hackintosh5"))
+                    try {
+                        startActivity(browserIntent)
+                    } catch (e: ActivityNotFoundException) {
+                        Log.e(tag, "Launch browser failed", e)
+                        Toast.makeText(this, R.string.no_browser, Toast.LENGTH_LONG).show()
+                    }
+                }
             }
         }
-        treble_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.treble_header)
-        sar_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.system_as_root_header)
-        arch_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.arch_header)
-        ab_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.ab_header)
-        theme_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.theme_header)
-        license_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.license_header)
-        support_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.support_header)
-        license_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.license)
-
-        license_card.findViewById<TextView>(R.id.content)
-            .setLinkTextColor(license_card.findViewById<TextView>(R.id.content).textColors)
-        Linkify.addLinks(license_card.findViewById<TextView>(R.id.content), Linkify.WEB_URLS)
-        support_card.findViewById<TextView>(R.id.content).text = resources.getText(R.string.support)
-        updateThemeText(false)
-        theme_card.setOnClickListener { updateThemeText(true) }
-        license_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.foss_license, theme))
-        support_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.support, theme))
-        theme_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.theme, theme))
-        donate_card.findViewById<ImageView>(R.id.image).setImageDrawable(resources.getDrawable(R.drawable.donate, theme))
 
 
         var trebleFail = false
@@ -80,6 +83,7 @@ class ScrollingActivity : AppCompatActivity() {
             trebleFail = true
             null
         }
+
         val arch = try {
             ArchDetector.getArch().also {
                 if (it is Arch.UNKNOWN) {
@@ -90,6 +94,7 @@ class ScrollingActivity : AppCompatActivity() {
             Log.e(tag, "Arch checks failed", e)
             Arch.UNKNOWN(null, null)
         }
+
         val sar = try {
             MountDetector.isSAR()
         } catch (e: Exception) {
@@ -102,116 +107,297 @@ class ScrollingActivity : AppCompatActivity() {
             Log.e(tag, "AB checks failed", e)
             false
         }
-
-        var trebleText = resources.getText(if (trebleFail) R.string.treble_unknown else when (treble?.legacy) {
-            null -> R.string.treble_false
-            true -> R.string.treble_legacy
-            false -> R.string.treble_modern
-        }) as String
-        treble?.let {
-            trebleText = trebleText.format(it.vndkVersion, it.vndkSubVersion, if (it.lite) "Lite " else "")
+        val dynamicPartitions = try {
+            DynamicPartitionsDetector.isDynamic()
+        } catch (e: Exception) {
+            Log.e(tag, "Dynamic Partitions checks failed", e)
+            null
         }
-        val archText = resources.getText(
-            when (arch) {
-                Arch.ARM64 -> R.string.arch_arm64
-                Arch.ARM32 -> R.string.arch_arm32
-                Arch.ARM32_BINDER64 -> R.string.arch_binder64
-                Arch.X86_64 -> R.string.arch_x86_64
-                Arch.X86_BINDER64 -> R.string.arch_x86_binder64
-                Arch.X86 -> R.string.arch_x86
-                is Arch.UNKNOWN -> R.string.arch_unknown
-            }
-        )
-        val sarText = resources.getText(
-            when (sar) {
-                true -> R.string.sar_true
-                false -> R.string.sar_false
-                null -> R.string.sar_unknown
-            }
-        )
-        val abText = resources.getText(if (ab) R.string.ab_true else R.string.ab_false)
+        val fileName = try {
+            FileNameAnalyzer(treble, arch, sar).getFileName()
+        } catch (e: Exception) {
+            Log.e(tag, "File name detection failed", e)
+            null
+        }
 
-        val trebleImage = resources.getDrawable(if (trebleFail) R.drawable.unknown else
-            when (treble?.legacy) {
-                null -> R.drawable.treble_false
-                true -> R.drawable.treble_legacy
-                false -> if (!treble.lite) R.drawable.treble_modern else R.drawable.treble_legacy
-            }, theme
-        )
-        val archImage = resources.getDrawable(
-            when (arch) {
-                Arch.ARM64, Arch.X86_64 -> R.drawable.arch_64_bit
-                Arch.ARM32, Arch.X86 -> R.drawable.arch_32_bit
-                Arch.ARM32_BINDER64, Arch.X86_BINDER64 -> R.drawable.arch_32_64_bit
-                is Arch.UNKNOWN -> R.drawable.unknown
-            }, theme
-        )
-        val sarImage = resources.getDrawable(
-            when (sar) {
-                true -> R.drawable.sar_true
-                false -> R.drawable.sar_false
-                null -> R.drawable.unknown
-            }, theme)
-        val abImage = resources.getDrawable(if (ab) R.drawable.ab_true else R.drawable.ab_false, theme)
 
-        val trebleTint = ColorStateList.valueOf(
-            ResourcesCompat.getColor(
-                resources, if (trebleFail) R.color.unknown else
-                    when (treble?.legacy) {
-                        null -> R.color.treble_false
-                        true -> R.color.treble_legacy
-                        false -> if (!treble.lite) R.color.treble_modern else R.color.treble_legacy
+        content.apply {
+            filenameCard.header.text = resources.getText(R.string.filename_header)
+            filenameCard.image.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    if (fileName == null)
+                        R.drawable.filename_unknown
+                    else
+                        R.drawable.filename_known,
+                    theme
+                )
+            )
+            ImageViewCompat.setImageTintList(
+                filenameCard.image,
+                ColorStateList.valueOf(
+                    ResourcesCompat.getColor(
+                        resources,
+                        if (fileName == null)
+                            R.color.filename_unknown
+                        else
+                            R.color.filename_known,
+                        theme
+                    )
+                )
+            )
+            filenameCard.content.text = if (fileName == null) {
+                resources.getText(R.string.filename_unknown)
+            } else {
+                resources.getHtml(R.string.filename, Html.escapeHtml(fileName))
+            }
+
+
+            trebleCard.header.text = resources.getText(R.string.treble_header)
+            trebleCard.image.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources, when {
+                        trebleFail -> R.drawable.unknown
+                        treble == null -> R.drawable.treble_false
+                        treble.legacy -> R.drawable.treble_legacy
+                        else /* !treble.legacy */ -> R.drawable.treble_modern
                     }, theme
+                )
             )
-        )
-        val archTint = ColorStateList.valueOf(
-            ResourcesCompat.getColor(
-                resources, when (arch) {
-                    Arch.ARM64, Arch.X86_64 -> R.color.arch_64_bit
-                    Arch.ARM32, Arch.X86 -> R.color.arch_32_bit
-                    Arch.ARM32_BINDER64, Arch.X86_BINDER64 -> R.color.arch_32_64_bit
-                    is Arch.UNKNOWN -> R.color.unknown
-                }, theme
+            ImageViewCompat.setImageTintList(
+                trebleCard.image,
+                ColorStateList.valueOf(
+                    ResourcesCompat.getColor(
+                        resources, if (trebleFail) R.color.unknown else
+                            when (treble?.legacy) {
+                                null -> R.color.treble_false
+                                true -> R.color.treble_legacy
+                                false -> {
+                                    if (!treble.lite)
+                                        R.color.treble_modern
+                                    else
+                                        R.color.treble_legacy
+                                }
+                            }, theme
+                    )
+                )
             )
-        )
-        val sarTint = ColorStateList.valueOf(
-            ResourcesCompat.getColor(
-                resources,
+            trebleCard.content.text = when {
+                trebleFail -> resources.getHtml(R.string.treble_unknown)
+                treble == null -> resources.getHtml(R.string.treble_false)
+                treble.legacy -> resources.getHtml(
+                    R.string.treble_legacy,
+                    treble.vndkVersion,
+                    treble.vndkSubVersion
+                )
+                else /* !treble.legacy */ -> resources.getHtml(
+                    R.string.treble_modern,
+                    treble.vndkVersion,
+                    treble.vndkSubVersion
+                )
+            }
+
+            sarCard.header.text = resources.getText(R.string.system_as_root_header)
+            sarCard.image.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources, when (sar) {
+                        null -> R.drawable.unknown
+                        false -> R.drawable.sar_false
+                        true -> R.drawable.sar_true
+                    }, theme
+                )
+            )
+            ImageViewCompat.setImageTintList(
+                sarCard.image,
+                ColorStateList.valueOf(
+                    ResourcesCompat.getColor(
+                        resources,
+                        when (sar) {
+                            true -> R.color.sar_true
+                            false -> R.color.sar_false
+                            null -> R.color.unknown
+                        }, theme
+                    )
+                )
+            )
+            sarCard.content.text = resources.getHtml(
                 when (sar) {
-                    true -> R.color.sar_true
-                    false -> R.color.sar_false
-                    null -> R.color.unknown
-                }, theme
+                    null -> R.string.sar_unknown
+                    false -> R.string.sar_false
+                    true -> R.string.sar_true
+                }
             )
-        )
-        val abTint = ColorStateList.valueOf(ResourcesCompat.getColor(
-            resources, if (ab) R.color.ab_true else R.color.ab_false, theme))
 
-        treble_card.findViewById<TextView>(R.id.content).text = trebleText
-        arch_card.findViewById<TextView>(R.id.content).text = archText
-        sar_card.findViewById<TextView>(R.id.content).text = sarText
-        ab_card.findViewById<TextView>(R.id.content).text = abText
+            archCard.header.text = resources.getHtml(R.string.arch_header)
+            archCard.image.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    when (arch) {
+                        Arch.ARM64, Arch.X86_64 -> R.drawable.arch_64_bit
+                        Arch.ARM32, Arch.X86 -> R.drawable.arch_32_bit
+                        Arch.ARM32_BINDER64, Arch.X86_BINDER64 -> R.drawable.arch_32_64_bit
+                        is Arch.UNKNOWN -> R.drawable.unknown
+                    }, theme
+                )
+            )
+            ImageViewCompat.setImageTintList(
+                archCard.image,
+                ColorStateList.valueOf(
+                    ResourcesCompat.getColor(
+                        resources, when (arch) {
+                            Arch.ARM64, Arch.X86_64 -> R.color.arch_64_bit
+                            Arch.ARM32, Arch.X86 -> R.color.arch_32_bit
+                            Arch.ARM32_BINDER64, Arch.X86_BINDER64 -> R.color.arch_32_64_bit
+                            is Arch.UNKNOWN -> R.color.unknown
+                        }, theme
+                    )
+                )
+            )
+            archCard.content.text = resources.getHtml(
+                when (arch) {
+                    Arch.ARM64 -> R.string.arch_arm64
+                    Arch.ARM32 -> R.string.arch_arm32
+                    Arch.ARM32_BINDER64 -> R.string.arch_binder64
+                    Arch.X86_64 -> R.string.arch_x86_64
+                    Arch.X86_BINDER64 -> R.string.arch_x86_binder64
+                    Arch.X86 -> R.string.arch_x86
+                    is Arch.UNKNOWN -> R.string.arch_unknown
+                }
+            )
 
-        treble_card.findViewById<ImageView>(R.id.image).setImageDrawable(trebleImage)
-        arch_card.findViewById<ImageView>(R.id.image).setImageDrawable(archImage)
-        sar_card.findViewById<ImageView>(R.id.image).setImageDrawable(sarImage)
-        ab_card.findViewById<ImageView>(R.id.image).setImageDrawable(abImage)
+            abCard.header.text = resources.getHtml(R.string.ab_header)
+            abCard.image.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    when (ab) {
+                        null -> R.drawable.unknown
+                        false -> R.drawable.ab_false
+                        true -> R.drawable.ab_true
+                    },
+                    theme
+                )
+            )
+            ImageViewCompat.setImageTintList(
+                abCard.image,
+                ColorStateList.valueOf(
+                    ResourcesCompat.getColor(
+                        resources,
+                        when (ab) {
+                            null -> R.color.unknown
+                            false -> R.color.ab_false
+                            true -> R.color.ab_true
+                        },
+                        theme
+                    )
+                )
+            )
+            abCard.content.text = resources.getHtml(
+                when (ab) {
+                    null -> R.string.ab_unknown
+                    false -> R.string.ab_false
+                    true -> R.string.ab_true
+                }
+            )
 
-        ImageViewCompat.setImageTintList(treble_card.findViewById(R.id.image), trebleTint)
-        ImageViewCompat.setImageTintList(arch_card.findViewById(R.id.image), archTint)
-        ImageViewCompat.setImageTintList(sar_card.findViewById(R.id.image), sarTint)
-        ImageViewCompat.setImageTintList(ab_card.findViewById(R.id.image), abTint)
+            dynamicpartitionsCard.header.text = resources.getHtml(R.string.dynamicpartitions_header)
+            dynamicpartitionsCard.image.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    when (dynamicPartitions) {
+                        null -> R.drawable.unknown
+                        false -> R.drawable.dynamicpartitions_false
+                        true -> R.drawable.dynamicpartitions_true
+                    },
+                    theme
+                )
+            )
+            ImageViewCompat.setImageTintList(
+                dynamicpartitionsCard.image,
+                ColorStateList.valueOf(
+                    ResourcesCompat.getColor(
+                        resources,
+                        when (dynamicPartitions) {
+                            null -> R.color.unknown
+                            false -> R.color.dynamicpartitions_false
+                            true -> R.color.dynamicpartitions_true
+                        },
+                        theme
+                    )
+                )
+            )
+            dynamicpartitionsCard.content.text = resources.getHtml(
+                when (dynamicPartitions) {
+                    null -> R.string.dynamicpartitions_unknown
+                    false -> R.string.dynamicpartitions_false
+                    true -> R.string.dynamicpartitions_ramdisk
+                }
+            )
+
+            themeCard.header.text = resources.getHtml(R.string.theme_header)
+            themeCard.image.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.theme,
+                    theme
+                )
+            )
+            updateThemeText(false)
+            themeCard.root.setOnClickListener { updateThemeText(true) }
+
+            licenseCard.header.text = resources.getHtml(R.string.license_header)
+            licenseCard.image.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.foss_license,
+                    theme
+                )
+            )
+            licenseCard.content.text = resources.getHtml(R.string.license)
+            licenseCard.content.setLinkTextColor(content.licenseCard.content.textColors)
+            Linkify.addLinks(content.licenseCard.content, Linkify.WEB_URLS)
+
+            supportCard.header.text = resources.getHtml(R.string.support_header)
+            supportCard.image.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.support,
+                    theme
+                )
+            )
+            supportCard.content.text = resources.getHtml(R.string.support)
+
+            donateCard.image.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.donate,
+                    theme
+                )
+            )
+        }
+
 
         val playStoreMode = getPlayStoreMode()
 
-        donate_card.findViewById<TextView>(R.id.header).text = resources.getText(R.string.donate)
-        donate_card.findViewById<TextView>(R.id.content).visibility = View.GONE
-        val container = donate_card.findViewById<FrameLayout>(R.id.frame)
+        content.donateCard.header.text = resources.getHtml(R.string.donate)
+        content.donateCard.content.visibility = View.GONE
+        val container = content.donateCard.frame
         container.visibility = View.VISIBLE
         container.id = View.generateViewId()
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val allModes = BuildConfig.DONATIONS_DEBUG
-        val donateFragment = DonationsFragment.newInstance(BuildConfig.DONATIONS_DEBUG, playStoreMode || allModes, BuildConfig.GPLAY_PUBK, BuildConfig.GPLAY_KEYS, BuildConfig.GPLAY_VALS, !playStoreMode || allModes, BuildConfig.PAYPAL_EMAIL, BuildConfig.PAYPAL_CURRENCY, BuildConfig.PAYPAL_DESCRIPTION, false, null)
+        val donateFragment = DonationsFragment.newInstance(
+            BuildConfig.DONATIONS_DEBUG,
+            playStoreMode || allModes,
+            BuildConfig.GPLAY_PUBK,
+            BuildConfig.GPLAY_KEYS,
+            BuildConfig.GPLAY_VALS,
+            !playStoreMode || allModes,
+            BuildConfig.PAYPAL_EMAIL,
+            BuildConfig.PAYPAL_CURRENCY,
+            BuildConfig.PAYPAL_DESCRIPTION,
+            false,
+            null
+        )
         fragmentTransaction.replace(container.id, donateFragment, "donationsFragment")
         fragmentTransaction.commit()
         window.decorView.setOnApplyWindowInsetsListener { view, insets ->
@@ -223,7 +409,8 @@ class ScrollingActivity : AppCompatActivity() {
             window.setDecorFitsSystemWindows(false)
         } else {
             @Suppress("DEPRECATION")
-            window.decorView.systemUiVisibility = window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+            window.decorView.systemUiVisibility =
+                window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
         }
     }
 
@@ -241,12 +428,12 @@ class ScrollingActivity : AppCompatActivity() {
 
         if (change)
             current = (current + 1) % 3
-            with (sharedPrefs.edit()) {
-                putInt("daynight", current)
-                apply()
-            }
+        with(sharedPrefs.edit()) {
+            putInt("daynight", current)
+            apply()
+        }
 
-        theme_card.findViewById<TextView>(R.id.content).text = resources.getText(
+        content.themeCard.content.text = resources.getHtml(
             when (current) {
                 0 -> R.string.theme_day
                 1 -> R.string.theme_night
@@ -258,19 +445,21 @@ class ScrollingActivity : AppCompatActivity() {
                 0 -> AppCompatDelegate.MODE_NIGHT_NO
                 1 -> AppCompatDelegate.MODE_NIGHT_YES
                 else -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-                    else AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
+                else AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
             }
         )
     }
 
     private fun fitToCutout(insets: WindowInsets) = insets.run {
-        val titleIsRtl = ViewCompat.getLayoutDirection(toolbar) == ViewCompat.LAYOUT_DIRECTION_RTL
-        val newLayoutParams = toolbar_layout.layoutParams as ViewGroup.MarginLayoutParams
+        val titleIsRtl =
+            ViewCompat.getLayoutDirection(binding.toolbar) == ViewCompat.LAYOUT_DIRECTION_RTL
+        val newLayoutParams = binding.toolbarLayout.layoutParams as ViewGroup.MarginLayoutParams
         val systemWindowInsetLeftCompat: Int
         val systemWindowInsetRightCompat: Int
         val systemWindowInsetBottomCompat: Int
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            val systemWindowInsets = getInsets(WindowInsets.Type.systemBars() or WindowInsets.Type.displayCutout())
+            val systemWindowInsets =
+                getInsets(WindowInsets.Type.systemBars() or WindowInsets.Type.displayCutout())
             systemWindowInsetLeftCompat = systemWindowInsets.left
             systemWindowInsetRightCompat = systemWindowInsets.right
             systemWindowInsetBottomCompat = systemWindowInsets.bottom
@@ -282,24 +471,37 @@ class ScrollingActivity : AppCompatActivity() {
             @Suppress("DEPRECATION")
             systemWindowInsetBottomCompat = systemWindowInsetBottom
         }
-        newLayoutParams.setMargins(if (titleIsRtl) 0 else systemWindowInsetLeftCompat, 0,
-            if (titleIsRtl) systemWindowInsetRightCompat else 0, 0)
-        toolbar_layout.layoutParams = newLayoutParams
-        val fabLayoutParams = fab.layoutParams as ViewGroup.MarginLayoutParams
+        newLayoutParams.setMargins(
+            if (titleIsRtl) 0 else systemWindowInsetLeftCompat, 0,
+            if (titleIsRtl) systemWindowInsetRightCompat else 0, 0
+        )
+        binding.toolbarLayout.layoutParams = newLayoutParams
+        val fabLayoutParams = binding.fab.layoutParams as ViewGroup.MarginLayoutParams
         fabLayoutParams.setMargins(
             resources.getDimensionPixelOffset(R.dimen.fab_margin) + systemWindowInsetLeftCompat, 0,
             resources.getDimensionPixelOffset(R.dimen.fab_margin) + systemWindowInsetRightCompat, 0
         )
-        fab.layoutParams = fabLayoutParams
-        for (i in 0 until cards.childCount) {
-            (cards.getChildAt(i) as ViewGroup).getChildAt(0).setPadding(
+        binding.fab.layoutParams = fabLayoutParams
+        for (i in 0 until content.cards.childCount) {
+            (content.cards.getChildAt(i) as ViewGroup).getChildAt(0).setPadding(
                 systemWindowInsetLeftCompat,
                 0,
                 systemWindowInsetRightCompat,
-                if (i == cards.childCount - 1) systemWindowInsetBottomCompat else 0
+                if (i == content.cards.childCount - 1) systemWindowInsetBottomCompat else 0
             )
         }
     }
 }
 
 private const val tag = "TrebleInfo"
+
+
+fun Resources.getHtml(@StringRes id: Int, vararg formatArgs: Any?): Spanned? {
+    val html = getString(id, *formatArgs)
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT)
+    } else {
+        @Suppress("DEPRECATION")
+        Html.fromHtml(html)
+    }
+}

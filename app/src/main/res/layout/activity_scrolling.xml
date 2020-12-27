@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         tools:context=".ScrollingActivity">
 
-    <include layout="@layout/content_scrolling"/>
+    <include layout="@layout/content_scrolling" />
 
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"

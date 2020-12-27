@@ -30,8 +30,7 @@ object TrebleDetector {
 
         val lite = when (propertyGet("ro.vndk.lite")) {
             "true" -> true
-            "false" -> false
-            else -> false // notset, assume its not lite
+            else -> false // false, not set, unknown or error, assume its not lite
         }
 
         var manifest = File(MANIFEST_PATH)
@@ -46,8 +45,8 @@ object TrebleDetector {
             return TrebleData(
                 legacy,
                 lite,
-                propertyGet("ro.vndk.version").toIntOrNull() ?:
-                propertyGet("ro.vendor.build.version.sdk").toIntOrNull() ?:
+                propertyGet("ro.vndk.version")?.toIntOrNull() ?:
+                propertyGet("ro.vendor.build.version.sdk")?.toIntOrNull() ?:
                 0, // the props above were added in sdk 28
                 0
             )

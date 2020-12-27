@@ -23,10 +23,12 @@
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
                   android:id="@+id/cards">
+        <include layout="@layout/card" android:id="@+id/filename_card"/>
         <include layout="@layout/card" android:id="@+id/treble_card"/>
         <include layout="@layout/card" android:id="@+id/sar_card"/>
         <include layout="@layout/card" android:id="@+id/arch_card"/>
         <include layout="@layout/card" android:id="@+id/ab_card"/>
+        <include layout="@layout/card" android:id="@+id/dynamicpartitions_card"/>
         <include layout="@layout/card" android:id="@+id/theme_card"/>
         <include layout="@layout/card" android:id="@+id/license_card"/>
         <include layout="@layout/card" android:id="@+id/support_card"/>

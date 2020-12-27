@@ -32,10 +32,19 @@ object MountDetector {
         return check(lines.toList())
     }
 
-    fun isSAR(): Boolean = checkMounts { lines ->
-        lines.any { it.device == "/dev/root" && it.mountpoint == "/" } ||
-                lines.none { it.mountpoint == "/system" && it.type != "tmpfs" && it.device != "none" } ||
-                lines.any { it.mountpoint == "/system_root" && it.type != "tmpfs" }
+    fun isSAR(): Boolean {
+        val systemRootImage = propertyGet("ro.build.system_root_image")
+        val dynamicPartitions = propertyGet("ro.boot.dynamic_partitions")
+
+        return when {
+            dynamicPartitions == "true" -> true
+            systemRootImage == "true" -> true
+            else -> checkMounts { lines ->
+                lines.any { it.device == "/dev/root" && it.mountpoint == "/" } ||
+                        lines.none { it.mountpoint == "/system" && it.type != "tmpfs" && it.device != "none" } ||
+                        lines.any { it.mountpoint == "/system_root" && it.type != "tmpfs" }
+            }
+        }
     }
 
     private fun parseLine(line: String): Mount {
