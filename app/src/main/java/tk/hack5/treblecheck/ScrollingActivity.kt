@@ -38,8 +38,8 @@ import tk.hack5.treblecheck.databinding.ActivityScrollingBinding
 import tk.hack5.treblecheck.databinding.ContentScrollingBinding
 
 class ScrollingActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityScrollingBinding
-    private lateinit var content: ContentScrollingBinding
+    lateinit var binding: ActivityScrollingBinding
+    lateinit var content: ContentScrollingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,25 +51,19 @@ class ScrollingActivity : AppCompatActivity() {
 
         binding.toolbarLayout.setCollapsedTitleTypeface(null) // prevent text going bold when collapsed
         binding.fab.setOnClickListener {
-            val telegramIntent = Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=hackintosh5"))
+            val telegramIntent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=TrebleInfo"))
             try {
                 startActivity(telegramIntent)
             } catch (e: ActivityNotFoundException) {
                 Log.e(tag, "Launch tg:// failed", e)
-                val emailIntent = Intent(Intent.ACTION_SEND)
-                    .putExtra(Intent.EXTRA_EMAIL, "treble@hack5.dev")
-                    .addCategory(Intent.CATEGORY_APP_EMAIL)
+                val browserIntent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/s/TrebleInfo"))
                 try {
-                    startActivity(emailIntent)
+                    startActivity(browserIntent)
                 } catch (e: ActivityNotFoundException) {
-                    Log.e(tag, "Launch email failed", e)
-                    val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/hackintosh5"))
-                    try {
-                        startActivity(browserIntent)
-                    } catch (e: ActivityNotFoundException) {
-                        Log.e(tag, "Launch browser failed", e)
-                        Toast.makeText(this, R.string.no_browser, Toast.LENGTH_LONG).show()
-                    }
+                    Log.e(tag, "Launch browser failed", e)
+                    Toast.makeText(this, R.string.no_browser, Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -159,8 +153,8 @@ class ScrollingActivity : AppCompatActivity() {
                     resources, when {
                         trebleFail -> R.drawable.unknown
                         treble == null -> R.drawable.treble_false
-                        treble.legacy -> R.drawable.treble_legacy
-                        else /* !treble.legacy */ -> R.drawable.treble_modern
+                        treble.legacy || treble.lite -> R.drawable.treble_legacy
+                        else /* !treble.legacy && !treble.lite */ -> R.drawable.treble_modern
                     }, theme
                 )
             )
@@ -168,25 +162,32 @@ class ScrollingActivity : AppCompatActivity() {
                 trebleCard.image,
                 ColorStateList.valueOf(
                     ResourcesCompat.getColor(
-                        resources, if (trebleFail) R.color.unknown else
-                            when (treble?.legacy) {
-                                null -> R.color.treble_false
-                                true -> R.color.treble_legacy
-                                false -> {
-                                    if (!treble.lite)
-                                        R.color.treble_modern
-                                    else
-                                        R.color.treble_legacy
-                                }
-                            }, theme
+                        resources,
+                        when {
+                            trebleFail -> R.color.unknown
+                            treble == null -> R.color.treble_false
+                            treble.legacy || treble.lite -> R.color.treble_legacy
+                            else /* !treble.legacy && !treble.lite */ -> R.color.treble_modern
+                        },
+                        theme
                     )
                 )
             )
             trebleCard.content.text = when {
                 trebleFail -> resources.getHtml(R.string.treble_unknown)
                 treble == null -> resources.getHtml(R.string.treble_false)
+                treble.legacy && treble.lite -> resources.getHtml(
+                    R.string.treble_legacy_lite,
+                    treble.vndkVersion,
+                    treble.vndkSubVersion
+                )
                 treble.legacy -> resources.getHtml(
                     R.string.treble_legacy,
+                    treble.vndkVersion,
+                    treble.vndkSubVersion
+                )
+                treble.lite -> resources.getHtml(
+                    R.string.treble_modern_lite,
                     treble.vndkVersion,
                     treble.vndkSubVersion
                 )
@@ -329,7 +330,7 @@ class ScrollingActivity : AppCompatActivity() {
                 when (dynamicPartitions) {
                     null -> R.string.dynamicpartitions_unknown
                     false -> R.string.dynamicpartitions_false
-                    true -> R.string.dynamicpartitions_ramdisk
+                    true -> R.string.dynamicpartitions_true
                 }
             )
 
@@ -414,7 +415,7 @@ class ScrollingActivity : AppCompatActivity() {
         }
     }
 
-    private fun getPlayStoreMode(): Boolean {
+    fun getPlayStoreMode(): Boolean {
         return try {
             packageManager.getApplicationInfo("com.android.vending", 0).enabled
         } catch (e: PackageManager.NameNotFoundException) {
@@ -422,15 +423,23 @@ class ScrollingActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateThemeText(change: Boolean) {
-        val sharedPrefs = getPreferences(Context.MODE_PRIVATE)
-        var current = sharedPrefs.getInt("daynight", 2)
-
+    fun updateThemeText(change: Boolean) {
+        var current = if (Mock.theme == null) {
+            val sharedPrefs = getPreferences(Context.MODE_PRIVATE)
+            sharedPrefs.getInt("daynight", 2)
+        } else {
+            Mock.theme!!
+        }
         if (change)
             current = (current + 1) % 3
-        with(sharedPrefs.edit()) {
-            putInt("daynight", current)
-            apply()
+        if (Mock.theme == null) {
+            val sharedPrefs = getPreferences(Context.MODE_PRIVATE)
+            with(sharedPrefs.edit()) {
+                putInt("daynight", current)
+                apply()
+            }
+        } else {
+            Mock.theme = current
         }
 
         content.themeCard.content.text = resources.getHtml(
@@ -450,7 +459,7 @@ class ScrollingActivity : AppCompatActivity() {
         )
     }
 
-    private fun fitToCutout(insets: WindowInsets) = insets.run {
+    fun fitToCutout(insets: WindowInsets) = insets.run {
         val titleIsRtl =
             ViewCompat.getLayoutDirection(binding.toolbar) == ViewCompat.LAYOUT_DIRECTION_RTL
         val newLayoutParams = binding.toolbarLayout.layoutParams as ViewGroup.MarginLayoutParams
@@ -496,7 +505,7 @@ class ScrollingActivity : AppCompatActivity() {
 private const val tag = "TrebleInfo"
 
 
-fun Resources.getHtml(@StringRes id: Int, vararg formatArgs: Any?): Spanned? {
+private fun Resources.getHtml(@StringRes id: Int, vararg formatArgs: Any?): Spanned? {
     val html = getString(id, *formatArgs)
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT)

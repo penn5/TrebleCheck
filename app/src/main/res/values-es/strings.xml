@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Treble Info</string>
+	<string name="title">Treble Info</string>
 	<string name="system_as_root_header">Sistema como Root</string>
 	<string name="arch_header">Arquitectura</string>
 	<string name="arch_arm64">Tu dispositivo es &lt;b&gt;ARM64&lt;/b&gt;</string>
@@ -14,8 +14,8 @@
 	<string name="support_header">Soporte</string>
 	<string name="support">Por favor, si encuentras un bug no dejes una mala opinión, he escrito toda la aplicación yo solo. En su lugar, contáctame vía Telegram con el botón de arriba (usa Inglés). Coméntame acerca de tu error y estaré encantado de ayudar.</string>
 	<string name="treble_false">Tu dispositivo no soporta el proyecto Treble</string>
-	<string name="treble_legacy">Tu dispositivo soporta la versión de legado del proyecto Treble, usando VNDK version %1$d.%2$d</string>
-	<string name="treble_modern">Tu dispositivo soporta la versión moderna del proyecto Treble, usando VNDK version %1$d.%2$d</string>
+	<string name="treble_legacy">Tu dispositivo soporta la versión de legado del proyecto Treble, usando VNDK versión %1$d.%2$d</string>
+	<string name="treble_modern">Tu dispositivo soporta la versión moderna del proyecto Treble, usando VNDK versión %1$d.%2$d</string>
 	<string name="treble_header">Treble y VNDK</string>
 	<string name="theme_day">Tema claro</string>
 	<string name="theme_night">Tema oscuro</string>
@@ -31,4 +31,14 @@
 	<string name="arch_x86">Tu dispositivo es &lt;b&gt;x86&lt;/b&gt;</string>
 	<string name="no_browser">Por favor, instala un navegador de internet</string>
 	<string name="donate">Donar</string>
+	<string name="dynamicpartitions_unknown">No se puede detectar si su dispositivo usa particiones dinámicas.</string>
+	<string name="dynamicpartitions_false">Tu dispositivo no usa particiones dinámicas. No hace falta usar fastbootd para flashear particiones críticas.</string>
+	<string name="dynamicpartitions_true">Tu dispositivo usa particiones dinámicas (partición super). Solo puedes flashear particiones críticas usando fastbootd, o encontrará un error diciendo que la partición indicada no existe.</string>
+	<string name="dynamicpartitions_header">Particiones Dinámicas</string>
+	<string name="ab_unknown">No se puede detectar si su dispositivo admite actualizaciones en segundo plano</string>
+	<string name="treble_legacy_lite">Tu dispositivo soporta la versión de legado del proyecto Treble, usando VNDK versión %1$d.%2$d</string>
+	<string name="treble_modern_lite">Tu dispositivo soporta la versión moderna del proyecto Treble, usando VNDK versión %1$d.%2$d</string>
+	<string name="filename_unknown">No se pudo detectar el nombre del archivo de imagen.</string>
+	<string name="filename">Su dispositivo necesita un archivo de imagen llamado &lt;b&gt;%s&lt;/b&gt;.</string>
+	<string name="filename_header">Imagen Requerida</string>
 </resources>

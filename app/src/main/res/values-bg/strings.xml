@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Treble Info</string>
+	<string name="title">Treble Info</string>
 	<string name="system_as_root_header">System as Root</string>
 	<string name="arch_header">Архитектура</string>
 	<string name="arch_arm64">Вашето устройство е \&quot;&lt;b&gt;ARM64&lt;/b&gt;\&quot;</string>
@@ -31,4 +31,14 @@
 	<string name="arch_x86">Вашето устройство е \&quot;&lt;b&gt;x86&lt;/b&gt;\&quot;</string>
 	<string name="no_browser">Моля изтеглете уеб браузър.</string>
 	<string name="donate">Дарете</string>
+	<string name="dynamicpartitions_unknown">Не успяхме да засечем дали устройството ви използва Динамични Дялове (Dynamic Partitions).</string>
+	<string name="dynamicpartitions_false">Устройството ви не използва Динамични Дялове (Dynamic Partitions). Няма нужда да използвате \&quot;fastbootd\&quot; докато флашвате високо ниво дялове.</string>
+	<string name="dynamicpartitions_true">Устройството ви ползва Динамични Дялове (Dynamic Partitions). Може да флашвате високо ниво дялове само с \&quot;fastbootd\&quot;, или ще поличите грешка.</string>
+	<string name="dynamicpartitions_header">Динамични Дялове</string>
+	<string name="ab_unknown">Не успяхме да засечем дали устройството ви подържа \&quot;Seamless Updates\&quot;. </string>
+	<string name="treble_legacy_lite">Вашето устройство поддържа модерна версия на \&quot;Project Treble\&quot;, използвайки VNDK lite версия %1$d.%2$d</string>
+	<string name="treble_modern_lite">Вашето устройство поддържа \&quot;legacy\&quot; версия на \&quot;Project Treble\&quot;, използвайки VNDK lite версия %1$d.%2$d</string>
+	<string name="filename_unknown">Не успяхме да засечем името на образa.</string>
+	<string name="filename">Устройството ви му трябва образ с име &lt;b&gt;%s&lt;/b&gt;</string>
+	<string name="filename_header">Нужен образ</string>
 </resources>

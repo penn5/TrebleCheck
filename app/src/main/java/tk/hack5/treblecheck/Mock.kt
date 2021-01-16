@@ -4,16 +4,20 @@
  *         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
  *         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt
  * This project:
- *         Copyright (C) 2020 Penn Mackintosh
+ *         Copyright (C) 2021 Penn Mackintosh
  *         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
  */
 
 package tk.hack5.treblecheck
 
-object DynamicPartitionsDetector {
-    fun isDynamic(): Boolean? {
-        if (Mock.dynamic != null)
-            return Mock.dynamic
-        return (propertyGet("ro.boot.dynamic_partitions") ?: return null) == "true"
-    }
+import java.util.*
+
+object Mock {
+    var ab: Boolean? = null
+    var arch: Arch? = null
+    var binderVersion: Int? = null
+    var dynamic: Boolean? = null
+    var sar: Boolean? = null
+    var treble: TrebleDataOrNull? = null
+    var theme: Int? = null
 }

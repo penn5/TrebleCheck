@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">ട്രെബിൾ ഇൻഫോ</string>
+	<string name="system_as_root_header">System as Root</string>
+	<string name="arch_header">പ്രോസസർ ഘടന</string>
+	<string name="arch_arm64">താങ്കളുടെ ഫോൺ  &lt;b&gt;ARM64&lt;/b&gt; ആണ്</string>
+	<string name="arch_arm32">താങ്കളുടെ ഫോൺ  &lt;b&gt;ARM32&lt;/b&gt; ആണ്</string>
+	<string name="arch_binder64">താങ്കളുടെ ഫോൺ  എർഎം32 ആണ്, പക്ഷെ  64 ബിറ്റ് ബൈൻഡർ ഉപയോഗിക്കുന്നു . താങ്കളുടെ ഫോണിന്റെ ഹാർഡ്‌വെയർ  64 ബിറ്റ് പിന്തുണയ്ക്കുന്നു  പക്ഷെ സോഫ്റ്റ്‌വെയർ ചെയ്യുന്നില്ല എന്നതാണ് ഇത് സൂചിപ്പിക്കുന്നത്. അതിനാൽ താങ്കൾ &lt;b&gt;ബൈൻഡർ64&lt;/b&gt; എന്നോ &lt;b&gt;a64&lt;/b&gt; എന്നോ ഉള്ള സിസ്റ്റം ഇമേജ് ഉപഗോഗിക്കണം.</string>
+	<string name="arch_unknown">ഫോണിന്റെ  ഘടന  കണ്ടുപിടിക്കാൻ കഴിയുന്നില്ല.</string>
+	<string name="sar_true">താങ്കളുടെ ഫോൺ  System-as-Root പിന്തുണയ്ക്കുന്നു.ദയാവായി  ഒരു A/B ഓപ്പറേറ്റിംഗ് സിസ്റ്റം ഉപയോഗിക്കുക </string>
+	<string name="sar_false">താങ്കളുടെ ഫോൺ  System-as-Root പിന്തുണക്കുന്നില്ല .ദയാവായി  ഒരു  ഓപ്പറേറ്റിംഗ് A Only ഓപ്പറേറ്റിംഗ് സിസ്റ്റം  ഉപയോഗിക്കുക </string>
+	<string name="license_header">ലൈസൻസുകൾ</string>
+	<string name="license">ലൈസൻസ്: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nസ്വകാര്യതാനയം: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="support_header">സഹായം</string>
+	<string name="support">ഈ അപ്ലിക്കേഷൻ ഞാൻ സ്യയം ഉണ്ടാക്കി എടുത്തതാണ്. അതിനാൽ ഞാൻ അറിയാതെ ആപ്പിൽ ഒരു പിശക് സംഭവിച്ചിട്ടുണ്ടെങ്കിൽ ദയവായി മോശം അഭിപ്രായം രേഖപെടുത്തരുത് .  അതിനു പകരം  വലത് മുകളിൽ കൊടുത്തിരിക്കുന്ന ബട്ടൺ ഉപയോഗിച്ച എന്നെ ടെലിഗ്രാം വഴി ബന്ധപെടുക. എന്നിട് നിങ്ങളുടെ പ്രശ്നത്തെ കുറിച്ച എന്നോട് പറയുക, ഞാൻ തീർച്ചയായും  സഹായിക്കാൻ ശ്രമിക്കും.</string>
+	<string name="treble_false">Project Treble നെ നിങ്ങളുടെ ഉപകരണം പിന്തുണയ്‌ക്കുന്നില്ല</string>
+	<string name="treble_legacy">Project Treble ന്റെ ഒരു പഴയ പതിപ്പിനെ ആൺ നിങ്ങളുടെ ഫോൺ പിന്തുണക്കുന്നത് . അത് VNDK version %1$d.%2$d ഉപയോഗിക്കുന്നു </string>
+	<string name="treble_modern">Project Treble ന്റെ പുതിയ പതിപ്പിനെ നിങ്ങളുടെ ഫോൺ പിന്തുണയ്ക്കുന്നു . അത് VNDK version %1$d.%2$d ഉപയോഗിക്കുന്നു</string>
+	<string name="treble_header">Trebleളും VNDK ഉം</string>
+	<string name="theme_day">വൈറ്റ് തീം</string>
+	<string name="theme_night">കറുത്ത തീം</string>
+	<string name="theme_auto">തീം തനിയെ സെലക്ട് ആവാൻ അനുവദിക്കൂ</string>
+	<string name="theme_header">തീം</string>
+	<string name="treble_unknown">Treble  പിന്തുണ നില കണ്ടെത്താനായില്ല, അപ്ലിക്കേഷൻ യാന്ത്രികമായി ഒരു ബഗ് റിപ്പോർട്ട് അയയ്‌ക്കാത്തതിനാൽ അപ്ലിക്കേഷൻ  വികസിപ്പിക്കുന്നയാള്യുമായി ബന്ധപെടുക. </string>
+	<string name="ab_true">താങ്കളുടെ ഫോൺ തടസ്സമില്ലാത്ത അപ്‌ഗ്രേഡുകൾ പിന്തുണയ്‌ക്കുന്നു!  താങ്കളുടെ ഫോനിന് തടസങ്ങളില്ലാതെ എളുപ്പത്തിൽ പുതിയ ആൻഡ്രോയിഡ്  പതിപ്പിലേക് മാറുവാൻ സാദിക്കും. </string>
+	<string name="ab_false">താങ്കളുടെ ഫോൺ തടസ്സമില്ലാത്ത അപ്‌ഗ്രേഡുകൾ പിന്തുണക്കുന്നില്ല! ആയതിനാൽ പുതിയ ആൻഡ്രോയിഡ് പതിപ്പിലേക് മാറുവാൻ റിക്കവറി മോഡിലേക് മാറേണ്ടതാണ് , അതുപോലെ  Seamless-supporting ഫോണുകളെ വച്ച പിശകുകൾ സംഭവിക്കാൻ സാധ്യത കൂടുതലാണ്.</string>
+	<string name="ab_header">തടസ്സമില്ലാത്ത പുതുക്കങ്ങൾ</string>
+	<string name="sar_unknown">System-as-Root നില കണ്ടെത്താനായില്ല. ബഗ് റിപ്പോർട്ടുചെയ്യാൻ ഡവലപ്പറുമായി ബന്ധപ്പെടുക.</string>
+	<string name="arch_x86_64">നിങ്ങളുടെ ഉപകരണം &lt;b&gt;x86_64&lt;/b&gt; ആണ്.</string>
+	<string name="arch_x86_binder64">നിങ്ങളുടെ ഉപകരണം x86 ആണ് എന്നാൽ 64-bit binder ഉപയോഗിക്കുന്നു</string>
+	<string name="arch_x86">നിങ്ങളുടെ ഉപകരണം &lt;b&gt;x86&lt;/b&gt; ആണ്.</string>
+	<string name="no_browser">ഒരു വെബ് ബ്രസർ ഇൻസ്റ്റാൾ ചെയ്യുക.</string>
+	<string name="donate">സംഭാവനചെയ്യുക</string>
+	<string name="dynamicpartitions_unknown">നിങ്ങളുടെ ഉപകരണം Dynamic Partitions ഉപയോഗിക്കുന്നുണ്ടോ എന്ന് കണ്ടെത്താനായില്ല.</string>
+	<string name="dynamicpartitions_false">നിങ്ങളുടെ ഉപകരണം Dynamic Partition ഉപയോഗിക്കുന്നില്ല. high-level പാർട്ടീഷനുകൾ flash ചെയ്യുനന് സമയത്ത് fastbootd ഉപയോഗിക്കേണ്ട ആവശ്യമില്ല.</string>
+	<string name="dynamicpartitions_true">താങ്കളുടെ ഡിവൈസ് ഡൈനാമിക് പാർട്ടീഷൻ (സുപ്പർ പാർട്ടീഷൻ) ഉപയോഗിക്കുന്നു. തങ്കൾക് fastbootd ഉപയോഗിച്ച് മാത്രമേ ഫ്ലാഷ് ചെയ്യാൻ സാധിക്കു. അല്ലെങ്കിൽ പാർട്ടീഷൻ ഇല്ല എന്ന ഏറെർ വരും</string>
+	<string name="dynamicpartitions_header">ഡൈനാമിക് പാർട്ടീഷൻ</string>
+	<string name="ab_unknown">നിങ്ങളുടെ ഉപകരണം തടസ്സമില്ലാത്ത അപ്‌ഗ്രേഡുകളെ പിന്തുണയ്‌ക്കുന്നുണ്ടോ എന്ന് കണ്ടെത്താനായില്ല.</string>
+	<string name="treble_legacy_lite">VNDK ലൈറ്റ് പതിപ്പ്  %1$d. %2$d ഉപയോഗിച്ച് പ്രോജക്റ്റ് ട്രെബിളിന്റെ ലെഗസി പതിപ്പിനെ നിങ്ങളുടെ ഉപകരണം പിന്തുണയ്ക്കുന്നു.</string>
+	<string name="treble_modern_lite">VNDK ലൈറ്റ് പതിപ്പ്  %1$d. %2$d ഉപയോഗിച്ച് പ്രോജക്റ്റ് ട്രെബിളിന്റെ ആധുനിക പതിപ്പിനെ നിങ്ങളുടെ ഉപകരണം പിന്തുണയ്ക്കുന്നു.</string>
+	<string name="filename_unknown">ഇമേജ് ഫയൽ നാമം കണ്ടെത്താനായില്ല.</string>
+	<string name="filename">നിങ്ങളുടെ ഉപകരണത്തിന് &lt;b&gt;%s&lt;/b&gt; എന്ന ഇമേജ് ഫയൽ ആവശ്യമാണ്.</string>
+	<string name="filename_header">ചിത്രം ആവശ്യമാണ്</string>
+</resources>

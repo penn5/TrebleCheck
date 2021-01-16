@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Treble Informacija</string>
+	<string name="title">Treble Informacija</string>
 	<string name="system_as_root_header">Sistema kaip Šaknis</string>
 	<string name="arch_header">Architektūra</string>
 	<string name="arch_arm64">Jūsų įrenginys yra &lt;b&gt;ARM64&lt;/b&gt;</string>

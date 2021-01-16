@@ -26,6 +26,9 @@ object TrebleDetector {
     private val SELINUX_REGEX = Regex("""\Winit_([0-9]+)_([0-9]+)\W""")
 
     fun getVndkData(): TrebleData? {
+        if (Mock.treble != null)
+            return Mock.treble!!.trebleData
+
         if (propertyGet("ro.treble.enabled") != "true") return null
 
         val lite = when (propertyGet("ro.vndk.lite")) {

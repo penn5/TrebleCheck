@@ -17,3 +17,7 @@ app/.cxx
 
 # Secrets
 app/poeditor.properties
+
+# Fastlane
+fastlane/report.xml
+fastlane/metadata

@@ -12,6 +12,8 @@ package tk.hack5.treblecheck
 
 object ABDetector {
     fun checkAB(): Boolean? {
+        if (Mock.ab != null)
+            return Mock.ab
         return propertyGet("ro.boot.slot_suffix")?.isNotEmpty()
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Infos Treble</string>
+	<string name="title">Infos Treble</string>
 	<string name="system_as_root_header">Système en tant que racine</string>
 	<string name="arch_header">Architecture</string>
 	<string name="arch_arm64">Votre appareil est un &lt;b&gt;ARM64&lt;/b&gt;</string>
@@ -31,4 +31,14 @@
 	<string name="arch_x86">Votre appareil est un &lt;b&gt;x86&lt;/b&gt;</string>
 	<string name="no_browser">Veuillez installer un navigateur</string>
 	<string name="donate">Faire un don</string>
+	<string name="dynamicpartitions_unknown">Impossible de détecter si votre appareil utilise des partitions dynamiques.</string>
+	<string name="dynamicpartitions_false">Votre appareil n\&apos;utilise pas de partitions dynamiques. Il n\&apos;y a pas besoin d\&apos;utiliser fastbootd pour flasher les partitions de haut niveau.</string>
+	<string name="dynamicpartitions_true">Votre appareil utilise des partitions dynamiques (super partitions). Vous pouvez flasher les partitions de haut niveau uniquement via fastbootd, sinon vous rencontrerez une erreur indiquant que la partition n\&apos;existe pas.</string>
+	<string name="dynamicpartitions_header">Partitions dynamiques</string>
+	<string name="ab_unknown">Impossible de détecter si votre appareil supportes les mises à jour transparentes</string>
+	<string name="treble_legacy_lite">Votre appareil supportes la version originale du Project Treble, utilisant la version VNDK Lite %1$d.%2$d</string>
+	<string name="treble_modern_lite">Votre appareil supportes la version moderne du Project Treble, utilisant la version VNDK Lite %1$d.%2$d</string>
+	<string name="filename_unknown">Impossible de détecter le nom du fichier image.</string>
+	<string name="filename">Votre appareil à besoin d\&apos;un fichier image nommé &lt;b&gt;%s&lt;/b&gt;.</string>
+	<string name="filename_header">Image requise</string>
 </resources>

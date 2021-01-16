@@ -1,0 +1,40 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Build debug and test APK for screenshots"
+  lane :build_and_screengrab do
+    gradle(task: "importTranslations assembleDebug assembleAndroidTest")
+    capture_android_screenshots()
+  end
+
+  desc "Import translations and generate screenshots"
+  lane :pre_release do
+    gradle(task: "importTranslations importTranslationsForFastlane")
+    build_and_screengrab()
+  end
+
+  desc "Deploy a new version to the Google Play"
+  lane :release do
+    gradle(task: "clean assembleRelease")
+    upload_to_play_store(track: "beta",
+                         release_status: "draft",
+                         apk: "app/build/outputs/apk/release/app-release.apk",
+                         skip_upload_images: true,
+                         mapping: "app/build/outputs/mapping/release/mapping.txt")
+  end
+end

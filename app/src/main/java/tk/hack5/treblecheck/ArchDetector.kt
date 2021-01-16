@@ -14,6 +14,8 @@ import android.os.Build
 
 object ArchDetector {
     fun getArch(): Arch {
+        if (Mock.arch != null)
+            return Mock.arch!!
         val binderVersion = try {
             BinderDetector.getBinderVersion()
         } catch (e: UnsatisfiedLinkError) {

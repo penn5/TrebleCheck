@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Trebleチェッカー</string>
+	<string name="title">Trebleチェッカー</string>
 	<string name="system_as_root_header">System as Root</string>
 	<string name="arch_header">アーキテクチャ</string>
 	<string name="arch_arm64">あなたのデバイスは&lt;b&gt;ARM64&lt;/b&gt;です</string>

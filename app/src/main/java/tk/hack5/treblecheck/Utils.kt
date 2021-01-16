@@ -11,6 +11,7 @@
 package tk.hack5.treblecheck
 
 import android.annotation.SuppressLint
+import java.util.*
 
 
 @SuppressLint("PrivateApi") // Oh well.
@@ -29,3 +30,5 @@ operator fun <A1 : Comparable<A2>, B1 : Comparable<B2>, A2, B2>Pair<A1, B1>.comp
         second.compareTo(other.second)
     else
         first.compareTo(other.first)
+
+class TrebleDataOrNull(var trebleData: TrebleData?)

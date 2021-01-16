@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Treble 信息</string>
+	<string name="title">Treble 信息</string>
 	<string name="system_as_root_header">System-as-Root</string>
 	<string name="arch_header">处理器架构</string>
 	<string name="arch_arm64">您的设备是 &lt;b&gt;ARM64&lt;/b&gt; 架构。</string>
@@ -34,9 +34,11 @@
 	<string name="dynamicpartitions_unknown">无法检测您的手机是否具备动态分区。</string>
 	<string name="dynamicpartitions_false">您的设备不具备动态分区，不需要运用 fastbootd 刷写分区。</string>
 	<string name="dynamicpartitions_true">您的设备具备动态分区（super 大分区）。您只能通过 fastbootd 来刷写 system / vendor / product 等上一级的分区，否则手机会报错提示分区不存在。</string>
-	<string name="dynamicpartitions_ramdisk">您的设备具备动态分区（super 大分区）以及两种 init 级别。您只能通过 fastbootd 来刷写 system / vendor / product 等上一级的分区，否则手机会报错提示分区不存在。</string>
 	<string name="dynamicpartitions_header">动态分区</string>
 	<string name="ab_unknown">无法判断您的设备是否支持无缝更新</string>
 	<string name="treble_legacy_lite">您的设备支持旧版本的 Project Treble，VNDK Lite 版本号为 %1$d.%2$d</string>
 	<string name="treble_modern_lite">您的设备支持现代版本的 Project Treble，VNDK Lite 版本号为 %1$d.%2$d</string>
+	<string name="filename_unknown">无法检测镜像文件名。</string>
+	<string name="filename">您的设备需要文件名为 &lt;b&gt;%s&lt;/b&gt; 的镜像文件。</string>
+	<string name="filename_header">所需的镜像</string>
 </resources>

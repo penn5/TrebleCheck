@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Treble Info</string>
+	<string name="title">Treble Info</string>
 	<string name="system_as_root_header">System as Root</string>
 	<string name="arch_header">Architecture</string>
 	<string name="arch_arm64">Your device is &lt;b&gt;ARM64&lt;/b&gt;</string>
@@ -33,13 +33,12 @@
 	<string name="donate">Donate</string>
 	<string name="dynamicpartitions_unknown">Unable to detect whether your device uses Dynamic Partitions.</string>
 	<string name="dynamicpartitions_false">Your device does not use Dynamic Partitions. There is no need to use fastbootd while flashing high-level partitions.</string>
-	<string name="dynamicpartitions_true">Your device uses Dynamic Partitions (super partitions). You can only flash high-level partitions through fastbootd, or you will encounter an error saying the partition does not exist.</string>
-	<string name="dynamicpartitions_ramdisk">Your device uses Dynamic Partitions (super partitions) with two stage init. You can only flash high-level partitions through fastbootd, or you will encounter an error saying the partition does not exist.</string>
+	<string name="dynamicpartitions_true">Your device uses Dynamic Partitions (super partition). You can only flash high-level partitions through fastbootd, or you will encounter an error saying the partition does not exist.</string>
 	<string name="dynamicpartitions_header">Dynamic Partitions</string>
 	<string name="ab_unknown">Unable to detect whether your device supports Seamless Upgrades</string>
 	<string name="treble_legacy_lite">Your device supports the legacy version of Project Treble, using VNDK Lite version %1$d.%2$d</string>
 	<string name="treble_modern_lite">Your device supports the modern version of Project Treble, using VNDK Lite version %1$d.%2$d</string>
 	<string name="filename_unknown">Unable to detect image filename.</string>
-	<string name="filename">Your device uses an image file named &lt;b&gt;%s&lt;/b&gt;.</string>
-	<string name="filename_header">Image Name</string>
+	<string name="filename">Your device needs an image file named &lt;b&gt;%s&lt;/b&gt;.</string>
+	<string name="filename_header">Required Image</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Treble Info</string>
+	<string name="title">Treble Info</string>
 	<string name="system_as_root_header">System as Root</string>
 	<string name="arch_header">Architettura</string>
 	<string name="arch_arm64">L\&apos;architettura di questo dispositivo è &lt;b&gt;ARM64&lt;/b&gt;</string>
@@ -34,9 +34,11 @@
 	<string name="dynamicpartitions_unknown">Impossibile determinare se il tuo dispositivo usa le Partizioni Dinamiche.</string>
 	<string name="dynamicpartitions_false">Il tuo dispositivo non usa le Partizioni Dinamiche. Non è necessario utilizzare fastbootd per flashare partizioni di alto livello.</string>
 	<string name="dynamicpartitions_true">Il tuo dispositivo usa le Partizioni Dinamiche (partizione super). Puoi flashare partizioni di alto livello solo tramite fastbootd, o incontrerai un errore specificando che la partizione non esiste.</string>
-	<string name="dynamicpartitions_ramdisk">Il tuo dispositivo usa le Partizioni Dinamiche (partizione super) con 2si. Puoi flashare partizioni di alto livello solo tramite fastbootd, o incontrerai un errore specificando che la partizione non esiste.</string>
 	<string name="dynamicpartitions_header">Partizioni Dinamiche</string>
 	<string name="ab_unknown">Impossibile determinare se il tuo dispositivo supporta gli Aggiornamenti Silenziosi</string>
 	<string name="treble_legacy_lite">Il tuo dispositivo supporta la versione legacy di Project Treble, usando VNDK Lite versione %1$d.%2$d</string>
 	<string name="treble_modern_lite">Il tuo dispositivo supporta la versione moderna di Project Treble, usando VNDK Lite versione %1$d.%2$d</string>
+	<string name="filename_unknown">Impossibile determinare il nome dell\&apos;immagine.</string>
+	<string name="filename">Il tuo dispositivo necessità di un\&apos;immagine chiamata &lt;b&gt;%s&lt;/b&gt;.</string>
+	<string name="filename_header">Immagine richiesta</string>
 </resources>

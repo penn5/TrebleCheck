@@ -33,6 +33,8 @@ object MountDetector {
     }
 
     fun isSAR(): Boolean {
+        if (Mock.sar != null)
+            return Mock.sar!!
         val systemRootImage = propertyGet("ro.build.system_root_image")
         val dynamicPartitions = propertyGet("ro.boot.dynamic_partitions")
 

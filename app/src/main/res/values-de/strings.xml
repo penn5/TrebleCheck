@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Treble Info</string>
+	<string name="title">Treble Info</string>
 	<string name="system_as_root_header">System as Root</string>
 	<string name="arch_header">Architektur</string>
 	<string name="arch_arm64">Das Gerät nutzt die &lt;b&gt;ARM64&lt;/b&gt;-Architektur.</string>
@@ -31,4 +31,14 @@
 	<string name="arch_x86">Das Gerät nutzt die &lt;b&gt;x86&lt;/b&gt; Architektur.</string>
 	<string name="no_browser">Bitte installiere einen Webbrowser.</string>
 	<string name="donate">Spenden</string>
+	<string name="dynamicpartitions_unknown">Erkennung der Unterstützung von dynamischen Partitionen fehlgeschlagen.</string>
+	<string name="dynamicpartitions_false">Dein Gerät verwendet keine dynamischen Partitionen. Die Benutzung von fastbootd wird nicht benötigt beim flashen von high-level Partitionen.</string>
+	<string name="dynamicpartitions_true">Dein Gerät benutzt dynamische Partitionen (Super-Partition). Du kannst High-Level-Partitionen nur mit fastbootd flashen, sonst kommt \&quot;Partition nicht gefunden\&quot;.</string>
+	<string name="dynamicpartitions_header">Dynamische Partitionen</string>
+	<string name="ab_unknown">Erkennung der Unterstützung von nahtlose Upgrades fehlgeschlagen. </string>
+	<string name="treble_legacy_lite">Ihr Gerät unterstützt die Legacy-Version von Project Treble mit der VNDK Lite-Version %1$d.%2$d</string>
+	<string name="treble_modern_lite">Ihr Gerät unterstützt die moderne Version von Project Treble mit der VNDK Lite-Version %1$d.%2$d</string>
+	<string name="filename_unknown">Fehler beim erkennen des Image-Dateinamen.</string>
+	<string name="filename">Dein Gerät braucht ein Image names &lt;b&gt;%s&lt;/b&gt;</string>
+	<string name="filename_header">Benötigtes Image</string>
 </resources>

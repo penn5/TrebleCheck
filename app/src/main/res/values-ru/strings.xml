@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Treble Info</string>
+	<string name="title">Treble Info</string>
 	<string name="system_as_root_header">System as Root</string>
 	<string name="arch_header">Архитектура</string>
 	<string name="arch_arm64">Ваше устройство — &lt;b&gt;ARM64&lt;/b&gt;</string>
@@ -22,13 +22,23 @@
 	<string name="theme_auto">Автоматический выбор темы</string>
 	<string name="theme_header">Тема</string>
 	<string name="treble_unknown">Невозможно определить поддержку Treble. Пожалуйста, обратитесь к разработчику.</string>
-	<string name="ab_true">Бесшовные обновления поддерживаются! Устройство может обновляться между разными версиями Андроид без траты времени на бездействие.</string>
-	<string name="ab_false">Бесшовные обновления не поддерживаются! Ваше устройство должно зайти в рекавери для установки обновления, риск ошибки больше чем при бесшовных обновлениях</string>
+	<string name="ab_true">Бесшовные обновления поддерживаются! Устройство может обновляться между разными версиями Андроид без простоев для обновления.</string>
+	<string name="ab_false">Бесшовные обновления не поддерживаются! Ваше устройство должно зайти в рекавери для установки обновления, риск ошибки больше, чем при бесшовных обновлениях</string>
 	<string name="ab_header">Бесшовные обновления</string>
 	<string name="sar_unknown">Невозможно определить поддержку System-as-Root. Пожалуйста, сообщите разработчику об ошибке.</string>
 	<string name="arch_x86_64">Ваше устройство — &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">Ваше устройство — x86, но использует 64-битную привязку</string>
 	<string name="arch_x86">Ваше устройство — &lt;b&gt;x86&lt;/b&gt;</string>
 	<string name="no_browser">Пожалуйста, установите браузер.</string>
-	<string name="donate">Задонатить</string>
+	<string name="donate">Поддержать</string>
+	<string name="dynamicpartitions_unknown">Невозможно определить, использует ли ваше устройство динамические разделы.</string>
+	<string name="dynamicpartitions_false">Ваше устройство не использует динамические разделы. Нет необходимости использовать fastbootd при прошивке разделов высокого уровня.</string>
+	<string name="dynamicpartitions_true">Ваше устройство использует динамические разделы (super-разделы). Вы можете прошивать высокоуровневые разделы только через fastbootd, иначе вы столкнетесь с ошибкой о том, что раздел не существует.</string>
+	<string name="dynamicpartitions_header">Динамические разделы</string>
+	<string name="ab_unknown">Невозможно определить, поддерживает ли ваше устройство бесшовные обновления.</string>
+	<string name="treble_legacy_lite">Ваше устройство поддерживает устаревшую версию Project Treble с использованием VNDK Lite версии %1$d.%2$d</string>
+	<string name="treble_modern_lite">Ваше устройство поддерживает современную версию Project Treble с использованием VNDK Lite версии %1$d.%2$d</string>
+	<string name="filename_unknown">Невозможно определить имя файла образа.</string>
+	<string name="filename">Вашему устройству требуется файл образа с именем &lt;b&gt;%s&lt;/b&gt;.</string>
+	<string name="filename_header">Требуемый образ</string>
 </resources>

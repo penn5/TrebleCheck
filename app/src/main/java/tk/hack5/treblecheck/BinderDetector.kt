@@ -15,13 +15,15 @@ object BinderDetector {
 
     @Synchronized
     fun getBinderVersion(): Int {
+        if (Mock.binderVersion != null)
+            return Mock.binderVersion!!
         if (!loaded) {
             System.loadLibrary("binderdetector")
             loaded = true
         }
-        return get_binder_version()
+        return getBinderVersionNative()
     }
 
-    @Suppress("FunctionName")
-    private external fun get_binder_version(): Int
+    @JvmName("get_binder_version")
+    private external fun getBinderVersionNative(): Int
 }

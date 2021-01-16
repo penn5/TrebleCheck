@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="app_name">Treble Info</string>
+	<string name="title">Treble Info</string>
 	<string name="system_as_root_header">Sistema com a Root</string>
 	<string name="arch_header">Arquitectura</string>
 	<string name="arch_arm64">El teu dispositiu és &lt;b&gt;ARM64&lt;/b&gt;</string>
@@ -31,4 +31,14 @@
 	<string name="arch_x86">El teu dispositiu és &lt;b&gt;x86&lt;/b&gt;</string>
 	<string name="no_browser">Si us plau instal·la un navegador web.</string>
 	<string name="donate">Donar</string>
+	<string name="dynamicpartitions_unknown">No es pot detectar si el dispositiu utilitza particions dinàmiques.</string>
+	<string name="dynamicpartitions_false">El teu dispositiu no utilitza particions dinàmiques. No cal fer servir fastbootd mentre es flashejen particions crítiques.</string>
+	<string name="dynamicpartitions_true">El teu dispositiu utilitza particions dinàmiques (partició super). Només pots flashejar les particions crítiques mitjançant fastbootd o trobaràs un error en dient que la partició no existeix.</string>
+	<string name="dynamicpartitions_header">Particions Dinàmiques</string>
+	<string name="ab_unknown">No es pot detectar si el dispositiu és compatible amb les actualitzacions en segon pla</string>
+	<string name="treble_legacy_lite">El teu dispositiu és compatible amb la versió antiga de Project Treble, fent servir VNDK version %1$d.%2$d</string>
+	<string name="treble_modern_lite">El teu dispositiu és compatible amb la versió nova de Project Treble, fent servir VNDK version %1$d.%2$d</string>
+	<string name="filename_unknown">No es pot detectar el nom de la imatge.</string>
+	<string name="filename">El vostre dispositiu necessita una imatge anomenada &lt;b&gt;%s&lt;/b&gt;.</string>
+	<string name="filename_header">Imatge Requerida</string>
 </resources>
