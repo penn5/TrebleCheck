@@ -11,7 +11,6 @@
 package tk.hack5.treblecheck
 
 import android.annotation.SuppressLint
-import java.util.*
 
 
 @SuppressLint("PrivateApi") // Oh well.

@@ -10,13 +10,8 @@
 
 package tk.hack5.treblecheck
 
-import android.app.Activity
 import android.util.Log
-import android.view.ViewTreeObserver
 import androidx.test.core.app.ActivityScenario
-import androidx.test.runner.lifecycle.ActivityLifecycleCallback
-import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry
-import androidx.test.runner.lifecycle.Stage
 import org.junit.AfterClass
 import org.junit.BeforeClass
 import org.junit.ClassRule
@@ -25,8 +20,6 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import tools.fastlane.screengrab.DecorViewScreenshotStrategy
 import tools.fastlane.screengrab.Screengrab
-import tools.fastlane.screengrab.ScreenshotStrategy
-import tools.fastlane.screengrab.UiAutomatorScreenshotStrategy
 import tools.fastlane.screengrab.cleanstatusbar.BluetoothState
 import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
 import tools.fastlane.screengrab.cleanstatusbar.MobileDataType
@@ -63,7 +56,6 @@ class ScreenshotTaker(
 
         @BeforeClass
         @JvmStatic
-        //@Before
         fun beforeAll() {
             Log.e("DemoMode", "on")
             CleanStatusBar()
@@ -75,7 +67,6 @@ class ScreenshotTaker(
 
         @AfterClass
         @JvmStatic
-        //@After
         fun afterAll() {
             CleanStatusBar.disable()
         }

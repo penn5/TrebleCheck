@@ -8,4 +8,4 @@
  *         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
  */
 
-include ':app'
+include(":app")

@@ -10,8 +10,6 @@
 
 package tk.hack5.treblecheck
 
-import java.util.*
-
 object Mock {
     var ab: Boolean? = null
     var arch: Arch? = null

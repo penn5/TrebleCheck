@@ -38,8 +38,8 @@ import tk.hack5.treblecheck.databinding.ActivityScrollingBinding
 import tk.hack5.treblecheck.databinding.ContentScrollingBinding
 
 class ScrollingActivity : AppCompatActivity() {
-    lateinit var binding: ActivityScrollingBinding
-    lateinit var content: ContentScrollingBinding
+    private lateinit var binding: ActivityScrollingBinding
+    private lateinit var content: ContentScrollingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -384,14 +384,13 @@ class ScrollingActivity : AppCompatActivity() {
         val container = content.donateCard.frame
         container.visibility = View.VISIBLE
         container.id = View.generateViewId()
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
         val allModes = BuildConfig.DONATIONS_DEBUG
         val donateFragment = DonationsFragment.newInstance(
             BuildConfig.DONATIONS_DEBUG,
             playStoreMode || allModes,
             BuildConfig.GPLAY_PUBK,
             BuildConfig.GPLAY_KEYS,
-            BuildConfig.GPLAY_VALS,
+            BuildConfig.GPLAY_VALS.map(::getString).toTypedArray(),
             !playStoreMode || allModes,
             BuildConfig.PAYPAL_EMAIL,
             BuildConfig.PAYPAL_CURRENCY,
@@ -399,6 +398,7 @@ class ScrollingActivity : AppCompatActivity() {
             false,
             null
         )
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(container.id, donateFragment, "donationsFragment")
         fragmentTransaction.commit()
         window.decorView.setOnApplyWindowInsetsListener { view, insets ->
@@ -415,7 +415,7 @@ class ScrollingActivity : AppCompatActivity() {
         }
     }
 
-    fun getPlayStoreMode(): Boolean {
+    private fun getPlayStoreMode(): Boolean {
         return try {
             packageManager.getApplicationInfo("com.android.vending", 0).enabled
         } catch (e: PackageManager.NameNotFoundException) {
@@ -423,7 +423,7 @@ class ScrollingActivity : AppCompatActivity() {
         }
     }
 
-    fun updateThemeText(change: Boolean) {
+    private fun updateThemeText(change: Boolean) {
         var current = if (Mock.theme == null) {
             val sharedPrefs = getPreferences(Context.MODE_PRIVATE)
             sharedPrefs.getInt("daynight", 2)
@@ -459,7 +459,7 @@ class ScrollingActivity : AppCompatActivity() {
         )
     }
 
-    fun fitToCutout(insets: WindowInsets) = insets.run {
+    private fun fitToCutout(insets: WindowInsets) = insets.run {
         val titleIsRtl =
             ViewCompat.getLayoutDirection(binding.toolbar) == ViewCompat.LAYOUT_DIRECTION_RTL
         val newLayoutParams = binding.toolbarLayout.layoutParams as ViewGroup.MarginLayoutParams
@@ -506,7 +506,7 @@ private const val tag = "TrebleInfo"
 
 
 private fun Resources.getHtml(@StringRes id: Int, vararg formatArgs: Any?): Spanned? {
-    val html = getString(id, *formatArgs)
+    val html = getString(id, *formatArgs).replace("\n", "<br>")
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT)
     } else {

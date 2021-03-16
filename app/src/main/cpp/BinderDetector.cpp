@@ -1,3 +1,4 @@
+#include <climits>
 /*
  * Sub-licenses:
  *         https://github.com/google/material-design-icons/blob/master/LICENSE
@@ -12,19 +13,15 @@
 #include "BinderDetector.h"
 
 extern "C" JNIEXPORT jint JNICALL
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
-__unused
-Java_tk_hack5_treblecheck_BinderDetector_get_1binder_1version(JNIEnv *env, jobject instance) {
-#pragma clang diagnostic pop
+Java_tk_hack5_treblecheck_BinderDetector_get_1binder_1version(__unused JNIEnv *env, __unused jobject thiz) {
     struct binder_version version{};
-    version.protocol_version = -1;
+    version.protocol_version = INT_MIN;
     int fd;
     int ret;
     fd = open(BINDER_PATH, O_CLOEXEC | O_RDWR); // NOLINT(hicpp-signed-bitwise)
     if (fd < 0) return -errno;
     ret = ioctl(fd, BINDER_VERSION, &version);
     close(fd);
-    if (ret < 0) return -abs(ret);
+    if (ret < 0) return ret;
     return version.protocol_version;
 }
