@@ -41,4 +41,8 @@
 	<string name="filename_unknown">Nem sikerült észlelni a kép fájlnevét.</string>
 	<string name="filename">Eszközének szüksége van egy &lt;b&gt;%s&lt;/b&gt; nevű képfájlra.</string>
 	<string name="filename_header">Szükséges kép</string>
+	<string name="donate_1">Kis adomány</string>
+	<string name="donate_1_description">Adomány a fejlesztőnek</string>
+	<string name="donate_3">Nagy adomány</string>
+	<string name="donate_3_description">Adomány a fejlesztőnek</string>
 </resources>

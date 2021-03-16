@@ -41,4 +41,8 @@
 	<string name="filename_unknown">Unable to detect image filename.</string>
 	<string name="filename">Your device needs an image file named &lt;b&gt;%s&lt;/b&gt;.</string>
 	<string name="filename_header">Required Image</string>
+	<string name="donate_1">Small donation</string>
+	<string name="donate_1_description">Donate to the developer</string>
+	<string name="donate_3">Large donation</string>
+	<string name="donate_3_description">Donate to the developer</string>
 </resources>

@@ -41,4 +41,8 @@
 	<string name="filename_unknown">تعذر تحديد اسم ملف صورة النظام</string>
 	<string name="filename">يحتاج جهازك صورة النظام ذات الاسم &lt;b&gt;%s&lt;/b&gt;.</string>
 	<string name="filename_header">صورة النظام المطلوبة</string>
+	<string name="donate_1">تبرع صغير</string>
+	<string name="donate_1_description">تبرع للمطور</string>
+	<string name="donate_3">تبرع كبير</string>
+	<string name="donate_3_description">تبرع للمطور</string>
 </resources>
