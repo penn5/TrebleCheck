@@ -140,10 +140,14 @@ class ScrollingActivity : AppCompatActivity() {
                     )
                 )
             )
-            filenameCard.content.text = if (fileName == null) {
-                resources.getText(R.string.filename_unknown)
+            if (treble != null) {
+                filenameCard.content.text = if (fileName == null) {
+                    resources.getText(R.string.filename_unknown)
+                } else {
+                    resources.getHtml(R.string.filename, Html.escapeHtml(fileName))
+                }
             } else {
-                resources.getHtml(R.string.filename, Html.escapeHtml(fileName))
+                filenameCard.root.visibility = View.GONE
             }
 
 
@@ -391,6 +395,7 @@ class ScrollingActivity : AppCompatActivity() {
             BuildConfig.GPLAY_PUBK,
             BuildConfig.GPLAY_KEYS,
             BuildConfig.GPLAY_VALS.map(::getString).toTypedArray(),
+            15,
             !playStoreMode || allModes,
             BuildConfig.PAYPAL_EMAIL,
             BuildConfig.PAYPAL_CURRENCY,

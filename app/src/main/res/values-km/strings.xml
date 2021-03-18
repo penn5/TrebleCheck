@@ -36,8 +36,8 @@
 	<string name="dynamicpartitions_true">ម៉ាស៊ីនរបស់អ្នកប្រើ​ Dynamic​Partitions (super partitions) ។  អ្នកអាចបញ្ចេញ​ high-level partitions តាមរយៈ fastbootd ឬអ្នកនឹងជួបប្រទះកំហុសដែលនិយាយថា​ Partition មិនមាន។</string>
 	<string name="dynamicpartitions_header">Dynamic Partitions</string>
 	<string name="ab_unknown">មិនអាចរកឃើញថាតើម៉ាស៊ីនរបស់អ្នកអាចតំឡើង​ Seamless​ ឬទេ</string>
-	<string name="treble_legacy_lite">ម៉ាស៊ីនរបស់អ្នកអាចប្រើ legacy version នៃ Project Treble ដោយប្រើកំណែ VNDK Lite</string>
-	<string name="treble_modern_lite">ម៉ាស៊ីនរបស់អ្នក​អាចប្រើ modern version នៃ Project Treble ដោយប្រើកំណែ VNDK Lite%1$d.%2$d</string>
+	<string name="treble_legacy_lite">ម៉ាស៊ីនរបស់អ្នកអាចប្រើ legacy version នៃ Project Treble ដោយប្រើកំណែ VNDK Lite %1$d.%2$d</string>
+	<string name="treble_modern_lite">ម៉ាស៊ីនរបស់អ្នក​អាចប្រើ modern version នៃ Project Treble ដោយប្រើកំណែ VNDK Lite %1$d.%2$d</string>
 	<string name="filename_unknown">មិនអាចរកឃើញឈ្មោះឯកសាររូបភាព។</string>
 	<string name="filename">ម៉ាស៊ីនរបស់អ្នកត្រូវការឯកសាររូបភាពដែលមានឈ្មោះ&lt;b&gt;%s&lt;/b&gt;.</string>
 	<string name="filename_header">ត្រូវការរូបភាព</string>

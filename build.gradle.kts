@@ -9,7 +9,8 @@
  */
 
 buildscript {
-    val kotlinVersion = "1.4.21"
+    val kotlinVersion = "1.4.30"
+    extra["kotlinVersion"] = kotlinVersion
     repositories {
         google()
         mavenCentral()

@@ -20,9 +20,6 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keepnames class tk.hack5.treblecheck.BinderDetector {
-    *** get_binder_version(...);
-}
 -assumenosideeffects class android.util.Log {
     public static *** d(...);
     public static *** v(...);
@@ -33,4 +30,11 @@
     *** getBinderVersion();
     *** getDynamic();
     *** getSar();
+}
+-assumevalues class tk.hack5.treblecheck.Mock {
+    *** getAb() return null;
+    *** getArch() return null;
+    *** getBinderVersion() return null;
+    *** getDynamic() return null;
+    *** getSar() return null;
 }

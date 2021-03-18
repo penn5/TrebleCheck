@@ -19,7 +19,7 @@ plugins {
     id("poeditor-android")
 }
 
-val kotlinVersion = "1.4.21"
+val kotlinVersion = rootProject.extra["kotlinVersion"]
 
 fun com.android.build.gradle.internal.dsl.BuildType.setupBilling() {
     if (project.properties["gplayDebug"] == true || !file("billing.properties").exists()) {
@@ -72,6 +72,9 @@ android {
                 create("release") {
                     keyAlias = getProperty("keyAlias")
                     storeFile = file(getProperty("storeFile"))
+                    // without these AGP assumes that the signing will fail before it even starts
+                    keyPassword = ""
+                    storePassword = ""
                 }
             }
         }
@@ -80,6 +83,7 @@ android {
     buildTypes {
         getByName("release") {
             minifyEnabled(true)
+            isShrinkResources = true
             setProguardFiles(listOf(getDefaultProguardFile("proguard-android-optimize.txt"), file("proguard-rules.pro")))
             signingConfig = signingConfigs["release"]
 
@@ -144,5 +148,5 @@ dependencies {
     androidTestImplementation("tools.fastlane:screengrab:2.1.0") // requires github.com/penn5/fastlane, provided via mavenLocal
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
-    implementation("com.github.penn5:donations:3.4.5")
+    implementation("com.github.penn5:donations:3.5.1")
 }
