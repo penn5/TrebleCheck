@@ -1,4 +1,5 @@
-locales ['en-GB', 'ar', 'bg', 'ca', 'de-DE', 'es-ES', 'fr-FR', 'hi-IN', 'hu-HU', 'id', 'it-IT', 'iw-IL', 'ja-JP', 'ka-GE', 'km-KH', 'lt', 'ml-IN', 'nl-NL', 'pl-PL', 'pt-PT', 'ru-RU', 'ta-IN', 'th', 'tr-TR', 'uk', 'vi', 'zh-CN']
+locales ['en-GB', 'ar', 'bg', 'ca', 'de-DE', 'es-ES', 'fr-FR', 'hi-IN', 'hu-HU', 'id', 'it-IT', 'ja-JP', 'km-KH', 'lt', 'ml-IN', 'nl-NL', 'pl-PL', 'pt-PT', 'ru-RU', 'ta-IN', 'tr-TR', 'uk', 'vi', 'zh-CN']
+#locales ['fr-FR']
 clear_previous_screenshots true
 tests_apk_path 'app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk'
 app_apk_path 'app/build/outputs/apk/debug/app-debug.apk'
