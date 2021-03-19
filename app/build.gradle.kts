@@ -145,7 +145,7 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    androidTestImplementation("tools.fastlane:screengrab:2.1.0") // requires github.com/penn5/fastlane, provided via mavenLocal
+    androidTestImplementation("tools.fastlane:screengrab:2.1.1") // requires github.com/penn5/fastlane, provided via mavenLocal
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
     implementation("com.github.penn5:donations:3.5.1")

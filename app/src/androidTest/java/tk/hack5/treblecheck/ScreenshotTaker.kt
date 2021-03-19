@@ -53,23 +53,6 @@ class ScreenshotTaker(
             arrayOf(false, Arch.ARM32_BINDER64, false, false, TrebleData(false, true, 28, 0), 0),
             arrayOf(true, Arch.ARM64, false, true, TrebleData(false, false, 28, 0), 1),
         )
-
-        @BeforeClass
-        @JvmStatic
-        fun beforeAll() {
-            Log.e("DemoMode", "on")
-            CleanStatusBar()
-                .setClock("1000")
-                .setMobileNetworkDataType(MobileDataType.FOURG)
-                .setBluetoothState(BluetoothState.DISCONNECTED)
-                .enable()
-        }
-
-        @AfterClass
-        @JvmStatic
-        fun afterAll() {
-            CleanStatusBar.disable()
-        }
     }
 
     @Test
@@ -81,23 +64,24 @@ class ScreenshotTaker(
         Mock.treble = TrebleDataOrNull(trebleData)
         Mock.theme = theme
 
-        val future = CompletableFuture<ScrollingActivity>()
-
+        val future = CompletableFuture<Void>()
         val activityScenario = ActivityScenario.launch(ScrollingActivity::class.java)
         activityScenario.onActivity {
-            it.window.decorView.post {
-                future.complete(it)
+            try {
+                Screengrab.screenshot(
+                    "$ab-${arch.cpuBits}-${arch.binderBits}-$dynamic-$sar-" +
+                            "${trebleData?.legacy}-${trebleData?.lite}-${trebleData?.vndkVersion}-" +
+                            "${trebleData?.vndkSubVersion}-${theme}",
+                    DecorViewScreenshotStrategy(it)
+                )
+            } catch (e: Exception) {
+                future.completeExceptionally(e)
             }
+
+            future.complete(null)
         }
 
-        val activity = future.get()
-        Screengrab.screenshot(
-            "$ab-${arch.cpuBits}-${arch.binderBits}-$dynamic-$sar-" +
-                    "${trebleData?.legacy}-${trebleData?.lite}-${trebleData?.vndkVersion}-" +
-                    "${trebleData?.vndkSubVersion}",
-            DecorViewScreenshotStrategy(activity)
-        )
-
+        future.get()
         activityScenario.close()
     }
 }
