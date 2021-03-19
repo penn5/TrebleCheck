@@ -10,6 +10,7 @@
 
 package tk.hack5.treblecheck
 
+import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -23,6 +24,7 @@ import android.text.Html
 import android.text.Spanned
 import android.text.util.Linkify
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
@@ -30,17 +32,22 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.widget.ImageViewCompat
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.sufficientlysecure.donations.DonationsFragment
 import tk.hack5.treblecheck.databinding.ActivityScrollingBinding
 import tk.hack5.treblecheck.databinding.ContentScrollingBinding
+import java.text.Bidi
 
 class ScrollingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityScrollingBinding
     private lateinit var content: ContentScrollingBinding
 
+    @SuppressLint("RtlHardcoded")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScrollingBinding.inflate(layoutInflater)
@@ -378,6 +385,10 @@ class ScrollingActivity : AppCompatActivity() {
                     theme
                 )
             )
+            val topHeader = if (treble == null) trebleCard.header else filenameCard.header
+            val ltr = Bidi(topHeader.text.toString(), Bidi.DIRECTION_LEFT_TO_RIGHT).isLeftToRight
+            val gravity = if (ltr) Gravity.RIGHT else Gravity.LEFT
+            (binding.fab.layoutParams as CoordinatorLayout.LayoutParams).anchorGravity = Gravity.BOTTOM or gravity
         }
 
 
