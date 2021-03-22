@@ -10,6 +10,8 @@
 
 package tk.hack5.treblecheck
 
+import androidx.annotation.Keep
+
 object BinderDetector {
     private var loaded = false
 
@@ -24,6 +26,7 @@ object BinderDetector {
         return getBinderVersionNative()
     }
 
+    @Keep
     @JvmName("get_binder_version")
     private external fun getBinderVersionNative(): Int
 }
