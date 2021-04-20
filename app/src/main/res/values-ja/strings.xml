@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="title">Trebleチェッカー</string>
+	<string name="title">Treble Info</string>
 	<string name="system_as_root_header">System as Root</string>
 	<string name="arch_header">アーキテクチャ</string>
 	<string name="arch_arm64">あなたのデバイスは&lt;b&gt;ARM64&lt;/b&gt;です</string>
@@ -12,12 +12,12 @@
 	<string name="license_header">ライセンス</string>
 	<string name="license">ライセンス：\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\nプライバシー：\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
 	<string name="support_header">サポート</string>
-	<string name="support">バグを残してからダメなレビューは残しないでください。全部自分で作ったんです！ 代わりに、電報で連絡して 右上のボタンを使って。 あなたの問題について教えてください。そうすれば手伝うように努力します。</string>
+	<string name="support">このアプリに悪い評価をつけないでください。もしバグを見つけたら、右上のボタンを使ってTelegramで私に報告してください。あなたの問題を教えてください。喜んでお手伝いします。</string>
 	<string name="treble_false">お使いのデバイスはProject Trebleをサポートしていません</string>
 	<string name="treble_legacy">デバイスはProject Trebleのレガシーバージョンをサポートし、VNDKの使用 バージョン %1$d.%2$d</string>
 	<string name="treble_modern">デバイスはProject Trebleの最新バージョンをサポートし、VNDKの使用 バージョン %1$d.%2$d</string>
-	<string name="treble_header">Treble &amp; VNDK</string>
-	<string name="theme_day">\nライトテーマ</string>
+	<string name="treble_header">Treble と VNDK</string>
+	<string name="theme_day">ライトテーマ</string>
 	<string name="theme_night">ダークモード</string>
 	<string name="theme_auto">自動選択テーマ</string>
 	<string name="theme_header">テーマ</string>
@@ -27,8 +27,22 @@
 	<string name="ab_header">シームレスなアップグレード</string>
 	<string name="sar_unknown">ルートとしてのシステムのサポートステータスを検出できません。 バグを報告するには、開発者に連絡してください。</string>
 	<string name="arch_x86_64">あなたのデバイスは &lt;b&gt;x86_64&lt;/b&gt;</string>
-	<string name="arch_x86_binder64">あなたのデバイスは x86, 64ビットバインダーを使用する</string>
+	<string name="arch_x86_binder64">あなたのデバイスは x86, 64 binder を使用する</string>
 	<string name="arch_x86">あなたのデバイスは &lt;b&gt;x86&lt;/b&gt;</string>
 	<string name="no_browser">ブラウザをインストールしてください。</string>
 	<string name="donate">寄付</string>
+	<string name="dynamicpartitions_unknown">デバイスがダイナミックパーティションを使用しているかどうかを検出できません。</string>
+	<string name="dynamicpartitions_false">お使いのデバイスは動的パーティションを使用していません。 高レベルのパーティションをフラッシュするときにfastbootdを使用する必要はありません。</string>
+	<string name="dynamicpartitions_true">デバイスは動的パーティション（スーパーパーティション）を使用します。 fastbootdを介してのみ高レベルのパーティションをフラッシュできます。そうしないと、パーティションが存在しないというエラーが発生します。</string>
+	<string name="dynamicpartitions_header">動的パーティション</string>
+	<string name="ab_unknown">デバイスがシームレスアップグレードをサポートしているかどうかを検出できません</string>
+	<string name="treble_legacy_lite">お使いのデバイスは、VNDK Liteバージョン％1 $ d。％2 $ dを使用して、レガシーバージョンのProject Trebleをサポートしています。</string>
+	<string name="treble_modern_lite">お使いのデバイスは、VNDK Liteバージョン％1 $ d。％2 $ dを使用して、Project Trebleの最新バージョンをサポートしています。</string>
+	<string name="filename_unknown">画像のファイル名を検出できません。</string>
+	<string name="filename">デバイスには、&lt;b&gt;%s&lt;/b&gt;という名前の画像ファイルが必要です。</string>
+	<string name="filename_header">必要な画像</string>
+	<string name="donate_1">少額の寄付</string>
+	<string name="donate_1_description">開発者に寄付する</string>
+	<string name="donate_3">大規模な寄付</string>
+	<string name="donate_3_description">開発者に寄付する</string>
 </resources>
