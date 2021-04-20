@@ -29,9 +29,9 @@ platform :android do
   end
 
   desc "Deploy a new version to the Google Play"
-  lane :release do
+  lane :release do |options|
     gradle(task: "clean assembleRelease")
-    upload_to_play_store(track: "beta",
+    upload_to_play_store(track: options[:production] ? "production" : "beta",
                          release_status: "draft",
                          apk: "app/build/outputs/apk/release/app-release.apk",
                          skip_upload_images: true,
