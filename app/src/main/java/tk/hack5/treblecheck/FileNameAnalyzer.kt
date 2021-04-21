@@ -15,7 +15,7 @@ class FileNameAnalyzer(private val trebleData: TrebleData?, private val arch: Ar
         sb.append(
             when (arch) {
                 Arch.ARM64 -> "arm64"
-                Arch.ARM32_BINDER64 -> "a64"
+                Arch.ARM32_BINDER64 -> "arm32_binder64"
                 Arch.ARM32 -> "arm32"
                 Arch.X86_64 -> "x86_64"
                 Arch.X86_BINDER64 -> "x86_binder64"
@@ -47,7 +47,7 @@ class FileNameAnalyzer(private val trebleData: TrebleData?, private val arch: Ar
         sb.append("-")
         appendSar(sb)
         appendVndkLite(sb)
-        sb.append("-vanilla.img.xz")
+        sb.append(".img.xz")
         return sb.toString()
     }
 }
