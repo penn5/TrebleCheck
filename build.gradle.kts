@@ -9,19 +9,17 @@
  */
 
 buildscript {
-    val kotlinVersion = "1.4.30"
+    val kotlinVersion = "1.5.20"
     extra["kotlinVersion"] = kotlinVersion
     repositories {
         google()
         mavenCentral()
-        jcenter() // required by com.android.tools.build:gradle until 7.0.0-alpha01
         maven("https://jitpack.io")
-        mavenLocal()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.1.2")
+        classpath("com.android.tools.build:gradle:4.2.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-        classpath("com.github.penn5:poeditor-android:0.1.2")
+        classpath("com.github.penn5:poeditor-android:0.1.4")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -31,9 +29,8 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter() // https://github.com/fastlane/fastlane/issues/12651
         maven("https://jitpack.io")
-        mavenLocal() // only for fastlane
+        jcenter() // https://github.com/fastlane/fastlane/pull/19020
     }
 }
 

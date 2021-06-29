@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.signing.SigningConfigData
-import com.android.build.gradle.internal.signing.SigningConfigProvider
 import org.jetbrains.kotlin.konan.properties.loadProperties
 
 /*
@@ -21,8 +19,8 @@ plugins {
 
 val kotlinVersion = rootProject.extra["kotlinVersion"]
 
-fun com.android.build.gradle.internal.dsl.BuildType.setupBilling() {
-    if (project.properties["gplayDebug"] == true || !file("billing.properties").exists()) {
+fun com.android.build.gradle.internal.dsl.BuildType.setupBilling(debugByDefault: Boolean) {
+    if (project.properties["gplayDebug"] as Boolean? ?: debugByDefault || !file("billing.properties").exists()) {
         buildConfigField("boolean", "DONATIONS_DEBUG", "true")
         buildConfigField("String", "GPLAY_PUBK", "\"\"")
         buildConfigField("String[]", "GPLAY_KEYS", "{}")
@@ -73,8 +71,8 @@ android {
                     keyAlias = getProperty("keyAlias")
                     storeFile = file(getProperty("storeFile"))
                     // without these AGP assumes that the signing will fail before it even starts
-                    keyPassword = ""
-                    storePassword = ""
+                    keyPassword = getProperty("keyPassword")
+                    storePassword = getProperty("storePassword")
                 }
             }
         }
@@ -87,15 +85,11 @@ android {
             setProguardFiles(listOf(getDefaultProguardFile("proguard-android-optimize.txt"), file("proguard-rules.pro")))
             signingConfig = signingConfigs["release"]
 
-            if (!project.hasProperty("gplayDebug"))
-                project.ext.set("gplayDebug", false)
-            setupBilling()
+            setupBilling(false)
         }
         getByName("debug") {
             signingConfig = signingConfigs["debug"]
-            if (!project.hasProperty("gplayDebug"))
-                project.ext.set("gplayDebug", true)
-            setupBilling()
+            setupBilling(true)
         }
     }
     externalNativeBuild {
@@ -106,28 +100,11 @@ android {
     buildFeatures {
         viewBinding = true
     }
-}
 
-task("inputKeyPasswords") {
-    doFirst {
-        getPassword("Store Password")?.let {
-            android.signingConfigs.getByName("release") {
-                storePassword = it
-                keyPassword = getPassword("Key Password")
-            }
-
-            tasks.filterIsInstance<com.android.build.gradle.tasks.PackageApplication>().forEach {
-                val config = android.buildTypes[(it.signingConfig.signingConfigData ?: return@forEach).name].signingConfig ?: return@forEach
-                it.signingConfig = SigningConfigProvider(
-                    SigningConfigData.fromSigningConfig(config),
-                    it.signingConfig.signingConfigFileCollection,
-                    it.signingConfig.signingConfigValidationResultDir
-                )
-            }
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = false
         }
-    }
-    afterEvaluate {
-        tasks.getByName("validateSigningRelease").dependsOn(this@task)
     }
 }
 
@@ -145,7 +122,7 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    androidTestImplementation("tools.fastlane:screengrab:2.1.1") // requires github.com/penn5/fastlane, provided via mavenLocal
+    androidTestImplementation("tools.fastlane:screengrab:2.1.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
     implementation("com.github.penn5:donations:3.5.1")
