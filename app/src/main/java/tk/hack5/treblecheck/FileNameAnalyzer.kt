@@ -36,7 +36,7 @@ class FileNameAnalyzer(private val trebleData: TrebleData?, private val arch: Ar
     }
 
     private fun appendVndkLite(sb: StringBuilder) {
-        if (trebleData?.lite == true) {
+        if (trebleData?.lite == true || trebleData?.legacy == true) {
             sb.append("-vndklite")
         }
     }
