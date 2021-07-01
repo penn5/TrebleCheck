@@ -4,7 +4,7 @@
 
 - I don't collect any data about your device
 - However, Google Play will pass data to me if you install this app from Google Play
-  - I will not share this data with anyone
+  - I will not share this data with anyone unless it's anonymous, aggregated or already public.
 
 ## Permissions breakdown
 
