@@ -15,6 +15,6 @@
 ## Financial data
 
 - This app supports in app purchases
-  - I won't share your personal data with anyone for any reason
+  - I won't share your personal data with anyone for any reason unless I legally have to
 
 ## No catches!
