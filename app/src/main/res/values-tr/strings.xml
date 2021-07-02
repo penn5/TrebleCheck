@@ -10,7 +10,7 @@
 	<string name="sar_true">Cihazınız System-as-root destekliyor. &lt;b&gt;A/B&lt;/b&gt; işletim sistemi kullanın.</string>
 	<string name="sar_false">Cihazınız System-as-root desteklemiyor. &lt;b&gt;A-only&lt;/b&gt; işletim sistemi kullanın.</string>
 	<string name="license_header">Lisanslar</string>
-	<string name="license">Lisans\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\nGizlilik:\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Lisans\n%1$s\nGizlilik:\n%2$s</string>
 	<string name="support_header">Destek</string>
 	<string name="support">Bir hata yapmışsam lütfen kötü bir yorum bırakmayın; tüm uygulamayı tek başıma yazdım! Bunun yerine sağ üstteki tuş yardımıyla bana ulaşın. Derdinizi anlatırsanız memnuniyetle yardım ederim.</string>
 	<string name="treble_false">Cihazınız Project Treble\&apos;yi desteklemiyor</string>

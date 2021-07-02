@@ -10,7 +10,7 @@
 	<string name="sar_true">თქვენი მოწყობილობა იყენებს System-as-Rootს-ს. გამოიყენეთ &lt;b&gt;A/B&lt;/b&gt; ოპერაციული სისტემა.</string>
 	<string name="sar_false">თქვენი მოწყობილობა არ იყენებს სისტემას როგორ რუთს. გამოიყენეთ &lt;b&gt;A-only&lt;/b&gt; ოპერაციული სისტემა.</string>
 	<string name="license_header">ლიცენზია</string>
-	<string name="license">ლიცენზია: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nუზრუნველყოფა: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">ლიცენზია: %1$s\nუზრუნველყოფა: %2$s</string>
 	<string name="support_header">დახმარება</string>
 	<string name="support">გთხოვთ არ დატოვოთ ცუდი გამოხმაურება თუ რაიმე შეცდომა აღმოაჩინეთ; ამის მაგივრად, გთხოვთ დამეკონტაქტოთ Telegram-ზე ზემოთ მოცემული ღილაკის გამოყენებით, მითხარით რაშია პრობლემა და აუცილებლად გამოგეხმაურებით</string>
 	<string name="treble_false">თქვენი მოწყობილობა არ არის თავსებადი Project Treble-თან</string>

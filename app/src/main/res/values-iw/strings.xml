@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string name="license_header">רישיונות</string>
-	<string name="license">רישיונות: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nפרטיות: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">רישיונות: %1$s\nפרטיות: %2$s</string>
 	<string name="support_header">תמיכה</string>
 	<string name="theme_header">ערכת נושא</string>
 	<string name="donate">תרומה</string>

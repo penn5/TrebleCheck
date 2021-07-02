@@ -10,7 +10,7 @@
 	<string name="sar_true">ឧបករណ៍របស់អ្នកមានប្រព័ន្ធជា Root ។  ប្រើប្រព័ន្ធប្រតិបត្តិការ &lt;b&gt;A/B&lt;/b&gt; ។</string>
 	<string name="sar_false">ឧបករណ៍របស់អ្នកមិនមានប្រព័ន្ធជា Root ។  ប្រើប្រព័ន្ធប្រតិបត្តិការ &lt;b&gt;A មួយប៉ុណ្ណោះ&lt;/b&gt; ។</string>
 	<string name="license_header">អាជ្ញាប័ណ្ណ</string>
-	<string name="license">អាជ្ញាប័ណ្ណ៖ https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nភាពឯកជន៖ https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">អាជ្ញាប័ណ្ណ៖ %1$s\nភាពឯកជន៖ %2$s</string>
 	<string name="support_header">ជំនួយ</string>
 	<string name="support">សូមកុំទុកការ​វាយតម្លៃអាក្រក់ប្រសិនបើខ្ញុំមានកំហុស។  ខ្ញុំបានសរសេរកម្មវិធីទាំងមូលដោយខ្លួនឯង!  ផ្ទុយទៅវិញសូមទាក់ទងមកខ្ញុំតាមរយៈ Telegram ដោយប្រើប៊ូតុងនៅខាងស្តាំខាងលើ។  ប្រាប់ខ្ញុំអំពីបញ្ហារបស់អ្នកហើយខ្ញុំនឹងព្យាយាមជួយ។</string>
 	<string name="treble_false">ម៉ាស៊ីនរបស់អ្នកមិនប្រើ Project Treble ទេ</string>

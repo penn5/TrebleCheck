@@ -10,7 +10,7 @@
 	<string name="sar_true">هاتفك يدعم \&quot;النظام كـ الجذر\&quot;. استخدم نظام تشغيل &lt;b&gt;A/B&lt;/b&gt;.</string>
 	<string name="sar_false">هاتفك لا يدعم \&quot;النظام كـ الجذر\&quot;. استخدم نظام تشغيل &lt;b&gt;A&lt;/b&gt; فقط.\n</string>
 	<string name="license_header">التراخيص</string>
-	<string name="license">الترخيص:\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\nالخصوصية:\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">الترخيص:\n%1$s\nالخصوصية:\n%2$s</string>
 	<string name="support_header">الدعم</string>
 	<string name="support">من فضلك لا تترك تقييما سيئا للتطبيق في حالة وجود خلل ما. هذا التطبيق كُتب من الصفر بنفسي! بدلا من ذلك بمكنك مراسلتي عبر تليجرام باستخدام الزر فى اﻷعلى وإخباري بمشكلتك وسأحاول جاهدا مساعدتك.</string>
 	<string name="treble_false">هاتفك لا يدعم مشروع Treble</string>

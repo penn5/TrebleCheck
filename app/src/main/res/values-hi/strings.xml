@@ -10,7 +10,7 @@
 	<string name="sar_true">आपका डिवाइस सिस्टम एस रूट का उपयोग करता है। &lt;b&gt;A/B&lt;/b&gt;  Operating System का उपयोग करें।</string>
 	<string name="sar_false">आपका डिवाइस सिस्टम एस रूट का उपयोग नहीं करता है। &lt;b&gt;A-only&lt;/b&gt; Operating System का उपयोग करें।</string>
 	<string name="license_header">लाइसेंस</string>
-	<string name="license">लाइसेंस: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nगोपनीयता: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">लाइसेंस: %1$s\nगोपनीयता: %2$s</string>
 	<string name="support_header">मदद</string>
 	<string name="support">कुछ बग पे कृपया कर बुरी समीक्षा न छोड़े; मैंने यह app अपने आप से लिखा है! टेलीग्राम में संम्पर्क करे (दायां शीर्ष बटन द्वारा) । वहां अपने समस्याओ का समाधान करे</string>
 	<string name="treble_false">आपका डिवाइस प्रोजेक्ट ट्रेबल का उपयोग नहीं करता है</string>

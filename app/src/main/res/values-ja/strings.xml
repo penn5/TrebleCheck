@@ -10,7 +10,7 @@
 	<string name="sar_true">デバイスはSystem-as-Rootをサポートしています。 &lt;b&gt;A/B&lt;/b&gt;オペレーティングシステムを使用します。</string>
 	<string name="sar_false">デバイスはSystem-as-Rootをサポートしていません。&lt;b&gt;Aのみ&lt;/b&gt;のオペレーティングシステムを使用します。</string>
 	<string name="license_header">ライセンス</string>
-	<string name="license">ライセンス：\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\nプライバシー：\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">ライセンス：\n%1$s\nプライバシー：\n%2$s</string>
 	<string name="support_header">サポート</string>
 	<string name="support">このアプリに悪い評価をつけないでください。もしバグを見つけたら、右上のボタンを使ってTelegramで私に報告してください。あなたの問題を教えてください。喜んでお手伝いします。</string>
 	<string name="treble_false">お使いのデバイスはProject Trebleをサポートしていません</string>

@@ -10,7 +10,7 @@
 	<string name="sar_true">Uw apparaat ondersteund Systeem als Root. Gebruik een &lt;b&gt;A/B&lt;/b&gt; besturingssysteem.</string>
 	<string name="sar_false">Uw apparaat ondersteund geen Systeem als root. Gebruik een &lt;b&gt;A-only&lt;/b&gt; besturingssysteem.</string>
 	<string name="license_header">Licenties</string>
-	<string name="license">Licentie: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nPrivacy: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Licentie: %1$s\nPrivacy: %2$s</string>
 	<string name="support_header">Ondersteuning</string>
 	<string name="support">Als er nog een bug is laat dan alsjeblieft geen slecht review achter; ik heb deze hele app in m\&apos;n eentje gemaakt! In plaats hiervan kan je me bereiken via Telegram met de knop in de rechter hoek. Leg je probleem aan me uit en ik ga proberen te helpen.</string>
 	<string name="treble_false">Uw apparaat ondersteund geen Project Treble</string>

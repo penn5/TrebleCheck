@@ -389,7 +389,11 @@ class ScrollingActivity : AppCompatActivity() {
                     theme
                 )
             )
-            licenseCard.content.text = resources.getHtml(R.string.license)
+            licenseCard.content.text = resources.getHtml(
+                R.string.license,
+                "https://github.com/penn5/TrebleCheck/blob/dev/LICENSE",
+                "https://github.com/penn5/TrebleCheck/blob/dev/PRIVACY.md"
+            )
             licenseCard.content.setLinkTextColor(content.licenseCard.content.textColors)
             Linkify.addLinks(content.licenseCard.content, Linkify.WEB_URLS)
 

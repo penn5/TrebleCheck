@@ -10,7 +10,7 @@
 	<string name="sar_true">Votre appareil a ses fichiers système à la racine de sa mémoire interne. Veuillez utiliser un système d\&apos;éxploitation &lt;b&gt;A/B&lt;/b&gt;.</string>
 	<string name="sar_false">Votre appareil n\&apos;a pas ses fichiers système à la racine de sa mémoire interne. Veuillez utiliser un système d\&apos;éxploitation &lt;b&gt;uniquement A&lt;/b&gt;.</string>
 	<string name="license_header">Licenses</string>
-	<string name="license">License: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nConfidentialité: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">License: %1$s\nConfidentialité: %2$s</string>
 	<string name="support_header">Assistance</string>
 	<string name="support">Si vous rencontrer un bug merci de ne pas donner une mauvaise appréciation ; j\&apos;ai écris l\&apos;application seul en une semaine!\nVeuillez, au contraire, me contactacter via Telegram en utilisant le button dans le coin supérieur droit. Expliquez moi le problème rencontré et je le corrigerai.</string>
 	<string name="treble_false">Votre appareil ne supporte pas le projet Treble</string>

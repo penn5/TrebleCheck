@@ -10,7 +10,7 @@
 	<string name="sar_true">A készülék támogatja a Rendszert Gyökérként. Használjon &lt;b&gt;A/B&lt;/b&gt; operációs rendszert.</string>
 	<string name="sar_false">Az eszköz nem támogatja a Rendszert Gyökérként. Használjon &lt;b&gt;csak-A&lt;/b&gt; operációs rendszert.</string>
 	<string name="license_header">Licencek</string>
-	<string name="license">Licenc: https://github.com/penn5/TrebleCheck/blob/master/LICENSE Adatvédelem: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Licenc: %1$s\nAdatvédelem: %2$s</string>
 	<string name="support_header">Támogatás</string>
 	<string name="support">Kérjük, ne hagyjon rossz véleményt, ha hibát hagytam; Az egész alkalmazást egyedül írtam! Ehelyett lépjen velem kapcsolatba a távirat segítségével a jobb felső sarokban található gomb segítségével. Meséljen a problémájáról, és igyekszem segíteni.</string>
 	<string name="treble_false">Az Ön eszköze nem támogatja a Project Treble programot</string>

@@ -10,7 +10,7 @@
 	<string name="sar_true">Jūsų įrenginys palaiko Sistemą kaip Šaknį. Naudokite &lt;b&gt;A/B&lt;/b&gt; operacinę sistemą.</string>
 	<string name="sar_false">Jūsų įrenginys nepalaiko Sistemos kaip Šaknies. Naudokite tik &lt;b&gt;A-only&lt;/b&gt; operacinę sistemą.</string>
 	<string name="license_header">Licencijos</string>
-	<string name="license">Licencija:\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\nPrivatumas:\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Licencija:\n%1$s\nPrivatumas:\n%2$s</string>
 	<string name="support_header">Pagalba</string>
 	<string name="support">Nepalikite blogo atsiliepimo, jei palikau klaidą; Aš pats parašiau visą programą! Užuot susisiekite su manimi per „Telegram“, paspausdę mygtuką, esantį viršutiniame dešiniajame kampe. Papasakokite man apie jūsų problemą ir aš pasistengsiu padėti.</string>
 	<string name="treble_false">Jūsų įrenginys nepalaiko „Project Treble“</string>

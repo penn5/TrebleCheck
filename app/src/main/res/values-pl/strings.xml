@@ -10,7 +10,7 @@
 	<string name="sar_true">Twoje urządzenie wspiera System-as-Root. Użyj obrazu &lt;b&gt;A/B&lt;/b&gt;.</string>
 	<string name="sar_false">Twoje urządzenie nie wspiera System-as-Root. Użyj obrazu &lt;b&gt;A-only&lt;/b&gt;.</string>
 	<string name="license_header">Licencje</string>
-	<string name="license">Licencja:\nhttps://github.com/penn5/TrebleCheck/blob/master/LICENSE\n\nPolityka prywatności:\nhttps://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Licencja:\n%1$s\n\nPolityka prywatności:\n%2$s</string>
 	<string name="support_header">Wsparcie</string>
 	<string name="support">Jeżeli znajdziesz błąd w aplikacji, nie wystawiaj jej złej opinii; Napisałem całą aplikację w ciągu tygodnia! Zamiast tego skontaktuj się ze mną przy pomocy aplikacji Telegram, używając przycisku znajdującego się po prawej stronie na górze. Opowiedz mi o swoim problemie, a spróbuję pomóc go rozwiązać.</string>
 	<string name="treble_false">Twoje urządzenie nie wspiera Projektu \&quot;Treble\&quot;</string>

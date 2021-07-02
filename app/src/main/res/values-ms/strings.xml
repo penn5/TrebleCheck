@@ -10,7 +10,7 @@
 	<string name="sar_true">Peranti anda menyokong Sistem-sebagai-Akar. Gunakan sistem operasi &lt;b&gt;A/B&lt;/b&gt;</string>
 	<string name="sar_false">Peranti anda tidak menyokong Sistem-sebagai-Akar. Gunakan Sistem Operasi &lt;b&gt;A-only&lt;/b&gt;</string>
 	<string name="license_header">Lesen-lesen</string>
-	<string name="license">Lesen: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nPrivasi: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Lesen: %1$s\nPrivasi: %2$s</string>
 	<string name="support_header">Sokongan</string>
 	<string name="support">Jangan tinggalkan ulasan yang buruk sekiranya saya meninggalkan pepijat; Saya membina keseluruhan aplikasi ini sendiri! Sebaliknya, hubungilah saya melalui Telegram menggunakan butang di penjuru atas kanan. Beritahu saya mengenai masalah anda dan saya akan berusaha untuk membantu.</string>
 	<string name="treble_false">Peranti anda tidak menyokong Projek Treble</string>

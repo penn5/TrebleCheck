@@ -10,7 +10,7 @@
 	<string name="sar_true">El teu dispositiu suporta Sistema com a Root. Fes servir un sistema operatiu \&quot;&lt;b&gt;A/B&lt;/b&gt;\&quot;.</string>
 	<string name="sar_false">El teu dispositiu no suporta Sistema com a Root. Fes servir un sistema operatiu \&quot;&lt;b&gt;A-only&lt;/b&gt;\&quot;.</string>
 	<string name="license_header">Llicències</string>
-	<string name="license">Llicència: https://github.com/penn5/TrebleCheck/blob/master/LICENSE\nPrivacitat: https://github.com/penn5/TrebleCheck/blob/master/PRIVACY.md</string>
+	<string name="license">Llicència: %1$s\nPrivacitat: %2$s</string>
 	<string name="support_header">Suport</string>
 	<string name="support">Si us plau si trobes un bug no deixis una opinió dolenta; he escrit tota l\&apos;aplicació sencera jo sol! En canvi, contacta amb mi per Telegram fent servir el botó que hi ha a dalt a la dreta. Explica\&apos;m el teu problema i faré tot el possible per ajudar-te.</string>
 	<string name="treble_false">El teu dispositiu no suporta Project Treble</string>
