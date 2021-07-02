@@ -32,12 +32,10 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.widget.ImageViewCompat
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.sufficientlysecure.donations.DonationsFragment
 import tk.hack5.treblecheck.databinding.ActivityScrollingBinding
 import tk.hack5.treblecheck.databinding.ContentScrollingBinding
@@ -49,7 +47,34 @@ class ScrollingActivity : AppCompatActivity() {
 
     @SuppressLint("RtlHardcoded")
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        try {
+            super.onCreate(savedInstanceState)
+        } catch (e: RuntimeException) {
+            val content = "❗️ You must read this email before sending it\n" +
+                    "➡️ Information about this bug\n" +
+                    "• The bug that caused Treble Info to crash is a known bug.\n" +
+                    "• However, the neither the cause nor the solution are known yet.\n" +
+                    "• To help find the solution, please submit this bug report by pressing send (not yet!)\n" +
+                    "• Before you submit this report, please read through the email to make sure there is no personal data.\n" +
+                    "\n" +
+                    "➡️ Information for use by the developer\n" +
+                    "Fingerprint: ${Build.FINGERPRINT}\n" +
+                    "✅ If you have read everything above this line, you're ready to submit the report! Thank you for helping!\n" +
+                    "\n" +
+                    "\n" +
+                    "Stack Trace: ${e.stackTraceToString()}"
+
+            val subject = "Treble%20Info%20crash%20report"
+            val body = Uri.encode(content, "utf-8")
+
+            startActivity(Intent.createChooser(Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("mailto:treble@hack5.dev?subject=$subject&body=$body")
+                println(data)
+            }, "Send Crash Report"))
+
+            finish()
+            return
+        }
         binding = ActivityScrollingBinding.inflate(layoutInflater)
         content = ContentScrollingBinding.bind(binding.root.getChildAt(0))
         setContentView(binding.root)
@@ -63,13 +88,13 @@ class ScrollingActivity : AppCompatActivity() {
             try {
                 startActivity(telegramIntent)
             } catch (e: ActivityNotFoundException) {
-                Log.e(tag, "Launch tg:// failed", e)
+                Log.w(tag, "Launch tg:// failed", e)
                 val browserIntent =
                     Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/s/TrebleInfo"))
                 try {
                     startActivity(browserIntent)
                 } catch (e: ActivityNotFoundException) {
-                    Log.e(tag, "Launch browser failed", e)
+                    Log.w(tag, "Launch browser failed", e)
                     Toast.makeText(this, R.string.no_browser, Toast.LENGTH_LONG).show()
                 }
             }
