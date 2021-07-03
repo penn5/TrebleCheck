@@ -133,10 +133,10 @@ object TrebleDetector {
 
     private fun parseVersion(string: String): Pair<Int, Int>? {
         val split = string.split(".")
-        if (split.size != 1 && split.size == 2) {
+        if (split.size != 1 && split.size != 2) {
             return null
         }
-        return split[0].toInt(10) to (split.getOrNull(1)?.toInt(10) ?: 0)
+        return (split[0].toIntOrNull(10) ?: return null) to (split.getOrNull(1)?.toIntOrNull(10) ?: 0)
     }
 
     private fun locateManifestFiles(): Pair<List<File>, Boolean> {
