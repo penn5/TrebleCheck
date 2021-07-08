@@ -12,7 +12,6 @@
 	<string name="license_header">लाइसेंस</string>
 	<string name="license">लाइसेंस: %1$s\nगोपनीयता: %2$s</string>
 	<string name="support_header">मदद</string>
-	<string name="support">कुछ बग पे कृपया कर बुरी समीक्षा न छोड़े; मैंने यह app अपने आप से लिखा है! टेलीग्राम में संम्पर्क करे (दायां शीर्ष बटन द्वारा) । वहां अपने समस्याओ का समाधान करे</string>
 	<string name="treble_false">आपका डिवाइस प्रोजेक्ट ट्रेबल का उपयोग नहीं करता है</string>
 	<string name="treble_legacy">आपका डिवाइस VNDK version %1$d.%2$d के सहायता से  Project Treble की विरासत (Legacy) संस्करण का उपयोग करता है।</string>
 	<string name="treble_modern">आपका डिवाइस VNDK version %1$d.%2$d का उपयोग करके प्रोजेक्ट ट्रेबल के आधुनिक संस्करण का समर्थन करता है</string>

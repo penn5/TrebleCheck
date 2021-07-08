@@ -12,7 +12,6 @@
 	<string name="license_header">អាជ្ញាប័ណ្ណ</string>
 	<string name="license">អាជ្ញាប័ណ្ណ៖ %1$s\nភាពឯកជន៖ %2$s</string>
 	<string name="support_header">ជំនួយ</string>
-	<string name="support">សូមកុំទុកការ​វាយតម្លៃអាក្រក់ប្រសិនបើខ្ញុំមានកំហុស។  ខ្ញុំបានសរសេរកម្មវិធីទាំងមូលដោយខ្លួនឯង!  ផ្ទុយទៅវិញសូមទាក់ទងមកខ្ញុំតាមរយៈ Telegram ដោយប្រើប៊ូតុងនៅខាងស្តាំខាងលើ។  ប្រាប់ខ្ញុំអំពីបញ្ហារបស់អ្នកហើយខ្ញុំនឹងព្យាយាមជួយ។</string>
 	<string name="treble_false">ម៉ាស៊ីនរបស់អ្នកមិនប្រើ Project Treble ទេ</string>
 	<string name="treble_legacy">ម៉ាស៊ីនរបស់អ្នកអាចប្រើlegacy versionនៃ Project Treble ដោយ ប្រើ VNDK version %1$d.%2$d</string>
 	<string name="treble_modern">ម៉ាស៊ីនរបស់អ្នកអាចប្រើmodern versionនៃ Project Treble ដោយ ប្រើ​ VNDK version %1$d.%2$d</string>

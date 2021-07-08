@@ -12,7 +12,6 @@
 	<string name="license_header">ലൈസൻസുകൾ</string>
 	<string name="license">ലൈസൻസ്: %1$s\nസ്വകാര്യതാനയം: %2$s</string>
 	<string name="support_header">സഹായം</string>
-	<string name="support">ഈ അപ്ലിക്കേഷൻ ഞാൻ സ്യയം ഉണ്ടാക്കി എടുത്തതാണ്. അതിനാൽ ഞാൻ അറിയാതെ ആപ്പിൽ ഒരു പിശക് സംഭവിച്ചിട്ടുണ്ടെങ്കിൽ ദയവായി മോശം അഭിപ്രായം രേഖപെടുത്തരുത് .  അതിനു പകരം  വലത് മുകളിൽ കൊടുത്തിരിക്കുന്ന ബട്ടൺ ഉപയോഗിച്ച എന്നെ ടെലിഗ്രാം വഴി ബന്ധപെടുക. എന്നിട് നിങ്ങളുടെ പ്രശ്നത്തെ കുറിച്ച എന്നോട് പറയുക, ഞാൻ തീർച്ചയായും  സഹായിക്കാൻ ശ്രമിക്കും.</string>
 	<string name="treble_false">Project Treble നെ നിങ്ങളുടെ ഉപകരണം പിന്തുണയ്‌ക്കുന്നില്ല</string>
 	<string name="treble_legacy">Project Treble ന്റെ ഒരു പഴയ പതിപ്പിനെ ആൺ നിങ്ങളുടെ ഫോൺ പിന്തുണക്കുന്നത് . അത് VNDK version %1$d.%2$d ഉപയോഗിക്കുന്നു </string>
 	<string name="treble_modern">Project Treble ന്റെ പുതിയ പതിപ്പിനെ നിങ്ങളുടെ ഫോൺ പിന്തുണയ്ക്കുന്നു . അത് VNDK version %1$d.%2$d ഉപയോഗിക്കുന്നു</string>

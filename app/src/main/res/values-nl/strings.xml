@@ -12,7 +12,6 @@
 	<string name="license_header">Licenties</string>
 	<string name="license">Licentie: %1$s\nPrivacy: %2$s</string>
 	<string name="support_header">Ondersteuning</string>
-	<string name="support">Als er nog een bug is laat dan alsjeblieft geen slecht review achter; ik heb deze hele app in m\&apos;n eentje gemaakt! In plaats hiervan kan je me bereiken via Telegram met de knop in de rechter hoek. Leg je probleem aan me uit en ik ga proberen te helpen.</string>
 	<string name="treble_false">Uw apparaat ondersteund geen Project Treble</string>
 	<string name="treble_legacy">Uw apparaat ondersteund de legacy versie van Project Treble, gebruik hiervoor VNDK versie %1$d.%2$d</string>
 	<string name="treble_modern">Uw apparaat  ondersteund de moderne versie van Project Treble, gebruik hiervoor VNDK versie %1$d.%2$d</string>

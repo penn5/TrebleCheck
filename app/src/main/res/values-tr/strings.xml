@@ -12,7 +12,7 @@
 	<string name="license_header">Lisanslar</string>
 	<string name="license">Lisans\n%1$s\nGizlilik:\n%2$s</string>
 	<string name="support_header">Destek</string>
-	<string name="support">Bir hata yapmışsam lütfen kötü bir yorum bırakmayın; tüm uygulamayı tek başıma yazdım! Bunun yerine sağ üstteki tuş yardımıyla bana ulaşın. Derdinizi anlatırsanız memnuniyetle yardım ederim.</string>
+	<string name="support">Bu uygulamada bir sorun bulduysanız, lütfen sağ üstteki tuş ile bana ulaşmaktan çekinmeyin. En yakın zamanda size döneceğim.</string>
 	<string name="treble_false">Cihazınız Project Treble\&apos;yi desteklemiyor</string>
 	<string name="treble_legacy">Cihazınız Project Treble\&apos;nin VNDK %1$d.%2$d sürümünü kullanan eski sürümünü destekliyor.</string>
 	<string name="treble_modern">Cihazınız Project Treble\&apos;nin VNDK %1$d.%2$d sürümünü kullanan modern sürümünü destekliyor.</string>
@@ -41,4 +41,8 @@
 	<string name="filename_unknown">İmaj dosya ismi tespit edilemedi.</string>
 	<string name="filename">Cihazınız &lt;b&gt;%s&lt;/b&gt; adlı bir imaj gerektiriyor.</string>
 	<string name="filename_header">Gerekli İmaj</string>
+	<string name="donate_1">Küçük bağış</string>
+	<string name="donate_1_description">Geliştiriciye bağış yap</string>
+	<string name="donate_3">Büyük bağış</string>
+	<string name="donate_3_description">Geliştiriciye bağış yap</string>
 </resources>

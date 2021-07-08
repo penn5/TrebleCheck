@@ -12,7 +12,6 @@
 	<string name="license_header">Bản quyền</string>
 	<string name="license">Bản quyền: %1$s\nThông tin về quyền riêng tư: %2$s</string>
 	<string name="support_header">Hỗ trợ</string>
-	<string name="support">Xin đừng đánh giá thấp ứng dụng này. Tôi đã bỏ nhiều thời gian để viết ứng dụng này! Thay vì để lại đánh giá thấp thì hãy liên hệ với tôi qua Telegram bằng cái nút ở góc trên cùng bên phải. Vui lòng miêu tả lỗi của ứng dụng và tôi sẽ sẵn lòng giúp bạn!</string>
 	<string name="treble_false">Thiết bị của bạn không hỗ trợ Project Treble</string>
 	<string name="treble_legacy">Thiết bị của bạn sử dụng phiên bản cũ của Project Treble, đang sử dụng VNDK version %1$d.%2$d</string>
 	<string name="treble_modern">Thiết bị của bạn hỗ trợ phiên bản mới của Project Treble, đang sử dụng VNDK version %1$d.%2$d</string>

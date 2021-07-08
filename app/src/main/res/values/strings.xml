@@ -12,7 +12,7 @@
 	<string name="license_header">Licenses</string>
 	<string name="license">License: %1$s\nPrivacy: %2$s</string>
 	<string name="support_header">Support</string>
-	<string name="support">Please don\&apos;t leave a bad review if I left a bug; I wrote the whole app on my own! Instead contact me via Telegram using the button in the top right. Tell me about your issue and I will endeavour to help.</string>
+	<string name="support">If you notice any bugs in this application, please don\&apos;t hesitate to contact me via the button in the top right. I will get back to you as soon as possible.</string>
 	<string name="treble_false">Your device does not support Project Treble</string>
 	<string name="treble_legacy">Your device supports the legacy version of Project Treble, using VNDK version %1$d.%2$d</string>
 	<string name="treble_modern">Your device supports the modern version of Project Treble, using VNDK version %1$d.%2$d</string>

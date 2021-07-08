@@ -12,7 +12,6 @@
 	<string name="license_header">ლიცენზია</string>
 	<string name="license">ლიცენზია: %1$s\nუზრუნველყოფა: %2$s</string>
 	<string name="support_header">დახმარება</string>
-	<string name="support">გთხოვთ არ დატოვოთ ცუდი გამოხმაურება თუ რაიმე შეცდომა აღმოაჩინეთ; ამის მაგივრად, გთხოვთ დამეკონტაქტოთ Telegram-ზე ზემოთ მოცემული ღილაკის გამოყენებით, მითხარით რაშია პრობლემა და აუცილებლად გამოგეხმაურებით</string>
 	<string name="treble_false">თქვენი მოწყობილობა არ არის თავსებადი Project Treble-თან</string>
 	<string name="treble_legacy">თქვენი მოწყობილობა არის თავსებადი Project Treble-ის ძველ ვერსიასთან, VNDK %1$d.%2$d-ის გამოყენებით</string>
 	<string name="treble_modern">თქვენი მოწყობილობა არის თავსებადი Project Treble-ის თანამედროვე ვერსიასთან, VNDK %1$d.%2$d-ის გამოყენებით</string>

@@ -12,7 +12,7 @@
 	<string name="license_header">ライセンス</string>
 	<string name="license">ライセンス：\n%1$s\nプライバシー：\n%2$s</string>
 	<string name="support_header">サポート</string>
-	<string name="support">このアプリに悪い評価をつけないでください。もしバグを見つけたら、右上のボタンを使ってTelegramで私に報告してください。あなたの問題を教えてください。喜んでお手伝いします。</string>
+	<string name="support">もし、このアプリケーションのバグにお気づきになりましたら、右上のボタンから遠慮なくご連絡ください。なるべく早くご連絡いたします。</string>
 	<string name="treble_false">お使いのデバイスはProject Trebleをサポートしていません</string>
 	<string name="treble_legacy">デバイスはProject Trebleのレガシーバージョンをサポートし、VNDKの使用 バージョン %1$d.%2$d</string>
 	<string name="treble_modern">デバイスはProject Trebleの最新バージョンをサポートし、VNDKの使用 バージョン %1$d.%2$d</string>

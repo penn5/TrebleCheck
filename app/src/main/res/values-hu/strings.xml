@@ -12,7 +12,7 @@
 	<string name="license_header">Licencek</string>
 	<string name="license">Licenc: %1$s\nAdatvédelem: %2$s</string>
 	<string name="support_header">Támogatás</string>
-	<string name="support">Kérjük, ne hagyjon rossz véleményt, ha hibát hagytam; Az egész alkalmazást egyedül írtam! Ehelyett lépjen velem kapcsolatba a távirat segítségével a jobb felső sarokban található gomb segítségével. Meséljen a problémájáról, és igyekszem segíteni.</string>
+	<string name="support">Ha hibákat észlel ön ebben az alkalmazásban, ne habozzon kapcsolatba lépni velem a jobb felső sarokban található gombra kattintva. A lehető leghamarabb visszajelzek.</string>
 	<string name="treble_false">Az Ön eszköze nem támogatja a Project Treble programot</string>
 	<string name="treble_legacy">Az eszköze támogatja a Project Treble régi verzióját, a %1$d.%2$d VNDK verziót használva</string>
 	<string name="treble_modern">Az eszköze támogatja a Project Treble modern verzióját, a %1$d.%2$d VNDK verziót használva</string>

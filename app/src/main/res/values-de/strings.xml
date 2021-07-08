@@ -12,7 +12,6 @@
 	<string name="license_header">Lizenzen</string>
 	<string name="license">Lizenz: %1$s\nDatenschutz-Bestimmungen: %2$s</string>
 	<string name="support_header">Support</string>
-	<string name="support">Solltest du auf Bugs stoßen, hinterlasse bitte keine schlechte Bewertung. Ich habe diese App komplett selber programmiert! Kontaktiere mich stattdessen via Telegram über den Button oben rechts, schilder mir dein Problem und ich bemühe mich, dir zu helfen.</string>
 	<string name="treble_false">Das Gerät ist nicht Treble-kompatibel.</string>
 	<string name="treble_legacy">Das Gerät unterstützt eine alte Version von Project Treble mit VNDK version %1$d.%2$d</string>
 	<string name="treble_modern">Das Gerät unterstützt die moderne Version von Project Treble mit VNDK version %1$d.%2$d</string>

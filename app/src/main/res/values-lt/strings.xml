@@ -12,7 +12,6 @@
 	<string name="license_header">Licencijos</string>
 	<string name="license">Licencija:\n%1$s\nPrivatumas:\n%2$s</string>
 	<string name="support_header">Pagalba</string>
-	<string name="support">Nepalikite blogo atsiliepimo, jei palikau klaidą; Aš pats parašiau visą programą! Užuot susisiekite su manimi per „Telegram“, paspausdę mygtuką, esantį viršutiniame dešiniajame kampe. Papasakokite man apie jūsų problemą ir aš pasistengsiu padėti.</string>
 	<string name="treble_false">Jūsų įrenginys nepalaiko „Project Treble“</string>
 	<string name="treble_legacy">Jūsų įrenginys palaiko senąją „Project Treble“ versiją, naudodamas VNDK versija %1$d,%2$d</string>
 	<string name="treble_modern">Jūsų įrenginys palaiko modernią „Project Treble“ versiją, naudodamas VNDK versija %1$d,%2$d</string>

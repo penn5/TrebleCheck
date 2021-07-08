@@ -12,7 +12,6 @@
 	<string name="license_header">Лицензии</string>
 	<string name="license">Лицензия:\n%1$s\nПриватность:\n%2$s</string>
 	<string name="support_header">Поддержка</string>
-	<string name="support">Пожалуйста, не оставляйте плохой отзыв, если Вы нашли ошибку; Я написал всё приложение сам! Лучше сообщите о проблеме через Telegram, нажав на кнопку справа вверху. Расскажите об ошибке и я постараюсь Вам помочь.</string>
 	<string name="treble_false">Ваше устройство не поддерживает Project Treble</string>
 	<string name="treble_legacy">Ваше устройство поддерживает устаревшую версию Project Treble, используется VNDK версии %1$d.%2$d</string>
 	<string name="treble_modern">Ваше устройство поддерживает актуальную версию Project Treble, используется VNDK версии %1$d.%2$d</string>

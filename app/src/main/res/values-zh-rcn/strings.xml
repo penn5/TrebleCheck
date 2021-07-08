@@ -12,7 +12,7 @@
 	<string name="license_header">许可证</string>
 	<string name="license">许可证：\n%1$s\n隐私保护政策：\n%1$s</string>
 	<string name="support_header">支持作者</string>
-	<string name="support">如果遇到 BUG，请不要轻易留下差评。本应用是我独自完成的！您可以通过点击右上角的按钮在 Telegram 联系我（仅使用英文），从而向我反馈 BUG，我会很乐意帮助您。</string>
+	<string name="support">如果您在该应用上遇到任何 BUG，请点击右上角的按钮联系我（仅使用英文），我会尽快回复您。</string>
 	<string name="treble_false">您的手机不支持 Project Treble。也许您可以寻求第三方方案实现 Project Treble。</string>
 	<string name="treble_legacy">您的手机支持旧版本的 Project Treble，VNDK 版本号为 %1$d.%2$d。</string>
 	<string name="treble_modern">您的手机支持新版本的 Project Treble，VNDK 版本号为 %1$d.%2$d。</string>
@@ -41,4 +41,8 @@
 	<string name="filename_unknown">无法检测镜像文件名。</string>
 	<string name="filename">您的设备需要文件名为 &lt;b&gt;%s&lt;/b&gt; 的镜像文件。</string>
 	<string name="filename_header">所需的镜像</string>
+	<string name="donate_1">少量捐赠</string>
+	<string name="donate_1_description">向作者打赏</string>
+	<string name="donate_3">大量捐赠</string>
+	<string name="donate_3_description">向作者打赏</string>
 </resources>
