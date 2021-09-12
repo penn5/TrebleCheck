@@ -41,6 +41,7 @@ object MountDetector {
         return when {
             dynamicPartitions == "true" -> true
             systemRootImage == "true" -> true
+            systemRootImage == "false" -> false
             else -> checkMounts { lines ->
                 lines.any { it.device == "/dev/root" && it.mountpoint == "/" } ||
                         lines.none { it.mountpoint == "/system" && it.type != "tmpfs" && it.device != "none" } ||
