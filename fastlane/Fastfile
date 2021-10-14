@@ -36,5 +36,22 @@ platform :android do
                          apk: "app/build/outputs/apk/release/app-release.apk",
                          skip_upload_images: true,
                          mapping: "app/build/outputs/mapping/release/mapping.txt")
+    version = gradle(task: "androidGitVersionName", flags: "--quiet", print_command: false, print_command_output: false).strip
+    release_url = "https://gitlab.com/api/v4/projects/30453147/packages/generic/apk/#{version}/app-release.apk"
+    upload_to_server(endPoint: release_url,
+                     method: :put,
+                     multipartPayload: {},
+                     headers: {"Authorization": "Bearer #{File.read('../gitlab_token').strip}"},
+                     apk: "app/build/outputs/apk/release/app-release.apk")
+    gitlab_create_release(endpoint: "https://gitlab.com/api/v4/",
+                          private_token: File.read('../gitlab_token').strip,
+                          project_id: "30453147",
+                          tag: version,
+                          ref: "", # This causes 500 error if the version isn't tagged, but we can't fix it from the client.
+                          name: version,
+                          assets_links: [{
+                                          "name": "APK",
+                                          "url": release_url,
+                                          "link_type": "package"}])
   end
 end
