@@ -79,13 +79,15 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
-            minifyEnabled(true)
-            isShrinkResources = true
-            setProguardFiles(listOf(getDefaultProguardFile("proguard-android-optimize.txt"), file("proguard-rules.pro")))
-            signingConfig = signingConfigs["release"]
+        if (file("signing.properties").exists()) {
+            getByName("release") {
+                minifyEnabled(true)
+                isShrinkResources = true
+                setProguardFiles(listOf(getDefaultProguardFile("proguard-android-optimize.txt"), file("proguard-rules.pro")))
+                signingConfig = signingConfigs["release"]
 
-            setupBilling(false)
+                setupBilling(false)
+            }
         }
         getByName("debug") {
             signingConfig = signingConfigs["debug"]
