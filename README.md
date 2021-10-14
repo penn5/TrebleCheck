@@ -1,5 +1,9 @@
 # TrebleCheck
 
+## Canonical Source
+
+Souce code is located at https://gitlab.com/hackintosh5/TrebleInfo
+
 ## Contributing
 
 Just make a PR
