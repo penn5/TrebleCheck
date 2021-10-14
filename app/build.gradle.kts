@@ -19,7 +19,7 @@ plugins {
 
 val kotlinVersion = rootProject.extra["kotlinVersion"]
 
-fun com.android.build.gradle.internal.dsl.BuildType.setupBilling(debugByDefault: Boolean) {
+fun com.android.build.api.dsl.BuildType.setupBilling(debugByDefault: Boolean) {
     if (project.properties["gplayDebug"] as Boolean? ?: debugByDefault || !file("billing.properties").exists()) {
         buildConfigField("boolean", "DONATIONS_DEBUG", "true")
         buildConfigField("String", "GPLAY_PUBK", "\"\"")
@@ -81,7 +81,7 @@ android {
     buildTypes {
         if (file("signing.properties").exists()) {
             getByName("release") {
-                minifyEnabled(true)
+                isMinifyEnabled = true
                 isShrinkResources = true
                 setProguardFiles(listOf(getDefaultProguardFile("proguard-android-optimize.txt"), file("proguard-rules.pro")))
                 signingConfig = signingConfigs["release"]
@@ -119,13 +119,13 @@ project.poeditor.projectId = 285385
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
-    implementation("com.google.android.material:material:1.3.0")
+    implementation("com.google.android.material:material:1.4.0")
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test:runner:1.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    androidTestImplementation("androidx.test:runner:1.4.0")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
     androidTestImplementation("tools.fastlane:screengrab:2.1.0")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
     implementation("com.github.penn5:donations:3.5.1")
 }
