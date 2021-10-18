@@ -31,6 +31,16 @@ Import translations and generate screenshots
 fastlane android release
 ```
 Deploy a new version to the Google Play
+### android upload_to_play
+```
+fastlane android upload_to_play
+```
+
+### android upload_to_gitlab
+```
+fastlane android upload_to_gitlab
+```
+
 
 ----
 
