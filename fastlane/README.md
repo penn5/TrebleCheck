@@ -30,7 +30,7 @@ Import translations and generate screenshots
 ```
 fastlane android release
 ```
-Deploy a new version to the Google Play
+Deploy a new version
 ### android upload_to_play
 ```
 fastlane android upload_to_play

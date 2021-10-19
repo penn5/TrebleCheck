@@ -9,12 +9,14 @@
 # Ensure the tag is pushed to GitLab and create the release manually (retry isn't possible)
 #
 
+require 'net/http'
+
 default_platform(:android)
 
 platform :android do
   desc "Build debug and test APK for screenshots"
   lane :build_and_screengrab do
-    gradle(task: "importTranslations assembleDebug assembleAndroidTest")
+    gradle(task: "assembleDebug assembleAndroidTest")
     capture_android_screenshots()
   end
 
@@ -24,7 +26,7 @@ platform :android do
     build_and_screengrab()
   end
 
-  desc "Deploy a new version to the Google Play"
+  desc "Deploy a new version"
   lane :release do |options|
     gradle(task: "clean assembleRelease")
     upload_to_play(options)
@@ -42,12 +44,24 @@ platform :android do
   lane :upload_to_gitlab do |options|
     version = options[:version] ? options[:version] : gradle(task: "androidGitVersionName", flags: "--quiet", print_command: false, print_command_output: false).strip
     release_url = "https://gitlab.com/api/v4/projects/30453147/packages/generic/apk/#{version}/app-release.apk"
+    release_uri = URI(release_url)
 
-    upload_to_server(endPoint: release_url,
-                     method: :put,
-                     multipartPayload: {},
-                     headers: {"Authorization": "Bearer #{File.read('../gitlab_token').strip}"},
-                     apk: "app/build/outputs/apk/release/app-release.apk")
+    UI.verbose("Uploading APK to #{release_url}")
+    Net::HTTP.start(release_uri.host, release_uri.port, :use_ssl => true) do |http|
+      req = Net::HTTP::Put.new(release_uri)
+      req["Authorization"] = "Bearer #{File.read('../gitlab_token').strip}"
+      req["Transfer-Encoding"] = "Chunked"
+      req.body_stream = "../app/build/outputs/apk/release/app-release.apk"
+
+      res = http.request(req)
+      case res
+      when Net::HTTPSuccess then
+        # OK
+      else
+        raise FastlaneCore::Interface::FastlaneCrash, res.body
+      end
+    end
+
     gitlab_create_release(endpoint: "https://gitlab.com/api/v4/",
                           private_token: File.read('../gitlab_token').strip,
                           project_id: "30453147",
