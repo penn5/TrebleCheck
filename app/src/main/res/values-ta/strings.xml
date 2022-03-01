@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<resources/>
+<resources>
+	<string name="arch_header">குறியீடு</string>
+	<string name="theme_day">லைட் திம்</string>
+	<string name="theme_night">டார்க் திம்</string>
+	<string name="theme_auto">தன்னிச்சையாக திமை தேர்வு செய்</string>
+	<string name="theme_header">திம்</string>
+	<string name="donate_1">சிறிய உதவி</string>
+	<string name="donate_1_description">டெவலப்பர்க்கு நன்கொடை வழங்கலாம்</string>
+	<string name="donate_3">பெரிய உதவி</string>
+	<string name="donate_3_description">டெவலப்பர்க்கு நன்கொடை வழங்கலாம்</string>
+</resources>

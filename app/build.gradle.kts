@@ -11,7 +11,7 @@ import org.jetbrains.kotlin.konan.properties.loadProperties
  */
 
 plugins {
-    id("com.gladed.androidgitversion") version "0.4.13"
+    id("com.gladed.androidgitversion") version "0.4.14"
     id("com.android.application")
     kotlin("android")
     id("poeditor-android")
@@ -41,23 +41,12 @@ fun com.android.build.api.dsl.BuildType.setupBilling(debugByDefault: Boolean) {
     }
 }
 
-fun getPassword(prompt: String): String? = run {
-    System.console()?.let {
-        return@run it.readPassword("prompt")?.contentToString() ?: return@let
-    }
-    val process = ProcessBuilder("zenity", "--password", "--title", prompt).start()
-    process.waitFor()
-    if (process.exitValue() != 0)
-        return null
-    return@run process.inputStream.reader().readText()
-}.dropLast(1) // newline
-
 android {
-    compileSdk = 30
+    compileSdk = 31
     defaultConfig {
         applicationId = "tk.hack5.treblecheck"
         minSdk = 22
-        targetSdk = 30
+        targetSdk = 31
         versionCode = androidGitVersion.code()
         versionName = androidGitVersion.name()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -70,7 +59,6 @@ android {
                 create("release") {
                     keyAlias = getProperty("keyAlias")
                     storeFile = file(getProperty("storeFile"))
-                    // without these AGP assumes that the signing will fail before it even starts
                     keyPassword = getProperty("keyPassword")
                     storePassword = getProperty("storePassword")
                 }
@@ -119,11 +107,11 @@ project.poeditor.projectId = 285385
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.android.material:material:1.5.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test:runner:1.4.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     androidTestImplementation("tools.fastlane:screengrab:2.1.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")

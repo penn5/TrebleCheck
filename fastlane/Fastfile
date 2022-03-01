@@ -30,7 +30,7 @@ platform :android do
   lane :release do |options|
     gradle(task: "clean assembleRelease")
     upload_to_play(options)
-    upload_to_gitlab(options)
+    release_to_gitlab(options)
   end
 
   lane :upload_to_play do |options|
@@ -41,36 +41,10 @@ platform :android do
                          mapping: "app/build/outputs/mapping/release/mapping.txt")
   end
 
-  lane :upload_to_gitlab do |options|
-    version = options[:version] ? options[:version] : gradle(task: "androidGitVersionName", flags: "--quiet", print_command: false, print_command_output: false).strip
-    release_url = "https://gitlab.com/api/v4/projects/30453147/packages/generic/apk/#{version}/app-release.apk"
-    release_uri = URI(release_url)
-
-    UI.verbose("Uploading APK to #{release_url}")
-    Net::HTTP.start(release_uri.host, release_uri.port, :use_ssl => true) do |http|
-      req = Net::HTTP::Put.new(release_uri)
-      req["Authorization"] = "Bearer #{File.read('../gitlab_token').strip}"
-      req["Transfer-Encoding"] = "Chunked"
-      req.body_stream = "../app/build/outputs/apk/release/app-release.apk"
-
-      res = http.request(req)
-      case res
-      when Net::HTTPSuccess then
-        # OK
-      else
-        raise FastlaneCore::Interface::FastlaneCrash, res.body
-      end
-    end
-
-    gitlab_create_release(endpoint: "https://gitlab.com/api/v4/",
-                          private_token: File.read('../gitlab_token').strip,
-                          project_id: "30453147",
-                          tag: version,
-                          ref: "", # This causes 500 error if the version isn't tagged, but we can't fix it from the client.
-                          name: version,
-                          assets_links: [{
-                                          "name": "APK",
-                                          "url": release_url,
-                                          "link_type": "package"}])
+  lane :release_to_gitlab do |options|
+    upload_to_gitlab(version_name: options[:version] ? options[:version] : gradle(task: "androidGitVersionName", flags: "--quiet", print_command: false, print_command_output: false).strip,
+                     project_id: 30453147,
+                     asset_paths: {"TrebleInfo.apk": "app/build/outputs/apk/release/app-release.apk"},
+                     token: File.read("../gitlab_token.txt").strip)
   end
 end

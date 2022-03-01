@@ -12,6 +12,7 @@
 	<string name="license_header">Licences</string>
 	<string name="license">License: %1$s\nConfidentialité: %2$s</string>
 	<string name="support_header">Assistance</string>
+	<string name="support">Si vous rencontrez un bug, s\&apos;il vous plaît, contactez-moi en cliquant ici. Je vous répondrai dès que possible.</string>
 	<string name="treble_false">Votre appareil ne supporte pas le projet Treble</string>
 	<string name="treble_legacy">Votre appareil supporte l\&apos;ancienne version du projet Treble, qui utilise la version VNDK %1$d.%2$d</string>
 	<string name="treble_modern">Votre appareil supporte la version moderne du projet Treble, qui utilise la version VNDK %1$d.%2$d</string>

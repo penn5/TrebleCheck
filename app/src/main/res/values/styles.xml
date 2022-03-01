@@ -28,6 +28,7 @@
 
         <!-- DO NOT TOUCH - b/158777985 -->
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
     <style name="BaseAppTheme.23" parent="BaseAppTheme" />

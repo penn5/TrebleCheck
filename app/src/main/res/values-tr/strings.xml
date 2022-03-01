@@ -12,7 +12,6 @@
 	<string name="license_header">Lisanslar</string>
 	<string name="license">Lisans\n%1$s\nGizlilik:\n%2$s</string>
 	<string name="support_header">Destek</string>
-	<string name="support">Bu uygulamada bir sorun bulduysanız, lütfen sağ üstteki tuş ile bana ulaşmaktan çekinmeyin. En yakın zamanda size döneceğim.</string>
 	<string name="treble_false">Cihazınız Project Treble\&apos;yi desteklemiyor</string>
 	<string name="treble_legacy">Cihazınız Project Treble\&apos;nin VNDK %1$d.%2$d sürümünü kullanan eski sürümünü destekliyor.</string>
 	<string name="treble_modern">Cihazınız Project Treble\&apos;nin VNDK %1$d.%2$d sürümünü kullanan modern sürümünü destekliyor.</string>

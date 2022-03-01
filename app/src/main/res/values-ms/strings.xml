@@ -12,7 +12,6 @@
 	<string name="license_header">Lesen-lesen</string>
 	<string name="license">Lesen: %1$s\nPrivasi: %2$s</string>
 	<string name="support_header">Sokongan</string>
-	<string name="support">Jika anda terlihat apa-apa pepijat dalam aplikasi ini, jangan ragu-ragu untuk menghubungi saya melalui butang di atas kanan. Saya akan menghubungi anda kembali secepat mungkin</string>
 	<string name="treble_false">Peranti anda tidak menyokong Projek Treble</string>
 	<string name="treble_legacy">Peranti anda hanya menyokong Projek Treble versi lama, menggunakan VNDK versi %1$d.%2$d</string>
 	<string name="treble_modern">Peranti anda menyokong versi moden Projek Treble, menggunakan VNDK versi %1$d.%2$d</string>

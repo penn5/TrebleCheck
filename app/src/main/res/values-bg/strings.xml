@@ -12,7 +12,6 @@
 	<string name="license_header">Лицензи</string>
 	<string name="license">Лиценз:\n%1$s\nПолитика за поверителност:\n%2$s</string>
 	<string name="support_header">Поддържка</string>
-	<string name="support">Ако намерите някакви бъгове в приложението, моля свържете се с мен чрез бутона горе вдясно. Ще се опитам отговоря бързо.</string>
 	<string name="treble_false">Вашето устройство не поддържа \&quot;Project Treble\&quot;</string>
 	<string name="treble_legacy">Вашето устройство поддържа \&quot;legacy\&quot; версия на \&quot;Project Treble\&quot;, използвайки VNDK version %1$d. %2$d</string>
 	<string name="treble_modern">Вашето устройство поддържа модерна версия на \&quot;Project Treble\&quot;, използвайки VNDK version %1$d.%2$d</string>

@@ -12,7 +12,6 @@
 	<string name="license_header">Licencje</string>
 	<string name="license">Licencja:\n%1$s\n\nPolityka prywatności:\n%2$s</string>
 	<string name="support_header">Wsparcie</string>
-	<string name="support">Jeśli napotkasz jakiekolwiek błędy w tej aplikacji, nie wahaj się, by poinformować mnie przy użyciu przycisku w prawym górnym rogu. Odpowiem najszybciej jak potrafię.</string>
 	<string name="treble_false">Twoje urządzenie nie wspiera Projektu \&quot;Treble\&quot;</string>
 	<string name="treble_legacy">Twoje urządzenie wspiera przestarzałą wersję Projektu \&quot;Treble\&quot;, używając VNDK w wersji %1$d.%2$d</string>
 	<string name="treble_modern">Twoje urządzenia wspiera nowoczesną wersję Projektu \&quot;Treble\&quot;, używając VNDK w wersji %1$d.%2$d</string>

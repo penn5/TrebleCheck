@@ -15,7 +15,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ScrollingActivity">
+        tools:context=".ScrollingActivity"
+        tools:keep="@layout/activity_scrolling">
 
     <include layout="@layout/content_scrolling" />
 

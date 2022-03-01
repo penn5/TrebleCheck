@@ -359,6 +359,5 @@ app/billing.properties
 
 
 # Fastlane
-fastlane/report.xml
 fastlane/metadata
-gitlab_token
+gitlab_token.txt

@@ -10,19 +10,14 @@
 
 package tk.hack5.treblecheck
 
-import android.util.Log
+import android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
 import androidx.test.core.app.ActivityScenario
-import org.junit.AfterClass
-import org.junit.BeforeClass
 import org.junit.ClassRule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import tools.fastlane.screengrab.DecorViewScreenshotStrategy
 import tools.fastlane.screengrab.Screengrab
-import tools.fastlane.screengrab.cleanstatusbar.BluetoothState
-import tools.fastlane.screengrab.cleanstatusbar.CleanStatusBar
-import tools.fastlane.screengrab.cleanstatusbar.MobileDataType
 import tools.fastlane.screengrab.locale.LocaleTestRule
 import java.util.concurrent.CompletableFuture
 
@@ -67,6 +62,8 @@ class ScreenshotTaker(
         val future = CompletableFuture<Void>()
         val activityScenario = ActivityScenario.launch(ScrollingActivity::class.java)
         activityScenario.onActivity {
+            it.setTurnScreenOn(true)
+            it.window.addFlags(FLAG_KEEP_SCREEN_ON)
             try {
                 Screengrab.screenshot(
                     "$ab-${arch.cpuBits}-${arch.binderBits}-$dynamic-$sar-" +

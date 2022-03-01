@@ -12,7 +12,7 @@
 	<string name="license_header">التراخيص</string>
 	<string name="license">الترخيص:\n%1$s\nالخصوصية:\n%2$s</string>
 	<string name="support_header">الدعم</string>
-	<string name="support">إذا لاحظت أي مشكلات في هذا التطبيق فلا تتردد في التواصل معي عبر الزر الموجود أعلى اليمين، وسأرد عليك في أسرع وقت ممكن.</string>
+	<string name="support">إذا لاحظت أي أخطاء خلال استخدام التطبيق لا تتردد في التواصل معي عبر الضغط هنا، وسأرد عليك في أسرع وقت ممكن.</string>
 	<string name="treble_false">هاتفك لا يدعم مشروع Treble</string>
 	<string name="treble_legacy">هاتفك يدعم اﻹصدار القديم من مشروع Treble، باستخدام VNDK النسخة %1$d.%2$d</string>
 	<string name="treble_modern">هاتفك يدعم اﻹصدار الحديث من مشروع Treble، باستخدام VNDK النسخة %1$d.%2$d</string>

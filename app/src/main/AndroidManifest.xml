@@ -23,9 +23,9 @@
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
                 android:name=".ScrollingActivity"
-                android:label="@string/title"
                 android:theme="@style/AppTheme.NoActionBar"
-                android:configChanges="screenSize|keyboardHidden">
+                android:configChanges="screenSize|keyboardHidden"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

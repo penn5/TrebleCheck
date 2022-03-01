@@ -12,7 +12,6 @@
 	<string name="license_header">ライセンス</string>
 	<string name="license">ライセンス：\n%1$s\nプライバシー：\n%2$s</string>
 	<string name="support_header">サポート</string>
-	<string name="support">もし、このアプリケーションのバグにお気づきになりましたら、右上のボタンから遠慮なくご連絡ください。なるべく早くご連絡いたします。</string>
 	<string name="treble_false">お使いのデバイスはProject Trebleをサポートしていません</string>
 	<string name="treble_legacy">デバイスはProject Trebleのレガシーバージョンをサポートし、VNDKの使用 バージョン %1$d.%2$d</string>
 	<string name="treble_modern">デバイスはProject Trebleの最新バージョンをサポートし、VNDKの使用 バージョン %1$d.%2$d</string>
@@ -36,8 +35,8 @@
 	<string name="dynamicpartitions_true">デバイスは動的パーティション（スーパーパーティション）を使用します。 fastbootdを介してのみ高レベルのパーティションをフラッシュできます。そうしないと、パーティションが存在しないというエラーが発生します。</string>
 	<string name="dynamicpartitions_header">動的パーティション</string>
 	<string name="ab_unknown">デバイスがシームレスアップグレードをサポートしているかどうかを検出できません</string>
-	<string name="treble_legacy_lite">お使いのデバイスは、VNDK Liteバージョン％1 $ d。％2 $ dを使用して、レガシーバージョンのProject Trebleをサポートしています。</string>
-	<string name="treble_modern_lite">お使いのデバイスは、VNDK Liteバージョン％1 $ d。％2 $ dを使用して、Project Trebleの最新バージョンをサポートしています。</string>
+	<string name="treble_legacy_lite">お使いのデバイスは、VNDK Liteバージョン%1$d.%2$dを使用して、レガシーバージョンのProject Trebleをサポートしています。</string>
+	<string name="treble_modern_lite">お使いのデバイスは、VNDK Liteバージョン%1$d.%2$dを使用して、Project Trebleの最新バージョンをサポートしています。</string>
 	<string name="filename_unknown">画像のファイル名を検出できません。</string>
 	<string name="filename">デバイスには、&lt;b&gt;%s&lt;/b&gt;という名前の画像ファイルが必要です。</string>
 	<string name="filename_header">必要な画像</string>

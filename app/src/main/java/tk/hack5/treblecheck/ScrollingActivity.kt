@@ -45,7 +45,6 @@ class ScrollingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityScrollingBinding
     private lateinit var content: ContentScrollingBinding
 
-    @SuppressLint("RtlHardcoded")
     override fun onCreate(savedInstanceState: Bundle?) {
         try {
             super.onCreate(savedInstanceState)
@@ -83,21 +82,7 @@ class ScrollingActivity : AppCompatActivity() {
 
         binding.toolbarLayout.setCollapsedTitleTypeface(null) // prevent text going bold when collapsed
         binding.fab.setOnClickListener {
-            val telegramIntent =
-                Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=TrebleInfo"))
-            try {
-                startActivity(telegramIntent)
-            } catch (e: ActivityNotFoundException) {
-                Log.w(tag, "Launch tg:// failed", e)
-                val browserIntent =
-                    Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/s/TrebleInfo"))
-                try {
-                    startActivity(browserIntent)
-                } catch (e: ActivityNotFoundException) {
-                    Log.w(tag, "Launch browser failed", e)
-                    Toast.makeText(this, R.string.no_browser, Toast.LENGTH_LONG).show()
-                }
-            }
+            launchSupportIntent()
         }
 
 
@@ -406,6 +391,9 @@ class ScrollingActivity : AppCompatActivity() {
                 )
             )
             supportCard.content.text = resources.getHtml(R.string.support)
+            supportCard.content.setOnClickListener {
+                launchSupportIntent()
+            }
 
             donateCard.image.setImageDrawable(
                 ResourcesCompat.getDrawable(
@@ -416,6 +404,7 @@ class ScrollingActivity : AppCompatActivity() {
             )
             val topHeader = if (treble == null) trebleCard.header else filenameCard.header
             val ltr = Bidi(topHeader.text.toString(), Bidi.DIRECTION_LEFT_TO_RIGHT).isLeftToRight
+            @SuppressLint("RtlHardcoded")
             val gravity = if (ltr) Gravity.RIGHT else Gravity.LEFT
             (binding.fab.layoutParams as CoordinatorLayout.LayoutParams).anchorGravity = Gravity.BOTTOM or gravity
         }
@@ -457,6 +446,24 @@ class ScrollingActivity : AppCompatActivity() {
             @Suppress("DEPRECATION")
             window.decorView.systemUiVisibility =
                 window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+        }
+    }
+
+    private fun launchSupportIntent() {
+        val telegramIntent =
+            Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=TrebleInfo"))
+        try {
+            startActivity(telegramIntent)
+        } catch (e: ActivityNotFoundException) {
+            Log.w(tag, "Launch tg:// failed", e)
+            val browserIntent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/s/TrebleInfo"))
+            try {
+                startActivity(browserIntent)
+            } catch (e: ActivityNotFoundException) {
+                Log.w(tag, "Launch browser failed", e)
+                Toast.makeText(this, R.string.no_browser, Toast.LENGTH_LONG).show()
+            }
         }
     }
 
