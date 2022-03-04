@@ -115,5 +115,5 @@ dependencies {
     androidTestImplementation("tools.fastlane:screengrab:2.1.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
-    implementation("com.github.penn5:donations:3.5.1")
+    implementation("com.github.penn5:donations:3.6.0")
 }
