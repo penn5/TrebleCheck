@@ -11,11 +11,12 @@
 package tk.hack5.treblecheck
 
 object Mock {
+    var isMocking = false
     var ab: Boolean? = null
     var arch: Arch? = null
     var binderVersion: Int? = null
     var dynamic: Boolean? = null
     var sar: Boolean? = null
-    var treble: TrebleDataOrNull? = null
+    var treble: TrebleData? = null
     var theme: Int? = null
 }

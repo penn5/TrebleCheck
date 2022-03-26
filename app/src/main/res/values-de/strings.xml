@@ -6,7 +6,7 @@
 	<string name="arch_arm64">Das Gerät nutzt die &lt;b&gt;ARM64&lt;/b&gt;-Architektur.</string>
 	<string name="arch_arm32">Das Gerät nutzt die &lt;b&gt;ARM32&lt;/b&gt;-Architektur.</string>
 	<string name="arch_binder64">Das Gerät ist ARM32, nutzt jedoch einen 64-Bit Binder. Normalerweise weist dies darauf hin, dass die Hardware 64-bit unterstützt, die Software jedoch nicht. Bei diesem Szenario solltest du ein Image mit dem Namen \&quot;&lt;b&gt;binder64&lt;/b&gt;\&quot; oder \&quot;&lt;b&gt;a64&lt;/b&gt;\&quot; nutzen.</string>
-	<string name="arch_unknown">Fehler beim Bestimmen der Architektur!</string>
+	<string name="arch_detection_error">Fehler beim Bestimmen der Architektur!</string>
 	<string name="sar_true">Das Gerät unterstützt System-as-Root. Benutze ein &lt;b&gt;A/B&lt;/b&gt;-OS.</string>
 	<string name="sar_false">Das Gerät unterstützt System-as-Root nicht. Benutze ein &lt;b&gt;A-only&lt;/b&gt;-OS.</string>
 	<string name="license_header">Lizenzen</string>

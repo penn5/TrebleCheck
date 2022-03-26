@@ -56,8 +56,9 @@ class ScreenshotTaker(
         Mock.arch = arch
         Mock.dynamic = dynamic
         Mock.sar = sar
-        Mock.treble = TrebleDataOrNull(trebleData)
+        Mock.treble = trebleData
         Mock.theme = theme
+        Mock.isMocking = true
 
         val future = CompletableFuture<Void>()
         val activityScenario = ActivityScenario.launch(ScrollingActivity::class.java)

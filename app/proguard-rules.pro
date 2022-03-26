@@ -21,20 +21,12 @@
 #-renamesourcefileattribute SourceFile
 
 -assumenosideeffects class android.util.Log {
+    public static *** i(...);
     public static *** d(...);
     public static *** v(...);
 }
--assumenosideeffects class tk.hack5.treblecheck.Mock {
-    *** getAb();
-    *** getArch();
-    *** getBinderVersion();
-    *** getDynamic();
-    *** getSar();
-}
--assumevalues class tk.hack5.treblecheck.Mock {
-    *** getAb() return null;
-    *** getArch() return null;
-    *** getBinderVersion() return null;
-    *** getDynamic() return null;
-    *** getSar() return null;
+
+-assumenosideeffects class kotlin.jvm.internal.Intrinsics {
+    static java.lang.String stringPlus(java.lang.String, java.lang.Object);
+    static void checkParameterIsNotNull(java.lang.Object, java.lang.String);
 }

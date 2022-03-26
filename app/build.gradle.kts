@@ -18,6 +18,7 @@ plugins {
 }
 
 val kotlinVersion = rootProject.extra["kotlinVersion"]
+val mockkVersion = "1.12.3"
 
 fun com.android.build.api.dsl.BuildType.setupBilling(debugByDefault: Boolean) {
     if (project.properties["gplayDebug"] as Boolean? ?: debugByDefault || !file("billing.properties").exists()) {
@@ -42,11 +43,11 @@ fun com.android.build.api.dsl.BuildType.setupBilling(debugByDefault: Boolean) {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = 32
     defaultConfig {
         applicationId = "tk.hack5.treblecheck"
         minSdk = 22
-        targetSdk = 31
+        targetSdk = 32
         versionCode = androidGitVersion.code()
         versionName = androidGitVersion.name()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -67,15 +68,16 @@ android {
     }
 
     buildTypes {
-        if (file("signing.properties").exists()) {
-            getByName("release") {
-                isMinifyEnabled = true
-                isShrinkResources = true
-                setProguardFiles(listOf(getDefaultProguardFile("proguard-android-optimize.txt"), file("proguard-rules.pro")))
+        getByName("release") {
+            if (file("signing.properties").exists()) {
                 signingConfig = signingConfigs["release"]
-
                 setupBilling(false)
+            } else {
+                setupBilling(true)
             }
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
         getByName("debug") {
             signingConfig = signingConfigs["debug"]
@@ -109,6 +111,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
     implementation("com.google.android.material:material:1.5.0")
     testImplementation("junit:junit:4.13.2")
+    testImplementation("io.mockk:mockk:$mockkVersion")
+    testImplementation("io.mockk:mockk-agent-jvm:$mockkVersion")
+    testImplementation("xmlpull:xmlpull:1.1.3.1")
+    testImplementation("net.sf.kxml:kxml2:2.3.0")
     androidTestImplementation("androidx.test:runner:1.4.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")

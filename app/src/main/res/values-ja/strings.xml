@@ -6,7 +6,7 @@
 	<string name="arch_arm64">あなたのデバイスは&lt;b&gt;ARM64&lt;/b&gt;です</string>
 	<string name="arch_arm32">あなたのデバイスは&lt;b&gt;ARM32&lt;/b&gt;です</string>
 	<string name="arch_binder64">デバイスはARM32ですが、64ビットbinderを使用しています。通常、ハードウェアは64ビットをサポートしていますが、ソフトウェアはサポートしていないことを示しています。このシナリオでは、「&lt;b&gt;binder64&lt;/b&gt;」または「&lt;b&gt;A64&lt;/b&gt;」という名前のイメージを使用する必要があります</string>
-	<string name="arch_unknown">アーキテクチャを検出できません</string>
+	<string name="arch_detection_error">アーキテクチャを検出できません</string>
 	<string name="sar_true">デバイスはSystem-as-Rootをサポートしています。 &lt;b&gt;A/B&lt;/b&gt;オペレーティングシステムを使用します。</string>
 	<string name="sar_false">デバイスはSystem-as-Rootをサポートしていません。&lt;b&gt;Aのみ&lt;/b&gt;のオペレーティングシステムを使用します。</string>
 	<string name="license_header">ライセンス</string>

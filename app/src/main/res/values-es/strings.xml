@@ -6,7 +6,7 @@
 	<string name="arch_arm64">Tu dispositivo es &lt;b&gt;ARM64&lt;/b&gt;</string>
 	<string name="arch_arm32">Tu dispositivo es &lt;b&gt;ARM32&lt;/b&gt;</string>
 	<string name="arch_binder64">Tu dispositivo es ARM32 pero usa binder de 64 bit. Esto generalmente indica que tu hardware soporta 64 bits, pero tú software no. En este caso, utiliza las imágenes llamadas \&quot;&lt;b&gt;binder64&lt;/b&gt;\&quot; o \&quot;&lt;b&gt;a64&lt;/b&gt;\&quot;</string>
-	<string name="arch_unknown">No es posible detectar la arquitectura</string>
+	<string name="arch_detection_error">No es posible detectar la arquitectura</string>
 	<string name="sar_true">Tu dispositivo soporta Sistema como Root. Usa un sistema operativo &lt;b&gt;A/B&lt;/b&gt;</string>
 	<string name="sar_false">Tu dispositivo no soporta Sistema como Root. Usa un sistema operativo &lt;b&gt;A-only&lt;/b&gt;</string>
 	<string name="license_header">Licencias</string>

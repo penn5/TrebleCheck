@@ -6,7 +6,7 @@
 	<string name="arch_arm64">თქვენი მოწყობილობა არის &lt;b&gt;ARM64&lt;/b&gt;</string>
 	<string name="arch_arm32">თქვენი მოწყობილობა არის &lt;b&gt;ARM32&lt;/b&gt;</string>
 	<string name="arch_binder64">თქვენი მოწყობილობა არის ARM32 მაგრამ იყენებს 64 ბიტიან მმართველს. ეს იმას ნიშნავს რომ პროცესორი მუშაობს 64 ბიტიან რეჟიმში, მაგრამ პროგრამული უზრუნველყოფა არა. ამ შემთხვევაში უნდა გამოიყყენოთ \&quot;&lt;b&gt;binder64&lt;/b&gt;\&quot; ან \&quot;&lt;b&gt;a64&lt;/b&gt;\&quot;</string>
-	<string name="arch_unknown">არქიტექტურის ამოცნობა ვერ მოხერხდა</string>
+	<string name="arch_detection_error">არქიტექტურის ამოცნობა ვერ მოხერხდა</string>
 	<string name="sar_true">თქვენი მოწყობილობა იყენებს System-as-Rootს-ს. გამოიყენეთ &lt;b&gt;A/B&lt;/b&gt; ოპერაციული სისტემა.</string>
 	<string name="sar_false">თქვენი მოწყობილობა არ იყენებს სისტემას როგორ რუთს. გამოიყენეთ &lt;b&gt;A-only&lt;/b&gt; ოპერაციული სისტემა.</string>
 	<string name="license_header">ლიცენზია</string>

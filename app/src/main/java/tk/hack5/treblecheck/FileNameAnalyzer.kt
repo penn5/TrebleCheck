@@ -10,44 +10,40 @@
 
 package tk.hack5.treblecheck
 
-class FileNameAnalyzer(private val trebleData: TrebleData?, private val arch: Arch, private val sar: Boolean?) {
-    private fun appendArch(sb: StringBuilder) {
-        sb.append(
-            when (arch) {
-                Arch.ARM64 -> "arm64"
-                Arch.ARM32_BINDER64 -> "arm32_binder64"
-                Arch.ARM32 -> "arm32"
-                Arch.X86_64 -> "x86_64"
-                Arch.X86_BINDER64 -> "x86_binder64"
-                Arch.X86 -> "x86"
-                is Arch.UNKNOWN -> "???"
-            }
-        )
-    }
-
-    private fun appendSar(sb: StringBuilder) {
-        sb.append(
-            when (sar) {
-                null -> "???"
-                false -> "aonly"
-                true -> "ab"
-            }
-        )
-    }
-
-    private fun appendVndkLite(sb: StringBuilder) {
-        if (sar == true && (trebleData?.lite == true || trebleData?.legacy == true)) {
-            sb.append("-vndklite")
+object FileNameAnalyzer {
+    private fun StringBuilder.appendArch(arch: Arch) = append(
+        when (arch) {
+            Arch.ARM64 -> "arm64"
+            Arch.ARM32_BINDER64 -> "arm32_binder64"
+            Arch.ARM32 -> "arm32"
+            Arch.X86_64 -> "x86_64"
+            Arch.X86_BINDER64 -> "x86_binder64"
+            Arch.X86 -> "x86"
+            is Arch.UNKNOWN -> "???"
         }
-    }
+    )
 
-    fun getFileName(): String {
-        val sb = StringBuilder("system-")
-        appendArch(sb)
-        sb.append("-")
-        appendSar(sb)
-        appendVndkLite(sb)
-        sb.append(".img.xz")
-        return sb.toString()
+    private fun StringBuilder.appendSar(sar: Boolean?) = append(
+        when (sar) {
+            null -> "???"
+            false -> "aonly"
+            true -> "ab"
+        }
+    )
+
+    private fun StringBuilder.appendVndkLite(sar: Boolean?, trebleData: TrebleData?) =
+        if (sar != false && (trebleData?.lite == true || trebleData?.legacy == true)) {
+            append("-vndklite")
+        } else {
+            this
+        }
+
+    fun getFileName(trebleData: TrebleData?, arch: Arch, sar: Boolean?): String = StringBuilder("system-").run {
+        appendArch(arch)
+        append('-')
+        appendSar(sar)
+        appendVndkLite(sar, trebleData)
+        append(".img.xz")
+        toString()
     }
 }

@@ -6,7 +6,7 @@
 	<string name="arch_arm64">Twoje urządzenie używa architektury &lt;b&gt;ARM64&lt;/b&gt;</string>
 	<string name="arch_arm32">Twoje urządzenie używa architektury &lt;b&gt;ARM32&lt;/b&gt;</string>
 	<string name="arch_binder64">Twoje urządzenie używa architektury ARM32, ale używa także 64-bitowego bindera. Zazwyczaj oznacza to sytuację, gdy sprzęt wspiera ARM64, ale oprogramowanie nie. W tym przypadku powinieneś użyć obrazu z nazwą \&quot;&lt;b&gt;binder64&lt;/b&gt;\&quot; lub \&quot;&lt;b&gt;a64&lt;/b&gt;\&quot;</string>
-	<string name="arch_unknown">Nie udało się określić architektury systemu</string>
+	<string name="arch_detection_error">Nie udało się określić architektury systemu</string>
 	<string name="sar_true">Twoje urządzenie wspiera System-as-Root. Użyj obrazu &lt;b&gt;A/B&lt;/b&gt;.</string>
 	<string name="sar_false">Twoje urządzenie nie wspiera System-as-Root. Użyj obrazu &lt;b&gt;A-only&lt;/b&gt;.</string>
 	<string name="license_header">Licencje</string>

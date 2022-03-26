@@ -6,7 +6,7 @@
 	<string name="arch_arm64">Пристрій має архітектуру &lt;b&gt;ARM64&lt;/b&gt;.</string>
 	<string name="arch_arm32">Пристрій має архітектуру &lt;b&gt;ARM32&lt;/b&gt;.</string>
 	<string name="arch_binder64">Ви маєте ARM32 пристрій, якій використовує 64-бітовий binder. Це означає, що пристрій підтримує розрядність 64, але ПЗ - ні. У цьому разі потрібен образ &lt;b&gt;binder64&lt;/b&gt; або &lt;b&gt;a64&lt;/b&gt;.</string>
-	<string name="arch_unknown">Не вдається визначити архітектуру.</string>
+	<string name="arch_detection_error">Не вдається визначити архітектуру.</string>
 	<string name="sar_true">Є підтримка функції System-as-Root - обирайте &lt;b&gt;A/B&lt;/b&gt; систему.</string>
 	<string name="sar_false">Пристрій не підтримує функцію System-as-Root, обирайте систему &lt;b&gt;A-only&lt;/b&gt;.</string>
 	<string name="license_header">Ліцензії</string>

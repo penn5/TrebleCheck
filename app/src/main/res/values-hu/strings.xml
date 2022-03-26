@@ -6,7 +6,7 @@
 	<string name="arch_arm64">Ön eszköze &lt;b&gt;ARM64&lt;/b&gt;</string>
 	<string name="arch_arm32">Ön eszköze &lt;b&gt;ARM32&lt;/b&gt;</string>
 	<string name="arch_binder64">Az Ön eszköze ARM32, de 64 bites kötést használ. Ez általában azt jelzi, hogy a hardver támogatja a 64 bites, de a szoftver nem. Ebben a forgatókönyvben egy \&quot;&lt;b&gt;binder64&lt;/b&gt;\&quot; vagy \&quot;&lt;b&gt;a64&lt;/b&gt;\&quot; nevű képet kell használnia</string>
-	<string name="arch_unknown">Nem sikerült észlelni az architektúrát</string>
+	<string name="arch_detection_error">Nem sikerült észlelni az architektúrát</string>
 	<string name="sar_true">A készülék támogatja a Rendszert Gyökérként. Használjon &lt;b&gt;A/B&lt;/b&gt; operációs rendszert.</string>
 	<string name="sar_false">Az eszköz nem támogatja a Rendszert Gyökérként. Használjon &lt;b&gt;csak-A&lt;/b&gt; operációs rendszert.</string>
 	<string name="license_header">Licencek</string>

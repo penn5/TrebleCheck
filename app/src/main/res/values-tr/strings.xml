@@ -6,7 +6,7 @@
 	<string name="arch_arm64">Cihazınız &lt;b&gt;ARM64&lt;/b&gt;</string>
 	<string name="arch_arm32">Cihazınız &lt;b&gt;ARM32&lt;/b&gt;</string>
 	<string name="arch_binder64">Cihazınız ARM32 ama 64 bit binder kullanıyor. Bu çoğu zaman donanımın 64 bit destekleyip, yazılımın desteklemediği anlamına gelir. Böyle bir durumda \&quot;&lt;b&gt;binder64&lt;/b&gt;\&quot; veya \&quot;&lt;b&gt;a64&lt;/b&gt;\&quot; isimli bir görüntü kullanmalısınız.</string>
-	<string name="arch_unknown">Mimari belirlenemedi</string>
+	<string name="arch_detection_error">Mimari belirlenemedi</string>
 	<string name="sar_true">Cihazınız System-as-root destekliyor. &lt;b&gt;A/B&lt;/b&gt; işletim sistemi kullanın.</string>
 	<string name="sar_false">Cihazınız System-as-root desteklemiyor. &lt;b&gt;A-only&lt;/b&gt; işletim sistemi kullanın.</string>
 	<string name="license_header">Lisanslar</string>

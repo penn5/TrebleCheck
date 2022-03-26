@@ -6,7 +6,7 @@
 	<string name="arch_arm64">Uw apparaat is &lt;b&gt;ARM64&lt;/b&gt;</string>
 	<string name="arch_arm32">Uw apparaat is &lt;b&gt;ARM32&lt;/b&gt;</string>
 	<string name="arch_binder64">Uw apparaat is ARM32 maar gebruikt een 64-bit binder. Meestal betekent dit dat de hardware wel 64-bit ondersteund maar de software niet. In dit scenario zou je een image moeten gebruiken met de naam \&quot;&lt;b&gt;binder64&lt;/b&gt;\&quot; of \&quot;&lt;b&gt;a64&lt;/b&gt;\&quot;</string>
-	<string name="arch_unknown">Niet in staat om het architectuur te detecteren</string>
+	<string name="arch_detection_error">Niet in staat om het architectuur te detecteren</string>
 	<string name="sar_true">Uw apparaat ondersteund Systeem als Root. Gebruik een &lt;b&gt;A/B&lt;/b&gt; besturingssysteem.</string>
 	<string name="sar_false">Uw apparaat ondersteund geen Systeem als root. Gebruik een &lt;b&gt;A-only&lt;/b&gt; besturingssysteem.</string>
 	<string name="license_header">Licenties</string>

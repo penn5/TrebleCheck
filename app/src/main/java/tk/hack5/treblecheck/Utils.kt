@@ -11,6 +11,7 @@
 package tk.hack5.treblecheck
 
 import android.annotation.SuppressLint
+import android.util.Log
 
 
 @SuppressLint("PrivateApi") // Oh well.
@@ -20,6 +21,7 @@ fun propertyGet(prop: String): String? {
         val g = c.getMethod("get", String::class.java, String::class.java)
         g.invoke(null, prop, "") as String
     } catch (e: Exception) {
+        Log.e(tag, "Failed to get property $prop", e)
         null
     }
 }
@@ -30,4 +32,5 @@ operator fun <A1 : Comparable<A2>, B1 : Comparable<B2>, A2, B2>Pair<A1, B1>.comp
     else
         first.compareTo(other.first)
 
-class TrebleDataOrNull(var trebleData: TrebleData?)
+
+private const val tag = "Utils"

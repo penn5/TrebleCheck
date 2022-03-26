@@ -9,7 +9,7 @@
  */
 
 buildscript {
-    val kotlinVersion = "1.5.20"
+    val kotlinVersion = "1.6.0"
     extra["kotlinVersion"] = kotlinVersion
     repositories {
         google()

@@ -10,10 +10,17 @@
 
 package tk.hack5.treblecheck
 
+import android.util.Log
+
 object ABDetector {
     fun checkAB(): Boolean? {
-        if (Mock.ab != null)
+        if (Mock.isMocking)
             return Mock.ab
-        return propertyGet("ro.boot.slot_suffix")?.isNotEmpty()
+
+        val slotSuffix = propertyGet("ro.boot.slot_suffix")
+        Log.v(tag, "slotSuffix: $slotSuffix")
+        return slotSuffix?.isNotEmpty()
     }
 }
+
+private const val tag = "ABDetector"

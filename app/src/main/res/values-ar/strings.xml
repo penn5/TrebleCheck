@@ -6,7 +6,7 @@
 	<string name="arch_arm64">معمارية هاتفك هي &lt;b&gt;ARM64&lt;/b&gt;</string>
 	<string name="arch_arm32">معمارية هاتفك هي &lt;b&gt;ARM32&lt;/b&gt;</string>
 	<string name="arch_binder64">معمارية هاتفك هي ARM32 لكنه يستخدم غلاف 64-bit. يشير هذا عادة إلى أن عتاد الهاتف يدعم معمارية 64-bit لكن نظام التشغيل لا يدعم. وفي هذه الحالة يجب أن تستخدم النسخ المسماه \&quot;&lt;b&gt;binder64&lt;/b&gt;\&quot; أو \&quot;&lt;b&gt;a64&lt;/b&gt;\&quot;.</string>
-	<string name="arch_unknown">تعذر التعرف على معمارية الهاتف</string>
+	<string name="arch_detection_error">تعذر التعرف على معمارية الهاتف</string>
 	<string name="sar_true">هاتفك يدعم \&quot;النظام كـ الجذر\&quot;. استخدم نظام تشغيل &lt;b&gt;A/B&lt;/b&gt;.</string>
 	<string name="sar_false">هاتفك لا يدعم \&quot;النظام كـ الجذر\&quot;. استخدم نظام تشغيل &lt;b&gt;A&lt;/b&gt; فقط.\n</string>
 	<string name="license_header">التراخيص</string>

@@ -6,7 +6,7 @@
 	<string name="arch_arm64">ឧបករណ៍របស់អ្នកគឺ &lt;b&gt;ARM64&lt;/b&gt;</string>
 	<string name="arch_arm32">ឧបករណ៍របស់អ្នកគឺ &lt;b&gt;ARM32&lt;/b&gt;</string>
 	<string name="arch_binder64">ឧបករណ៍របស់អ្នកគឺ ARM32 ប៉ុន្តែប្រើbinder 64 ប៊ីត។  នេះជាធម្មតាបង្ហាញថាផ្នែកhardwareគាំទ្រ 64 ប៊ីតប៉ុន្តែផ្នែកsoftwareមិន។  នៅក្នុងករណីនេះអ្នកគួរតែប្រើរូបភាពដែលមានឈ្មោះថា \&quot;&lt;b&gt;binder64&lt;/b&gt;\&quot; ឬ \&quot;&lt;b&gt;a64&lt;/b&gt;\&quot;</string>
-	<string name="arch_unknown">មិនអាចរកឃើញស្ថាបត្យកម្ម</string>
+	<string name="arch_detection_error">មិនអាចរកឃើញស្ថាបត្យកម្ម</string>
 	<string name="sar_true">ឧបករណ៍របស់អ្នកមានប្រព័ន្ធជា Root ។  ប្រើប្រព័ន្ធប្រតិបត្តិការ &lt;b&gt;A/B&lt;/b&gt; ។</string>
 	<string name="sar_false">ឧបករណ៍របស់អ្នកមិនមានប្រព័ន្ធជា Root ។  ប្រើប្រព័ន្ធប្រតិបត្តិការ &lt;b&gt;A មួយប៉ុណ្ណោះ&lt;/b&gt; ។</string>
 	<string name="license_header">អាជ្ញាប័ណ្ណ</string>

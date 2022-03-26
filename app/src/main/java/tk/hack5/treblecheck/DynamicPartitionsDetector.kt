@@ -10,10 +10,17 @@
 
 package tk.hack5.treblecheck
 
+import android.util.Log
+
 object DynamicPartitionsDetector {
     fun isDynamic(): Boolean? {
-        if (Mock.dynamic != null)
+        if (Mock.isMocking)
             return Mock.dynamic
-        return (propertyGet("ro.boot.dynamic_partitions") ?: return null) == "true"
+        val dynamicPartitions = propertyGet("ro.boot.dynamic_partitions")
+
+        Log.v(tag, "dynamicPartitions: $dynamicPartitions")
+        return (dynamicPartitions ?: return null) == "true"
     }
 }
+
+private const val tag = "DynamicPartitionsDetect"

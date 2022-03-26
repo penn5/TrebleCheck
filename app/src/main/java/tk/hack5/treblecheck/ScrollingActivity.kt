@@ -125,7 +125,7 @@ class ScrollingActivity : AppCompatActivity() {
             null
         }
         val fileName = try {
-            FileNameAnalyzer(treble, arch, sar).getFileName()
+            FileNameAnalyzer.getFileName(treble, arch, sar)
         } catch (e: Exception) {
             Log.e(tag, "File name detection failed", e)
             null
@@ -275,6 +275,9 @@ class ScrollingActivity : AppCompatActivity() {
                     )
                 )
             )
+            if (arch is Arch.UNKNOWN && (arch.binderVersion != null || arch.cpuName != null)) {
+                archCard.content.text = resources.getHtml(R.string.arch_unknown, arch.cpuName ?: resources.getString(R.string.arch_data_unknown), arch.binderVersion?.toString() ?: resources.getString(R.string.arch_data_unknown))
+            }
             archCard.content.text = resources.getHtml(
                 when (arch) {
                     Arch.ARM64 -> R.string.arch_arm64
@@ -283,7 +286,7 @@ class ScrollingActivity : AppCompatActivity() {
                     Arch.X86_64 -> R.string.arch_x86_64
                     Arch.X86_BINDER64 -> R.string.arch_x86_binder64
                     Arch.X86 -> R.string.arch_x86
-                    is Arch.UNKNOWN -> R.string.arch_unknown
+                    is Arch.UNKNOWN -> R.string.arch_detection_error
                 }
             )
 
@@ -476,22 +479,22 @@ class ScrollingActivity : AppCompatActivity() {
     }
 
     private fun updateThemeText(change: Boolean) {
-        var current = if (Mock.theme == null) {
+        var current = if (Mock.isMocking) {
+            Mock.theme!!
+        } else {
             val sharedPrefs = getPreferences(Context.MODE_PRIVATE)
             sharedPrefs.getInt("daynight", 2)
-        } else {
-            Mock.theme!!
         }
         if (change)
             current = (current + 1) % 3
-        if (Mock.theme == null) {
+        if (Mock.isMocking) {
+            Mock.theme = current
+        } else {
             val sharedPrefs = getPreferences(Context.MODE_PRIVATE)
             with(sharedPrefs.edit()) {
                 putInt("daynight", current)
                 apply()
             }
-        } else {
-            Mock.theme = current
         }
 
         content.themeCard.content.text = resources.getHtml(
