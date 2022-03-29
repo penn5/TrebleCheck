@@ -10,11 +10,10 @@
 
 package tk.hack5.treblecheck
 
-import android.util.Log
 import io.mockk.*
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertThrows
 import org.junit.Rule
-
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import org.junit.runner.RunWith

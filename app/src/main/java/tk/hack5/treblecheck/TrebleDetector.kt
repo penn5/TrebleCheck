@@ -75,7 +75,7 @@ object TrebleDetector {
         throw ParseException("No method to detect version")
     }
 
-    internal fun parseMatrix(matrix: File) = parseXml(matrix) { xpp ->
+    private fun parseMatrix(matrix: File) = parseXml(matrix) { xpp ->
         val versions = mutableListOf<String>()
         val versionBuilder = StringBuilder(2) // 2 is the normal size of the version number, 'xy'
 
@@ -107,8 +107,8 @@ object TrebleDetector {
         versions
     }
 
-    internal fun parseManifest(manifest: File) = parseXml(manifest) { xpp ->
-        val versionBuilder = StringBuilder(4) // 4 is the normal size of the version number, 'xy.z'
+    private fun parseManifest(manifest: File) = parseXml(manifest) { xpp ->
+        val versionBuilder = StringBuilder(4) // 4 is the normal size of the version number, "xx.y"
 
         var inTargetTag = false
         var event = xpp.eventType
@@ -129,7 +129,7 @@ object TrebleDetector {
         listOf(versionBuilder.toString())
     }
 
-    internal fun parseXml(file: File, block: (XmlPullParser) -> List<String>): Pair<Int, Int>? {
+    private fun parseXml(file: File, block: (XmlPullParser) -> List<String>): Pair<Int, Int>? {
         val factory = XmlPullParserFactory.newInstance()
         factory.isNamespaceAware = false
         val xpp = factory.newPullParser()
@@ -183,7 +183,7 @@ object TrebleDetector {
         return ret to legacy
     }
 
-    internal fun locateVendorManifest(sku: String?): File? {
+    private fun locateVendorManifest(sku: String?): File? {
         sku?.let {
             File(root, "/vendor/etc/vintf/manifest_$it.xml")
         }?.let {
@@ -197,12 +197,12 @@ object TrebleDetector {
         return null
     }
 
-    internal fun locateVendorManifestFragments(): List<File>? {
+    private fun locateVendorManifestFragments(): List<File>? {
         val dir = File(root, "/vendor/etc/manifest")
         return (dir.listFiles() ?: return null).filter { it.canRead() }
     }
 
-    internal fun locateOdmManifest(sku: String?): File? {
+    private fun locateOdmManifest(sku: String?): File? {
         sku?.let {
             File(root, "/odm/etc/vintf/manifest_$it.xml")
         }?.let {
@@ -226,12 +226,12 @@ object TrebleDetector {
         return null
     }
 
-    internal fun locateOdmManifestFragments(): List<File>? {
+    private fun locateOdmManifestFragments(): List<File>? {
         val dir = File(root, "/odm/etc/manifest")
         return (dir.listFiles() ?: return null).toList()
     }
 
-    internal fun locateLegacyManifest(): File? {
+    private fun locateLegacyManifest(): File? {
         File(root, "/vendor/manifest.xml").let {
             if (it.exists() && it.canRead())
                 return it
@@ -258,7 +258,7 @@ object TrebleDetector {
         return files?.let { parseSelinuxData(it) }
     }
 
-    internal fun parseSelinuxData(files: Array<File>): Pair<Int, Int>? {
+    private fun parseSelinuxData(files: Array<File>): Pair<Int, Int>? {
         var version = Pair(-1, -1)
 
         files.forEach { file ->

@@ -16,6 +16,7 @@ import org.junit.Test
 
 class FileNameAnalyzerTest {
 
+    @Suppress("BooleanLiteralArgument")
     @Test
     fun getFileName() {
         testGetFileName("system-arm64-aonly.img.xz", TrebleData(false, false, 31, 0), Arch.ARM64, false)

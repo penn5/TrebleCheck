@@ -60,7 +60,7 @@ class MountDetectorTest {
         )
     }
 
-    fun testCheckMounts(mountsFile: Answer<String>, result: Boolean): List<Mount>? {
+    private fun testCheckMounts(mountsFile: Answer<String>, result: Boolean): List<Mount>? {
         var ret: List<Mount>? = null
         mockkObject(MountDetector) {
             every { MountDetector.getMountsStream() } answers { call -> BufferedReader(StringReader(mountsFile.answer(call))) }
@@ -91,7 +91,7 @@ class MountDetectorTest {
         testIsSAR(false, ConstantAnswer(javaClass.classLoader!!.getResourceAsStream("mounts13.txt")), "", "")
     }
 
-    fun testIsSAR(expected: Boolean, mountsFile: Answer<InputStream>, sar: String?, dynamicPartitions: String?) {
+    private fun testIsSAR(expected: Boolean, mountsFile: Answer<InputStream>, sar: String?, dynamicPartitions: String?) {
         mockkObject(MountDetector) {
             every { MountDetector.getMountsStream() } answers { call -> BufferedReader(InputStreamReader(mountsFile.answer(call))).also { it.readLine() } }
             mockkStatic(::propertyGet.declaringKotlinFile) {

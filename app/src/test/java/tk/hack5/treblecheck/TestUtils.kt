@@ -10,7 +10,6 @@
 
 package tk.hack5.treblecheck
 
-import android.os.Build
 import java.lang.reflect.Field
 import java.lang.reflect.Modifier
 import kotlin.reflect.KClass
