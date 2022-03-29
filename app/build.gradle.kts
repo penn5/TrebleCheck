@@ -44,6 +44,7 @@ fun com.android.build.api.dsl.BuildType.setupBilling(debugByDefault: Boolean) {
 
 android {
     compileSdk = 32
+    buildToolsVersion = "32.0.0"
     defaultConfig {
         applicationId = "tk.hack5.treblecheck"
         minSdk = 22
@@ -97,6 +98,10 @@ android {
         jniLibs {
             useLegacyPackaging = false
         }
+    }
+
+    lint {
+        checkDependencies = true
     }
 }
 
