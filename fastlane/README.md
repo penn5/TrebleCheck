@@ -29,7 +29,7 @@ Build debug and test APK for screenshots
 [bundle exec] fastlane android pre_release
 ```
 
-Import translations and generate screenshots
+Import translations and generate screenshots if release-ready
 
 ### android release
 
