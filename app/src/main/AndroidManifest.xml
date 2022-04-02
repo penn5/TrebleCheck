@@ -8,8 +8,11 @@
   ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
   -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="tk.hack5.treblecheck">
+<manifest
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        package="tk.hack5.treblecheck"
+        android:installLocation="auto">
 
     <application
             android:allowBackup="true"
