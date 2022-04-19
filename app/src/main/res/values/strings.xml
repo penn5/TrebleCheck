@@ -47,5 +47,6 @@
 	<string name="donate_3_description">Donate to the developer</string>
 	<string name="arch_unknown">Unknown architecture detected. Your CPU architecture is &lt;b&gt;%1$s&lt;/b&gt; and the binder version is &lt;b&gt;%2$s&lt;/b&gt;</string>
 	<string name="arch_cpu_unknown">unknown</string>
+	<string name="copied">Copied to clipboard</string>
 	<string name="arch_binder_unknown">unknown</string>
 </resources>

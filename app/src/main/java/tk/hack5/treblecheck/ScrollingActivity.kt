@@ -105,7 +105,8 @@ class ScrollingActivity : AppCompatActivity() {
 
 
         content.apply {
-            filenameCard.header.text = resources.getText(R.string.filename_header)
+            val filenameHeader = resources.getText(R.string.filename_header)
+            filenameCard.header.text = filenameHeader
             filenameCard.image.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
@@ -116,6 +117,7 @@ class ScrollingActivity : AppCompatActivity() {
                     theme
                 )
             )
+
             ImageViewCompat.setImageTintList(
                 filenameCard.image,
                 ColorStateList.valueOf(
@@ -133,6 +135,12 @@ class ScrollingActivity : AppCompatActivity() {
                 filenameCard.content.text = if (fileName == null) {
                     resources.getText(R.string.filename_unknown)
                 } else {
+                    filenameCard.root.setOnClickListener {
+                        (getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager)?.let {
+                            it.setPrimaryClip(ClipData.newPlainText(filenameHeader, fileName))
+                            Toast.makeText(this@ScrollingActivity, getString(R.string.copied), Toast.LENGTH_SHORT).show()
+                        }
+                    }
                     resources.getHtml(R.string.filename, Html.escapeHtml(fileName))
                 }
             } else {

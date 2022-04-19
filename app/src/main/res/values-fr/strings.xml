@@ -47,5 +47,6 @@
 	<string name="donate_3_description">Faire un don au développeur</string>
 	<string name="arch_unknown">Architecture inconnu trouvée. Votre unité centrale de traitement utilise &lt;b&gt;%1$s&lt;/b&gt; et la version binder est &lt;b&gt;%2$s&lt;/b&gt;</string>
 	<string name="arch_cpu_unknown">une architecture inconnue</string>
+	<string name="copied">Copié dans le presse-papiers</string>
 	<string name="arch_binder_unknown">inconnue</string>
 </resources>
