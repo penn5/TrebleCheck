@@ -44,34 +44,8 @@ class ScrollingActivity : AppCompatActivity() {
     private lateinit var content: ContentScrollingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        try {
-            super.onCreate(savedInstanceState)
-        } catch (e: RuntimeException) {
-            val content = "❗️ You must read this email before sending it\n" +
-                    "➡️ Information about this bug\n" +
-                    "• The bug that caused Treble Info to crash is a known bug.\n" +
-                    "• However, the neither the cause nor the solution are known yet.\n" +
-                    "• To help find the solution, please submit this bug report by pressing send (not yet!)\n" +
-                    "• Before you submit this report, please read through the email to make sure there is no personal data.\n" +
-                    "\n" +
-                    "➡️ Information for use by the developer\n" +
-                    "Fingerprint: ${Build.FINGERPRINT}\n" +
-                    "✅ If you have read everything above this line, you're ready to submit the report! Thank you for helping!\n" +
-                    "\n" +
-                    "\n" +
-                    "Stack Trace: ${e.stackTraceToString()}"
+        super.onCreate(savedInstanceState)
 
-            val subject = "Treble%20Info%20crash%20report"
-            val body = Uri.encode(content, "utf-8")
-
-            startActivity(Intent.createChooser(Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("mailto:treble@hack5.dev?subject=$subject&body=$body")
-                println(data)
-            }, "Send Crash Report"))
-
-            finish()
-            return
-        }
         binding = ActivityScrollingBinding.inflate(layoutInflater)
         content = ContentScrollingBinding.bind(binding.root.getChildAt(0))
         setContentView(binding.root)

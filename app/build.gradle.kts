@@ -115,6 +115,8 @@ project.poeditor.projectId = 285385
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
     implementation("com.google.android.material:material:1.5.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("com.github.penn5:donations:3.6.1")
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:$mockkVersion")
     testImplementation("io.mockk:mockk-agent-jvm:$mockkVersion")
@@ -122,9 +124,7 @@ dependencies {
     testImplementation("net.sf.kxml:kxml2:2.3.0")
     androidTestImplementation("androidx.test:runner:1.4.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     androidTestImplementation("tools.fastlane:screengrab:2.1.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
-    implementation("com.github.penn5:donations:3.6.1")
 }
