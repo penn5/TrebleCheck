@@ -12,6 +12,7 @@ package tk.hack5.treblecheck
 
 import android.os.Build
 import io.mockk.*
+import io.mockk.impl.stub.SpyKStub
 import org.junit.Assert.*
 
 import org.junit.Test
@@ -41,9 +42,15 @@ class ArchDetectorTest {
             } else {
                 every { BinderDetector.getBinderVersion() } throws UnsatisfiedLinkError()
             }
-            mockField(Build::class, "SUPPORTED_ABIS", supportedAbis) {
+
+            mockkObject(ArchDetector) {
+                every { ArchDetector.SUPPORTED_ABIS } returns supportedAbis
                 ret = ArchDetector.getArch()
             }
+
+            /*mockField(Build::class, "SUPPORTED_ABIS", supportedAbis) {
+                ret = ArchDetector.getArch()
+            }*/
         }
         return ret
     }

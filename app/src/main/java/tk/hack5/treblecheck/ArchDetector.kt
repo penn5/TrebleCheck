@@ -14,6 +14,8 @@ import android.os.Build
 import android.util.Log
 
 object ArchDetector {
+    internal val SUPPORTED_ABIS get() = Build.SUPPORTED_ABIS
+
     fun getArch(): Arch {
         Mock.data?.let { return it.arch }
 
@@ -24,7 +26,7 @@ object ArchDetector {
             null
         }
 
-        val cpu = Build.SUPPORTED_ABIS.firstOrNull()
+        val cpu = SUPPORTED_ABIS.firstOrNull()
 
         Log.v(tag, "binderVersion: $binderVersion, cpu: $cpu")
 
