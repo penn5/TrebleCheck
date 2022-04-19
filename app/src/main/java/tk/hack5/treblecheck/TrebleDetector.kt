@@ -24,8 +24,7 @@ object TrebleDetector {
     internal var root: File? = null
 
     fun getVndkData(): TrebleData? {
-        if (Mock.isMocking)
-            return Mock.treble
+        Mock.data?.let { return it.treble.get() }
 
         val trebleEnabled = propertyGet("ro.treble.enabled")
         Log.v(tag, "trebleEnabled: $trebleEnabled")

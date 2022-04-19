@@ -14,8 +14,8 @@ import android.util.Log
 
 object DynamicPartitionsDetector {
     fun isDynamic(): Boolean? {
-        if (Mock.isMocking)
-            return Mock.dynamic
+        Mock.data?.let { return it.dynamic }
+
         val dynamicPartitions = propertyGet("ro.boot.dynamic_partitions")
 
         Log.v(tag, "dynamicPartitions: $dynamicPartitions")

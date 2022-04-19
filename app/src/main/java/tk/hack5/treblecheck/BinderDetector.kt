@@ -17,8 +17,6 @@ object BinderDetector {
 
     @Synchronized
     fun getBinderVersion(): Int {
-        if (Mock.isMocking)
-            return Mock.binderVersion!!
         if (!loaded) {
             System.loadLibrary("binderdetector")
             loaded = true

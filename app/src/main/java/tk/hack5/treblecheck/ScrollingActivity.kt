@@ -11,9 +11,7 @@
 package tk.hack5.treblecheck
 
 import android.annotation.SuppressLint
-import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Intent
+import android.content.*
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.content.res.Resources
@@ -479,19 +477,16 @@ class ScrollingActivity : AppCompatActivity() {
     }
 
     private fun updateThemeText(change: Boolean) {
-        var current = if (Mock.isMocking) {
-            Mock.theme!!
+        val sharedPrefs = if (Mock.data == null) {
+            getPreferences(Context.MODE_PRIVATE)
         } else {
-            val sharedPrefs = getPreferences(Context.MODE_PRIVATE)
-            sharedPrefs.getInt("daynight", 2)
+            null
         }
+        var current = Mock.data?.theme ?: sharedPrefs!!.getInt("daynight", 2)
         if (change)
             current = (current + 1) % 3
-        if (Mock.isMocking) {
-            Mock.theme = current
-        } else {
-            val sharedPrefs = getPreferences(Context.MODE_PRIVATE)
-            with(sharedPrefs.edit()) {
+        if (Mock.data == null) {
+            with(sharedPrefs!!.edit()) {
                 putInt("daynight", current)
                 apply()
             }

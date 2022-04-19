@@ -15,8 +15,7 @@ import android.util.Log
 
 object ArchDetector {
     fun getArch(): Arch {
-        if (Mock.isMocking)
-            return Mock.arch!!
+        Mock.data?.let { return it.arch }
 
         val binderVersion = try {
             BinderDetector.getBinderVersion()

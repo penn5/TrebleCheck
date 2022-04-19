@@ -14,8 +14,7 @@ import android.util.Log
 
 object ABDetector {
     fun checkAB(): Boolean? {
-        if (Mock.isMocking)
-            return Mock.ab
+        Mock.data?.let { return it.ab }
 
         val slotSuffix = propertyGet("ro.boot.slot_suffix")
         Log.v(tag, "slotSuffix: $slotSuffix")

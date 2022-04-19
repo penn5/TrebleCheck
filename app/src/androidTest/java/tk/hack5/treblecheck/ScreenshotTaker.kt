@@ -52,13 +52,7 @@ class ScreenshotTaker(
 
     @Test
     fun takeScreenshot() {
-        Mock.ab = ab
-        Mock.arch = arch
-        Mock.dynamic = dynamic
-        Mock.sar = sar
-        Mock.treble = trebleData
-        Mock.theme = theme
-        Mock.isMocking = true
+        Mock.data = Mock(ab, arch, dynamic, sar, Optional.Value(trebleData), theme)
 
         val future = CompletableFuture<Void>()
         val activityScenario = ActivityScenario.launch(ScrollingActivity::class.java)

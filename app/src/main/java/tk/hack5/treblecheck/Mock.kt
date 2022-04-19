@@ -10,13 +10,26 @@
 
 package tk.hack5.treblecheck
 
-object Mock {
-    var isMocking = false
-    var ab: Boolean? = null
-    var arch: Arch? = null
-    var binderVersion: Int? = null
-    var dynamic: Boolean? = null
-    var sar: Boolean? = null
-    var treble: TrebleData? = null
-    var theme: Int? = null
+class Mock(
+    val ab: Boolean?,
+    val arch: Arch,
+    val dynamic: Boolean?,
+    val sar: Boolean?,
+    val treble: Optional<TrebleData?>,
+    val theme: Int,
+) {
+    companion object {
+        @JvmField // needed for R8 to optimise away properly
+        var data: Mock? = null
+    }
+}
+
+sealed class Optional<in T> {
+    class Value<T>(val value: T) : Optional<T>()
+    object Nothing : Optional<Any?>()
+}
+
+fun <T>Optional<T>.get() = when (this) {
+    is Optional.Value -> value
+    else -> throw NullPointerException("Optional is empty")
 }

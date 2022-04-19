@@ -30,3 +30,5 @@
     static java.lang.String stringPlus(java.lang.String, java.lang.Object);
     static void checkParameterIsNotNull(java.lang.Object, java.lang.String);
 }
+
+-optimizationpasses 10

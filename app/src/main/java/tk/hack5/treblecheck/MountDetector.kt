@@ -35,9 +35,8 @@ object MountDetector {
         return check(lines.toList())
     }
 
-    fun isSAR(): Boolean {
-        if (Mock.isMocking)
-            return Mock.sar!!
+    fun isSAR(): Boolean? {
+        Mock.data?.let { return it.sar }
 
         val systemRootImage = propertyGet("ro.build.system_root_image")
         val dynamicPartitions = propertyGet("ro.boot.dynamic_partitions")
