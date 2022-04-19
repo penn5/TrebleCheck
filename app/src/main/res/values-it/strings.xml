@@ -21,11 +21,11 @@
 	<string name="theme_night">Tema Scuro</string>
 	<string name="theme_auto">Tema Automatico</string>
 	<string name="theme_header">Tema</string>
-	<string name="treble_unknown">Impossibile determinare il supporto a Treble. Per favore contattare lo sviluppatore, perché l\&apos;app non invierà automaticamente i bug report</string>
+	<string name="treble_unknown">Impossibile determinare il supporto a Treble.</string>
 	<string name="ab_true">Gli Aggiornamenti Silenziosi sono supportati! Il tuo dispositivo può aggiornarsi tra versioni di Android differenti senza aver bisogno di riavviare il dispositivo.</string>
 	<string name="ab_false">Gli Aggiornamenti Silenziosi non sono supportati. Il tuo dispositivo dovrà entrare in modalità recovery per installare nuovi aggiornamenti aumentando il rischio di fallimento, rispetto agli Aggiornamenti Silenziosi.</string>
 	<string name="ab_header">Aggiornamenti Silenziosi</string>
-	<string name="sar_unknown">Impossibile rilevare il supporto a System-as-Root. Per favore contatta lo sviluppatore per segnalare il bug.</string>
+	<string name="sar_unknown">Impossibile rilevare il supporto a System-as-Root.</string>
 	<string name="arch_x86_64">L\&apos;architettura di questo dispositivo è &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">L\&apos;architettura di questo dispositivo è x86 ma utilizza un binder a 64-bit</string>
 	<string name="arch_x86">L\&apos;architettura di questo dispositivo è &lt;b&gt;x86&lt;/b&gt;</string>

@@ -21,11 +21,11 @@
 	<string name="theme_night">Tema fosc</string>
 	<string name="theme_auto">Selecciona el tema automàticament</string>
 	<string name="theme_header">Tema</string>
-	<string name="treble_unknown">No es pot detectar l\&apos;estat de suport de Treble. Poseu-vos en contacte amb el desenvolupador, ja que l’aplicació no enviarà automàticament un informe d’errors.</string>
+	<string name="treble_unknown">No es pot detectar l\&apos;estat de suport de Treble.</string>
 	<string name="ab_true">S\&apos;admeten actualitzacions en segon pla. El teu dispositiu pot actualitzar entre diferents versions d\&apos;Android sense necessitat de temps d\&apos;inactivitat per a l\&apos;actualització.</string>
 	<string name="ab_false">Actualitzacions en segon pla no suportades. El teu dispositiu ha d\&apos;entrar en el mode de recuperació per instal·lar les actualitzacions i existeix un risc elevat que hi hagi un error comparat amb les actualitzacions en segon pla.</string>
 	<string name="ab_header">Actualitzacions en segon pla.</string>
-	<string name="sar_unknown">No es pot detectar l\&apos;estat de Sistema com a Root. Poseu-vos en contacte amb el desenvolupador per informar de l\&apos;error.</string>
+	<string name="sar_unknown">No es pot detectar l\&apos;estat de Sistema com a Root.</string>
 	<string name="arch_x86_64">El teu dispositiu és &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">El teu dispositiu és x86 però fa servir un binder de 64 bits</string>
 	<string name="arch_x86">El teu dispositiu és &lt;b&gt;x86&lt;/b&gt;</string>

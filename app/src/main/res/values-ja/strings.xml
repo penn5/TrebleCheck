@@ -20,11 +20,11 @@
 	<string name="theme_night">ダークモード</string>
 	<string name="theme_auto">自動選択テーマ</string>
 	<string name="theme_header">テーマ</string>
-	<string name="treble_unknown">高音サポートのステータスを検出できません。 アプリはバグレポートを自動的に送信しないので、開発者に連絡してください。</string>
+	<string name="treble_unknown">高音サポートのステータスを検出できません。</string>
 	<string name="ab_true">シームレスなアップグレードがサポートされています！ 更新のためのダウンタイムを必要とせずに、デバイスを異なるAndroidバージョン間でアップグレードできます</string>
 	<string name="ab_false">シームレスなアップグレードはサポートされていません。 デバイスは、アップグレードをインストールするためにリカバリを開始する必要があり、シームレスをサポートするデバイスと比較して、障害のリスクが高くなります。</string>
 	<string name="ab_header">シームレスなアップグレード</string>
-	<string name="sar_unknown">ルートとしてのシステムのサポートステータスを検出できません。 バグを報告するには、開発者に連絡してください。</string>
+	<string name="sar_unknown">ルートとしてのシステムのサポートステータスを検出できません。</string>
 	<string name="arch_x86_64">あなたのデバイスは &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">あなたのデバイスは x86, 64 binder を使用する</string>
 	<string name="arch_x86">あなたのデバイスは &lt;b&gt;x86&lt;/b&gt;</string>

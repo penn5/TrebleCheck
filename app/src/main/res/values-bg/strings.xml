@@ -20,11 +20,11 @@
 	<string name="theme_night">Тъмна Тема</string>
 	<string name="theme_auto">Автоматичен избор на тема</string>
 	<string name="theme_header">Тема</string>
-	<string name="treble_unknown">Не успяхме да засечем дали устройството ви поддържа \&quot;Treble\&quot;. Моля свържете се със разработчика, понеже приложението няма да изпрати проблема автоматично.</string>
+	<string name="treble_unknown">Не успяхме да засечем дали устройството ви поддържа \&quot;Treble\&quot;.</string>
 	<string name="ab_true">\&quot;Seamless Updates\&quot; се поддържат! Вашето устройство може да се актуализира без да трябва да чакате за актуализацията да се инсталира докато телефона е изключен.</string>
 	<string name="ab_false">\&quot;Seamless Updates\&quot; не се поддържат от устройството. Ще трябва да влизате във \&quot;recovery\&quot; за да инсталирате актуализации, и има по-голям риск сравнено със поддържаните устройства.</string>
 	<string name="ab_header">Seamless Upgrades</string>
-	<string name="sar_unknown">Не успяхме да засечем дали устройството ви подържа \&quot;System-as-Root\&quot;. Моля свържете се с разработчика за да уведомите за проблема.</string>
+	<string name="sar_unknown">Не успяхме да засечем дали устройството ви подържа \&quot;System-as-Root\&quot;.</string>
 	<string name="arch_x86_64">Вашето устройство е \&quot;&lt;b&gt;x86_64&lt;/b&gt;\&quot;</string>
 	<string name="arch_x86_binder64">Вашето устройство е \&quot;x86\&quot; но използва 64 битов биндер (binder)</string>
 	<string name="arch_x86">Вашето устройство е \&quot;&lt;b&gt;x86&lt;/b&gt;\&quot;</string>

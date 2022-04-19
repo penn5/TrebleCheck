@@ -20,11 +20,11 @@
 	<string name="theme_night">მუქი თემა</string>
 	<string name="theme_auto">ავტომატური თემა</string>
 	<string name="theme_header">თემა</string>
-	<string name="treble_unknown">Treble-ის სტატუსის აღმოჩენა ვერ მოხერხდა. გთხოვთ დაეკონტაქტოთ დეველოპერს, რადგან აპი ავტომატურად ვერ შეატყობინებს მას.</string>
+	<string name="treble_unknown">Treble-ის სტატუსის აღმოჩენა ვერ მოხერხდა.</string>
 	<string name="ab_true">თქვენი მოწყობილობა თავსებადია უწყვეტ განახლებებთან! შეგიძლიათ გაანახლოთ Android-ის ვერსიები უწყვეტათ</string>
 	<string name="ab_false">თქვენი მოწყობილობა არ არის თავსებადი უწყვეტ განახლებებთან! მისთვის საჭიროა recovery-ში შესვლა Android-ის გასანახლებლად, რაც მეტ რისკს მოიცავს</string>
 	<string name="ab_header">უწყვეტი განახლებები</string>
-	<string name="sar_unknown">System-as-Root-ის სტატუსის აღმოჩენა ვერ მოხერხდა. გთხოვთ დაეკონტაქტოთ დეველოპერს.</string>
+	<string name="sar_unknown">System-as-Root-ის სტატუსის აღმოჩენა ვერ მოხერხდა.</string>
 	<string name="arch_x86_64">თქვენი მოწყობილობა არის &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">თქვენი მოწყობილობა არის x86, მაგრამ იყენებს 64 ბიტიან მმართველს</string>
 	<string name="arch_x86">თქვენი მოწყობილობა არის &lt;b&gt;x86&lt;/b&gt;</string>

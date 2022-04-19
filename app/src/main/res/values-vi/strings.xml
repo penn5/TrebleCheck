@@ -20,11 +20,11 @@
 	<string name="theme_night">Giao diện Tối</string>
 	<string name="theme_auto">Tự động chọn giao diện</string>
 	<string name="theme_header">Giao diện</string>
-	<string name="treble_unknown">Không thể phát hiện trạng thái hỗ trợ Treble. Hãy liên hệ với nhà phát triển, vì ứng dụng này sẽ không tự báo lỗi.</string>
+	<string name="treble_unknown">Không thể phát hiện trạng thái hỗ trợ Treble.</string>
 	<string name="ab_true">Hỗ trợ nâng cấp phần mềm liền mạch! Thiết bị của bạn có thể cập nhật lên các phiên bản Android mà không cần mất thời gian chờ đợi.</string>
 	<string name="ab_false">Không hỗ trợ nâng cấp phần mềm liền mạch! Thiết bị của bạn phải vào recovery để cài đặt các bản cập nhật và có khả năng thất bại cao hơn khi so với các thiết bị có hỗ trợ nâng cấp liền mạch.</string>
 	<string name="ab_header">Nâng cấp Liền mạch</string>
-	<string name="sar_unknown">Không thể phát hiện trạng thái hỗ trợ System-as-Root. Hãy liên hệ với nhà phát triển để báo lỗi.</string>
+	<string name="sar_unknown">Không thể phát hiện trạng thái hỗ trợ System-as-Root.</string>
 	<string name="arch_x86_64">Thiết bị của bạn là &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">Thiết bị của bạn là x86, nhưng sử dụng 64-bit binder</string>
 	<string name="arch_x86">Thiết bị của bạn là &lt;b&gt;x86&lt;/b&gt;</string>

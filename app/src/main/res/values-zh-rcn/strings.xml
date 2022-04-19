@@ -21,7 +21,7 @@
 	<string name="theme_night">暗色</string>
 	<string name="theme_auto">自动选择</string>
 	<string name="theme_header">主题</string>
-	<string name="treble_unknown">无法检测 Treble 状态。由于该应用不会发送报告，请主动联系开发者反馈问题（仅使用英文）。</string>
+	<string name="treble_unknown">无法检测 Treble 状态。</string>
 	<string name="ab_true">您的设备支持无缝系统更新！您可以在系统更新时继续使用手机，且升级失败的风险极低。</string>
 	<string name="ab_false">您的设备不支持无缝系统更新。和无缝系统更新的机型不同，系统更新时必须重启到 Recovery 模式，在这期间您无法使用手机，且升级失败的风险相比无缝系统更新较高。</string>
 	<string name="ab_header">无缝系统更新</string>

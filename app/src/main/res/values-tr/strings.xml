@@ -20,11 +20,11 @@
 	<string name="theme_night">Karanlık Tema</string>
 	<string name="theme_auto">Temayı otomatik seç</string>
 	<string name="theme_header">Tema</string>
-	<string name="treble_unknown">Treble desteği bilgisi bulunamadı. Lütfen geliştirici ile iletişim kurun, zira uygulama otomatik olarak bir hata raporu göndermeyecek.</string>
+	<string name="treble_unknown">Treble desteği bilgisi bulunamadı.</string>
 	<string name="ab_true">Pürüzsüz Yükseltme destekleniyor! Cihazınız farklı Android sürümleri arası yükseltmelerde kapalı iken beklemeyecek.</string>
 	<string name="ab_false">Pürüzsüz Yükseltme desteklenmiyor. Cihazınızın güncelleme yapabilmesi için  kurtarma moduna girmesi gerekiyor, bu da Pürüzsüz Yükseltme destekleyen cihazlara nazaran risklidir.</string>
 	<string name="ab_header">Pürüzsüz Yükseltme</string>
-	<string name="sar_unknown">System-as-root desteği denetlenemedi. Lütfen geliştirici ile iletişime geçin.</string>
+	<string name="sar_unknown">System-as-root desteği denetlenemedi.</string>
 	<string name="arch_x86_64">Cihazınız &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">Cihazınız x86 ama 64-bit binder kullanıyor</string>
 	<string name="arch_x86">Cihazınız &lt;b&gt;x86&lt;/b&gt;</string>

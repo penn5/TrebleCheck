@@ -20,11 +20,11 @@
 	<string name="theme_night">Sötét Téma</string>
 	<string name="theme_auto">Automatikusan kiválasztott Téma</string>
 	<string name="theme_header">Téma</string>
-	<string name="treble_unknown">A Treble támogatás állapota nem észlelhető. Kérjük, lépjen kapcsolatba a fejlesztővel, mivel az alkalmazás nem küld automatikusan hibajelentést.</string>
+	<string name="treble_unknown">A Treble támogatás állapota nem észlelhető.</string>
 	<string name="ab_true">A zökkenőmentes frissítések támogatottak! Készüléke különböző Android-verziók között frissíthet, anélkül, hogy a frissítéshez leállásra lenne szükség.</string>
 	<string name="ab_false">A zökkenőmentes frissítések nem támogatottak. A frissítések telepítéséhez az eszköznek recoveryben kell lépnie, és a Seamless-support eszközökhöz képest megnő a meghibásodás kockázata.</string>
 	<string name="ab_header">Zökkenőmentesen Frissítések</string>
-	<string name="sar_unknown">Nem sikerült észlelni a Rendszer Gyökérként támogatási állapotát. Kérjük, forduljon a fejlesztőhöz, hogy jelentse a hibát.</string>
+	<string name="sar_unknown">Nem sikerült észlelni a Rendszer Gyökérként támogatási állapotát.</string>
 	<string name="arch_x86_64">Eszköze &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">Az eszköz x86, de 64 bites binder-t használ</string>
 	<string name="arch_x86">Eszköze &lt;b&gt;x86&lt;/b&gt;</string>

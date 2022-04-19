@@ -248,7 +248,7 @@ class ScrollingActivity : AppCompatActivity() {
                 )
             )
             if (arch is Arch.UNKNOWN && (arch.binderVersion != null || arch.cpuName != null)) {
-                archCard.content.text = resources.getHtml(R.string.arch_unknown, arch.cpuName ?: resources.getString(R.string.arch_data_unknown), arch.binderVersion?.toString() ?: resources.getString(R.string.arch_data_unknown))
+                archCard.content.text = resources.getHtml(R.string.arch_unknown, arch.cpuName ?: resources.getString(R.string.arch_cpu_unknown), arch.binderVersion?.toString() ?: resources.getString(R.string.arch_binder_unknown))
             }
             archCard.content.text = resources.getHtml(
                 when (arch) {

@@ -98,6 +98,9 @@ android {
         jniLibs {
             useLegacyPackaging = false
         }
+        resources {
+            excludes.add("DebugProbesKt.bin")
+        }
     }
 
     lint {

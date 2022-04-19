@@ -21,11 +21,11 @@
 	<string name="theme_night">Tema oscuro</string>
 	<string name="theme_auto">Tema automático</string>
 	<string name="theme_header">Tema</string>
-	<string name="treble_unknown">No fue posible detectar el estado del soporte de Treble. Por favor contacta con el desarrollador, ya que la aplicación no mandará automáticamente un reporte de bug.</string>
+	<string name="treble_unknown">No fue posible detectar el estado del soporte de Treble.</string>
 	<string name="ab_true">¡Las actualizaciones en segundo plano están soportadas! Tu dispositivo puede actualizar entre diferentes versiones de Android sin tener que apagarlo.</string>
 	<string name="ab_false">Las actualizaciones en segundo plano no están soportadas. Tu dispositivo debe entrar en el modo de recuperación para instalar actualizaciones y hay un riesgo más elevado de fallos, comparado con los dispositivos que soportan las actualizaciones en segundo plano.</string>
 	<string name="ab_header">Actualizaciones en segundo plano</string>
-	<string name="sar_unknown">Imposible detectar el soporte de Sistema como Root. Por favor, contacta con el desarrollador para reportar el fallo</string>
+	<string name="sar_unknown">Imposible detectar el soporte de Sistema como Root.</string>
 	<string name="arch_x86_64">Tu dispositivo es &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">Tu dispositivo es x86, pero usa un binder de 64-bits</string>
 	<string name="arch_x86">Tu dispositivo es &lt;b&gt;x86&lt;/b&gt;</string>

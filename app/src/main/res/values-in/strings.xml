@@ -20,11 +20,11 @@
 	<string name="theme_night">Tema Gelap</string>
 	<string name="theme_auto">Pilih tema secara otomatis</string>
 	<string name="theme_header">Tema</string>
-	<string name="treble_unknown">Tidak dapat mendeteksi status dukungan Treble. Silahkan hubungi pengembang, karena aplikasi tidak akan mengirim laporan bug secara otomatis</string>
+	<string name="treble_unknown">Tidak dapat mendeteksi status dukungan Treble.</string>
 	<string name="ab_true">Seamless Upgrade didukung! Perangkat Anda dapat diperbarui ke versi Android lainnya tanpa perlu dimatikan.</string>
 	<string name="ab_false">Seamless Upgrade tidak didukung. Perangkat anda harus masuk kedalam mode recovery untuk melakukan pembaruan dan resiko kegagalan akan meningkat, jika dibandingkan dengan perangkat yang mendukung Seamless Upgrade.</string>
 	<string name="ab_header">Seamless Upgrade</string>
-	<string name="sar_unknown">Tidak dapat mendeteksi status dukungan System-sebagai-Root. Silahkan hubungi pengembang untuk melaporkan bug.</string>
+	<string name="sar_unknown">Tidak dapat mendeteksi status dukungan System-sebagai-Root.</string>
 	<string name="arch_x86_64">Arsitektur perangkat Anda adalah &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">Perangkat Anda adalah x86, tetapi memakai sebuah 64-bit binder</string>
 	<string name="arch_x86">Arsitektur perangkat Anda adalah &lt;b&gt;x86&lt;/b&gt;</string>

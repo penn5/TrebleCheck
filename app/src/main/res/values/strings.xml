@@ -21,11 +21,11 @@
 	<string name="theme_night">Dark Theme</string>
 	<string name="theme_auto">Auto-select Theme</string>
 	<string name="theme_header">Theme</string>
-	<string name="treble_unknown">Unable to detect Treble support status. Please contact the developer, as the app will not automatically send a bug report.</string>
+	<string name="treble_unknown">Unable to detect Treble support status.</string>
 	<string name="ab_true">Seamless Upgrades are supported! Your device can upgrade between different Android versions without needing any downtime for the update.</string>
 	<string name="ab_false">Seamless Upgrades are not supported. Your device must enter recovery to install upgrades and there is an increased risk of failure, compared to Seamless-supporting devices.</string>
 	<string name="ab_header">Seamless Upgrades</string>
-	<string name="sar_unknown">Unable to detect System-as-Root support status. Please contact the developer to report a bug.</string>
+	<string name="sar_unknown">Unable to detect System-as-Root support status.</string>
 	<string name="arch_x86_64">Your device is &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">Your device is x86, but uses a 64-bit binder</string>
 	<string name="arch_x86">Your device is &lt;b&gt;x86&lt;/b&gt;</string>
@@ -45,6 +45,7 @@
 	<string name="donate_1_description">Donate to the developer</string>
 	<string name="donate_3">Large donation</string>
 	<string name="donate_3_description">Donate to the developer</string>
-	<string name="arch_unknown">Unknown architecture detected. Your CPU architecture is &lt;b&gt;%1$s&lt;/b&gt; and the binder version is &lt;b&gt;%2$sb&lt;/b&gt;</string>
-	<string name="arch_data_unknown">unknown</string>
+	<string name="arch_unknown">Unknown architecture detected. Your CPU architecture is &lt;b&gt;%1$s&lt;/b&gt; and the binder version is &lt;b&gt;%2$s&lt;/b&gt;</string>
+	<string name="arch_cpu_unknown">unknown</string>
+	<string name="arch_binder_unknown">unknown</string>
 </resources>

@@ -20,7 +20,7 @@
 	<string name="theme_night">Tema Gelap</string>
 	<string name="theme_auto">Pilih Tema secara automatik</string>
 	<string name="theme_header">Tema</string>
-	<string name="treble_unknown">Tidak dapat mengesan status sokongan Treble. Sila hubungi pembangun aplikasi, kerana aplikasi tidak akan menghantar laporan pepijat secara automatik.</string>
+	<string name="treble_unknown">Tidak dapat mengesan status sokongan Treble.</string>
 	<string name="ab_true">Naik Taraf Lancar disokong! Peranti anda boleh dinaik taraf antara versi-versi Android yang berbeza tanpa memerlukan apa-apa waktu henti untuk dikemas kini.</string>
 	<string name="ab_false">Naik Taraf Lancar tidak disokong. Peranti anda mesti memasuki mod pemulihan untuk memasang naik taraf dan terdapat peningkatan risiko kegagalan, berbanding dengan peranti yang menyokong Naik Taraf Lancar.</string>
 	<string name="ab_header">Naik Taraf Lancar</string>

@@ -21,11 +21,11 @@
 	<string name="theme_night">السمة المظلمة</string>
 	<string name="theme_auto">الاختيار التلقائي للسمة</string>
 	<string name="theme_header">السمة</string>
-	<string name="treble_unknown">تعذر اكتشاف حالة دعم مشروع Treble. من فضلك تواصل مع المطور ﻷن التطبيق لن يرسل تقريرا بالخطأ تلقائيا.</string>
+	<string name="treble_unknown">تعذر اكتشاف حالة دعم مشروع Treble.</string>
 	<string name="ab_true">هاتفك يدعم الترقيات السلسة! يمكنك الترقية إلى إصدارات أندرويد أخرى دون الحاجة إلى وقت يتوقف فيه الهاتف عن العمل لتثبيت التحديث. </string>
 	<string name="ab_false">هاتفك لا يدعم الترقيات السلسة! يحتاج هاتفك إلى الدخول لوضع الاسترداد لتثبيت التحديثات. توجد احتمالية أكبر للفشل أثناء التحديث عند استخدام وضع الاسترداد مقارنة بالترقية السلسة.\n.</string>
 	<string name="ab_header">الترقيات السلسة</string>
-	<string name="sar_unknown">تعذر التعرف على حالة دعم \&quot;النظام كـ الجذر\&quot;. من فضلك تواصل مع المطور للإبلاغ عن المشكلة.</string>
+	<string name="sar_unknown">تعذر التعرف على حالة دعم \&quot;النظام كـ الجذر\&quot;.</string>
 	<string name="arch_x86_64">معمارية جهازك هي &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">معمارية هاتفك هي x86 لكنه يستخدم غلاف 64-bit.</string>
 	<string name="arch_x86">معمارية جهازك هي &lt;b&gt;x86&lt;/b&gt;</string>

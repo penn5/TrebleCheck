@@ -20,11 +20,11 @@
 	<string name="theme_night">Нічна тема</string>
 	<string name="theme_auto">Авто тема</string>
 	<string name="theme_header">Тема</string>
-	<string name="treble_unknown">Не вдається визначити стан підтримки Treble. Будь ласка, повідомте про це розробникові, бо звіт не буде надіслано автоматично.</string>
+	<string name="treble_unknown">Не вдається визначити стан підтримки Treble.</string>
 	<string name="ab_true">Є підтримка Seamless оновлень у фоновому режимі!</string>
 	<string name="ab_false">Немає підтримки Seamless оновлень - доведеться користуватися recovery, та завжди є шанс на невдачу.</string>
 	<string name="ab_header">Seamless оновлення</string>
-	<string name="sar_unknown">Не вдається визначити стан System-as-Root. Будь ласка, повідомте про це розробникові!</string>
+	<string name="sar_unknown">Не вдається визначити стан System-as-Root.</string>
 	<string name="arch_x86_64">Пристрій має архітектуру &lt;b&gt;x86_64&lt;/b&gt;</string>
 	<string name="arch_x86_binder64">Пристрій х86, але використовує 64-bit binder</string>
 	<string name="arch_x86">Пристрій має архітектуру &lt;b&gt;х86&lt;/b&gt;</string>
