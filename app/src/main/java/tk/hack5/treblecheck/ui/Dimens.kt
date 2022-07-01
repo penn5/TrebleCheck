@@ -4,22 +4,17 @@
  *         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
  *         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt
  * This project:
- *         Copyright (C) 2021 Penn Mackintosh
+ *         Copyright (C) 2022 Penn Mackintosh
  *         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
  */
 
-package tk.hack5.treblecheck
+package tk.hack5.treblecheck.ui
 
-class Mock(
-    val ab: Boolean?,
-    val arch: Arch,
-    val dynamic: Boolean?,
-    val sar: Boolean?,
-    val treble: Optional<TrebleResult?>,
-    val theme: Int,
-) {
-    companion object {
-        @JvmField // needed for R8 to optimise away properly
-        var data: Mock? = null
-    }
-}
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.ui.unit.dp
+
+val cardOuterPadding = PaddingValues(8.dp, 8.dp)
+val cardInnerPadding = PaddingValues(8.dp, 8.dp)
+val cardIconSpacerWidth = 8.dp
+val cardIconSize = 24.dp
+val explanationSpacing = 4.dp

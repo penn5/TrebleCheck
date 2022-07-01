@@ -16,22 +16,6 @@
     <color name="colorPrimary">@color/green</color>
     <color name="colorPrimaryDark">@color/blue</color>
     <color name="colorAccent">@color/red</color>
-    <color name="arch_64_bit">@color/green</color>
-    <color name="arch_32_bit">@color/red</color>
-    <color name="arch_32_64_bit">@color/blue</color>
-    <color name="unknown">@color/yellow</color>
-    <color name="sar_true">@color/green</color>
-    <color name="sar_false">@color/red</color>
-    <color name="treble_false">@color/red</color>
-    <color name="treble_legacy">@color/yellow</color>
-    <color name="treble_modern">@color/green</color>
-    <color name="ab_false">@color/red</color>
-    <color name="ab_true">@color/green</color>
-    <color name="dynamicpartitions_false">@color/red</color>
-    <color name="dynamicpartitions_true">@color/green</color>
-    <color name="filename_unknown">@color/red</color>
-    <color name="filename_known">@color/green</color>
     <color name="text">#2E2E2E</color>
-    <color name="background">@color/cardview_light_background</color>
     <color name="translucent">#55000000</color>
 </resources>

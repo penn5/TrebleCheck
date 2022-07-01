@@ -19,15 +19,15 @@ class FileNameAnalyzerTest {
     @Suppress("BooleanLiteralArgument")
     @Test
     fun getFileName() {
-        testGetFileName("system-arm64-aonly.img.xz", TrebleData(false, false, 31, 0), Arch.ARM64, false)
-        testGetFileName("system-arm64-aonly.img.xz", TrebleData(false, true, 31, 0), Arch.ARM64, false)
-        testGetFileName("system-arm32_binder64-ab-vndklite.img.xz", TrebleData(false, true, 31, 0), Arch.ARM32_BINDER64, true)
-        testGetFileName("system-arm32_binder64-ab-vndklite.img.xz", TrebleData(true, false, 31, 0), Arch.ARM32_BINDER64, true)
-        testGetFileName("system-arm32-???-vndklite.img.xz", TrebleData(true, false, 31, 0), Arch.ARM32, null)
+        testGetFileName("system-arm64-aonly.img.xz", TrebleResult(false, false, 31, 0), Arch.ARM64, false)
+        testGetFileName("system-arm64-aonly.img.xz", TrebleResult(false, true, 31, 0), Arch.ARM64, false)
+        testGetFileName("system-arm32_binder64-ab-vndklite.img.xz", TrebleResult(false, true, 31, 0), Arch.ARM32_BINDER64, true)
+        testGetFileName("system-arm32_binder64-ab-vndklite.img.xz", TrebleResult(true, false, 31, 0), Arch.ARM32_BINDER64, true)
+        testGetFileName("system-arm32-???-vndklite.img.xz", TrebleResult(true, false, 31, 0), Arch.ARM32, null)
         testGetFileName("system-???-???.img.xz", null, Arch.UNKNOWN(null, null), null)
     }
 
-    private fun testGetFileName(expected: String, trebleData: TrebleData?, arch: Arch, sar: Boolean?) {
-        assertEquals(expected, FileNameAnalyzer.getFileName(trebleData, arch, sar))
+    private fun testGetFileName(expected: String, treble: TrebleResult?, arch: Arch, sar: Boolean?) {
+        assertEquals(expected, FileNameAnalyzer.getFileName(treble, arch, sar))
     }
 }

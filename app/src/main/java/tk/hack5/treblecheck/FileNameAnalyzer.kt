@@ -31,18 +31,18 @@ object FileNameAnalyzer {
         }
     )
 
-    private fun StringBuilder.appendVndkLite(sar: Boolean?, trebleData: TrebleData?) =
-        if (sar != false && (trebleData?.lite == true || trebleData?.legacy == true)) {
+    private fun StringBuilder.appendVndkLite(sar: Boolean?, treble: TrebleResult?) =
+        if (sar != false && (treble?.lite == true || treble?.legacy == true)) {
             append("-vndklite")
         } else {
             this
         }
 
-    fun getFileName(trebleData: TrebleData?, arch: Arch, sar: Boolean?): String = StringBuilder("system-").run {
+    fun getFileName(treble: TrebleResult?, arch: Arch, sar: Boolean?): String = StringBuilder("system-").run {
         appendArch(arch)
         append('-')
         appendSar(sar)
-        appendVndkLite(sar, trebleData)
+        appendVndkLite(sar, treble)
         append(".img.xz")
         toString()
     }

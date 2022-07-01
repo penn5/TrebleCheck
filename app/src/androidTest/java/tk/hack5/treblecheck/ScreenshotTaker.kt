@@ -27,7 +27,7 @@ class ScreenshotTaker(
     private val arch: Arch,
     private val dynamic: Boolean,
     private val sar: Boolean,
-    private val trebleData: TrebleData?,
+    private val treble: TrebleResult?,
     private val theme: Int
 ) {
     companion object {
@@ -41,18 +41,18 @@ class ScreenshotTaker(
         fun data() = listOf(
             arrayOf(false, Arch.ARM32, false, false, null, 0),
             arrayOf(false, Arch.ARM32, false, false, null, 1),
-            arrayOf(true, Arch.ARM64, true, true, TrebleData(false, false, 30, 0), 0),
-            arrayOf(true, Arch.ARM64, true, true, TrebleData(false, false, 30, 0), 1),
-            arrayOf(false, Arch.ARM32_BINDER64, false, false, TrebleData(true, true, 26, 0), 0),
-            arrayOf(false, Arch.ARM32_BINDER64, false, false, TrebleData(true, true, 26, 0), 1),
-            arrayOf(false, Arch.ARM32_BINDER64, false, false, TrebleData(false, true, 28, 0), 0),
-            arrayOf(true, Arch.ARM64, false, true, TrebleData(false, false, 28, 0), 1),
+            arrayOf(true, Arch.ARM64, true, true, TrebleResult(false, false, 30, 0), 0),
+            arrayOf(true, Arch.ARM64, true, true, TrebleResult(false, false, 30, 0), 1),
+            arrayOf(false, Arch.ARM32_BINDER64, false, false, TrebleResult(true, true, 26, 0), 0),
+            arrayOf(false, Arch.ARM32_BINDER64, false, false, TrebleResult(true, true, 26, 0), 1),
+            arrayOf(false, Arch.ARM32_BINDER64, false, false, TrebleResult(false, true, 28, 0), 0),
+            arrayOf(true, Arch.ARM64, false, true, TrebleResult(false, false, 28, 0), 1),
         )
     }
 
     @Test
     fun takeScreenshot() {
-        Mock.data = Mock(ab, arch, dynamic, sar, Optional.Value(trebleData), theme)
+        Mock.data = Mock(ab, arch, dynamic, sar, Optional.Value(treble), theme)
 
         val future = CompletableFuture<Void>()
         val activityScenario = ActivityScenario.launch(ScrollingActivity::class.java)
@@ -62,8 +62,8 @@ class ScreenshotTaker(
             try {
                 Screengrab.screenshot(
                     "$ab-${arch.cpuBits}-${arch.binderBits}-$dynamic-$sar-" +
-                            "${trebleData?.legacy}-${trebleData?.lite}-${trebleData?.vndkVersion}-" +
-                            "${trebleData?.vndkSubVersion}-${theme}",
+                            "${treble?.legacy}-${treble?.lite}-${treble?.vndkVersion}-" +
+                            "${treble?.vndkSubVersion}-${theme}",
                     DecorViewScreenshotStrategy(it)
                 )
             } catch (e: Exception) {

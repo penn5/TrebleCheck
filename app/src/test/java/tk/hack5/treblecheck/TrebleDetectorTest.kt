@@ -42,7 +42,7 @@ sealed class Result<T> {
 
 @RunWith(Parameterized::class)
 class TrebleDetectorTest(
-    private val result: Result<TrebleData?>,
+    private val result: Result<TrebleResult?>,
     private val trebleEnabled: String?,
     private val vndkLite: String?,
     private val vendorSku: String?,
@@ -60,17 +60,17 @@ class TrebleDetectorTest(
             arrayOf(Result.success(null), "false", "", null, null, null, ""),
             arrayOf(Result.failure<Nothing?, ParseException>(), "true", "false", null, null, null, ""),
             // tests with cepheus data
-            arrayOf(Result.success(TrebleData(false, false, 30, 0)), "true", "false", "", "", "30", "vndk1a"),
-            arrayOf(Result.success(TrebleData(false, true, 30, 0)), "true", "true", "", "", null, "vndk1b"),
-            arrayOf(Result.success(TrebleData(false, false, 30, 0)), "true", "false", "", "", null, "vndk1c"),
-            arrayOf(Result.success(TrebleData(false, true, 30, 0)), "true", "true", "", "", null, "vndk1d"),
-            arrayOf(Result.success(TrebleData(false, false, 30, 0)), "true", "false", "", "", null, "vndk1e"),
+            arrayOf(Result.success(TrebleResult(false, false, 30, 0)), "true", "false", "", "", "30", "vndk1a"),
+            arrayOf(Result.success(TrebleResult(false, true, 30, 0)), "true", "true", "", "", null, "vndk1b"),
+            arrayOf(Result.success(TrebleResult(false, false, 30, 0)), "true", "false", "", "", null, "vndk1c"),
+            arrayOf(Result.success(TrebleResult(false, true, 30, 0)), "true", "true", "", "", null, "vndk1d"),
+            arrayOf(Result.success(TrebleResult(false, false, 30, 0)), "true", "false", "", "", null, "vndk1e"),
             // tests with TP1803 data
-            arrayOf(Result.success(TrebleData(false, true, 30, 0)), "true", "true", "", "", "30", "vndk2a"),
-            arrayOf(Result.success(TrebleData(false, false, 30, 0)), "true", "false", "", "", null, "vndk2b"),
-            arrayOf(Result.success(TrebleData(false, true, 30, 0)), "true", "true", "", "", null, "vndk2c"),
-            arrayOf(Result.success(TrebleData(false, false, 30, 0)), "true", "false", "", "", null, "vndk2d"),
-            arrayOf(Result.success(TrebleData(false, true, 30, 0)), "true", "true", "", "", null, "vndk2e"),
+            arrayOf(Result.success(TrebleResult(false, true, 30, 0)), "true", "true", "", "", "30", "vndk2a"),
+            arrayOf(Result.success(TrebleResult(false, false, 30, 0)), "true", "false", "", "", null, "vndk2b"),
+            arrayOf(Result.success(TrebleResult(false, true, 30, 0)), "true", "true", "", "", null, "vndk2c"),
+            arrayOf(Result.success(TrebleResult(false, false, 30, 0)), "true", "false", "", "", null, "vndk2d"),
+            arrayOf(Result.success(TrebleResult(false, true, 30, 0)), "true", "true", "", "", null, "vndk2e"),
         )
     }
 
@@ -137,8 +137,8 @@ class TrebleDetectorTest(
         }
     }
 
-    private fun testGetVndkData(trebleEnabled: String?, vndkLite: String?, vendorSku: String?, odmSku: String?, manifestFiles: AnswerScope<Pair<List<File>, Boolean>>, vendorCompatibilityMatrix: AnswerScope<File?>, selinuxData: AnswerScope<Pair<Int, Int>?>, vndkVersion: String?): TrebleData? {
-        var ret: TrebleData? = null
+    private fun testGetVndkData(trebleEnabled: String?, vndkLite: String?, vendorSku: String?, odmSku: String?, manifestFiles: AnswerScope<Pair<List<File>, Boolean>>, vendorCompatibilityMatrix: AnswerScope<File?>, selinuxData: AnswerScope<Pair<Int, Int>?>, vndkVersion: String?): TrebleResult? {
+        var ret: TrebleResult? = null
         TrebleDetector.root = temporaryFolder.root
         mockkStatic(::propertyGet.declaringKotlinFile) {
             every { propertyGet("ro.treble.enabled") } returns trebleEnabled

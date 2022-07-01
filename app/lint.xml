@@ -2,7 +2,7 @@
 <lint>
   <issue id="MissingTranslation" severity="ignore" />
 
-  <issue id="UnusedResources">
+  <!--<issue id="UnusedResources">
     <ignore regexp="src/main/res/values[^/]*/strings\.xml$" />
-  </issue>
+  </issue>-->
 </lint>

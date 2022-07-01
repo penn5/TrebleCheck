@@ -10,11 +10,9 @@
 
 package tk.hack5.treblecheck
 
-import android.os.Build
-import io.mockk.*
-import io.mockk.impl.stub.SpyKStub
-import org.junit.Assert.*
-
+import io.mockk.every
+import io.mockk.mockkObject
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class ArchDetectorTest {

@@ -52,6 +52,9 @@ android {
         versionCode = androidGitVersion.code()
         versionName = androidGitVersion.name()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
 
@@ -92,6 +95,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose = true
     }
 
     packagingOptions {
@@ -100,11 +104,22 @@ android {
         }
         resources {
             excludes.add("DebugProbesKt.bin")
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 
     lint {
         checkDependencies = true
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = rootProject.extra["composeVersion"] as String
     }
 }
 
@@ -117,9 +132,16 @@ project.poeditor.projectId = 285385
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
-    implementation("com.google.android.material:material:1.5.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("com.google.android.material:material:1.6.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.github.penn5:donations:3.6.1")
+    implementation("androidx.compose.ui:ui:${rootProject.extra["composeVersion"]}")
+    implementation("androidx.compose.material3:material3:1.0.0-alpha14")
+    implementation("androidx.compose.ui:ui-tooling-preview:${rootProject.extra["composeVersion"]}")
+    implementation("androidx.compose.animation:animation:1.3.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
+    implementation("androidx.activity:activity-compose:1.4.0")
+    implementation("androidx.compose.animation:animation-graphics:1.1.1")
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:$mockkVersion")
     testImplementation("io.mockk:mockk-agent-jvm:$mockkVersion")
@@ -130,4 +152,10 @@ dependencies {
     androidTestImplementation("tools.fastlane:screengrab:2.1.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${rootProject.extra["composeVersion"]}")
+    debugImplementation("androidx.compose.ui:ui-tooling:${rootProject.extra["composeVersion"]}")
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
 }

@@ -12,5 +12,4 @@
 <resources>
     <color name="colorPrimary">#092F42</color>
     <color name="text">#FFFFFF</color>
-    <color name="background">#000000</color>
 </resources>

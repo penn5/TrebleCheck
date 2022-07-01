@@ -16,14 +16,14 @@ import org.xmlpull.v1.XmlPullParserFactory
 import java.io.File
 import java.io.IOException
 
-data class TrebleData(val legacy: Boolean, val lite: Boolean,
-                      val vndkVersion: Int, val vndkSubVersion: Int)
+data class TrebleResult(val legacy: Boolean, val lite: Boolean,
+                        val vndkVersion: Int, val vndkSubVersion: Int)
 
 object TrebleDetector {
     private val SELINUX_REGEX = Regex("""\Winit_([0-9]+)_([0-9]+)\W""")
     internal var root: File? = null
 
-    fun getVndkData(): TrebleData? {
+    fun getVndkData(): TrebleResult? {
         Mock.data?.let { return it.treble.get() }
 
         val trebleEnabled = propertyGet("ro.treble.enabled")
@@ -31,8 +31,11 @@ object TrebleDetector {
         if (trebleEnabled != "true")
             return null
 
-        val lite = propertyGet("ro.vndk.lite") == "true"
-        Log.v(tag, "lite: $lite")
+        val liteProp = propertyGet("ro.vndk.lite")
+        Log.v(tag, "lite: $liteProp")
+        if (liteProp == null)
+            return null
+        val lite = liteProp == "lite"
 
         val (manifests, legacy) = locateManifestFiles()
         Log.v(tag, "manifests: ${manifests.joinToString { it.absolutePath }}, legacy: $legacy")
@@ -43,12 +46,12 @@ object TrebleDetector {
             parseMatrix(it)
         }?.let {
             Log.v(tag, "vendor matrix result: $it")
-            return TrebleData(legacy, lite, it.first, it.second)
+            return TrebleResult(legacy, lite, it.first, it.second)
         }
 
         parseSelinuxData()?.let {
             Log.v(tag, "selinux result: $it")
-            return TrebleData(legacy, lite, it.first, it.second)
+            return TrebleResult(legacy, lite, it.first, it.second)
         }
 
         manifests
@@ -60,7 +63,7 @@ object TrebleDetector {
             .filterNotNull()
             .firstOrNull()
             ?.let {
-                return TrebleData(legacy, lite, it.first, it.second)
+                return TrebleResult(legacy, lite, it.first, it.second)
             }
 
         propertyGet("ro.vndk.version")?.let {
@@ -68,7 +71,7 @@ object TrebleDetector {
             parseVersion(it)
         }?.let {
             Log.v(tag, "vndk result: $it")
-            return TrebleData(legacy, lite, it.first, it.second)
+            return TrebleResult(legacy, lite, it.first, it.second)
         }
 
         throw ParseException("No method to detect version")

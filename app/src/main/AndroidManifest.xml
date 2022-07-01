@@ -1,15 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Sub-licenses:
-  ~         https://github.com/google/material-design-icons/blob/master/LICENSE
-  ~         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
-  ~         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt
-  ~ This project:
-  ~         Copyright (C) 2019 Penn Mackintosh
-  ~         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
-  -->
-
-<manifest
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         package="tk.hack5.treblecheck"
         android:installLocation="auto">
@@ -18,23 +8,33 @@
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/title"
+            android:resizeableActivity="true"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            android:resizeableActivity="true"
-            tools:targetApi="n"
-            tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+            tools:ignore="AllowBackup,GoogleAppIndexingWarning"
+            tools:targetApi="n">
         <activity
-                android:name=".ScrollingActivity"
-                android:theme="@style/AppTheme.NoActionBar"
-                android:configChanges="screenSize|keyboardHidden"
-                android:exported="true">
+                android:name=".ui.MainActivity"
+                android:exported="true"
+                android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--<activity
+                android:name=".ScrollingActivity"
+                android:configChanges="screenSize|keyboardHidden"
+                android:exported="true"
+                android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>-->
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@
  *         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
  */
 
+/*
 package tk.hack5.treblecheck
 
 import android.annotation.SuppressLint
@@ -546,3 +547,5 @@ private fun Resources.getHtml(@StringRes id: Int, vararg formatArgs: Any?): Span
         Html.fromHtml(html)
     }
 }
+
+ */

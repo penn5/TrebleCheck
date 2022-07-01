@@ -5,6 +5,30 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/chevron.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/chevron_down.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/chevron_up.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/copy.xml" value="0.1835" />
+        <entry key="app/src/main/res/drawable/counter.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/treble_legacy.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/treble_legacy_false.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/treble_legacy_true.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/treble_lite_false.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/treble_lite_true.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/vab_false.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/vab_true.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/vabc_false.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/vabc_true.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/vabr_false.xml" value="0.4395" />
+        <entry key="app/src/main/res/drawable/vabr_true.xml" value="0.4395" />
+        <entry key="app/src/main/res/layout/activity_scrolling.xml" value="0.26927083333333335" />
+        <entry key="app/src/main/res/layout/card.xml" value="0.37092391304347827" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

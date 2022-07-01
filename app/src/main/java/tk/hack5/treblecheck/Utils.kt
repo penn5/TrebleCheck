@@ -32,5 +32,20 @@ operator fun <A1 : Comparable<A2>, B1 : Comparable<B2>, A2, B2>Pair<A1, B1>.comp
     else
         first.compareTo(other.first)
 
+sealed class Optional<out T> {
+    class Value<T>(val value: T) : Optional<T>()
+    object Nothing : Optional<kotlin.Nothing>()
+}
+
+fun <T>Optional<T>.get() = when (this) {
+    is Optional.Value -> value
+    else -> throw NullPointerException("Optional is empty")
+}
+
+fun <T>Optional<T>.getOrNull() = when (this) {
+    is Optional.Value -> value
+    else -> null
+}
+
 
 private const val tag = "Utils"

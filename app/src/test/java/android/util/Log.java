@@ -23,6 +23,7 @@ import java.net.UnknownHostException;
 /**
  * Mock Log implementation for testing on non android host.
  */
+@SuppressWarnings("ALL")
 public final class Log {
 
     /**
