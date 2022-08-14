@@ -23,7 +23,7 @@ struct binder_version {
 };
 
 const unsigned int BINDER_VERSION = (1U | 2U) << 30 | sizeof(struct binder_version) << 16 | 'b' << 8 | 9U;
-// https://github.com/xylophone21/android-binder-standalone/blob/a92595efee6c28ea1a9b7f8892d90062abdc6718/androidtoolsets/include/bionic/linux/binder.h
+// https://github.com/zhaodm/android-binder-standalone/blob/a92595efee6c28ea1a9b7f8892d90062abdc6718/androidtoolsets/include/bionic/linux/binder.h
 #define BINDER_PATH "/dev/binder"
 
 #endif //TREBLECHECK_BINDERDETECTOR_H

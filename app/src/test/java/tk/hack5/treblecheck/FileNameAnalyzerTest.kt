@@ -13,6 +13,9 @@ package tk.hack5.treblecheck
 import org.junit.Assert.*
 
 import org.junit.Test
+import tk.hack5.treblecheck.data.Arch
+import tk.hack5.treblecheck.data.FileNameAnalyzer
+import tk.hack5.treblecheck.data.TrebleResult
 
 class FileNameAnalyzerTest {
 

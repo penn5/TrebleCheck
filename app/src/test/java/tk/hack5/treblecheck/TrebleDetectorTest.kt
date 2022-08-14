@@ -18,6 +18,8 @@ import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
+import tk.hack5.treblecheck.data.TrebleDetector
+import tk.hack5.treblecheck.data.TrebleResult
 import java.io.File
 import kotlin.reflect.KClass
 

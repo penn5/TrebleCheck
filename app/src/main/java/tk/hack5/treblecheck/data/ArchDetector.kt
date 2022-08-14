@@ -4,14 +4,15 @@
  *         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
  *         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt
  * This project:
- *         Copyright (C) 2019 Penn Mackintosh
+ *         Copyright (C) 2022 Penn Mackintosh
  *         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
  */
 
-package tk.hack5.treblecheck
+package tk.hack5.treblecheck.data
 
 import android.os.Build
 import android.util.Log
+import tk.hack5.treblecheck.Mock
 
 object ArchDetector {
     internal val SUPPORTED_ABIS get() = Build.SUPPORTED_ABIS
@@ -43,7 +44,9 @@ sealed class Arch(val cpuBits: Int?, val binderBits: Int? = cpuBits) {
     object X86_BINDER64 : Arch(64, 32)
     object X86 : Arch(32)
 
-    data class UNKNOWN(val cpuName: String?, val binderVersion: Int?) : Arch(cpuName?.let(::getCpuBits), binderVersion?.let(::getBinderBits))
+    data class UNKNOWN(val cpuName: String?, val binderVersion: Int?) : Arch(cpuName?.let(Companion::getCpuBits), binderVersion?.let(
+        Companion::getBinderBits
+    ))
 
     companion object {
         operator fun invoke(cpuArch: String?, binderVersion: Int?): Arch =

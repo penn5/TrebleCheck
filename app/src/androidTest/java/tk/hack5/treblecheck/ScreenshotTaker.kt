@@ -16,6 +16,8 @@ import org.junit.ClassRule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
+import tk.hack5.treblecheck.data.Arch
+import tk.hack5.treblecheck.data.TrebleResult
 import tools.fastlane.screengrab.DecorViewScreenshotStrategy
 import tools.fastlane.screengrab.Screengrab
 import tools.fastlane.screengrab.locale.LocaleTestRule

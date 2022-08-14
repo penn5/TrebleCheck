@@ -14,6 +14,9 @@ import io.mockk.every
 import io.mockk.mockkObject
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import tk.hack5.treblecheck.data.Arch
+import tk.hack5.treblecheck.data.ArchDetector
+import tk.hack5.treblecheck.data.BinderDetector
 
 class ArchDetectorTest {
     @Test

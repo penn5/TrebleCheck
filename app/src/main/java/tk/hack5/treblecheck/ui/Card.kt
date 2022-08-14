@@ -22,7 +22,6 @@ import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -53,7 +52,6 @@ fun ClickableIconCard(modifier: Modifier, icon: Painter, iconTint: Color, onClic
     val newModifier = modifier
         .padding(cardOuterPadding)
         .fillMaxWidth()
-        .wrapContentHeight()
     val newContent: @Composable () -> Unit = {
         Row(
             Modifier
@@ -68,8 +66,9 @@ fun ClickableIconCard(modifier: Modifier, icon: Painter, iconTint: Color, onClic
         }
     }
 
-    Box(
-        newModifier.clickable(onClick = onClick),
+    OutlinedCard(
+        onClick = onClick,
+        newModifier,
         content = { newContent() }
     )
 }
@@ -85,40 +84,43 @@ data class AnimationParameters(val floatSpec: FiniteAnimationSpec<Float>, val in
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun TextCardContent(title: String, htmlBody: String, explanation: String, expanded: Boolean, animationParameters: AnimationParameters, icon: Painter? = null) {
+fun TextCardContent(title: String, htmlBody: String, detail: String, expanded: Boolean, animationParameters: AnimationParameters, icon: Painter? = null) {
     Column(
         Modifier.fillMaxWidth()
     ) {
-        Row(
-            Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.Bottom
-        ) {
-            Text(title, style = MaterialTheme.typography.titleLarge)
-            if (icon != null) {
-                Icon(icon, contentDescription = null)
-            } else {
-                val upDown by animateFloatAsState(
-                    if (expanded) 1f else -1f,
-                    animationParameters.floatSpec
-                )
-                Chevron(upDown)
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            Row(
+                Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.Bottom
+            ) {
+                val iconSize = 24.dp
+                Text(title, style = MaterialTheme.typography.titleLarge, modifier = Modifier.width(this@BoxWithConstraints.maxWidth - iconSize))
+                if (icon != null) {
+                    Icon(icon, contentDescription = null, modifier = Modifier.size(iconSize))
+                } else {
+                    val upDown by animateFloatAsState(
+                        if (expanded) 1f else -1f,
+                        animationParameters.floatSpec
+                    )
+                    Chevron(upDown, modifier = Modifier.size(iconSize))
+                }
             }
         }
         HtmlText(htmlBody)
         Spacer(Modifier.height(explanationSpacing))
         AnimatedVisibility(expanded, enter = animationParameters.enterTransition, exit = animationParameters.exitTransition) {
-            HtmlText(explanation)
+            HtmlText(detail)
         }
     }
 }
 
 @Composable
-fun Chevron(@FloatRange(from = -1.0, to = 1.0) upDown: Float) {
+fun Chevron(@FloatRange(from = -1.0, to = 1.0) upDown: Float, modifier: Modifier = Modifier) {
     val midY = 12 + upDown * 4
     Canvas(
-        Modifier.size(24.dp)
+        modifier
     ) {
         drawLine(Color.Black, Offset(7f.dp.toPx(), 12f.dp.toPx()), Offset(12f.dp.toPx(), midY.dp.toPx()), 2f.dp.toPx(), StrokeCap.Square)
         drawLine(Color.Black, Offset(12f.dp.toPx(), midY.dp.toPx()), Offset(17f.dp.toPx(), 12f.dp.toPx()), 2f.dp.toPx(), StrokeCap.Square)

@@ -16,6 +16,7 @@ import io.mockk.mockkStatic
 import org.junit.Assert.*
 
 import org.junit.Test
+import tk.hack5.treblecheck.data.DynamicPartitionsDetector
 
 class DynamicPartitionsDetectorTest {
 

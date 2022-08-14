@@ -10,6 +10,9 @@
 
 package tk.hack5.treblecheck
 
+import tk.hack5.treblecheck.data.Arch
+import tk.hack5.treblecheck.data.TrebleResult
+
 class Mock(
     val ab: Boolean?,
     val arch: Arch,

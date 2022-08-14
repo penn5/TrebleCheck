@@ -12,7 +12,7 @@
 #include "BinderDetector.h"
 
 extern "C" JNIEXPORT jint JNICALL
-Java_tk_hack5_treblecheck_BinderDetector_get_1binder_1version(__unused JNIEnv *env, __unused jobject thiz) {
+Java_tk_hack5_treblecheck_data_BinderDetector_get_1binder_1version(__unused JNIEnv *env, __unused jobject thiz) {
     struct binder_version version{};
     version.protocol_version = INT_MIN;
     int fd;

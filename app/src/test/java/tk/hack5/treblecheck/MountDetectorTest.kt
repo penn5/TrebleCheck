@@ -13,6 +13,8 @@ package tk.hack5.treblecheck
 import io.mockk.*
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import tk.hack5.treblecheck.data.Mount
+import tk.hack5.treblecheck.data.MountDetector
 import java.io.*
 
 class MountDetectorTest {

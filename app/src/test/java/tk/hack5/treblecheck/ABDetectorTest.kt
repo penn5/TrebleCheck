@@ -14,6 +14,7 @@ import io.mockk.*
 import org.junit.Assert.*
 
 import org.junit.Test
+import tk.hack5.treblecheck.data.ABDetector
 
 class ABDetectorTest {
     @Test

@@ -137,6 +137,7 @@ dependencies {
     implementation("com.github.penn5:donations:3.6.1")
     implementation("androidx.compose.ui:ui:${rootProject.extra["composeVersion"]}")
     implementation("androidx.compose.material3:material3:1.0.0-alpha14")
+    implementation("androidx.compose.material3:material3-window-size-class:1.0.0-alpha14")
     implementation("androidx.compose.ui:ui-tooling-preview:${rootProject.extra["composeVersion"]}")
     implementation("androidx.compose.animation:animation:1.3.0-alpha01")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
