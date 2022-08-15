@@ -52,8 +52,8 @@ data class TransitionSpecs(
     val expandShrink: FiniteAnimationSpec<IntSize>,
     val fade: FiniteAnimationSpec<Float>,
     val padding: FiniteAnimationSpec<Float>,
-    val height: FiniteAnimationSpec<Int>,
-    val top: FiniteAnimationSpec<Int>,
+    val height: FiniteAnimationSpec<Float>,
+    val top: FiniteAnimationSpec<Float>,
 ) {
     /**
      * Scale all transitions by the given factor.

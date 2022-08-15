@@ -311,10 +311,12 @@ fun MainActivityContent(
                 expandable {
                     plain { licenseEntry().clickable() }
                 }
-                expandable {
-                    plain { contributeEntry().clickable() }
-                    // plain { translateEntry() }
-                    // plain { donateEntry() }
+                repeat(10) {
+                    expandable {
+                        plain { contributeEntry().clickable() }
+                        // plain { translateEntry() }
+                        // plain { donateEntry() }
+                    }
                 }
             }
 

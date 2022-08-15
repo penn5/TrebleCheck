@@ -79,31 +79,25 @@ fun ExpandableColumn(
     separator: Dp,
     expandedIndex: Transition<Int>,
     expandIndex: (Int) -> Unit,
-    heightSpec: FiniteAnimationSpec<Int>,
-    topSpec: FiniteAnimationSpec<Int>,
+    heightSpec: FiniteAnimationSpec<Float>,
+    topSpec: FiniteAnimationSpec<Float>,
     content: ExpandableColumnScope.() -> Unit
 ) {
     val data = ExpandableColumnScope().also(content).also { it.finalize() }
     val transitions = data.indices.map { i -> expandedIndex.createChildTransition(label = "Expandable $i") { if (i == null) false else it == i } }
 
-    var initialHeights: List<Int> by remember { mutableStateOf(emptyList()) }
-
+    val heightStates = transitions.mapIndexed { i, transition -> transition.animateFloat(label = "Height", transitionSpec = { heightSpec }) { if (it) 1f else 0f } }
+    val topStates = transitions.mapIndexed { i, transition -> transition.animateFloat(label = "Top", transitionSpec = { topSpec }) { if (it) 1f else 0f } }
     val scrollingEnabled = expandedIndex.targetState == -1 // TODO remember scroll state when disabling; it is forgotten
+    var initialHeights: List<Int> by remember { mutableStateOf(emptyList()) }
     BoxWithConstraints(modifier) {
-        val height = this@BoxWithConstraints.constraints.maxHeight
-
-        if (initialHeights.isNotEmpty()) {
-            val heightStates = transitions.mapIndexed { i, transition -> transition.animateInt(label = "Height", transitionSpec = { heightSpec }) { if (it) height else initialHeights[data.reverseIndices[i]] } }
-            val topStates = transitions.mapIndexed { i, transition -> transition.animateInt(label = "Top", transitionSpec = { topSpec }) { if (it) 1f else 0f } }
-        }
-
         Layout(
             modifier = Modifier.verticalScroll(scrollState, enabled = scrollingEnabled),
             content = { data.content(transitions = transitions, onClick = expandIndex) }
         ) { measurables, constraints ->
             if (!expandedIndex.isRunning && expandedIndex.currentState != -1) {
                 val measurable = measurables[data.reverseIndices[expandedIndex.currentState]]
-                val height =
+                val height = this@BoxWithConstraints.constraints.maxHeight
                 val placeable = measurable.measure(constraints.copy(minHeight = height, maxHeight = height))
                 return@Layout layout(constraints.maxWidth, placeable.height) {
                     placeable.placeRelative(0, scrollState.value)
