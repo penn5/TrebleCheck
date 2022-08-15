@@ -22,19 +22,19 @@ import tk.hack5.treblecheck.data.TrebleResult
 import tk.hack5.treblecheck.data.VABResult
 
 @Composable
-fun moreInfoEntry(): Entry {
-    return Entry(
+fun moreInfoEntry(): BasicEntry {
+    return BasicEntry(
         painterResource(R.drawable.more_info),
         Neutral,
-        stringResource(R.string.more_info_header),
         stringResource(R.string.more_info),
+        stringResource(R.string.more_info_header),
         null
     )
 }
 
 @Composable
-fun licenseEntry(): Entry {
-    return Entry(
+fun licenseEntry(): BasicEntry {
+    return BasicEntry(
         painterResource(R.drawable.foss_license),
         Neutral,
         stringResource(R.string.license),
@@ -44,30 +44,30 @@ fun licenseEntry(): Entry {
 }
 
 @Composable
-fun contributeEntry(): Entry {
-    return Entry(
+fun contributeEntry(): BasicEntry {
+    return BasicEntry(
         painterResource(R.drawable.contribute),
         Neutral,
-        stringResource(R.string.contribute_header),
         stringResource(R.string.contribute),
+        stringResource(R.string.contribute_header),
         null
     )
 }
 
 @Composable
-fun trebleEntry(): Entry {
-    return Entry(
+fun trebleEntry(): BasicEntry {
+    return BasicEntry(
         painterResource(R.drawable.contribute),
         Neutral,
-        stringResource(R.string.treble_header),
         stringResource(R.string.treble),
+        stringResource(R.string.treble_header),
         null
     )
 }
 
 @Composable
-fun requiredImageEntry(fileName: String?): Entry {
-    return Entry(
+fun requiredImageEntry(fileName: String?): BasicEntry {
+    return BasicEntry(
         painterResource(if (fileName == null) R.drawable.filename_unknown else R.drawable.filename_known),
         if (fileName == null) Error else Green,
         fileName?.let { stringResource(R.string.filename, it) } ?: stringResource(R.string.filename_unknown),
@@ -77,7 +77,7 @@ fun requiredImageEntry(fileName: String?): Entry {
 }
 
 @Composable
-fun trebleEntry(treble: Optional<TrebleResult?>): Entry {
+fun trebleEntry(treble: Optional<TrebleResult?>): BasicEntry {
     val icon = painterResource(
         when (treble) {
             is Optional.Nothing -> R.drawable.unknown
@@ -105,7 +105,7 @@ fun trebleEntry(treble: Optional<TrebleResult?>): Entry {
             }
         }
     )
-    return Entry(
+    return BasicEntry(
         icon,
         tint,
         body,
@@ -115,11 +115,11 @@ fun trebleEntry(treble: Optional<TrebleResult?>): Entry {
 }
 
 @Composable
-fun trebleVersionEntry(treble: TrebleResult): Entry {
+fun trebleVersionEntry(treble: TrebleResult): BasicEntry {
     val icon = painterResource(R.drawable.treble_version)
     val tint = Green
     val body = stringResource(R.string.treble_version, treble.vndkVersion, treble.vndkSubVersion)
-    return Entry(
+    return BasicEntry(
         icon,
         tint,
         body,
@@ -129,7 +129,7 @@ fun trebleVersionEntry(treble: TrebleResult): Entry {
 }
 
 @Composable
-fun trebleLiteEntry(treble: TrebleResult): Entry {
+fun trebleLiteEntry(treble: TrebleResult): BasicEntry {
     val icon = painterResource(
         when (treble.lite) {
             false -> R.drawable.treble_lite_false
@@ -146,7 +146,7 @@ fun trebleLiteEntry(treble: TrebleResult): Entry {
             true -> R.string.treble_lite_true
         }
     )
-    return Entry(
+    return BasicEntry(
         icon,
         tint,
         body,
@@ -156,7 +156,7 @@ fun trebleLiteEntry(treble: TrebleResult): Entry {
 }
 
 @Composable
-fun trebleLegacyEntry(treble: TrebleResult): Entry {
+fun trebleLegacyEntry(treble: TrebleResult): BasicEntry {
     val icon = painterResource(
         when (treble.legacy) {
             false -> R.drawable.treble_legacy_false
@@ -173,7 +173,7 @@ fun trebleLegacyEntry(treble: TrebleResult): Entry {
             true -> R.string.treble_legacy_true
         }
     )
-    return Entry(
+    return BasicEntry(
         icon,
         tint,
         body,
@@ -183,7 +183,7 @@ fun trebleLegacyEntry(treble: TrebleResult): Entry {
 }
 
 @Composable
-fun sarEntry(sar: Boolean?): Entry {
+fun sarEntry(sar: Boolean?): BasicEntry {
     val icon = painterResource(
         when (sar) {
             null -> R.drawable.unknown
@@ -203,7 +203,7 @@ fun sarEntry(sar: Boolean?): Entry {
             true -> R.string.sar_true
         }
     )
-    return Entry(
+    return BasicEntry(
         icon,
         tint,
         body,
@@ -213,7 +213,7 @@ fun sarEntry(sar: Boolean?): Entry {
 }
 
 @Composable
-fun abEntry(ab: Boolean?): Entry {
+fun abEntry(ab: Boolean?): BasicEntry {
     val icon = painterResource(
         when (ab) {
             null -> R.drawable.unknown
@@ -233,7 +233,7 @@ fun abEntry(ab: Boolean?): Entry {
             true -> R.string.ab_true
         }
     )
-    return Entry(
+    return BasicEntry(
         icon,
         tint,
         body,
@@ -243,7 +243,7 @@ fun abEntry(ab: Boolean?): Entry {
 }
 
 @Composable
-fun dynamicPartitionsEntry(dynamic: Boolean?): Entry {
+fun dynamicPartitionsEntry(dynamic: Boolean?): BasicEntry {
     val icon = painterResource(
         when (dynamic) {
             null -> R.drawable.unknown
@@ -263,7 +263,7 @@ fun dynamicPartitionsEntry(dynamic: Boolean?): Entry {
             true -> R.string.dynamicpartitions_true
         }
     )
-    return Entry(
+    return BasicEntry(
         icon,
         tint,
         body,
@@ -273,7 +273,7 @@ fun dynamicPartitionsEntry(dynamic: Boolean?): Entry {
 }
 
 @Composable
-fun vabEntry(vab: Optional<VABResult?>): Entry {
+fun vabEntry(vab: Optional<VABResult?>): BasicEntry {
     val icon = painterResource(
         when (vab) {
             is Optional.Nothing -> R.drawable.unknown
@@ -299,7 +299,7 @@ fun vabEntry(vab: Optional<VABResult?>): Entry {
             }
         }
     )
-    return Entry(
+    return BasicEntry(
         icon,
         tint,
         body,
@@ -309,7 +309,7 @@ fun vabEntry(vab: Optional<VABResult?>): Entry {
 }
 
 @Composable
-fun vabrEntry(vab: VABResult): Entry {
+fun vabrEntry(vab: VABResult): BasicEntry {
     val icon = painterResource(
         when (vab.retrofit) {
             null -> R.drawable.unknown
@@ -329,7 +329,7 @@ fun vabrEntry(vab: VABResult): Entry {
             true -> R.string.vabr_true
         }
     )
-    return Entry(
+    return BasicEntry(
         icon,
         tint,
         body,
@@ -339,7 +339,7 @@ fun vabrEntry(vab: VABResult): Entry {
 }
 
 @Composable
-fun vabcEntry(vab: VABResult): Entry {
+fun vabcEntry(vab: VABResult): BasicEntry {
     val icon = painterResource(
         when (vab.compressed) {
             null -> R.drawable.unknown
@@ -359,7 +359,7 @@ fun vabcEntry(vab: VABResult): Entry {
             true -> R.string.vabc_true
         }
     )
-    return Entry(
+    return BasicEntry(
         icon,
         tint,
         body,
@@ -369,7 +369,7 @@ fun vabcEntry(vab: VABResult): Entry {
 }
 
 @Composable
-fun archEntry(arch: Arch): Entry {
+fun archEntry(arch: Arch): BasicEntry {
     val icon = painterResource(
         when (arch) {
             Arch.ARM64, Arch.X86_64 -> R.drawable.arch_64_bit
@@ -403,7 +403,7 @@ fun archEntry(arch: Arch): Entry {
             }
         )
     }
-    return Entry(
+    return BasicEntry(
         icon,
         tint,
         body,

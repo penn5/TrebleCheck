@@ -17,10 +17,14 @@ import android.text.Spanned
 import android.text.style.CharacterStyle
 import android.text.style.StyleSpan
 import androidx.annotation.FloatRange
-import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.*
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,81 +42,99 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import kotlin.math.roundToLong
 
-@Composable
-fun ClickableCardWithContent(modifier: Modifier = Modifier, border: Boolean, icon: Painter, iconTint: Color, onClick: () -> Unit, title: String, htmlBody: String, detail: String?) {
-    ClickableIconCard(modifier, icon, iconTint, onClick) {
-        TextCardContent(title, htmlBody, detail)
+data class TransitionSpecs(
+    val crossfade: FiniteAnimationSpec<Float>,
+    val expandShrink: FiniteAnimationSpec<IntSize>,
+    val fade: FiniteAnimationSpec<Float>,
+    val padding: FiniteAnimationSpec<Float>,
+    val height: FiniteAnimationSpec<Int>,
+    val top: FiniteAnimationSpec<Int>,
+) {
+    /**
+     * Scale all transitions by the given factor.
+     * @param factor how many times longer the animations should be. Frames may be changed if not a power of 2.
+     */
+    fun scale(factor: Float): TransitionSpecs {
+        return TransitionSpecs(
+            ScaledFiniteAnimationSpec(crossfade, factor),
+            ScaledFiniteAnimationSpec(expandShrink, factor),
+            ScaledFiniteAnimationSpec(fade, factor),
+            ScaledFiniteAnimationSpec(padding, factor),
+            ScaledFiniteAnimationSpec(height, factor),
+            ScaledFiniteAnimationSpec(top, factor),
+        )
     }
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun ClickableIconCard(modifier: Modifier = Modifier, icon: Painter, iconTint: Color, onClick: () -> Unit, content: @Composable () -> Unit) {
-    val newModifier = modifier
-        .fillMaxWidth()
-    val newContent: @Composable () -> Unit = {
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .padding(cardInnerPadding),
-            Arrangement.Start,
-            Alignment.CenterVertically
-        ) {
-            Icon(icon, contentDescription = null, Modifier.size(cardIconSize), iconTint)
-            Spacer(Modifier.width(cardIconSpacerWidth))
-            content()
+    class ScaledFiniteAnimationSpec<T>(val base: FiniteAnimationSpec<T>, val factor: Float) : FiniteAnimationSpec<T> {
+        override fun <V : AnimationVector> vectorize(converter: TwoWayConverter<T, V>): VectorizedFiniteAnimationSpec<V> {
+            return ScaledVectorizedFiniteAnimationSpec(base.vectorize(converter), factor)
         }
     }
 
-    OutlinedCard(
-        onClick = onClick,
-        newModifier,
-        content = { newContent() }
-    )
-}
-/*
-data class AnimationParameters(val floatSpec: FiniteAnimationSpec<Float>, val intSizeSpec: FiniteAnimationSpec<IntSize>) {
-    val enterTransition = fadeIn(floatSpec) + expandVertically(intSizeSpec)
-    val exitTransition = shrinkVertically(intSizeSpec) + fadeOut(floatSpec)
+    class ScaledVectorizedFiniteAnimationSpec<V : AnimationVector>(val base: VectorizedFiniteAnimationSpec<V>, val factor: Float) : VectorizedFiniteAnimationSpec<V> {
+        override fun getDurationNanos(initialValue: V, targetValue: V, initialVelocity: V): Long {
+            return (base.getDurationNanos(initialValue, targetValue, initialVelocity) * factor).roundToLong()
+        }
 
-    companion object {
-        val DEFAULT = AnimationParameters(spring(), spring())
+        override fun getValueFromNanos(
+            playTimeNanos: Long,
+            initialValue: V,
+            targetValue: V,
+            initialVelocity: V
+        ): V {
+            return base.getValueFromNanos((playTimeNanos / factor).roundToLong(), initialValue, targetValue, initialVelocity)
+        }
+
+        override fun getVelocityFromNanos(
+            playTimeNanos: Long,
+            initialValue: V,
+            targetValue: V,
+            initialVelocity: V
+        ): V {
+            return base.getVelocityFromNanos((playTimeNanos / factor).roundToLong(), initialValue, targetValue, initialVelocity)
+        }
     }
 }
-*/
+
+
+
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun TextCardContent(title: String, htmlBody: String, detail: String?, icon: Painter? = null) {
-    Column(
-        Modifier.fillMaxWidth()
-    ) {
-        BoxWithConstraints(Modifier.fillMaxWidth()) {
-            Row(
-                Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.Bottom
-            ) {
-                val iconSize = 24.dp
-                Text(title, style = MaterialTheme.typography.titleLarge, modifier = Modifier.width(this@BoxWithConstraints.maxWidth - iconSize))
-                if (icon != null) {
-                    Icon(icon, contentDescription = null, modifier = Modifier.size(iconSize))
-                }/* else {
-                    val upDown by animateFloatAsState(
-                        if (expanded) 1f else -1f,
-                        animationParameters.floatSpec
-                    )
-                    Chevron(upDown, modifier = Modifier.size(iconSize))
-                }*/
+fun TextCardContent(title: String, htmlBody: String, detail: String?, icon: Painter, iconTint: Color, titleOnly: Transition<Boolean>, specs: TransitionSpecs) {
+    BoxWithConstraints(Modifier.fillMaxWidth().padding(cardInnerPadding)) {
+        Column {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                val iconSize = cardIconSize
+                Text(
+                    title,
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.requiredWidth(this@BoxWithConstraints.maxWidth - iconSize)
+                )
+                Icon(
+                    icon,
+                    contentDescription = null,
+                    modifier = Modifier.size(iconSize),
+                    tint = iconTint
+                )
             }
-        }
-        HtmlText(htmlBody)
-        Spacer(Modifier.height(explanationSpacing))
-        detail?.let {
-            HtmlText(detail)
+            titleOnly.AnimatedVisibility(
+                visible = { !it },
+                enter = expandVertically(specs.expandShrink, Alignment.Top) + fadeIn(specs.fade),
+                exit = shrinkVertically(specs.expandShrink, Alignment.Top) + fadeOut(specs.fade)
+            ) {
+                Column {
+                    HtmlText(htmlBody)
+                    Spacer(Modifier.height(explanationSpacing))
+                    detail?.let {
+                        HtmlText(detail)
+                    }
+                }
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ package tk.hack5.treblecheck.ui
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.unit.dp
 
-val cardOuterPadding = PaddingValues(8.dp, 8.dp)
+val cardOuterPadding = PaddingValues(8.dp, 32.dp)
 val cardInnerPadding = PaddingValues(8.dp, 8.dp)
 val cardIconSpacerWidth = 8.dp
 val cardIconSize = 24.dp
