@@ -14,6 +14,6 @@ data class VABResult(val retrofit: Boolean?, val compressed: Boolean?)
 
 object VABDetector {
     fun getVABData(): VABResult? {
-        throw Exception("TODO")
+        return null // TODO
     }
 }

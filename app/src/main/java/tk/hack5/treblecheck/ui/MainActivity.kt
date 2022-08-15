@@ -14,16 +14,29 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.ExperimentalTransitionApi
+import androidx.compose.animation.core.Transition
+import androidx.compose.animation.core.createChildTransition
+import androidx.compose.animation.core.updateTransition
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import tk.hack5.treblecheck.Optional
+import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.data.*
 import tk.hack5.treblecheck.getOrNull
 import tk.hack5.treblecheck.ui.theme.TrebleCheckTheme
@@ -32,72 +45,345 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TrebleCheckTheme(darkTheme = false) {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    val treble = remember { try {
-                        Optional.Value(TrebleDetector.getVndkData())
-                    } catch (e: Exception) {
-                        Log.e(tag, "Failed to get VNDK data", e)
-                        Optional.Nothing
-                    }}
-                    val ab = remember { try {
-                        ABDetector.checkAB()
-                    } catch (e: Exception) {
-                        Log.e(tag, "Failed to get AB status", e)
-                        null
-                    }}
-                    val dynamic = remember { try {
-                        DynamicPartitionsDetector.isDynamic()
-                    } catch (e: Exception) {
-                        Log.e(tag, "Failed to get Dynamic Partitions status", e)
-                        null
-                    }}
-                    val vab = remember { try {
-                        Optional.Value(VABDetector.getVABData())
-                    } catch (e: Exception) {
-                        Log.e(tag, "Failed to get VAB status", e)
-                        Optional.Nothing
-                    }}
-                    val sar = remember {try {
-                        MountDetector.isSAR()
-                    } catch (e: Exception) {
-                        Log.e(tag, "Failed to get SAR status", e)
-                        null
-                    }}
-                    val arch = remember { try {
-                        ArchDetector.getArch()
-                    } catch (e: Exception) {
-                        Log.e(tag, "Failed to get arch", e)
-                        Arch.UNKNOWN(null, null)
-                    }}
-                    val fileName = remember { try {
-                        treble.getOrNull()?.let { FileNameAnalyzer.getFileName(it, arch, sar) }
-                    } catch (e: Exception) {
-                        Log.e(tag, "Failed to generate filename", e)
-                        null
-                    }}
+            val treble = remember {
+                try {
+                    Optional.Value(TrebleDetector.getVndkData())
+                } catch (e: Exception) {
+                    Log.e(tag, "Failed to get VNDK data", e)
+                    Optional.Nothing
+                }
+            }
+            val ab = remember {
+                try {
+                    ABDetector.checkAB()
+                } catch (e: Exception) {
+                    Log.e(tag, "Failed to get AB status", e)
+                    null
+                }
+            }
+            val dynamic = remember {
+                try {
+                    DynamicPartitionsDetector.isDynamic()
+                } catch (e: Exception) {
+                    Log.e(tag, "Failed to get Dynamic Partitions status", e)
+                    null
+                }
+            }
+            val vab = remember {
+                try {
+                    Optional.Value(VABDetector.getVABData())
+                } catch (e: Exception) {
+                    Log.e(tag, "Failed to get VAB status", e)
+                    Optional.Nothing
+                }
+            }
+            val sar = remember {
+                try {
+                    MountDetector.isSAR()
+                } catch (e: Exception) {
+                    Log.e(tag, "Failed to get SAR status", e)
+                    null
+                }
+            }
+            val arch = remember {
+                try {
+                    ArchDetector.getArch()
+                } catch (e: Exception) {
+                    Log.e(tag, "Failed to get arch", e)
+                    Arch.UNKNOWN(null, null)
+                }
+            }
+            val fileName = remember {
+                try {
+                    treble.getOrNull()
+                        ?.let { FileNameAnalyzer.getFileName(it, arch, sar) }
+                } catch (e: Exception) {
+                    Log.e(tag, "Failed to generate filename", e)
+                    null
+                }
+            }
+
+            MainActivityContent(
+                treble,
+                ab,
+                dynamic,
+                vab,
+                sar,
+                arch,
+                fileName
+            ) { TODO() }
+        }
+    }
+}
+
+enum class DetailType {
+    TREBLE,
+    SAR,
+    PARTITIONS,
+    ARCH,
+}
+
+sealed class Screen(val ordinal: Int) {
+    object MAIN : Screen(0)
+    object LIST : Screen(1)
+    object LICENSE : Screen(2)
+    object CONTRIBUTE : Screen(3)
+    class Detail(val type: DetailType) : Screen(-type.ordinal)
+
+    companion object {
+        fun fromOrdinal(ordinal: Int) = when (ordinal) {
+            0 -> MAIN
+            1 -> LIST
+            2 -> LICENSE
+            3 -> CONTRIBUTE
+            else -> Detail(DetailType.values()[-ordinal])
+        }
+
+        val Saver = Saver(
+            { it.ordinal },
+            ::fromOrdinal
+        )
+        val StateSaver = Saver<MutableState<Screen>, Int>(
+            { it.value.ordinal },
+            { mutableStateOf(fromOrdinal(it)) }
+        )
+    }
+}
+
+fun triggerDonation() {
+    TODO()
+}
 
 
-                    AllEntries(treble, ab, dynamic, vab, sar, arch, fileName)
-/*
-                    MainCards(Optional.Value(TrebleResult(false, true, 30, 0)), true, true, Optional.Value(
-                        VABResult(true, true)
-                    ), true, Arch.ARM32_BINDER64, "system-arm64-ab.img.xz")
-  */              }
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
+@Composable
+fun TopBar(showBackButtonTransition: Transition<Boolean>, goBack: () -> Unit) {
+    SmallTopAppBar(
+        title = { Text(stringResource(id = R.string.title)) },
+        navigationIcon = {
+            showBackButtonTransition.AnimatedVisibility(visible = { it }) {
+                IconButton(onClick = { goBack() }) {
+                    Icon(Icons.Default.ArrowBack, stringResource(R.string.back))
+                }
+            }
+        }
+    )
+}
+
+sealed class AutoListEntry {
+    class PlainEntry(val content: @Composable () -> Entry) : AutoListEntry()
+    class ExpandableEntry(val content: List<AutoListEntry>) : AutoListEntry()
+}
+
+val AutoListEntry.collapsed: @Composable () -> Entry get() {
+    var entry = this
+    while (entry is AutoListEntry.ExpandableEntry) {
+        entry = entry.content.first()
+    }
+    return (entry as AutoListEntry.PlainEntry).content
+}
+
+class AutoListScope {
+    val contents = mutableListOf<AutoListEntry>()
+
+
+    fun plain(content: @Composable () -> Entry) {
+        contents.add(AutoListEntry.PlainEntry(content))
+    }
+
+    fun expandable(content: AutoListScope.() -> Unit) {
+        contents.add(AutoListEntry.ExpandableEntry(AutoListScope().also(content).contents))
+    }
+}
+
+
+@Composable
+fun AutoList(
+    modifier: Modifier,
+    entryPadding: PaddingValues,
+    rootExpandedIndexTransition: Transition<Int?>,
+    setRootExpandedIndex: (Int) -> Unit,
+    content: AutoListScope.() -> Unit
+) {
+    val contents = AutoListScope().also(content).contents
+
+    AutoListExpandableEntry(modifier, rootExpandedIndexTransition, setRootExpandedIndex, contents, entryPadding)
+
+
+}
+@Composable
+private fun AutoListExpandableEntry(
+    modifier: Modifier,
+    expandedIndexTransition: Transition<Int?>,
+    setExpandedIndex: (Int) -> Unit,
+    contents: List<AutoListEntry>,
+    entryPadding: PaddingValues
+) {
+    Surface {
+        ExpandableColumn(
+            modifier
+                .fillMaxSize(),
+            expandedIndex = expandedIndexTransition,
+            expandIndex = setExpandedIndex
+        ) {
+            contents.forEach {
+                when (it) {
+                    is AutoListEntry.PlainEntry -> plain {
+                        DisplayedEntry(Modifier.padding(entryPadding), it.content(), true, /* TODO */ {})
+                    }
+                    is AutoListEntry.ExpandableEntry -> expandable {
+                        //val paddingScale by transition.animateFloat(label = "Padding") { if (it) 0f else 1f }
+
+                        if (transition.isRunning) {
+                            Surface {
+                                Column {
+                                    it.content.map(AutoListEntry::collapsed).forEach { child ->
+                                        DisplayedEntry(Modifier.padding(entryPadding), child(), true, onClick)
+                                    }
+                                }
+                            }
+                        } else if (transition.currentState || transition.isRunning) {
+                            var innerExpandedIndex: Int? by rememberSaveable { mutableStateOf(null) }
+                            val innerExpandedIndexTransition = updateTransition(innerExpandedIndex, label = "moreInfoExpandedIndex")
+
+                            AutoListExpandableEntry(
+                                modifier = Modifier,
+                                expandedIndexTransition = innerExpandedIndexTransition,
+                                setExpandedIndex = { i -> innerExpandedIndex = i },
+                                contents = it.content,
+                                entryPadding = entryPadding
+                            )
+                        } else {
+                            val content = (it.content[0] as AutoListEntry.PlainEntry).content
+
+                            DisplayedEntry(Modifier.padding(entryPadding), content(), true, onClick)
+                        }
+                    }
+                }
             }
         }
     }
 }
 
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalTransitionApi::class)
+@Composable
+fun MainActivityContent(
+    treble: Optional<TrebleResult?>,
+    ab: Boolean?,
+    dynamic: Boolean?,
+    vab: Optional<VABResult?>,
+    sar: Boolean?,
+    arch: Arch,
+    fileName: String?,
+    onRequiredImageClick: () -> Unit
+) {
+    var rootExpandedIndex: Int? by rememberSaveable { mutableStateOf(null) }
+    val rootExpandedIndexTransition = updateTransition(rootExpandedIndex, label = "rootExpandedIndex")
+
+    TrebleCheckTheme(darkTheme = false) {
+        Scaffold(
+            topBar = {
+                TopBar(
+                    rootExpandedIndexTransition.createChildTransition { it != null }
+                ) { rootExpandedIndex = null }
+            }
+        ) { innerPadding ->
+            AutoList(
+                Modifier
+                    .padding(innerPadding) /* TODO maybe apply on the inside? */,
+                cardOuterPadding,
+                rootExpandedIndexTransition,
+                { rootExpandedIndex = it }
+            ) {
+                plain { requiredImageEntry(fileName) }
+                expandable {
+                    plain { moreInfoEntry() }
+                    expandable {
+                        plain { trebleEntry() }
+                    }
+                }
+                expandable {
+                    plain { licenseEntry() }
+                }
+                expandable {
+                    plain { contributeEntry() }
+                    // plain { translateEntry() }
+                    // plain { donateEntry() }
+                }
+            }
+
+
+/*
+            Surface {
+            ExpandableColumn(
+                Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding) /* TODO maybe apply on the inside? */,
+                expandedIndex = rootExpandedIndexTransition,
+                expandIndex = { rootExpandedIndex = it }
+            ) {
+                plain {
+                    DisplayedEntry(Modifier.padding(cardOuterPadding), requiredImageEntry(fileName), true, onRequiredImageClick)
+                }
+                expandable {
+                    val moreInfoPaddingScale by transition.animateFloat(label = "Padding") { if (it) 0f else 1f }
+                    if (transition.currentState) {
+                        var moreInfoExpandedIndex: Int? by rememberSaveable { mutableStateOf(null) }
+                        val moreInfoExpandedIndexTransition = updateTransition(moreInfoExpandedIndex, label = "moreInfoExpandedIndex")
+
+                        Surface {
+                            ExpandableColumn(
+                                expandedIndex = moreInfoExpandedIndexTransition,
+                                expandIndex = { moreInfoExpandedIndex = it }
+                            ) {
+                                plain {
+                                    DisplayedEntry(Modifier.padding(cardOuterPadding), moreInfoEntry(), true, onClick)
+                                }
+                                expandable {
+                                    val treblePaddingScale by transition.animateFloat(label = "Padding") { if (it) 0f else 1f }
+                                    DisplayedEntry(Modifier.padding(cardOuterPadding * treblePaddingScale), trebleEntry(), true, onClick)
+                                }
+                                expandable {
+                                    val sarPaddingScale by transition.animateFloat(label = "Padding") { if (it) 0f else 1f }
+                                    DisplayedEntry(Modifier.padding(cardOuterPadding * sarPaddingScale), sarEntry(), true, onClick)
+                                }
+                                expandable {
+                                    val partitionsPaddingScale by transition.animateFloat(label = "Padding") { if (it) 0f else 1f }
+                                    DisplayedEntry(Modifier.padding(cardOuterPadding * partitionsPaddingScale), partitionsEntry(), true, onClick)
+                                }
+                                expandable {
+                                    val archPaddingScale by transition.animateFloat(label = "Padding") { if (it) 0f else 1f }
+                                    DisplayedEntry(Modifier.padding(cardOuterPadding * archPaddingScale), archEntry(), true, onClick)
+                                }
+                            }
+                        }
+                    } else {
+                        DisplayedEntry(Modifier.padding(cardOuterPadding * moreInfoPaddingScale), moreInfoEntry(), transition.currentState, onClick)
+                    }
+                }
+                expandable {
+                    val licensePaddingScale by transition.animateFloat(label = "Padding") { if (it) 0f else 1f }
+                    DisplayedEntry(Modifier.padding(cardOuterPadding * licensePaddingScale), licenseEntry(), true, onClick)
+                }
+                repeat(10) {
+                expandable {
+                    val contributePaddingScale by transition.animateFloat(label = "Padding") { if (it) 0f else 1f }
+                    DisplayedEntry(Modifier.padding(cardOuterPadding * contributePaddingScale), contributeEntry(), true, onClick)
+                }
+                }
+            }
+            }*/
+        }
+    }
+}
+
+
 @Preview
 @Composable
-fun MainScreenPreview() {
+fun MainActivityPreview() {
     TrebleCheckTheme(darkTheme = false) {
-        MainScreen(
+        MainActivityContent(
             Optional.Value(
                 TrebleResult(false, true, 30, 0)
             ),
@@ -109,21 +395,44 @@ fun MainScreenPreview() {
             true,
             Arch.ARM32_BINDER64,
             "system-arm64-ab.img.xz"
-        )
+        ) { TODO() }
     }
 }
 
+/*
 @Composable
 fun MainScreen(
-    treble: Optional<TrebleResult?>,
-    ab: Boolean?,
-    dynamic: Boolean?,
-    vab: Optional<VABResult?>,
-    sar: Boolean?,
-    arch: Arch,
-    fileName: String?
+    fileName: String?,
+    innerPadding: PaddingValues,
+    onRequiredImageClick: () -> Unit,
+    onMoreInfoClick: () -> Unit,
+    onLicenseClick: () -> Unit,
+    onContributeClick: () -> Unit
 ) {
-
+    Column(
+        Modifier
+            .scrollable(rememberScrollState(), Orientation.Vertical)
+            .padding(innerPadding)
+    ) {
+        DisplayedEntry(requiredImageEntry(fileName), true, onRequiredImageClick)
+        DisplayedEntry(moreInfoEntry(), true, onMoreInfoClick)
+        DisplayedEntry(licenseEntry(), true, onLicenseClick)
+        DisplayedEntry(contributeEntry(), true, onContributeClick)
+    }
+}
+*/
+@Composable
+fun DisplayedEntry(modifier: Modifier = Modifier, entry: Entry, border: Boolean, onClick: () -> Unit) {
+    ClickableCardWithContent(
+        modifier = modifier,
+        border = border,
+        icon = entry.icon,
+        iconTint = entry.tint,
+        onClick = onClick,
+        title = entry.header,
+        htmlBody = entry.body,
+        detail = entry.detail
+    )
 }
 
 
@@ -365,7 +674,13 @@ sealed class ClickAction {
     object ToggleDetail : ClickAction()
     class CopyText(val title: String, val text: String) : ClickAction()
 }
-data class Entry(val icon: Painter, val actionIcon: Painter?, val tint: Color, val body: String, val header: String, val detail: String, val clickAction: ClickAction?, val accented: Boolean = false, val expandedContent: List<Entry>? = null)
+data class Entry(
+    val icon: Painter,
+    val tint: Color,
+    val body: String,
+    val header: String,
+    val detail: String?
+)
 
 
 

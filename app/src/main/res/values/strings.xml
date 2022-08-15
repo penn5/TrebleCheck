@@ -10,7 +10,7 @@
     <string name="sar_true">Your device supports System-as-Root. Use an &lt;b&gt;A/B&lt;/b&gt; operating system.</string>
     <string name="sar_false">Your device does not support System-as-Root. Use an &lt;b&gt;A-only&lt;/b&gt; Operating System.</string>
     <string name="license_header">Licenses</string>
-    <string name="license">License: %1$s\nPrivacy: %2$s</string>
+    <string name="license">Click to see your rights when using this application.</string>
     <string name="support_header">Support</string>
     <string name="support">If you notice any bugs in this application, please don\&apos;t hesitate to contact me by clicking here. I will get back to you as soon as possible.</string>
     <string name="treble_false">Your device does not support Project Treble.</string>
@@ -58,7 +58,7 @@
     <string name="treble_lite_explanation">VNDK Lite disables some isolation between the system and vendor partitions at runtime, resulting in a smaller but less versatile vendor partition.</string>
     <string name="treble_legacy_explanation">On vendors built with Android 8.1 or lower, a legacy path is used for the device manifest.</string>
     <string name="treble_explanation">Project Treble allows supported Android devices to boot a Generic System Image, reducing the time required for updates to be developed.</string>
-    <string name="filename_explanation">This is the name of the Generic System Image required by your device. Names may vary slightly depending on where they are downloaded.</string>
+    <string name="filename_explanation">This is the name of the Generic System Image required by your device. Names may vary slightly. Click here to browse some Generic System Images created by the community.</string>
     <string name="sar_explanation">The system partition can be mounted either as the root filesystem (System-as-Root) or in a subdirectory of the root ramdisk (System-as-System). Many GSIs incorrectly refer to this property as A/B. If a device uses System-as-Root, it requires an A/B GSI. Otherwise, it requires an A-only GSI.</string>
     <string name="ab_explanation">Although many GSIs refer to A/B images, this value is not directly linked to the GSI image type. Devices with A/B partitions are able to store two copies of Android at once. This allows updating one copy while the other is in use.</string>
     <string name="dynamicpartitions_explanation">Devices with Dynamic Partitions are able to create, modify or delete partitions during updates. To support this feature, a \"super\" partition is used. This container partition contains all other partitions except for the bootloader. Flashing must be performed using fastbootd on these devices.</string>
@@ -78,4 +78,10 @@
     <string name="vabc_header">Virtual A/B Compression</string>
     <string name="vabc_explanation">On devices that use Virtual A/B, the changes made can be compressed. This reduces performance but decreases storage requirements during the update.</string>
     <string name="arch_explanation">The architecture of the CPU determines which programs can be run on the device, and must match the operating system. The binder architecture controls how programs communicate. Since the vendor partition programs need to communicate with the system partition programs, the binder architecture must match between the two.</string>
+    <string name="more_info_header">More Info</string>
+    <string name="more_info">Click to view technical details about your device.</string>
+    <string name="contribute_header">Contribute</string>
+    <string name="contribute">Click here to help us improve this application.</string>
+    <string name="back">Back</string>
+    <string name="treble">Click here to view information about your device\'s implementation of Project Treble.</string>
 </resources>

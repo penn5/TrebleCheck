@@ -22,23 +22,58 @@ import tk.hack5.treblecheck.data.TrebleResult
 import tk.hack5.treblecheck.data.VABResult
 
 @Composable
+fun moreInfoEntry(): Entry {
+    return Entry(
+        painterResource(R.drawable.more_info),
+        Neutral,
+        stringResource(R.string.more_info_header),
+        stringResource(R.string.more_info),
+        null
+    )
+}
+
+@Composable
+fun licenseEntry(): Entry {
+    return Entry(
+        painterResource(R.drawable.foss_license),
+        Neutral,
+        stringResource(R.string.license),
+        stringResource(R.string.license_header),
+        null
+    )
+}
+
+@Composable
+fun contributeEntry(): Entry {
+    return Entry(
+        painterResource(R.drawable.contribute),
+        Neutral,
+        stringResource(R.string.contribute_header),
+        stringResource(R.string.contribute),
+        null
+    )
+}
+
+@Composable
+fun trebleEntry(): Entry {
+    return Entry(
+        painterResource(R.drawable.contribute),
+        Neutral,
+        stringResource(R.string.treble_header),
+        stringResource(R.string.treble),
+        null
+    )
+}
+
+@Composable
 fun requiredImageEntry(fileName: String?): Entry {
     return Entry(
         painterResource(if (fileName == null) R.drawable.filename_unknown else R.drawable.filename_known),
-        painterResource(R.drawable.copy),
         if (fileName == null) Error else Green,
         fileName?.let { stringResource(R.string.filename, it) } ?: stringResource(R.string.filename_unknown),
         stringResource(R.string.filename_header),
-        stringResource(R.string.filename_explanation),
-        fileName?.let {
-            ClickAction.CopyText(
-                stringResource(R.string.filename_header),
-                it
-            )
-        },
-        accented = true
-        )
-
+        stringResource(R.string.filename_explanation)
+    )
 }
 
 @Composable
@@ -71,14 +106,12 @@ fun trebleEntry(treble: Optional<TrebleResult?>): Entry {
         }
     )
     return Entry(
-            icon,
-            null,
-            tint,
-            body,
-            stringResource(R.string.treble_header),
-            stringResource(R.string.treble_explanation),
-            ClickAction.ToggleDetail
-        )
+        icon,
+        tint,
+        body,
+        stringResource(R.string.treble_header),
+        stringResource(R.string.treble_explanation)
+    )
 }
 
 @Composable
@@ -87,14 +120,12 @@ fun trebleVersionEntry(treble: TrebleResult): Entry {
     val tint = Green
     val body = stringResource(R.string.treble_version, treble.vndkVersion, treble.vndkSubVersion)
     return Entry(
-            icon,
-            null,
-            tint,
-            body,
-            stringResource(R.string.treble_version_header),
-            stringResource(R.string.treble_version_explanation),
-            ClickAction.ToggleDetail
-        )
+        icon,
+        tint,
+        body,
+        stringResource(R.string.treble_version_header),
+        stringResource(R.string.treble_version_explanation)
+    )
 }
 
 @Composable
@@ -116,14 +147,12 @@ fun trebleLiteEntry(treble: TrebleResult): Entry {
         }
     )
     return Entry(
-            icon,
-            null,
-            tint,
-            body,
-            stringResource(R.string.treble_lite_header),
-            stringResource(R.string.treble_lite_explanation),
-            ClickAction.ToggleDetail
-        )
+        icon,
+        tint,
+        body,
+        stringResource(R.string.treble_lite_header),
+        stringResource(R.string.treble_lite_explanation)
+    )
 }
 
 @Composable
@@ -145,14 +174,12 @@ fun trebleLegacyEntry(treble: TrebleResult): Entry {
         }
     )
     return Entry(
-            icon,
-            null,
-            tint,
-            body,
-            stringResource(R.string.treble_legacy_header),
-            stringResource(R.string.treble_legacy_explanation),
-            ClickAction.ToggleDetail
-        )
+        icon,
+        tint,
+        body,
+        stringResource(R.string.treble_legacy_header),
+        stringResource(R.string.treble_legacy_explanation)
+    )
 }
 
 @Composable
@@ -177,14 +204,12 @@ fun sarEntry(sar: Boolean?): Entry {
         }
     )
     return Entry(
-            icon,
-            null,
-            tint,
-            body,
-            stringResource(R.string.sar_header),
-            stringResource(R.string.sar_explanation),
-            ClickAction.ToggleDetail
-        )
+        icon,
+        tint,
+        body,
+        stringResource(R.string.sar_header),
+        stringResource(R.string.sar_explanation)
+    )
 }
 
 @Composable
@@ -209,14 +234,12 @@ fun abEntry(ab: Boolean?): Entry {
         }
     )
     return Entry(
-            icon,
-            null,
-            tint,
-            body,
-            stringResource(R.string.ab_header),
-            stringResource(R.string.ab_explanation),
-            ClickAction.ToggleDetail
-        )
+        icon,
+        tint,
+        body,
+        stringResource(R.string.ab_header),
+        stringResource(R.string.ab_explanation)
+    )
 }
 
 @Composable
@@ -241,14 +264,12 @@ fun dynamicPartitionsEntry(dynamic: Boolean?): Entry {
         }
     )
     return Entry(
-            icon,
-            null,
-            tint,
-            body,
-            stringResource(R.string.dynamicpartitions_header),
-            stringResource(R.string.dynamicpartitions_explanation),
-            ClickAction.ToggleDetail
-        )
+        icon,
+        tint,
+        body,
+        stringResource(R.string.dynamicpartitions_header),
+        stringResource(R.string.dynamicpartitions_explanation)
+    )
 }
 
 @Composable
@@ -279,14 +300,12 @@ fun vabEntry(vab: Optional<VABResult?>): Entry {
         }
     )
     return Entry(
-            icon,
-            null,
-            tint,
-            body,
-            stringResource(R.string.vab_header),
-            stringResource(R.string.vab_explanation),
-            ClickAction.ToggleDetail
-        )
+        icon,
+        tint,
+        body,
+        stringResource(R.string.vab_header),
+        stringResource(R.string.vab_explanation)
+    )
 }
 
 @Composable
@@ -311,14 +330,12 @@ fun vabrEntry(vab: VABResult): Entry {
         }
     )
     return Entry(
-            icon,
-            null,
-            tint,
-            body,
-            stringResource(R.string.vabr_header),
-            stringResource(R.string.vabr_explanation),
-            ClickAction.ToggleDetail
-        )
+        icon,
+        tint,
+        body,
+        stringResource(R.string.vabr_header),
+        stringResource(R.string.vabr_explanation)
+    )
 }
 
 @Composable
@@ -343,14 +360,12 @@ fun vabcEntry(vab: VABResult): Entry {
         }
     )
     return Entry(
-            icon,
-            null,
-            tint,
-            body,
-            stringResource(R.string.sar_header),
-            stringResource(R.string.sar_explanation),
-            ClickAction.ToggleDetail
-        )
+        icon,
+        tint,
+        body,
+        stringResource(R.string.sar_header),
+        stringResource(R.string.sar_explanation)
+    )
 }
 
 @Composable
@@ -389,14 +404,12 @@ fun archEntry(arch: Arch): Entry {
         )
     }
     return Entry(
-            icon,
-            null,
-            tint,
-            body,
-            stringResource(R.string.sar_header),
-            stringResource(R.string.sar_explanation),
-            ClickAction.ToggleDetail
-        )
+        icon,
+        tint,
+        body,
+        stringResource(R.string.sar_header),
+        stringResource(R.string.sar_explanation)
+    )
 }
 
 // TODO
@@ -405,3 +418,4 @@ private val Error: Color @Composable get() = Color.Red
 private val Orange: Color @Composable get() = MaterialTheme.colorScheme.primary
 private val Green: Color @Composable get() = MaterialTheme.colorScheme.primary
 private val Blue: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val Neutral: Color @Composable get() = Green

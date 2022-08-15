@@ -17,15 +17,11 @@ import android.text.Spanned
 import android.text.style.CharacterStyle
 import android.text.style.StyleSpan
 import androidx.annotation.FloatRange
-import androidx.compose.animation.*
-import androidx.compose.animation.core.FiniteAnimationSpec
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -42,15 +38,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 
+@Composable
+fun ClickableCardWithContent(modifier: Modifier = Modifier, border: Boolean, icon: Painter, iconTint: Color, onClick: () -> Unit, title: String, htmlBody: String, detail: String?) {
+    ClickableIconCard(modifier, icon, iconTint, onClick) {
+        TextCardContent(title, htmlBody, detail)
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ClickableIconCard(modifier: Modifier, icon: Painter, iconTint: Color, onClick: () -> Unit, content: @Composable () -> Unit) {
+fun ClickableIconCard(modifier: Modifier = Modifier, icon: Painter, iconTint: Color, onClick: () -> Unit, content: @Composable () -> Unit) {
     val newModifier = modifier
-        .padding(cardOuterPadding)
         .fillMaxWidth()
     val newContent: @Composable () -> Unit = {
         Row(
@@ -72,7 +73,7 @@ fun ClickableIconCard(modifier: Modifier, icon: Painter, iconTint: Color, onClic
         content = { newContent() }
     )
 }
-
+/*
 data class AnimationParameters(val floatSpec: FiniteAnimationSpec<Float>, val intSizeSpec: FiniteAnimationSpec<IntSize>) {
     val enterTransition = fadeIn(floatSpec) + expandVertically(intSizeSpec)
     val exitTransition = shrinkVertically(intSizeSpec) + fadeOut(floatSpec)
@@ -81,10 +82,10 @@ data class AnimationParameters(val floatSpec: FiniteAnimationSpec<Float>, val in
         val DEFAULT = AnimationParameters(spring(), spring())
     }
 }
-
+*/
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun TextCardContent(title: String, htmlBody: String, detail: String, expanded: Boolean, animationParameters: AnimationParameters, icon: Painter? = null) {
+fun TextCardContent(title: String, htmlBody: String, detail: String?, icon: Painter? = null) {
     Column(
         Modifier.fillMaxWidth()
     ) {
@@ -99,18 +100,18 @@ fun TextCardContent(title: String, htmlBody: String, detail: String, expanded: B
                 Text(title, style = MaterialTheme.typography.titleLarge, modifier = Modifier.width(this@BoxWithConstraints.maxWidth - iconSize))
                 if (icon != null) {
                     Icon(icon, contentDescription = null, modifier = Modifier.size(iconSize))
-                } else {
+                }/* else {
                     val upDown by animateFloatAsState(
                         if (expanded) 1f else -1f,
                         animationParameters.floatSpec
                     )
                     Chevron(upDown, modifier = Modifier.size(iconSize))
-                }
+                }*/
             }
         }
         HtmlText(htmlBody)
         Spacer(Modifier.height(explanationSpacing))
-        AnimatedVisibility(expanded, enter = animationParameters.enterTransition, exit = animationParameters.exitTransition) {
+        detail?.let {
             HtmlText(detail)
         }
     }
