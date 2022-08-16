@@ -42,6 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -51,9 +52,9 @@ data class TransitionSpecs(
     val crossfade: FiniteAnimationSpec<Float>,
     val expandShrink: FiniteAnimationSpec<IntSize>,
     val fade: FiniteAnimationSpec<Float>,
-    val padding: FiniteAnimationSpec<Float>,
-    val height: FiniteAnimationSpec<Float>,
-    val top: FiniteAnimationSpec<Float>,
+    val padding: FiniteAnimationSpec<Dp>,
+    val height: FiniteAnimationSpec<Int>,
+    val top: FiniteAnimationSpec<Int>,
 ) {
     /**
      * Scale all transitions by the given factor.

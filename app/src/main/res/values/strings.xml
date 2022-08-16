@@ -84,4 +84,9 @@
     <string name="contribute">Click here to help us improve this application.</string>
     <string name="back">Back</string>
     <string name="treble">Click here to view information about your device\'s implementation of Project Treble.</string>
+    <string name="sar">Click here to view information about System-as-Root</string>
+    <string name="partitions_header">Partitions</string>
+    <string name="partitions">Click here to view information about your device\'s partition scheme.</string>
+    <string name="arch">Click here to view information about your device\'s architecture and address width.</string>
+    <string name="vab">Click here to view information about Virtual A/B on your device.</string>
 </resources>

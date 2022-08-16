@@ -20,7 +20,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.unit.Dp
-import kotlin.math.roundToInt
+import kotlin.math.max
 
 
 sealed class ExpandableColumnRow {
@@ -39,12 +39,17 @@ class ExpandableColumnScope {
         require(finalized)
         contents.forEachIndexed { i, c ->
             when (c) {
-                is ExpandableColumnRow.ExpandableColumnExpandableRow -> c.content(
-                    ExpandableColumnExpandableRowScope(
-                        transitions[i]
-                    ) { onClick(indices[i]!!) }
-                )
-                is ExpandableColumnRow.ExpandableColumnPlainRow -> c.content()
+                is ExpandableColumnRow.ExpandableColumnExpandableRow -> {
+                    c.content(
+                        ExpandableColumnExpandableRowScope(
+                            transitions[i]
+                        ) { onClick(indices[i]!!) }
+                    )
+                }
+                is ExpandableColumnRow.ExpandableColumnPlainRow -> {
+
+                    c.content()
+                }
             }
         }
     }
@@ -69,72 +74,181 @@ class ExpandableColumnScope {
 
 class ExpandableColumnExpandableRowScope(val transition: Transition<Boolean>, val onClick: () -> Unit)
 
+/*
+@Composable
+fun ExpandableColumn2(
+    modifier: Modifier = Modifier,
+    scrollState: ScrollState = rememberScrollState(),
+    separator: Dp,
+    expandedIndex: Transition<Int>,
+    expandIndex: (Int) -> Unit,
+    heightSpec: FiniteAnimationSpec<Int>,
+    sizeSpec: FiniteAnimationSpec<IntSize>,
+    content: ExpandableColumnScope.() -> Unit
+) {
+    val data = ExpandableColumnScope().also(content).also { it.finalize() }
+    val scrollingEnabled = expandedIndex.targetState == -1 // TODO remember scroll state when disabling; it is forgotten
 
+    BoxWithConstraints(modifier) {
+        Layout(
+            modifier = Modifier.verticalScroll(scrollState, scrollingEnabled),
+            content = {
+                var expandableIndex = 0
+                var yOffset = 0.dp
+
+                data.contents.forEachIndexed { i, c ->
+                    when (c) {
+                        is ExpandableColumnRow.ExpandableColumnExpandableRow -> {
+                            var boxModifier = Modifier.animateContentSize()
+
+                            if (expandedIndex.targetState == expandableIndex++) {
+                                boxModifier = boxModifier.height(this@BoxWithConstraints.maxHeight)
+                            }
+
+                            yOffset +=
+
+                            Box(boxModifier.offset(y = yOffset)) {
+                                c.content(
+                                    ExpandableColumnExpandableRowScope(
+                                        transitions[i]
+                                    ) { onClick(indices[i]!!) }
+                                )
+                            }
+                        }
+                        is ExpandableColumnRow.ExpandableColumnPlainRow -> Box {
+                            c.content()
+                        }
+                    }
+                }
+            }
+        ) {
+            layout()
+        }
+    }
+
+}*/
 
 @OptIn(ExperimentalTransitionApi::class)
 @Composable
 fun ExpandableColumn(
     modifier: Modifier = Modifier,
     scrollState: ScrollState = rememberScrollState(),
+    scrollable: Boolean,
     separator: Dp,
     expandedIndex: Transition<Int>,
     expandIndex: (Int) -> Unit,
-    heightSpec: FiniteAnimationSpec<Float>,
-    topSpec: FiniteAnimationSpec<Float>,
+    heightSpec: FiniteAnimationSpec<Int>,
+    topSpec: FiniteAnimationSpec<Int>,
     content: ExpandableColumnScope.() -> Unit
 ) {
     val data = ExpandableColumnScope().also(content).also { it.finalize() }
-    val transitions = data.indices.map { i -> expandedIndex.createChildTransition(label = "Expandable $i") { if (i == null) false else it == i } }
+    val transitions =
+        data.indices.map { i -> expandedIndex.createChildTransition(label = "Expandable $i") { if (i == null) false else it == i } }
 
-    val heightStates = transitions.mapIndexed { i, transition -> transition.animateFloat(label = "Height", transitionSpec = { heightSpec }) { if (it) 1f else 0f } }
-    val topStates = transitions.mapIndexed { i, transition -> transition.animateFloat(label = "Top", transitionSpec = { topSpec }) { if (it) 1f else 0f } }
-    val scrollingEnabled = expandedIndex.targetState == -1 // TODO remember scroll state when disabling; it is forgotten
-    var initialHeights: List<Int> by remember { mutableStateOf(emptyList()) }
+    var initialHeightsOffsets: List<Pair<Int, Int>>? by remember { mutableStateOf(null) }
+
+    val scrollingEnabled =
+        expandedIndex.targetState == -1 // TODO remember scroll state when disabling; it is forgotten
+
+    ExpandableColumnContent(
+        modifier,
+        scrollState,
+        scrollable,
+        separator,
+        expandedIndex,
+        expandIndex,
+        heightSpec,
+        topSpec,
+        data,
+        transitions,
+        initialHeightsOffsets,
+        { initialHeightsOffsets = it },
+        scrollingEnabled
+    )
+}
+
+@Composable
+fun ExpandableColumnContent(
+    modifier: Modifier = Modifier,
+    scrollState: ScrollState = rememberScrollState(),
+    scrollable: Boolean,
+    separator: Dp,
+    expandedIndex: Transition<Int>,
+    expandIndex: (Int) -> Unit,
+    heightSpec: FiniteAnimationSpec<Int>,
+    topSpec: FiniteAnimationSpec<Int>,
+    data: ExpandableColumnScope,
+    transitions: List<Transition<Boolean>>,
+    initialHeightsOffsets: List<Pair<Int, Int>>?,
+    setInitialHeightsOffsets: (List<Pair<Int, Int>>) -> Unit,
+    scrollingEnabled: Boolean
+) {
     BoxWithConstraints(modifier) {
+        val maxHeight = if (constraints.hasBoundedHeight) constraints.maxHeight else null
+
+        val heightTopStates = initialHeightsOffsets?.let { initialHeightsOffsets ->
+            transitions.mapIndexed { i, transition ->
+                transition.animateInt(
+                    label = "Height",
+                    transitionSpec = { heightSpec }
+                ) { if (it) maxHeight!! else initialHeightsOffsets[i].first } to transition.animateInt(
+                    label = "Top",
+                    transitionSpec = { topSpec }
+                ) { if (it) scrollState.value else initialHeightsOffsets[i].second }
+            }
+        }
+
         Layout(
-            modifier = Modifier.verticalScroll(scrollState, enabled = scrollingEnabled),
+            modifier = if (scrollable) Modifier.verticalScroll(scrollState, enabled = scrollingEnabled) else Modifier,
             content = { data.content(transitions = transitions, onClick = expandIndex) }
         ) { measurables, constraints ->
             if (!expandedIndex.isRunning && expandedIndex.currentState != -1) {
                 val measurable = measurables[data.reverseIndices[expandedIndex.currentState]]
-                val height = this@BoxWithConstraints.constraints.maxHeight
-                val placeable = measurable.measure(constraints.copy(minHeight = height, maxHeight = height))
-                return@Layout layout(constraints.maxWidth, placeable.height) {
+                val placeable = measurable.measure(
+                    maxHeight?.let { constraints.copy(minHeight = it, maxHeight = it) } ?: constraints
+                )
+                return@Layout layout(constraints.maxWidth, placeable.height /* TODO */) {
                     placeable.placeRelative(0, scrollState.value)
                 }
             }
-            val placeables = if (initialHeights.isEmpty()) {
-                measurables.map { measurable ->
+
+
+
+            val (placeables, offsets) = if (initialHeightsOffsets == null) {
+                val placeables = measurables.map { measurable ->
                     measurable.measure(constraints)
-                }.also { placeables ->
-                    initialHeights = placeables.map { it.height }
                 }
+                val heights = placeables.map { it.height }
+                val offsets = heights.scan(0) {
+                        y, h -> y + separator.roundToPx() + h
+                }
+                setInitialHeightsOffsets(heights.zip(offsets))
+
+                placeables to offsets
             } else {
                 measurables.mapIndexed { i, measurable ->
-                    val height = initialHeights[i] + ((this@BoxWithConstraints.constraints.maxHeight - initialHeights[i]) * heightStates[i].value).roundToInt()
+                    val height = heightTopStates!![i].first.value
                     val placeable = measurable.measure(constraints.copy(minHeight = height, maxHeight = height))
                     placeable
-                }
+                } to heightTopStates!!.map { it.second.value }
             }
 
-            val totalHeight = initialHeights.sum() + separator.roundToPx() * (initialHeights.size - 1)
+            //val totalHeight = initialHeights!!.sum() + separator.roundToPx() * (initialHeights!!.size - 1)
+//            assert(totalHeight == offsets.last())
 
-            layout(constraints.maxWidth, totalHeight) {
+            layout(constraints.maxWidth, max(maxHeight ?: 0, offsets.last() + placeables.last().height)) {
                 // Track the y co-ord we have placed children up to
-                var yPosition = 0
+                //var yPosition = 0
                 Log.d(tag, scrollState.value.toString())
                 Log.d(tag, scrollState.maxValue.toString())
 
                 // Place children in the parent layout
                 placeables.forEachIndexed { i, placeable ->
                     val isElevated = transitions[i].currentState || transitions[i].targetState
-                    val absoluteBasePosition = yPosition - scrollState.value
-                    val newAbsolutePosition = absoluteBasePosition * (1 - topStates[i].value)
-                    val newPosition = newAbsolutePosition.roundToInt() + scrollState.value
-                    placeable.placeRelative(x = 0, y = newPosition, if (isElevated) 1f else 0f)
+                    placeable.placeRelative(x = 0, y = offsets[i], if (isElevated) 1f else 0f)
 
                     // Record the y co-ord placed up to
-                    yPosition += initialHeights[i] + separator.roundToPx()
+                    //yPosition += initialHeights!![i] + separator.roundToPx()
                 }
             }
         }

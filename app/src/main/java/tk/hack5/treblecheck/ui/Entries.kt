@@ -66,6 +66,50 @@ fun trebleEntry(): BasicEntry {
 }
 
 @Composable
+fun sarEntry(): BasicEntry {
+    return BasicEntry(
+        painterResource(R.drawable.contribute),
+        Neutral,
+        stringResource(R.string.sar),
+        stringResource(R.string.sar_header),
+        null
+    )
+}
+
+@Composable
+fun partitionsEntry(): BasicEntry {
+    return BasicEntry(
+        painterResource(R.drawable.contribute),
+        Neutral,
+        stringResource(R.string.partitions),
+        stringResource(R.string.partitions_header),
+        null
+    )
+}
+
+@Composable
+fun archEntry(): BasicEntry {
+    return BasicEntry(
+        painterResource(R.drawable.contribute),
+        Neutral,
+        stringResource(R.string.arch),
+        stringResource(R.string.arch_header),
+        null
+    )
+}
+
+@Composable
+fun vabEntry(): BasicEntry {
+    return BasicEntry(
+        painterResource(R.drawable.contribute),
+        Neutral,
+        stringResource(R.string.vab),
+        stringResource(R.string.vab_header),
+        null
+    )
+}
+
+@Composable
 fun requiredImageEntry(fileName: String?): BasicEntry {
     return BasicEntry(
         painterResource(if (fileName == null) R.drawable.filename_unknown else R.drawable.filename_known),

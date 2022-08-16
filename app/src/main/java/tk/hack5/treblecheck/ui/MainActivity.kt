@@ -14,12 +14,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.Crossfade
-import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.*
 import androidx.compose.animation.core.*
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
@@ -30,14 +29,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import tk.hack5.treblecheck.Optional
 import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.data.*
 import tk.hack5.treblecheck.getOrNull
-import tk.hack5.treblecheck.ui.ScaledPaddingValues.Companion.times
 import tk.hack5.treblecheck.ui.theme.TrebleCheckTheme
 
 class MainActivity : ComponentActivity() {
@@ -117,11 +114,11 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
-fun TopBar(showBackButtonTransition: Transition<Boolean>, goBack: () -> Unit) {
+fun TopBar(showBackButtonTransition: Transition<Boolean>, specs: TransitionSpecs, goBack: () -> Unit) {
     SmallTopAppBar(
         title = { Text(stringResource(id = R.string.title)) },
         navigationIcon = {
-            showBackButtonTransition.AnimatedVisibility(visible = { it }) {
+            showBackButtonTransition.AnimatedVisibility(visible = { it }, enter = expandIn(specs.expandShrink) + fadeIn(specs.fade), exit = shrinkOut(specs.expandShrink) + fadeOut(specs.fade)) {
                 IconButton(onClick = { goBack() }) {
                     Icon(Icons.Default.ArrowBack, stringResource(R.string.back))
                 }
@@ -129,135 +126,6 @@ fun TopBar(showBackButtonTransition: Transition<Boolean>, goBack: () -> Unit) {
         }
     )
 }
-
-sealed class AutoListEntry {
-    class PlainEntry(val content: @Composable () -> ClickableEntry) : AutoListEntry()
-    class ExpandableEntry(val content: List<AutoListEntry>) : AutoListEntry()
-}
-
-val AutoListEntry.collapsed: @Composable () -> ClickableEntry get() {
-    var entry = this
-    while (entry is AutoListEntry.ExpandableEntry) {
-        entry = entry.content.first()
-    }
-    return (entry as AutoListEntry.PlainEntry).content
-}
-
-class AutoListScope {
-    val contents = mutableListOf<AutoListEntry>()
-
-
-    fun plain(content: @Composable () -> ClickableEntry) {
-        contents.add(AutoListEntry.PlainEntry(content))
-    }
-
-    fun expandable(content: AutoListScope.() -> Unit) {
-        contents.add(AutoListEntry.ExpandableEntry(AutoListScope().also(content).contents))
-    }
-}
-
-/**
- * Sometimes we don't want a real transition, this lets us declare that we won't animate it.
- */
-@Composable
-inline fun <reified T>createFixedTransition(value: T) = updateTransition(value, label = "dummy")
-
-
-@Composable
-fun AutoList(
-    modifier: Modifier,
-    entryPadding: PaddingValues,
-    separator: Dp,
-    rootExpandedIndexTransition: Transition<Int>,
-    setRootExpandedIndex: (Int) -> Unit,
-    specs: TransitionSpecs,
-    content: AutoListScope.() -> Unit,
-) {
-    val contents = AutoListScope().also(content).contents
-
-    AutoListExpandableEntry(modifier, rootExpandedIndexTransition, setRootExpandedIndex, contents, entryPadding, separator, createFixedTransition(false), specs)
-
-
-}
-@OptIn(ExperimentalTransitionApi::class)
-@Composable
-private fun AutoListExpandableEntry(
-    modifier: Modifier,
-    expandedIndexTransition: Transition<Int>,
-    setExpandedIndex: (Int) -> Unit,
-    contents: List<AutoListEntry>,
-    entryPadding: PaddingValues,
-    separator: Dp,
-    firstChildTitle: Transition<Boolean>,
-    specs: TransitionSpecs
-) {
-    Surface {
-        ExpandableColumn(
-            modifier
-                .fillMaxSize(),
-            separator = separator,
-            expandedIndex = expandedIndexTransition,
-            expandIndex = setExpandedIndex,
-            heightSpec = specs.height,
-            topSpec = specs.top
-        ) {
-            contents.forEachIndexed { i, entry ->
-                when (entry) {
-                    is AutoListEntry.PlainEntry -> plain {
-                        val isTitle = i == 0 && firstChildTitle.targetState
-                        val entryContent = entry.content()
-                        DisplayedEntry(
-                            Modifier.padding(if (isTitle) PaddingValues(0.dp) else entryPadding),
-                            entryContent.entry,
-                            firstChildTitle,
-                            specs,
-                            entryContent.onClick ?: { }
-                        )
-                    }
-                    is AutoListEntry.ExpandableEntry -> expandable {
-                        if (transition.isRunning) {
-                            Surface {
-                                Column {
-                                    val firstChildPaddingScale by transition.animateFloat(label = "Padding for the first child", transitionSpec = { specs.padding }) { if (it) 0f else 1f }
-                                    val fixedFalse = createFixedTransition(false)
-
-                                    entry.content.map(AutoListEntry::collapsed).forEachIndexed { childIndex, child ->
-                                        DisplayedEntry(
-                                            Modifier.padding(if (childIndex == 0) entryPadding * firstChildPaddingScale else entryPadding),
-                                            child().entry,
-                                            if (childIndex == 0) transition else fixedFalse,
-                                            specs,
-                                            onClick
-                                        )
-                                    }
-                                }
-                            }
-                        } else if (transition.currentState) {
-                            var innerExpandedIndex: Int by rememberSaveable { mutableStateOf(-1) }
-                            val innerExpandedIndexTransition = updateTransition(innerExpandedIndex, label = "moreInfoExpandedIndex")
-
-                            AutoListExpandableEntry(
-                                modifier = Modifier,
-                                expandedIndexTransition = innerExpandedIndexTransition,
-                                setExpandedIndex = { innerExpandedIndex = it },
-                                contents = entry.content,
-                                entryPadding = entryPadding,
-                                separator = separator,
-                                firstChildTitle = transition.createChildTransition(label = "First child is title") { it },
-                                specs = specs
-                            )
-                        } else {
-                            val content = (entry.content[0] as AutoListEntry.PlainEntry).content
-
-                            DisplayedEntry(Modifier.padding(entryPadding), content().entry, transition, specs, onClick)
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalTransitionApi::class)
 @Composable
@@ -274,29 +142,30 @@ fun MainActivityContent(
     var rootExpandedIndex: Int by rememberSaveable { mutableStateOf(-1) }
     val rootExpandedIndexTransition = updateTransition(rootExpandedIndex, label = "rootExpandedIndex")
     val defaultSpecs = TransitionSpecs(
-        crossfade = spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = 0.00390625f),
+        crossfade = spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = 0.03125f),
         expandShrink = spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = IntSize(1, 1)),
-        fade = spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = 0.00390625f),
-        padding = spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = 0.00390625f),
+        fade = spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = 0.03125f),
+        padding = spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = 0.1.dp),
         height = spring(stiffness = Spring.StiffnessMediumLow),
         top = spring(stiffness = Spring.StiffnessMediumLow)
     )
 
-    val slowSpecs = defaultSpecs.scale(10f)
+    val slowSpecs = defaultSpecs.scale(4f) // TODO remove
 
     TrebleCheckTheme(darkTheme = false) {
         Scaffold(
             topBar = {
                 TopBar(
-                    rootExpandedIndexTransition.createChildTransition { it != -1 }
+                    rootExpandedIndexTransition.createChildTransition { it != -1 },
+                    slowSpecs
                 ) { rootExpandedIndex = -1 }
             }
         ) { innerPadding ->
             AutoList(
                 Modifier
                     .padding(innerPadding) /* TODO maybe apply on the inside? */,
-                cardOuterPadding,
-                10.dp,
+                cardOuterHorizontalPadding,
+                cardOuterVerticalSeparation,
                 rootExpandedIndexTransition,
                 { rootExpandedIndex = it },
                 slowSpecs
@@ -306,17 +175,42 @@ fun MainActivityContent(
                     plain { moreInfoEntry().clickable() }
                     expandable {
                         plain { trebleEntry().clickable() }
+                        plain { trebleEntry(treble).clickable() }
+                        treble.getOrNull()?.let {
+                            plain { trebleVersionEntry(it).clickable() }
+                            plain { trebleLiteEntry(it).clickable() }
+                            plain { trebleLegacyEntry(it).clickable() }
+                        }
+                    }
+                    expandable {
+                        plain { sarEntry().clickable() }
+                        plain { sarEntry(sar).clickable() }
+                    }
+                    expandable {
+                        plain { partitionsEntry().clickable() }
+                        plain { abEntry(ab).clickable() }
+                        plain { dynamicPartitionsEntry(dynamic).clickable() }
+                        expandable {
+                            plain { vabEntry().clickable() }
+                            plain { vabEntry(vab).clickable() }
+                            vab.getOrNull()?.let {
+                                plain { vabcEntry(it).clickable() }
+                                plain { vabrEntry(it).clickable() }
+                            }
+                        }
+                    }
+                    expandable {
+                        plain { archEntry().clickable() }
+                        plain { archEntry(arch).clickable() }
                     }
                 }
                 expandable {
                     plain { licenseEntry().clickable() }
                 }
-                repeat(10) {
-                    expandable {
-                        plain { contributeEntry().clickable() }
-                        // plain { translateEntry() }
-                        // plain { donateEntry() }
-                    }
+                expandable {
+                    plain { contributeEntry().clickable() }
+                    // plain { translateEntry() }
+                    // plain { donateEntry() }
                 }
             }
 
@@ -357,15 +251,19 @@ fun DisplayedEntry(modifier: Modifier = Modifier, entry: Entry, isTitle: Transit
 
             isTitle.Crossfade(animationSpec = specs.crossfade) {
                 if (it) {
-                    Box(
-                        modifier = modifier.fillMaxWidth().clickable(onClick = onClick),
+                    OutlinedCard(
+                        modifier = modifier
+                            .fillMaxWidth(),
+                        onClick = onClick,
+                        border = BorderStroke(1.dp, Color.Transparent)
                     ) {
                         cardContent()
                     }
                 } else {
                     OutlinedCard(
                         modifier = modifier.fillMaxWidth(),
-                        onClick = onClick
+                        onClick = onClick,
+                        border = BorderStroke(1.dp, Color.Black /* TODO */)
                     ) {
                         cardContent()
                     }
@@ -377,7 +275,7 @@ fun DisplayedEntry(modifier: Modifier = Modifier, entry: Entry, isTitle: Transit
 
 sealed class Entry
 
-class BasicEntry(
+data class BasicEntry(
     val icon: Painter,
     val tint: Color,
     val body: String,
@@ -385,7 +283,7 @@ class BasicEntry(
     val detail: String?,
 ) : Entry()
 
-class ClickableEntry(
+data class ClickableEntry(
     val entry: Entry,
     val onClick: (() -> Unit)?,
 )
