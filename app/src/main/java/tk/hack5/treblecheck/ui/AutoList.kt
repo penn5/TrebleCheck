@@ -11,19 +11,17 @@
 package tk.hack5.treblecheck.ui
 
 import androidx.compose.animation.core.*
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 
 
 sealed class AutoListEntry {
@@ -71,9 +69,8 @@ fun AutoList(
 ) {
     val contents = AutoListScope().also(content).contents
 
-    AutoListExpandableEntry(modifier, rootExpandedIndexTransition, setRootExpandedIndex, contents, entryPadding, separator, createFixedTransition(false), true, specs)
 
-
+    AutoListExpandableEntry(modifier, rootExpandedIndexTransition, setRootExpandedIndex, contents, entryPadding, separator, createFixedTransition(false), createFixedTransition(true), null, true, specs)
 }
 @OptIn(ExperimentalTransitionApi::class)
 @Composable
@@ -85,79 +82,175 @@ private fun AutoListExpandableEntry(
     entryPadding: Dp,
     separator: Dp,
     firstChildTitle: Transition<Boolean>,
+    expanded: Transition<Boolean>,
+    onClick: (() -> Unit)?,
     scrollable: Boolean,
     specs: TransitionSpecs
 ) {
-    Surface {
-        ExpandableColumn(
-            modifier
-                .fillMaxSize(),
-            scrollable = scrollable,
-            separator = separator,
-            expandedIndex = expandedIndexTransition,
-            expandIndex = setExpandedIndex,
-            heightSpec = specs.height,
-            topSpec = specs.top
-        ) {
-            contents.forEachIndexed { i, entry ->
-                when (entry) {
-                    is AutoListEntry.PlainEntry -> plain {
-                        val isTitle = i == 0 && firstChildTitle.targetState
-                        val entryContent = entry.content()
+    var initialHeightsOffsets: List<Pair<Int, Int>>? by remember { mutableStateOf(null) }
+    val transitions = contents.indices.map { i -> expandedIndexTransition.createChildTransition(label = "Expandable $i") { it == i } }
+
+    AutoListExpandableEntryContent(modifier, initialHeightsOffsets, { initialHeightsOffsets = it }, firstInitialHeight,
+        { firstInitialHeight = it }, rememberScrollState(), transitions, expandedIndexTransition, setExpandedIndex, contents, entryPadding, separator, firstChildTitle, expanded, onClick, scrollable, specs)
+
+
+}
+@Composable
+private fun AutoListExpandableEntryContent(
+    modifier: Modifier,
+    initialHeightsOffsets: List<Pair<Int, Int>>?,
+    setInitialHeightsOffsets: (List<Pair<Int, Int>>) -> Unit,
+    scrollState: ScrollState,
+    transitions: List<Transition<Boolean>>,
+    expandedIndexTransition: Transition<Int>,
+    setExpandedIndex: (Int) -> Unit,
+    contents: List<AutoListEntry>,
+    entryPadding: Dp,
+    separator: Dp,
+    firstChildTitle: Transition<Boolean>,
+    expanded: Transition<Boolean>,
+    onClick: (() -> Unit)?,
+    scrollable: Boolean,
+    specs: TransitionSpecs
+) {
+    BoxWithConstraints(modifier) {
+        val maxHeight = if (constraints.hasBoundedHeight) constraints.maxHeight else null
+
+        // create transitions
+        val heightTopStates = initialHeightsOffsets?.let { initialHeightsOffsets ->
+            transitions.mapIndexed { i, transition ->
+                transition.animateInt(
+                    label = "Height",
+                    transitionSpec = { specs.height }
+                ) { if (it) maxHeight!! else initialHeightsOffsets[i].first } to transition.animateInt(
+                    label = "Top",
+                    transitionSpec = { specs.top }
+                ) { if (it) scrollState.value else initialHeightsOffsets[i].second }
+            }
+        }
+
+        Surface {
+            Box {
+                // always display first entry
+                Layout(
+                    content = {
+                        val firstEntry = contents.first().collapsed()
                         DisplayedEntry(
-                            Modifier.padding(horizontal = if (isTitle) 0.dp else entryPadding),
-                            entryContent.entry,
-                            if (i == 0) firstChildTitle else createFixedTransition(false),
-                            specs,
-                            entryContent.onClick ?: { }
+                            entry = firstEntry.entry,
+                            isTitle = firstChildTitle,
+                            specs = specs,
+                            onClick = when {
+                                expanded.isRunning -> {
+                                    { }
+                                }
+                                expanded.targetState -> firstEntry.onClick ?: { }
+                                else -> onClick ?: firstEntry.onClick ?: { }
+                            }
                         )
                     }
-                    is AutoListEntry.ExpandableEntry -> expandable {
-                        if (transition.isRunning) {
-                            Surface(Modifier.fillMaxSize()) {
-                                Column(
-                                    //Modifier.wrapContentHeight(align = Alignment.Top, unbounded = true),
-                                    verticalArrangement = Arrangement.spacedBy(separator)
-                                ) {
-                                    val firstChildPadding by transition.animateDp(label = "Padding for the first child", transitionSpec = { specs.padding }) { if (it) 0.dp else entryPadding }
-                                    val fixedFalse = createFixedTransition(false)
+                ) { measurables, constraints ->
+                    val placeable = measurables.single().measure(constraints)
 
-                                    entry.content.map(AutoListEntry::collapsed).forEachIndexed { childIndex, child ->
-                                        DisplayedEntry(
-                                            Modifier.padding(horizontal = if (childIndex == 0) firstChildPadding else entryPadding),
-                                            child().entry,
-                                            if (childIndex == 0) transition else fixedFalse,
-                                            specs,
-                                            onClick
-                                        )
-                                    }
-                                }
-                            }
-                        } else if (transition.currentState) {
-                            var innerExpandedIndex: Int by rememberSaveable { mutableStateOf(-1) }
-                            val innerExpandedIndexTransition = updateTransition(innerExpandedIndex, label = "moreInfoExpandedIndex")
-                            Surface {
-                                AutoListExpandableEntry(
-                                    modifier = Modifier,
-                                    expandedIndexTransition = innerExpandedIndexTransition,
-                                    setExpandedIndex = { innerExpandedIndex = it },
-                                    contents = entry.content,
-                                    entryPadding = entryPadding,
-                                    separator = separator,
-                                    firstChildTitle = transition.createChildTransition(label = "First child is title") { it },
-                                    scrollable = transition.currentState && transition.targetState,
-                                    specs = specs
-                                )
-                            }
-                        } else {
-                            val content = (entry.content[0] as AutoListEntry.PlainEntry).content
+                    layout(placeable.width, placeable.height) {
+                        placeable.placeRelative(0, 0)
+                    }
+                }
 
-                            DisplayedEntry(Modifier.padding(horizontal = entryPadding), content().entry, transition, specs, onClick)
+                Layout(
+                    modifier = Modifier.verticalScroll(rememberScrollState()),
+                    content = { /* TODO */ },
+                ) { measurables, constraints ->
+                    // calculate initial heights
+                    val (placeables, offsets) = if (initialHeightsOffsets == null) {
+                        val placeables = measurables.map { measurable ->
+                            measurable.measure(constraints)
                         }
+                        val heights = placeables.map { it.height }
+                        val offsets = heights.scan(0) {
+                                y, h -> y + separator.roundToPx() + h
+                        }
+                        setInitialHeightsOffsets(heights.zip(offsets))
+
+                        placeables to offsets
+                    } else {
+                        measurables.mapIndexed { i, measurable ->
+                            val height = heightTopStates!![i].first.value
+                            val placeable = measurable.measure(constraints.copy(minHeight = height, maxHeight = height))
+                            placeable
+                        } to heightTopStates!!.map { it.second.value }
+                    }
+
+                    //
+
+
+                    layout(0, 0) {
+
                     }
                 }
             }
         }
+
     }
+    /*
+    ExpandableColumn(
+        modifier
+            .fillMaxSize(),
+        scrollable = scrollable,
+        separator = separator,
+        expandedIndex = expandedIndexTransition,
+        expandIndex = setExpandedIndex,
+        heightSpec = specs.height,
+        topSpec = specs.top
+    ) {
+        contents.forEachIndexed { i, entry ->
+            when (entry) {
+                is AutoListEntry.PlainEntry -> plain {
+                    val isTitle = i == 0 && firstChildTitle.targetState
+                    val entryContent = entry.content()
+                    DisplayedEntry(
+                        Modifier.padding(horizontal = if (isTitle) 0.dp else entryPadding),
+                        entryContent.entry,
+                        if (i == 0) firstChildTitle else createFixedTransition(false),
+                        specs,
+                        entryContent.onClick ?: onClick ?: { }
+                    )
+                }
+                is AutoListEntry.ExpandableEntry -> expandable {
+                    if (!expanded) {
+                        val entryContent = entry.collapsed()
+
+                        DisplayedEntry(
+                            Modifier.padding(horizontal = entryPadding),
+                            entryContent.entry,
+                            createFixedTransition(false),
+                            specs,
+                            entryContent.onClick ?: onClick ?: { }
+                        )
+                    } else {
+                        var innerExpandedIndex: Int by rememberSaveable { mutableStateOf(-1) }
+                        val innerExpandedIndexTransition = updateTransition(innerExpandedIndex, label = "moreInfoExpandedIndex")
+
+                        Surface {
+                            AutoListExpandableEntry(
+                                modifier = Modifier,
+                                expandedIndexTransition = innerExpandedIndexTransition,
+                                setExpandedIndex = { innerExpandedIndex = it },
+                                contents = entry.content,
+                                entryPadding = entryPadding,
+                                separator = separator,
+                                firstChildTitle = transition,
+                                expanded = transition.currentState || transition.targetState,
+                                onClick = if (!transition.currentState && !transition.targetState) this.onClick else null,
+                                scrollable = transition.currentState && transition.targetState,
+                                specs = specs
+                            )
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+    */
 }
 

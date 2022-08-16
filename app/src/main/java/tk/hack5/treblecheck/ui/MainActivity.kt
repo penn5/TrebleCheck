@@ -150,7 +150,7 @@ fun MainActivityContent(
         top = spring(stiffness = Spring.StiffnessMediumLow)
     )
 
-    val slowSpecs = defaultSpecs.scale(4f) // TODO remove
+    val slowSpecs = defaultSpecs.scale(8f) // TODO remove
 
     TrebleCheckTheme(darkTheme = false) {
         Scaffold(
@@ -242,7 +242,10 @@ fun MainActivityPreview() {
 
 @OptIn(ExperimentalAnimationApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun DisplayedEntry(modifier: Modifier = Modifier, entry: Entry, isTitle: Transition<Boolean>, specs: TransitionSpecs, onClick: () -> Unit) {
+fun DisplayedEntry(entry: Entry, isTitle: Transition<Boolean>, specs: TransitionSpecs, onClick: () -> Unit) {
+    val padding by isTitle.animateDp(label = "Padding") { if (it) 0.dp else cardOuterHorizontalPadding }
+    val modifier = Modifier.padding(horizontal = padding)
+
     when (entry) {
         is BasicEntry -> {
             val cardContent = @Composable {
