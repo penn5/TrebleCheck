@@ -18,10 +18,32 @@
 
 package tk.hack5.treblecheck.data
 
+import android.util.Log
+import tk.hack5.treblecheck.Mock
+import tk.hack5.treblecheck.ParseException
+import tk.hack5.treblecheck.propertyGet
+
 data class VABResult(val retrofit: Boolean?, val compressed: Boolean?)
 
 object VABDetector {
     fun getVABData(): VABResult? {
-        return null // TODO
+        Mock.data?.let { return it.vab }
+
+        val vab = propertyGet("ro.virtual_ab.enabled")
+        Log.v(tag, "vab: $vab")
+
+        if ((vab ?: throw ParseException("vab is null")) != "true") {
+            return null
+        }
+
+        val compressed = propertyGet("ro.virtual_ab.compression.enabled")?.equals("true")
+        Log.v(tag, "compressed: $compressed")
+
+        val retrofit = propertyGet("ro.virtual_ab.retrofit")?.equals("true")
+        Log.v(tag, "retrofit: $retrofit")
+
+        return VABResult(retrofit, compressed)
     }
 }
+
+private const val tag = "VABDetector"

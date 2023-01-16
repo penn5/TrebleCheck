@@ -14,7 +14,7 @@
     "developerConnection": "scm:git@github.com:Templarian/MaterialDesign.git"
   },
   "licenses": [
-    "apache_2_0"
+    "Apache-2.0"
   ],
   "funding": [
     {

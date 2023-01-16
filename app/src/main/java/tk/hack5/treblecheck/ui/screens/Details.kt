@@ -18,50 +18,115 @@
 
 package tk.hack5.treblecheck.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import tk.hack5.treblecheck.Optional
-import tk.hack5.treblecheck.data.Arch
+import tk.hack5.treblecheck.data.BinderArch
+import tk.hack5.treblecheck.data.CPUArch
 import tk.hack5.treblecheck.data.TrebleResult
 import tk.hack5.treblecheck.data.VABResult
+import tk.hack5.treblecheck.getOrNull
 import tk.hack5.treblecheck.horizontal
-import tk.hack5.treblecheck.ui.Detail
-import tk.hack5.treblecheck.ui.cardIconSpacerWidth
-import tk.hack5.treblecheck.ui.trebleDetail
+import tk.hack5.treblecheck.ui.*
 
 @Composable
-fun Details(
+fun DetailsList(
     innerPadding: PaddingValues,
+    twoColumn: Boolean,
     treble: Optional<TrebleResult?>,
     ab: Boolean?,
     dynamic: Boolean?,
     vab: Optional<VABResult?>,
     sar: Boolean?,
-    arch: Arch
+    binderArch: BinderArch,
+    cpuArch: CPUArch,
 ) {
-    Column(
-        Modifier.verticalScroll(rememberScrollState()).fillMaxSize()
-            .padding(innerPadding.horizontal())
-    ) {
-        Spacer(Modifier.height(innerPadding.calculateTopPadding()))
-        // treble
-        DetailEntry(trebleDetail(treble))
+    // TODO limit column width
+    var openDialog by remember { mutableStateOf<Detail?>(null) }
+    val onClick: (Detail) -> Unit = { openDialog = it }
 
-        Spacer(Modifier.height(innerPadding.calculateBottomPadding()))
+    Row(
+        Modifier
+            .fillMaxSize()
+            .padding(innerPadding.horizontal()),
+        if (twoColumn) Arrangement.Center else Arrangement.Start
+    ) {
+        Column(
+            Modifier
+                .verticalScroll(rememberScrollState())
+                .fillMaxWidth(if (twoColumn) 0.35f else 1f)
+        ) {
+            Spacer(Modifier.height(innerPadding.calculateTopPadding()))
+            // treble
+            DetailEntry(trebleDetail(treble), onClick)
+            treble.getOrNull()?.let {
+                DetailEntry(trebleVersionEntry(it), onClick)
+                DetailEntry(trebleLiteEntry(it), onClick)
+                DetailEntry(trebleLegacyEntry(it), onClick)
+            }
+
+            // sar
+            DetailEntry(sarEntry(sar), onClick)
+
+            // a/b
+            DetailEntry(abEntry(ab), onClick)
+
+            // dynamic partitions
+            DetailEntry(dynamicPartitionsEntry(dynamic), onClick)
+
+            // virtual a/b
+            DetailEntry(vabEntry(vab), onClick)
+            vab.getOrNull()?.let {
+                DetailEntry(vabcEntry(it), onClick)
+                DetailEntry(vabrEntry(it), onClick)
+            }
+
+            // arch
+            DetailEntry(cpuArchEntry(cpuArch), onClick)
+            DetailEntry(binderArchEntry(binderArch), onClick)
+
+            Spacer(Modifier.height(innerPadding.calculateBottomPadding()))
+        }
+        if (twoColumn) {
+            Spacer(Modifier.width(gutter))
+            Column(
+                Modifier
+                    .verticalScroll(rememberScrollState())
+                    .fillMaxWidth(0.65f)
+                    .padding(horizontal = pageHorizontalPadding)
+            ) {
+                Spacer(Modifier.height(innerPadding.calculateTopPadding()))
+                openDialog?.let {
+                    Text(it.title, style = MaterialTheme.typography.titleLarge)
+                    Text(it.subtitle, style = MaterialTheme.typography.titleMedium)
+                    Text(it.body, style = MaterialTheme.typography.bodyMedium)
+                } ?: run {
+                    // TODO placeholder
+                }
+                Spacer(Modifier.height(innerPadding.calculateBottomPadding()))
+            }
+        }
     }
 }
 
 @Composable
-fun DetailEntry(detail: Detail) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+fun DetailEntry(detail: Detail, onClick: (Detail) -> Unit) {
+    Row(
+        Modifier
+            .clickable { onClick(detail) }
+            .fillMaxWidth()
+            .padding(horizontal = pageHorizontalPadding, vertical = listVerticalPadding),
+        verticalAlignment = Alignment.Top
+    ) {
         Icon(detail.icon, null, Modifier.size(36.dp), detail.iconTint)
         Spacer(Modifier.width(cardIconSpacerWidth)) // TODO rename
         Column {

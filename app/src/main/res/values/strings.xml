@@ -104,14 +104,85 @@
     <string name="browse_images">Browse images</string>
     <string name="view_details">View details</string>
     <string name="report_this_bug">Report bug</string>
+    <string name="ask_a_question">Ask a question</string>
     <string name="report_a_bug">Report a bug</string>
+    <string name="help_translate">Help translate</string>
+    <string name="contribute_code">Contribute code</string>
+    <string name="donate">Donate</string>
 
-    <string name="treble_title">Project Treble</string>
-    <string name="treble_body">Project Treble provides a standard interface for communicating with device hardware. This allows device manufacturers to create updates faster, as the hardware interfaces do not need to be updated.</string>
-    <string name="treble_false">Unsupported</string>
-    <string name="treble_true">Supported</string>
-    <string name="treble_unknown">Unknown</string>
 
     <!-- for license -->
     <string name="this_app">This application</string>
+
+    <string name="treble_title">Project Treble</string>
+    <string name="treble_explanation">Project Treble provides a standard interface for communicating with device hardware. This allows device manufacturers to create updates faster, as the hardware interfaces do not need to be updated.</string>
+    <string name="treble_unknown">Unknown</string>
+    <string name="treble_true">Supported</string>
+    <string name="treble_false">Unsupported</string>
+
+    <string name="treble_version_title">VNDK version</string>
+    <string name="treble_version_explanation">The VNDK version is the version of Android that the vendor was designed to run with. Using a newer version of Android may result in missing features, and you cannot use an older version.</string>
+    <string name="treble_version_subtitle">%1$d.%2$d</string>
+
+    <string name="treble_lite_title">VNDK Lite</string>
+    <string name="treble_lite_explanation">VNDK Lite does not isolate all libraries between the vendor and system partitions. This reduces storage requirements but reduces compatibility guarantees, compared to a fully isolated VNDK configuration.</string>
+    <string name="treble_lite_true">VNDK is in lite mode</string>
+    <string name="treble_lite_false">Full linker separation available</string>
+
+    <string name="treble_legacy_title">Manifest location</string>
+    <string name="treble_legacy_explanation">The list of supported features that the device can provide to Android is stored in the VINTF manifest. This file used to be stored in the root of the vendor partition, but this is no longer good practice.</string>
+    <string name="treble_legacy_true">Legacy</string>
+    <string name="treble_legacy_false">Modern</string>
+
+    <string name="ab_title">Seamless Upgrades</string>
+    <string name="ab_explanation">Seamless Upgrades allow updates to be installed with minimal downtime by storing two copies of Android.</string>
+    <string name="ab_unknown">Unknown</string>
+    <string name="ab_true">Enabled</string>
+    <string name="ab_false">Unsupported</string>
+
+    <string name="dynamicpartitions_title">Dynamic partitions</string>
+    <string name="dynamicpartitions_explanation">Devices with Dynamic Partitions are able to create, modify or delete partitions during updates. To support this feature, a \"super\" partition is used. This container partition contains all other partitions except for the bootloader. Flashing must be performed using fastbootd on these devices.</string>
+    <string name="dynamicpartitions_unknown">Unknown</string>
+    <string name="dynamicpartitions_true">Enabled</string>
+    <string name="dynamicpartitions_false">Unsupported</string>
+
+    <string name="vab_title">Virtual A/B</string>
+    <string name="vab_explanation">Virtual A/B allows a device to perform Seamless Upgrades without needing to permanently keep two copies of Android.</string>
+    <string name="vab_unknown">Unknown</string>
+    <string name="vab_true">Enabled</string>
+    <string name="vab_false">Unsupported</string>
+
+    <string name="vabr_title">Virtual A/B Retrofit</string>
+    <string name="vabr_explanation">Devices with retrofitted Virtual A/B have enough space in the super partition for two copies of Android.</string>
+    <string name="vabr_unknown">Unknown</string>
+    <string name="vabr_true">Retrofitted</string>
+    <string name="vabr_false">Not retrofitted</string>
+
+    <string name="vabc_title">Virtual A/B compression</string>
+    <string name="vabc_explanation">On devices that use Virtual A/B, the changes during updates made can be compressed. This reduces performance but decreases storage requirements.</string>
+    <string name="vabc_unknown">Unknown</string>
+    <string name="vabc_true">Enabled</string>
+    <string name="vabc_false">Unsupported</string>
+
+    <string name="sar_title">System as Root</string>
+    <string name="sar_explanation">The system partition can be mounted either as the root filesystem (System-as-Root) or in a subdirectory of the root ramdisk (System-as-System). Many GSIs incorrectly refer to this property as A/B. If a device uses System-as-Root, it requires an A/B GSI. Otherwise, it requires an A-only GSI.</string>
+    <string name="sar_unknown">Unknown</string>
+    <string name="sar_false">Disabled</string>
+    <string name="sar_true">Enabled</string>
+
+    <string name="cpu_arch_title">CPU architecture</string>
+    <string name="cpu_arch_explanation">The architecture of the CPU determines which programs can be run on the device, and must match the operating system. </string>
+    <string name="cpu_arch_unknown">Unknown</string>
+    <string name="cpu_arch_unknown_name">Unknown, named %s</string>
+    <string name="cpu_arch_arm64">ARM64</string>
+    <string name="cpu_arch_arm32">ARM32</string>
+    <string name="cpu_arch_x86_64">x86_64</string>
+    <string name="cpu_arch_x86">x86</string>
+
+    <string name="binder_arch_title">Binder architecture</string>
+    <string name="binder_arch_explanation">The binder architecture controls how programs communicate. Since the vendor partition programs need to communicate with the system partition programs, the binder architecture must match between the two.</string>
+    <string name="binder_arch_unknown">Unknown</string>
+    <string name="binder_arch_32_bit">32-bit</string>
+    <string name="binder_arch_64_bit">64-bit</string>
+    <string name="binder_arch_unknown_version">Unknown, using version %d</string>
 </resources>

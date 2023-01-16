@@ -24,8 +24,10 @@ import org.junit.ClassRule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import tk.hack5.treblecheck.data.Arch
+import tk.hack5.treblecheck.data.BinderArch
+import tk.hack5.treblecheck.data.CPUArch
 import tk.hack5.treblecheck.data.TrebleResult
+import tk.hack5.treblecheck.ui.MainActivity
 import tools.fastlane.screengrab.DecorViewScreenshotStrategy
 import tools.fastlane.screengrab.Screengrab
 import tools.fastlane.screengrab.locale.LocaleTestRule
@@ -34,7 +36,8 @@ import java.util.concurrent.CompletableFuture
 @RunWith(Parameterized::class)
 class ScreenshotTaker(
     private val ab: Boolean,
-    private val arch: Arch,
+    private val binderArch: BinderArch,
+    private val cpuArch: CPUArch,
     private val dynamic: Boolean,
     private val sar: Boolean,
     private val treble: TrebleResult?,
@@ -49,29 +52,30 @@ class ScreenshotTaker(
         @Parameterized.Parameters
         @JvmStatic
         fun data() = listOf(
-            arrayOf(false, Arch.ARM32, false, false, null, 0),
-            arrayOf(false, Arch.ARM32, false, false, null, 1),
-            arrayOf(true, Arch.ARM64, true, true, TrebleResult(false, false, 30, 0), 0),
-            arrayOf(true, Arch.ARM64, true, true, TrebleResult(false, false, 30, 0), 1),
-            arrayOf(false, Arch.ARM32_BINDER64, false, false, TrebleResult(true, true, 26, 0), 0),
-            arrayOf(false, Arch.ARM32_BINDER64, false, false, TrebleResult(true, true, 26, 0), 1),
-            arrayOf(false, Arch.ARM32_BINDER64, false, false, TrebleResult(false, true, 28, 0), 0),
-            arrayOf(true, Arch.ARM64, false, true, TrebleResult(false, false, 28, 0), 1),
+            arrayOf(false, BinderArch.Binder7, CPUArch.ARM32, false, false, null, 0),
+            arrayOf(false, BinderArch.Binder7, CPUArch.ARM32, false, false, null, 1),
+            arrayOf(true, BinderArch.Binder8, CPUArch.ARM64, true, true, TrebleResult(false, false, 30, 0), 0),
+            arrayOf(true, BinderArch.Binder8, CPUArch.ARM64, true, true, TrebleResult(false, false, 30, 0), 1),
+            arrayOf(false, BinderArch.Binder8, CPUArch.ARM32, false, false, TrebleResult(true, true, 26, 0), 0),
+            arrayOf(false, BinderArch.Binder8, CPUArch.ARM32, false, false, TrebleResult(true, true, 26, 0), 1),
+            arrayOf(false, BinderArch.Binder8, CPUArch.ARM32, false, false, TrebleResult(false, true, 28, 0), 0),
+            arrayOf(true, BinderArch.Binder8, CPUArch.ARM64, false, true, TrebleResult(false, false, 28, 0), 1),
         )
     }
 
     @Test
     fun takeScreenshot() {
-        Mock.data = Mock(ab, arch, dynamic, sar, Optional.Value(treble), theme)
+        Mock.data = Mock(ab, binderArch, cpuArch, dynamic, sar, Optional.Value(treble), theme)
 
         val future = CompletableFuture<Void>()
-        val activityScenario = ActivityScenario.launch(ScrollingActivity::class.java)
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
         activityScenario.onActivity {
             it.setTurnScreenOn(true)
             it.window.addFlags(FLAG_KEEP_SCREEN_ON)
+            // TODO change tabs
             try {
                 Screengrab.screenshot(
-                    "$ab-${arch.cpuBits}-${arch.binderBits}-$dynamic-$sar-" +
+                    "$ab-${binderArch.bits}-${cpuArch.bits}-$dynamic-$sar-" +
                             "${treble?.legacy}-${treble?.lite}-${treble?.vndkVersion}-" +
                             "${treble?.vndkSubVersion}-${theme}",
                     DecorViewScreenshotStrategy(it)

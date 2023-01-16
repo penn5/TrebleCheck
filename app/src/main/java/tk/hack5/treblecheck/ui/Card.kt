@@ -24,22 +24,14 @@ import android.text.Html
 import android.text.Spanned
 import android.text.style.CharacterStyle
 import android.text.style.StyleSpan
-import androidx.annotation.FloatRange
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -50,12 +42,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
-import kotlin.math.roundToLong
-
+/*
 data class TransitionSpecs(
     val crossfade: FiniteAnimationSpec<Float>,
     val expandShrink: FiniteAnimationSpec<IntSize>,
@@ -158,7 +146,7 @@ fun Chevron(@FloatRange(from = -1.0, to = 1.0) upDown: Float, modifier: Modifier
         drawLine(Color.Black, Offset(12f.dp.toPx(), midY.dp.toPx()), Offset(17f.dp.toPx(), 12f.dp.toPx()), 2f.dp.toPx(), StrokeCap.Square)
     }
 }
-
+*/
 @Composable
 fun HtmlText(
     htmlText: String,

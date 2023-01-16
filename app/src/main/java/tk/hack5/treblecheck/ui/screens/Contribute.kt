@@ -20,6 +20,7 @@ package tk.hack5.treblecheck.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,7 +31,11 @@ import tk.hack5.treblecheck.horizontal
 
 @Composable
 fun Contribute(
+    askAQuestion: () -> Unit,
     reportBug: () -> Unit,
+    helpTranslate: () -> Unit,
+    contributeCode: () -> Unit,
+    donate: () -> Unit,
     innerPadding: PaddingValues
 ) {
     Column(
@@ -38,8 +43,11 @@ fun Contribute(
             .fillMaxSize()
             .padding(innerPadding.horizontal()), Arrangement.Center, Alignment.CenterHorizontally) {
         Spacer(Modifier.height(innerPadding.calculateTopPadding()))
-        Button(reportBug) { Text(stringResource(R.string.report_a_bug)) }
-        // TODO
+        Button(askAQuestion) { Text(stringResource(R.string.ask_a_question)) }
+        OutlinedButton(reportBug) { Text(stringResource(R.string.report_a_bug)) }
+        OutlinedButton(helpTranslate) { Text(stringResource(R.string.help_translate)) }
+        OutlinedButton(contributeCode) { Text(stringResource(R.string.contribute_code)) }
+        OutlinedButton(donate) { Text(stringResource(R.string.donate)) }
         Spacer(Modifier.height(innerPadding.calculateBottomPadding()))
     }
 }

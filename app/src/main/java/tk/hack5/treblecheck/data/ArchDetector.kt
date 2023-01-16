@@ -23,63 +23,33 @@ import android.util.Log
 import tk.hack5.treblecheck.Mock
 
 object ArchDetector {
-    internal val SUPPORTED_ABIS get() = Build.SUPPORTED_ABIS
 
-    fun getArch(): Arch {
-        Mock.data?.let { return it.arch }
+    fun getCPUArch(): CPUArch {
+        Mock.data?.let { return it.cpuArch }
 
-        val binderVersion = try {
-            BinderDetector.getBinderVersion()
-        } catch (e: UnsatisfiedLinkError) {
-            Log.w(tag, "Native library unavailable", e)
-            null
-        }
+        val cpuArch = Build.SUPPORTED_ABIS.firstOrNull()
 
-        val cpu = SUPPORTED_ABIS.firstOrNull()
+        Log.v(tag, "cpuArch: $cpuArch")
 
-        Log.v(tag, "binderVersion: $binderVersion, cpu: $cpu")
-
-        return Arch(cpu, binderVersion)
+        return CPUArch(cpuArch)
     }
 }
 
-@Suppress("ClassName")
-sealed class Arch(val cpuBits: Int?, val binderBits: Int? = cpuBits) {
-    object ARM64 : Arch(64)
-    object ARM32_BINDER64 : Arch(64, 32)
-    object ARM32 : Arch(32)
-    object X86_64 : Arch(64)
-    object X86_BINDER64 : Arch(64, 32)
-    object X86 : Arch(32)
+sealed class CPUArch(val bits: Int?) {
+    object ARM64 : CPUArch(64)
+    object ARM32 : CPUArch(32)
+    object X86_64 : CPUArch(64)
+    object X86 : CPUArch(32)
 
-    data class UNKNOWN(val cpuName: String?, val binderVersion: Int?) : Arch(cpuName?.let(Companion::getCpuBits), binderVersion?.let(
-        Companion::getBinderBits
-    ))
+    data class Unknown(val archName: String?) : CPUArch(null)
 
     companion object {
-        operator fun invoke(cpuArch: String?, binderVersion: Int?): Arch =
-            when {
-                cpuArch == "armeabi-v7a" && binderVersion == 7 -> ARM32
-                cpuArch == "arm64-v8a" && binderVersion == 8 -> ARM64
-                cpuArch == "armeabi-v7a" && binderVersion == 8 -> ARM32_BINDER64
-                cpuArch == "x86_64" && binderVersion == 8 -> X86_64
-                cpuArch == "x86" && binderVersion == 7 -> X86
-                cpuArch == "x86" && binderVersion == 8 -> X86_BINDER64
-                else -> UNKNOWN(cpuArch, binderVersion)
-            }
-
-        fun getCpuBits(cpuArch: String) = when (cpuArch) {
-            "arm64-v8a" -> 64
-            "armeabi-v7a" -> 32
-            "x86_64" -> 64
-            "x86" -> 32
-            else -> null
-        }
-
-        fun getBinderBits(binderVersion: Int) = when (binderVersion) {
-            7 -> 32
-            8 -> 64
-            else -> null
+        operator fun invoke(archName: String?) = when (archName) {
+            "arm64-v8a" -> ARM64
+            "armeabi-v7a" -> ARM32
+            "x86_64" -> X86_64
+            "x86" -> X86
+            else -> Unknown(archName)
         }
     }
 }

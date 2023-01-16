@@ -18,12 +18,18 @@
 
 package tk.hack5.treblecheck.ui
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.unit.dp
 
-val cardOuterHorizontalPadding = 8.dp
-val cardOuterVerticalSeparation = 16.dp
-val cardInnerPadding = PaddingValues(8.dp, 8.dp)
-val cardIconSpacerWidth = 8.dp
-val cardIconSize = 24.dp
-val explanationSpacing = 4.dp
+val pageHorizontalPadding = 16.dp
+
+val verticalSpacer = 32.dp
+
+val listVerticalPadding = verticalSpacer / 2
+
+val cardIconSpacerWidth = 16.dp
+
+val imagesIconSize = 48.dp
+
+val gutter = 16.dp
+
+// TODO https://m3.material.io/foundations/adaptive-design/large-screens/overview#f42c09a8-0bd5-4cca-8960-5471e515f1da

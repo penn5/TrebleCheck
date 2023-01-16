@@ -19,15 +19,15 @@
 package tk.hack5.treblecheck.data
 
 object FileNameAnalyzer {
-    private fun StringBuilder.appendArch(arch: Arch) = append(
-        when (arch) {
-            Arch.ARM64 -> "arm64"
-            Arch.ARM32_BINDER64 -> "arm32_binder64"
-            Arch.ARM32 -> "arm32"
-            Arch.X86_64 -> "x86_64"
-            Arch.X86_BINDER64 -> "x86_binder64"
-            Arch.X86 -> "x86"
-            is Arch.UNKNOWN -> "???"
+    private fun StringBuilder.appendArch(binderArch: BinderArch, cpuArch: CPUArch) = append(
+        when (binderArch to cpuArch) {
+            BinderArch.Binder8 to CPUArch.ARM64 -> "arm64"
+            BinderArch.Binder8 to CPUArch.ARM32 -> "arm32_binder64"
+            BinderArch.Binder8 to CPUArch.X86_64 -> "x86_64"
+            BinderArch.Binder8 to CPUArch.X86 -> "x86"
+            BinderArch.Binder7 to CPUArch.ARM32 -> "arm32"
+            BinderArch.Binder7 to CPUArch.X86 -> "x86_binder64"
+            else -> "???"
         }
     )
 
@@ -46,8 +46,8 @@ object FileNameAnalyzer {
             this
         }
 
-    fun getFileName(treble: TrebleResult?, arch: Arch, sar: Boolean?): String = StringBuilder("system-").run {
-        appendArch(arch)
+    fun getFileName(treble: TrebleResult?, binderArch: BinderArch, cpuArch: CPUArch, sar: Boolean?): String = StringBuilder("system-").run {
+        appendArch(binderArch, cpuArch)
         append('-')
         appendSar(sar)
         appendVndkLite(sar, treble)

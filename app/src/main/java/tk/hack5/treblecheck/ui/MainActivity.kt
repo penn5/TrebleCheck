@@ -25,21 +25,17 @@ import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.*
-import androidx.compose.animation.core.Transition
-import androidx.compose.animation.core.animateDp
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
+import androidx.compose.material3.windowsizeclass.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -54,6 +50,7 @@ import tk.hack5.treblecheck.supported
 import tk.hack5.treblecheck.ui.screens.*
 import tk.hack5.treblecheck.ui.theme.TrebleCheckTheme
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,18 +95,26 @@ class MainActivity : ComponentActivity() {
                     null
                 }
             }
-            val arch = remember {
+            val binderArch = remember {
                 try {
-                    ArchDetector.getArch()
+                    BinderDetector.getBinderArch()
                 } catch (e: Exception) {
-                    Log.e(tag, "Failed to get arch", e)
-                    Arch.UNKNOWN(null, null)
+                    Log.e(tag, "Failed to get binder arch", e)
+                    BinderArch.Unknown(null)
+                }
+            }
+            val cpuArch = remember {
+                try {
+                    ArchDetector.getCPUArch()
+                } catch (e: Exception) {
+                    Log.e(tag, "Failed to get CPU arch", e)
+                    CPUArch.Unknown(null)
                 }
             }
             val fileName = remember {
                 try {
                     treble.getOrNull()
-                        ?.let { FileNameAnalyzer.getFileName(it, arch, sar) }
+                        ?.let { FileNameAnalyzer.getFileName(it, binderArch, cpuArch, sar) }
                 } catch (e: Exception) {
                     Log.e(tag, "Failed to generate filename", e)
                     null
@@ -117,12 +122,14 @@ class MainActivity : ComponentActivity() {
             }
 
             MainActivityContent(
+                calculateWindowSizeClass(this),
                 treble,
                 ab,
                 dynamic,
                 vab,
                 sar,
-                arch,
+                binderArch,
+                cpuArch,
                 fileName
             ) { TODO() }
         }
@@ -148,12 +155,14 @@ val screens = listOf(Screens.Images, Screens.Details, Screens.Licenses, Screens.
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainActivityContent(
+    windowSizeClass: WindowSizeClass,
     treble: Optional<TrebleResult?>,
     ab: Boolean?,
     dynamic: Boolean?,
     vab: Optional<VABResult?>,
     sar: Boolean?,
-    arch: Arch,
+    binderArch: BinderArch,
+    cpuArch: CPUArch,
     fileName: String?,
     browseImages: () -> Unit
 ) {
@@ -176,12 +185,14 @@ fun MainActivityContent(
                             icon = { Icon(painterResource(screen.icon), null) },
                             label = { Text(stringResource(screen.title)) },
                             onClick = {
-                                navController.navigate(screen.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) {
-                                        saveState = true
+                                if (navController.currentDestination?.route != screen.route) {
+                                    navController.navigate(screen.route) {
+                                        popUpTo(navController.graph.findStartDestination().id) {
+                                            saveState = true
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = !selected
                                     }
-                                    launchSingleTop = true
-                                    restoreState = !selected
                                 }
                             }
                         )
@@ -210,15 +221,21 @@ fun MainActivityContent(
                     treble.supported,
                     fileName
                 ) }
-                composable(Screens.Details.route) { Details(innerPadding, treble, ab, dynamic, vab, sar, arch) }
+                composable(Screens.Details.route) {
+                    DetailsList(innerPadding, windowSizeClass.widthSizeClass > WindowWidthSizeClass.Compact, treble, ab, dynamic, vab, sar, binderArch, cpuArch)
+                }
                 composable(Screens.Licenses.route) { Licenses(innerPadding) }
                 composable(Screens.Contribute.route) { Contribute(
+                    { TODO() },
                     {
                         navController.navigate(Screens.ReportBug.route) {
                             launchSingleTop = true
                             restoreState = true
                         }
                     },
+                    { TODO() },
+                    { TODO() },
+                    { TODO() },
                     innerPadding
                 ) }
                 composable(Screens.ReportBug.route) {
@@ -280,11 +297,13 @@ fun MainActivityContent(
 }
 
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Preview
 @Composable
 fun MainActivityPreview() {
     TrebleCheckTheme(darkTheme = false) {
         MainActivityContent(
+            WindowSizeClass.calculateFromSize(DpSize(400.dp, 400.dp)),
             Optional.Value(
                 TrebleResult(false, true, 30, 0)
             ),
@@ -294,64 +313,11 @@ fun MainActivityPreview() {
                 VABResult(true, true)
             ),
             true,
-            Arch.ARM32_BINDER64,
+            BinderArch.Binder8,
+            CPUArch.ARM64,
             "system-arm64-ab.img.xz"
-        ) { TODO() }
+        ) {  }
     }
 }
-
-@OptIn(ExperimentalAnimationApi::class, ExperimentalMaterial3Api::class)
-@Composable
-fun DisplayedEntry(entry: Entry, isTitle: Transition<Boolean>, specs: TransitionSpecs, onClick: () -> Unit) {
-    val padding by isTitle.animateDp(label = "Padding") { if (it) 0.dp else cardOuterHorizontalPadding }
-    val modifier = Modifier.padding(horizontal = padding)
-
-    when (entry) {
-        is BasicEntry -> {
-            val cardContent = @Composable {
-                TextCardContent(entry.header, entry.body, entry.detail, entry.icon, entry.tint, isTitle, specs)
-            }
-
-            isTitle.Crossfade(animationSpec = specs.crossfade) {
-                if (it) {
-                    OutlinedCard(
-                        modifier = modifier
-                            .fillMaxWidth(),
-                        onClick = onClick,
-                        border = BorderStroke(1.dp, Color.Transparent)
-                    ) {
-                        cardContent()
-                    }
-                } else {
-                    OutlinedCard(
-                        modifier = modifier.fillMaxWidth(),
-                        onClick = onClick,
-                        border = BorderStroke(1.dp, Color.Black /* TODO */)
-                    ) {
-                        cardContent()
-                    }
-                }
-            }
-        }
-    }
-}
-
-sealed class Entry
-
-data class BasicEntry(
-    val icon: Painter,
-    val tint: Color,
-    val body: String,
-    val header: String,
-    val detail: String?,
-) : Entry()
-
-data class ClickableEntry(
-    val entry: Entry,
-    val onClick: (() -> Unit)?,
-)
-
-fun Entry.clickable(onClick: (() -> Unit)? = null) = ClickableEntry(this, onClick)
-
 
 private const val tag = "MainActivity"

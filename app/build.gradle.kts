@@ -33,7 +33,11 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("poeditor-android")
-    id("com.mikepenz.aboutlibraries.plugin") version "10.0.0-rc02"
+    id("com.mikepenz.aboutlibraries.plugin") version "10.5.2"
+}
+
+aboutLibraries {
+    configPath = projectDir.resolve("librariesConfig").toString()
 }
 
 val kotlinVersion = rootProject.extra["kotlinVersion"]
@@ -164,8 +168,8 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.6.1")
     implementation("androidx.compose.animation:animation-graphics:1.3.3")
     implementation("androidx.navigation:navigation-compose:2.5.3")
-    implementation("com.mikepenz:aboutlibraries-core:10.0.0-rc02")
-    implementation("com.mikepenz:aboutlibraries-compose:10.0.0-rc02")
+    implementation("com.mikepenz:aboutlibraries-core:10.5.2")
+    implementation("com.mikepenz:aboutlibraries-compose:10.5.2")
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:$mockkVersion")
     testImplementation("io.mockk:mockk-agent-jvm:$mockkVersion")

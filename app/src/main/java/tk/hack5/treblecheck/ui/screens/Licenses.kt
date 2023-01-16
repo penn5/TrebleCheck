@@ -33,6 +33,8 @@ import com.mikepenz.aboutlibraries.ui.compose.Libraries
 import com.mikepenz.aboutlibraries.util.withContext
 import tk.hack5.treblecheck.BuildConfig
 import tk.hack5.treblecheck.R
+import tk.hack5.treblecheck.ui.listVerticalPadding
+import tk.hack5.treblecheck.ui.pageHorizontalPadding
 
 @Composable
 fun Licenses(innerPadding: PaddingValues) {
@@ -66,15 +68,14 @@ fun Licenses(innerPadding: PaddingValues) {
                 SpdxLicense.GPL_3_0_only.id
             )
         ),
-        setOf(Funding("PayPal", "https://paypal.me/hackintosh5")),
+        setOf(),
         null
     )
-    val libs = libraries.value?.libraries
-    if (libs != null) {
-        Libraries(
-            libraries = listOf(thisLibrary) + libs,
-            contentPadding = innerPadding,
-            modifier = Modifier.fillMaxSize()
-        )
-    }
+    val libs = libraries.value?.libraries ?: emptyList()
+    Libraries(
+        libraries = listOf(thisLibrary) + libs,
+        contentPadding = innerPadding,
+        itemContentPadding = PaddingValues(horizontal = pageHorizontalPadding, vertical = listVerticalPadding),
+        modifier = Modifier.fillMaxSize()
+    )
 }
