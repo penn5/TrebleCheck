@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="title">Treble Info</string>
+    <string name="back">Back</string>
+    <!--
     <string name="sar_header">System as Root</string>
     <string name="arch_header">Architecture</string>
     <string name="arch_arm64">Your device is &lt;b&gt;ARM64&lt;/b&gt;.</string>
@@ -82,11 +84,34 @@
     <string name="more_info">Click to view technical details about your device.</string>
     <string name="contribute_header">Contribute</string>
     <string name="contribute">Click here to help us improve this application.</string>
-    <string name="back">Back</string>
     <string name="treble">Click here to view information about your device\'s implementation of Project Treble.</string>
     <string name="sar">Click here to view information about System-as-Root</string>
     <string name="partitions_header">Partitions</string>
     <string name="partitions">Click here to view information about your device\'s partition scheme.</string>
     <string name="arch">Click here to view information about your device\'s architecture and address width.</string>
     <string name="vab">Click here to view information about Virtual A/B on your device.</string>
+    -->
+    <string name="screen_images">Images</string>
+    <string name="screen_details">Details</string>
+    <string name="screen_licenses">Licenses</string>
+    <string name="screen_contribute">Contribute</string>
+    <string name="no_treble_title">Your device does not support Project Treble</string>
+    <string name="no_treble_body">Unfortunately, your device does not support installing GSIs. On some devices, it is possible to install a device-specific ROM from the internet.</string>
+    <string name="detection_error_title">Oops!</string>
+    <string name="detection_error_body">Unfortunately, something went wrong while trying to load this data.</string>
+    <string name="images_found_title">Generic System Image found!</string>
+    <string name="images_found_body">Your device reports supporting Project Treble. The type of image required is:</string>
+    <string name="browse_images">Browse images</string>
+    <string name="view_details">View details</string>
+    <string name="report_this_bug">Report bug</string>
+    <string name="report_a_bug">Report a bug</string>
+
+    <string name="treble_title">Project Treble</string>
+    <string name="treble_body">Project Treble provides a standard interface for communicating with device hardware. This allows device manufacturers to create updates faster, as the hardware interfaces do not need to be updated.</string>
+    <string name="treble_false">Unsupported</string>
+    <string name="treble_true">Supported</string>
+    <string name="treble_unknown">Unknown</string>
+
+    <!-- for license -->
+    <string name="this_app">This application</string>
 </resources>

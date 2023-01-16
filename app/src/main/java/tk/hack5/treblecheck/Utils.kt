@@ -1,17 +1,29 @@
 /*
- * Sub-licenses:
- *         https://github.com/google/material-design-icons/blob/master/LICENSE
- *         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
- *         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt
- * This project:
- *         Copyright (C) 2019 Penn Mackintosh
- *         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
+ *     Treble Info
+ *     Copyright (C) 2019 Hackintosh Five
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package tk.hack5.treblecheck
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import tk.hack5.treblecheck.data.TrebleResult
 
 
 @SuppressLint("PrivateApi") // Oh well.
@@ -37,15 +49,34 @@ sealed class Optional<out T> {
     object Nothing : Optional<kotlin.Nothing>()
 }
 
-fun <T>Optional<T>.get() = when (this) {
+inline fun <reified T>Optional<T>.get() = when (this) {
     is Optional.Value -> value
     else -> throw NullPointerException("Optional is empty")
 }
 
-fun <T>Optional<T>.getOrNull() = when (this) {
+inline fun <reified T>Optional<T>.getOrNull() = getOrElse(null)
+
+inline fun <reified T>Optional<T>.getOrElse(otherwise: T) = when (this) {
     is Optional.Value -> value
-    else -> null
+    Optional.Nothing -> otherwise
 }
 
+val Optional<TrebleResult?>.supported: Boolean?
+    inline get() = when (this) {
+        is Optional.Value -> value != null
+        Optional.Nothing -> null
+    }
+
+fun PaddingValues.horizontal(): PaddingValues = HorizontalPaddingValues(this)
+
+private class HorizontalPaddingValues(private val paddingValues: PaddingValues) : PaddingValues by paddingValues {
+    override fun calculateTopPadding(): Dp {
+        return 0.dp
+    }
+
+    override fun calculateBottomPadding(): Dp {
+        return 0.dp
+    }
+}
 
 private const val tag = "Utils"

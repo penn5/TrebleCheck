@@ -1,0 +1,21 @@
+{
+  "uniqueId": "com.google:materialdesignicons",
+  "artifactVersion": null,
+  "name": "Material Icons",
+  "description": "Google's Material Design icon library",
+  "website": "https://fonts.google.com/icons?icon.set=Material+Icons",
+  "organization": {
+    "name": "Google",
+    "organisationUrl": "https://opensource.google"
+  },
+  "scm": {
+    "connection": "scm:https://github.com/google/material-design-icons.git",
+    "url": "https://github.com/google/material-design-icons",
+    "developerConnection": "scm:git@github.com:google/material-design-icons.git"
+  },
+  "licenses": [
+    "apache_2_0"
+  ],
+  "funding": [],
+  "tag": "icons"
+}

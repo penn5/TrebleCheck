@@ -361,3 +361,7 @@ app/billing.properties
 # Fastlane
 fastlane/metadata
 gitlab_token.txt
+
+
+# Contains private data
+/.idea/deploymentTargetDropDown.xml

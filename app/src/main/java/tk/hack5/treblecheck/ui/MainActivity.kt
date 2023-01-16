@@ -1,11 +1,19 @@
 /*
- * Sub-licenses:
- *         https://github.com/google/material-design-icons/blob/master/LICENSE
- *         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
- *         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt
- * This project:
- *         Copyright (C) 2022 Penn Mackintosh
- *         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
+ *     Treble Info
+ *     Copyright (C) 2019 Hackintosh Five
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package tk.hack5.treblecheck.ui
@@ -14,27 +22,36 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.animation.*
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.Transition
+import androidx.compose.animation.core.animateDp
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import tk.hack5.treblecheck.Optional
 import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.data.*
 import tk.hack5.treblecheck.getOrNull
+import tk.hack5.treblecheck.supported
+import tk.hack5.treblecheck.ui.screens.*
 import tk.hack5.treblecheck.ui.theme.TrebleCheckTheme
 
 class MainActivity : ComponentActivity() {
@@ -112,22 +129,23 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
-@Composable
-fun TopBar(showBackButtonTransition: Transition<Boolean>, specs: TransitionSpecs, goBack: () -> Unit) {
-    SmallTopAppBar(
-        title = { Text(stringResource(id = R.string.title)) },
-        navigationIcon = {
-            showBackButtonTransition.AnimatedVisibility(visible = { it }, enter = expandIn(specs.expandShrink) + fadeIn(specs.fade), exit = shrinkOut(specs.expandShrink) + fadeOut(specs.fade)) {
-                IconButton(onClick = { goBack() }) {
-                    Icon(Icons.Default.ArrowBack, stringResource(R.string.back))
-                }
-            }
-        }
-    )
+sealed class Screen(val route: String)
+
+sealed class RootScreen(route: String, @StringRes val title: Int, @DrawableRes val icon: Int) : Screen(route)
+
+object Screens {
+    object Images : RootScreen("images", R.string.screen_images, R.drawable.screen_images)
+    // TODO change icons
+    object Details : RootScreen("details", R.string.screen_details, R.drawable.screen_details)
+    object Licenses : RootScreen("licenses", R.string.screen_licenses, R.drawable.screen_licenses)
+    object Contribute : RootScreen("contribute", R.string.screen_contribute, R.drawable.screen_contribute)
+    object ReportBug : Screen("contribute/bug")
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalTransitionApi::class)
+val screens = listOf(Screens.Images, Screens.Details, Screens.Licenses, Screens.Contribute)
+
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainActivityContent(
     treble: Optional<TrebleResult?>,
@@ -137,38 +155,80 @@ fun MainActivityContent(
     sar: Boolean?,
     arch: Arch,
     fileName: String?,
-    onRequiredImageClick: () -> Unit
+    browseImages: () -> Unit
 ) {
-    var rootExpandedIndex: Int by rememberSaveable { mutableStateOf(-1) }
-    val rootExpandedIndexTransition = updateTransition(rootExpandedIndex, label = "rootExpandedIndex")
-    val defaultSpecs = TransitionSpecs(
-        crossfade = spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = 0.03125f),
-        expandShrink = spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = IntSize(1, 1)),
-        fade = spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = 0.03125f),
-        padding = spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = 0.1.dp),
-        height = spring(stiffness = Spring.StiffnessMediumLow),
-        top = spring(stiffness = Spring.StiffnessMediumLow)
-    )
-
-    val slowSpecs = defaultSpecs.scale(8f) // TODO remove
+    val navController = rememberNavController()
 
     TrebleCheckTheme(darkTheme = false) {
         Scaffold(
             topBar = {
-                TopBar(
-                    rootExpandedIndexTransition.createChildTransition { it != -1 },
-                    slowSpecs
-                ) { rootExpandedIndex = -1 }
+                TopAppBar(
+                    title = { Text(stringResource(id = R.string.title)) },
+                )
+            },
+            bottomBar = {
+                NavigationBar(Modifier.fillMaxWidth()) {
+                    val navBackStackEntry by navController.currentBackStackEntryAsState()
+                    screens.forEach { screen ->
+                        val selected = remember(navBackStackEntry) { navController.backQueue.lastOrNull { entry -> screens.any { it.route == entry.destination.route } }?.destination?.route == screen.route }
+                        NavigationBarItem(
+                            selected = selected,
+                            icon = { Icon(painterResource(screen.icon), null) },
+                            label = { Text(stringResource(screen.title)) },
+                            onClick = {
+                                navController.navigate(screen.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = !selected
+                                }
+                            }
+                        )
+                    }
+                }
             }
         ) { innerPadding ->
-            AutoList(
+            NavHost(navController = navController, startDestination = "images") {
+                composable(Screens.Images.route) { Images(
+                    browseImages,
+                    {
+                        navController.navigate(Screens.Details.route) {
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = false
+                        }
+                    }, {
+                        navController.navigate(Screens.ReportBug.route) {
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
+                    innerPadding,
+                    treble.supported,
+                    fileName
+                ) }
+                composable(Screens.Details.route) { Details(innerPadding, treble, ab, dynamic, vab, sar, arch) }
+                composable(Screens.Licenses.route) { Licenses(innerPadding) }
+                composable(Screens.Contribute.route) { Contribute(
+                    {
+                        navController.navigate(Screens.ReportBug.route) {
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
+                    innerPadding
+                ) }
+                composable(Screens.ReportBug.route) {
+                    ReportBug({ TODO() }, innerPadding)
+                }
+            }
+            /*Column(
                 Modifier
-                    .padding(innerPadding) /* TODO maybe apply on the inside? */,
-                cardOuterHorizontalPadding,
-                cardOuterVerticalSeparation,
-                rootExpandedIndexTransition,
-                { rootExpandedIndex = it },
-                slowSpecs
+                    .padding(innerPadding) *//* TODO maybe apply on the inside? *//*,
+                verticalArrangement = Arrangement.spacedBy(cardOuterVerticalSeparation)
             ) {
                 plain { requiredImageEntry(fileName).clickable(onRequiredImageClick) }
                 expandable {
@@ -212,7 +272,7 @@ fun MainActivityContent(
                     // plain { translateEntry() }
                     // plain { donateEntry() }
                 }
-            }
+            }*/
 
 
         }

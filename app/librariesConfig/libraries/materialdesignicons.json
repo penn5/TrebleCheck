@@ -1,0 +1,26 @@
+{
+  "uniqueId": "com.pictogrammers:materialdesignicons",
+  "artifactVersion": null,
+  "name": "MaterialDesignIcons",
+  "description": "Pictogrammers' Material Design icon library",
+  "website": "https://materialdesignicons.com/",
+  "organization": {
+    "name": "Pictogrammers",
+    "organisationUrl": "https://pictogrammers.com"
+  },
+  "scm": {
+    "connection": "scm:https://github.com/Templarian/MaterialDesign.git",
+    "url": "https://github.com/Templarian/MaterialDesign",
+    "developerConnection": "scm:git@github.com:Templarian/MaterialDesign.git"
+  },
+  "licenses": [
+    "apache_2_0"
+  ],
+  "funding": [
+    {
+      "platform": "GITHUB",
+      "url": "https://github.com/Templarian/MaterialDesign"
+    }
+  ],
+  "tag": "icons"
+}
