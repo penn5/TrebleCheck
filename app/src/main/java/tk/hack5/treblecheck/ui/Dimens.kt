@@ -22,6 +22,8 @@ import androidx.compose.ui.unit.dp
 
 val pageHorizontalPadding = 16.dp
 
+val dialogPadding = 16.dp
+
 val verticalSpacer = 32.dp
 
 val listVerticalPadding = verticalSpacer / 2

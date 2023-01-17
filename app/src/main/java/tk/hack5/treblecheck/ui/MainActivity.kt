@@ -82,14 +82,6 @@ class MainActivity : ComponentActivity() {
                     null
                 }
             }
-            val vab = remember {
-                try {
-                    Optional.Value(VABDetector.getVABData())
-                } catch (e: Exception) {
-                    Log.e(tag, "Failed to get VAB status", e)
-                    Optional.Nothing
-                }
-            }
             val sar = remember {
                 try {
                     MountDetector.isSAR()
@@ -129,7 +121,6 @@ class MainActivity : ComponentActivity() {
                 treble,
                 ab,
                 dynamic,
-                vab,
                 sar,
                 binderArch,
                 cpuArch,
@@ -140,6 +131,7 @@ class MainActivity : ComponentActivity() {
                         startActivity(intent)
                     } catch (e: ActivityNotFoundException) {
                         Log.w(tag, "Launch browser failed", e)
+                        Toast.makeText(this, R.string.no_browser, Toast.LENGTH_LONG).show()
                     }
                 },
                 {
@@ -172,6 +164,7 @@ class MainActivity : ComponentActivity() {
                         startActivity(intent)
                     } catch (e: ActivityNotFoundException) {
                         Log.w(tag, "Launch browser failed", e)
+                        Toast.makeText(this, R.string.no_browser, Toast.LENGTH_LONG).show()
                     }
                 },
                 {
@@ -210,7 +203,6 @@ fun MainActivityContent(
     treble: Optional<TrebleResult?>,
     ab: Boolean?,
     dynamic: Boolean?,
-    vab: Optional<VABResult?>,
     sar: Boolean?,
     binderArch: BinderArch,
     cpuArch: CPUArch,
@@ -274,7 +266,7 @@ fun MainActivityContent(
                     fileName
                 ) }
                 composable(Screens.Details.route) {
-                    DetailsList(innerPadding, windowSizeClass.widthSizeClass > WindowWidthSizeClass.Compact, treble, ab, dynamic, vab, sar, binderArch, cpuArch)
+                    DetailsList(innerPadding, windowSizeClass.widthSizeClass > WindowWidthSizeClass.Compact, treble, ab, dynamic, sar, binderArch, cpuArch)
                 }
                 composable(Screens.Licenses.route) { Licenses(innerPadding) }
                 composable(Screens.Contribute.route) { Contribute(
@@ -303,9 +295,6 @@ fun MainActivityPreview() {
             ),
             true,
             true,
-            Optional.Value(
-                VABResult(true, true)
-            ),
             true,
             BinderArch.Binder8,
             CPUArch.ARM64,

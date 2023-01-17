@@ -22,22 +22,23 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import tk.hack5.treblecheck.Optional
+import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.data.BinderArch
 import tk.hack5.treblecheck.data.CPUArch
 import tk.hack5.treblecheck.data.TrebleResult
-import tk.hack5.treblecheck.data.VABResult
 import tk.hack5.treblecheck.getOrNull
 import tk.hack5.treblecheck.horizontal
 import tk.hack5.treblecheck.ui.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailsList(
     innerPadding: PaddingValues,
@@ -45,14 +46,62 @@ fun DetailsList(
     treble: Optional<TrebleResult?>,
     ab: Boolean?,
     dynamic: Boolean?,
-    vab: Optional<VABResult?>,
     sar: Boolean?,
     binderArch: BinderArch,
     cpuArch: CPUArch,
 ) {
-    // TODO limit column width
-    var openDialog by remember { mutableStateOf<Detail?>(null) }
-    val onClick: (Detail) -> Unit = { openDialog = it }
+    val details = buildList {
+        add(trebleDetail(treble))
+        treble.getOrNull()?.let {
+            add(trebleVersionEntry(it))
+            add(trebleLiteEntry(it))
+            add(trebleLegacyEntry(it))
+        }
+
+        // sar
+        add(sarEntry(sar))
+
+        // a/b
+        add(abEntry(ab))
+
+        // dynamic partitions
+        add(dynamicPartitionsEntry(dynamic))
+
+        // arch
+        add(cpuArchEntry(cpuArch))
+        add(binderArchEntry(binderArch))
+    }
+    var openDialog by rememberSaveable(details) { mutableStateOf<Int?>(null) }
+    val onClick: (Detail) -> Unit = { openDialog = details.indexOf(it) }
+
+    if (!twoColumn) {
+        openDialog?.let { index ->
+            val detail = details[index]
+            AlertDialog(onDismissRequest = { openDialog = null }) {
+                Surface(
+                    modifier = Modifier
+                        .wrapContentWidth()
+                        .wrapContentHeight(),
+                    shape = MaterialTheme.shapes.large
+                ) {
+                    Column(
+                        Modifier.padding(dialogPadding)
+                    ) {
+                        Text(detail.title, style = MaterialTheme.typography.titleLarge)
+                        Text(detail.subtitle, style = MaterialTheme.typography.titleMedium)
+                        Text(detail.body, style = MaterialTheme.typography.bodyMedium)
+                        Spacer(Modifier.height(verticalSpacer))
+                        TextButton(
+                            onClick = { openDialog = null },
+                            modifier = Modifier.align(Alignment.End)
+                        ) {
+                            Text(stringResource(R.string.close_dialog))
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     Row(
         Modifier
@@ -66,33 +115,10 @@ fun DetailsList(
                 .fillMaxWidth(if (twoColumn) 0.35f else 1f)
         ) {
             Spacer(Modifier.height(innerPadding.calculateTopPadding()))
-            // treble
-            DetailEntry(trebleDetail(treble), onClick)
-            treble.getOrNull()?.let {
-                DetailEntry(trebleVersionEntry(it), onClick)
-                DetailEntry(trebleLiteEntry(it), onClick)
-                DetailEntry(trebleLegacyEntry(it), onClick)
+
+            details.forEach {
+                DetailEntry(it, onClick)
             }
-
-            // sar
-            DetailEntry(sarEntry(sar), onClick)
-
-            // a/b
-            DetailEntry(abEntry(ab), onClick)
-
-            // dynamic partitions
-            DetailEntry(dynamicPartitionsEntry(dynamic), onClick)
-
-            // virtual a/b
-            DetailEntry(vabEntry(vab), onClick)
-            vab.getOrNull()?.let {
-                DetailEntry(vabcEntry(it), onClick)
-                DetailEntry(vabrEntry(it), onClick)
-            }
-
-            // arch
-            DetailEntry(cpuArchEntry(cpuArch), onClick)
-            DetailEntry(binderArchEntry(binderArch), onClick)
 
             Spacer(Modifier.height(innerPadding.calculateBottomPadding()))
         }
@@ -105,12 +131,13 @@ fun DetailsList(
                     .padding(horizontal = pageHorizontalPadding)
             ) {
                 Spacer(Modifier.height(innerPadding.calculateTopPadding()))
-                openDialog?.let {
-                    Text(it.title, style = MaterialTheme.typography.titleLarge)
-                    Text(it.subtitle, style = MaterialTheme.typography.titleMedium)
-                    Text(it.body, style = MaterialTheme.typography.bodyMedium)
+                openDialog?.let { index ->
+                    val detail = details[index]
+                    Text(detail.title, style = MaterialTheme.typography.titleLarge)
+                    Text(detail.subtitle, style = MaterialTheme.typography.titleMedium)
+                    Text(detail.body, style = MaterialTheme.typography.bodyMedium)
                 } ?: run {
-                    // TODO placeholder
+                    Text(stringResource(R.string.detail_placeholder))
                 }
                 Spacer(Modifier.height(innerPadding.calculateBottomPadding()))
             }

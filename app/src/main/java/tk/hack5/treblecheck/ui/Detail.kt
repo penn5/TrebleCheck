@@ -29,7 +29,6 @@ import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.data.BinderArch
 import tk.hack5.treblecheck.data.CPUArch
 import tk.hack5.treblecheck.data.TrebleResult
-import tk.hack5.treblecheck.data.VABResult
 
 data class Detail(val icon: Painter, val iconTint: Color, val title: String, val subtitle: String, val body: String)
 
@@ -226,102 +225,6 @@ fun dynamicPartitionsEntry(dynamic: Boolean?): Detail {
         stringResource(R.string.dynamicpartitions_title),
         subtitle,
         stringResource(R.string.dynamicpartitions_explanation)
-    )
-}
-
-@Composable
-fun vabEntry(vab: Optional<VABResult?>): Detail {
-    val icon = painterResource(
-        when (vab) {
-            is Optional.Nothing -> R.drawable.unknown
-            is Optional.Value -> when (vab.value) {
-                null -> R.drawable.vab_false
-                else -> R.drawable.vab_true
-            }
-        }
-    )
-    val tint = when (vab) {
-        is Optional.Nothing -> Error
-        is Optional.Value -> when (vab.value) {
-            null -> Red
-            else -> Green
-        }
-    }
-    val subtitle = stringResource(
-        when (vab) {
-            is Optional.Nothing -> R.string.vab_unknown
-            is Optional.Value -> when (vab.value) {
-                null -> R.string.vab_false
-                else -> R.string.vab_true
-            }
-        }
-    )
-    return Detail(
-        icon,
-        tint,
-        stringResource(R.string.vab_title),
-        subtitle,
-        stringResource(R.string.vab_explanation)
-    )
-}
-
-@Composable
-fun vabrEntry(vab: VABResult): Detail {
-    val icon = painterResource(
-        when (vab.retrofit) {
-            null -> R.drawable.unknown
-            false -> R.drawable.vabr_false
-            true -> R.drawable.vabr_true
-        }
-    )
-    val tint = when (vab.retrofit) {
-        null -> Error
-        false -> Red
-        true -> Green
-    }
-    val subtitle = stringResource(
-        when (vab.retrofit) {
-            null -> R.string.vabr_unknown
-            false -> R.string.vabr_false
-            true -> R.string.vabr_true
-        }
-    )
-    return Detail(
-        icon,
-        tint,
-        stringResource(R.string.vabr_title),
-        subtitle,
-        stringResource(R.string.vabr_explanation)
-    )
-}
-
-@Composable
-fun vabcEntry(vab: VABResult): Detail {
-    val icon = painterResource(
-        when (vab.compressed) {
-            null -> R.drawable.unknown
-            false -> R.drawable.vabc_false
-            true -> R.drawable.vabc_true
-        }
-    )
-    val tint = when (vab.compressed) {
-        null -> Error
-        false -> Red
-        true -> Green
-    }
-    val subtitle = stringResource(
-        when (vab.compressed) {
-            null -> R.string.vabc_unknown
-            false -> R.string.vabc_false
-            true -> R.string.vabc_true
-        }
-    )
-    return Detail(
-        icon,
-        tint,
-        stringResource(R.string.vabc_title),
-        subtitle,
-        stringResource(R.string.vabc_explanation)
     )
 }
 

@@ -185,4 +185,8 @@
     <string name="binder_arch_32_bit">32-bit</string>
     <string name="binder_arch_64_bit">64-bit</string>
     <string name="binder_arch_unknown_version">Unknown, using version %d</string>
+    <string name="no_browser">No web browser installed!</string>
+    <string name="no_email">No email client installed!</string>
+    <string name="close_dialog">Close</string>
+    <string name="detail_placeholder">Select an item to view details</string>
 </resources>

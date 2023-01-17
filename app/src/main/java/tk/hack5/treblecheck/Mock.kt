@@ -21,7 +21,6 @@ package tk.hack5.treblecheck
 import tk.hack5.treblecheck.data.BinderArch
 import tk.hack5.treblecheck.data.CPUArch
 import tk.hack5.treblecheck.data.TrebleResult
-import tk.hack5.treblecheck.data.VABResult
 
 class Mock(
     val ab: Boolean?,
@@ -30,7 +29,6 @@ class Mock(
     val dynamic: Boolean?,
     val sar: Boolean?,
     val treble: Optional<TrebleResult?>,
-    val vab: VABResult?,
     val theme: Int,
 ) {
     companion object {
