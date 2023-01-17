@@ -1,6 +1,6 @@
 /*
  *     Treble Info
- *     Copyright (C) 2019 Hackintosh Five
+ *     Copyright (C) 2023 Hackintosh Five
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,8 +18,11 @@
 
 package tk.hack5.treblecheck.ui
 
+import android.content.*
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
@@ -130,8 +133,57 @@ class MainActivity : ComponentActivity() {
                 sar,
                 binderArch,
                 cpuArch,
-                fileName
-            ) { TODO() }
+                fileName,
+                {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/phhusson/treble_experimentations/wiki/Generic-System-Image-%28GSI%29-list"))
+                    try {
+                        startActivity(intent)
+                    } catch (e: ActivityNotFoundException) {
+                        Log.w(tag, "Launch browser failed", e)
+                    }
+                },
+                {
+                    val intent = Intent(Intent.ACTION_SENDTO).apply {
+                        data = Uri.parse("mailto:")
+                        putExtra(Intent.EXTRA_EMAIL, arrayOf("contact-project+hackintosh5-trebleinfo-30453147-issue-@incoming.gitlab.com"))
+                    }
+                    try {
+                        startActivity(intent)
+                    } catch (e: ActivityNotFoundException) {
+                        Log.w(tag, "Send email failed", e)
+                        Toast.makeText(this, R.string.no_email, Toast.LENGTH_LONG).show()
+                    }
+                },
+                {
+                    val intent = Intent(Intent.ACTION_SENDTO).apply {
+                        data = Uri.parse("mailto:")
+                        putExtra(Intent.EXTRA_EMAIL, arrayOf("treble@hack5.dev"))
+                    }
+                    try {
+                        startActivity(intent)
+                    } catch (e: ActivityNotFoundException) {
+                        Log.w(tag, "Send email failed", e)
+                        Toast.makeText(this, R.string.no_email, Toast.LENGTH_LONG).show()
+                    }
+                },
+                {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://gitlab.com/hackintosh5/TrebleInfo#translating"))
+                    try {
+                        startActivity(intent)
+                    } catch (e: ActivityNotFoundException) {
+                        Log.w(tag, "Launch browser failed", e)
+                    }
+                },
+                {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://gitlab.com/hackintosh5/TrebleInfo#contributing"))
+                    try {
+                        startActivity(intent)
+                    } catch (e: ActivityNotFoundException) {
+                        Log.w(tag, "Launch browser failed", e)
+                    }
+                },
+                { TODO() },
+            )
         }
     }
 }
@@ -146,7 +198,6 @@ object Screens {
     object Details : RootScreen("details", R.string.screen_details, R.drawable.screen_details)
     object Licenses : RootScreen("licenses", R.string.screen_licenses, R.drawable.screen_licenses)
     object Contribute : RootScreen("contribute", R.string.screen_contribute, R.drawable.screen_contribute)
-    object ReportBug : Screen("contribute/bug")
 }
 
 val screens = listOf(Screens.Images, Screens.Details, Screens.Licenses, Screens.Contribute)
@@ -164,7 +215,12 @@ fun MainActivityContent(
     binderArch: BinderArch,
     cpuArch: CPUArch,
     fileName: String?,
-    browseImages: () -> Unit
+    browseImages: () -> Unit,
+    reportABug: () -> Unit,
+    askAQuestion: () -> Unit,
+    helpTranslate: () -> Unit,
+    contributeCode: () -> Unit,
+    donate: () -> Unit,
 ) {
     val navController = rememberNavController()
 
@@ -211,12 +267,8 @@ fun MainActivityContent(
                             launchSingleTop = true
                             restoreState = false
                         }
-                    }, {
-                        navController.navigate(Screens.ReportBug.route) {
-                            launchSingleTop = true
-                            restoreState = true
-                        }
                     },
+                    reportABug,
                     innerPadding,
                     treble.supported,
                     fileName
@@ -226,72 +278,14 @@ fun MainActivityContent(
                 }
                 composable(Screens.Licenses.route) { Licenses(innerPadding) }
                 composable(Screens.Contribute.route) { Contribute(
-                    { TODO() },
-                    {
-                        navController.navigate(Screens.ReportBug.route) {
-                            launchSingleTop = true
-                            restoreState = true
-                        }
-                    },
-                    { TODO() },
-                    { TODO() },
-                    { TODO() },
+                    askAQuestion,
+                    reportABug,
+                    helpTranslate,
+                    contributeCode,
+                    donate,
                     innerPadding
                 ) }
-                composable(Screens.ReportBug.route) {
-                    ReportBug({ TODO() }, innerPadding)
-                }
             }
-            /*Column(
-                Modifier
-                    .padding(innerPadding) *//* TODO maybe apply on the inside? *//*,
-                verticalArrangement = Arrangement.spacedBy(cardOuterVerticalSeparation)
-            ) {
-                plain { requiredImageEntry(fileName).clickable(onRequiredImageClick) }
-                expandable {
-                    plain { moreInfoEntry().clickable() }
-                    expandable {
-                        plain { trebleEntry().clickable() }
-                        plain { trebleEntry(treble).clickable() }
-                        treble.getOrNull()?.let {
-                            plain { trebleVersionEntry(it).clickable() }
-                            plain { trebleLiteEntry(it).clickable() }
-                            plain { trebleLegacyEntry(it).clickable() }
-                        }
-                    }
-                    expandable {
-                        plain { sarEntry().clickable() }
-                        plain { sarEntry(sar).clickable() }
-                    }
-                    expandable {
-                        plain { partitionsEntry().clickable() }
-                        plain { abEntry(ab).clickable() }
-                        plain { dynamicPartitionsEntry(dynamic).clickable() }
-                        expandable {
-                            plain { vabEntry().clickable() }
-                            plain { vabEntry(vab).clickable() }
-                            vab.getOrNull()?.let {
-                                plain { vabcEntry(it).clickable() }
-                                plain { vabrEntry(it).clickable() }
-                            }
-                        }
-                    }
-                    expandable {
-                        plain { archEntry().clickable() }
-                        plain { archEntry(arch).clickable() }
-                    }
-                }
-                expandable {
-                    plain { licenseEntry().clickable() }
-                }
-                expandable {
-                    plain { contributeEntry().clickable() }
-                    // plain { translateEntry() }
-                    // plain { donateEntry() }
-                }
-            }*/
-
-
         }
     }
 }
@@ -315,8 +309,14 @@ fun MainActivityPreview() {
             true,
             BinderArch.Binder8,
             CPUArch.ARM64,
-            "system-arm64-ab.img.xz"
-        ) {  }
+            "system-arm64-ab.img.xz",
+            { },
+            { },
+            { },
+            { },
+            { },
+            { },
+        )
     }
 }
 

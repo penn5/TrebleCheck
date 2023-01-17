@@ -1,6 +1,7 @@
 /*
  *     Treble Info
- *     Copyright (C) 2019 Hackintosh Five
+ *     Copyright (C) 2023 Hackintosh Five
+ *     Copyright (C) 2019 Pierre-Hugues Husson
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
