@@ -23,10 +23,15 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import tk.hack5.treblecheck.Optional
@@ -35,13 +40,14 @@ import tk.hack5.treblecheck.data.BinderArch
 import tk.hack5.treblecheck.data.CPUArch
 import tk.hack5.treblecheck.data.TrebleResult
 import tk.hack5.treblecheck.getOrNull
-import tk.hack5.treblecheck.horizontal
 import tk.hack5.treblecheck.ui.*
+import tk.hack5.treblecheck.vertical
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun DetailsList(
     innerPadding: PaddingValues,
+    scrollConnection: NestedScrollConnection,
     twoColumn: Boolean,
     treble: Optional<TrebleResult?>,
     ab: Boolean?,
@@ -105,39 +111,44 @@ fun DetailsList(
 
     Row(
         Modifier
-            .fillMaxSize()
-            .padding(innerPadding.horizontal()),
-        if (twoColumn) Arrangement.Center else Arrangement.Start
+            .fillMaxSize(),
+            //.padding(innerPadding.horizontal())
+            //.consumeWindowInsets(innerPadding.horizontal())
+            //.padding(horizontal = pageHorizontalPadding),
+        //if (twoColumn) Arrangement.Center else Arrangement.Start
     ) {
         Column(
             Modifier
+                .nestedScroll(scrollConnection)
                 .verticalScroll(rememberScrollState())
-                .fillMaxWidth(if (twoColumn) 0.35f else 1f)
+                .weight(0.35f)
+                .consumeWindowInsets(innerPadding.vertical()),
+            horizontalAlignment = if (twoColumn) Alignment.End else Alignment.Start
         ) {
             Spacer(Modifier.height(innerPadding.calculateTopPadding()))
 
+            val modifier = Modifier.safeDrawingPadding().padding(start = pageHorizontalPadding, end = gutter / 2).fillMaxWidth()
             details.forEach {
-                DetailEntry(it, onClick)
+                DetailEntry(it, modifier, onClick)
             }
-
             Spacer(Modifier.height(innerPadding.calculateBottomPadding()))
         }
         if (twoColumn) {
-            Spacer(Modifier.width(gutter))
             Column(
                 Modifier
                     .verticalScroll(rememberScrollState())
-                    .fillMaxWidth(0.65f)
-                    .padding(horizontal = pageHorizontalPadding)
+                    .weight(0.65f)
+                    .consumeWindowInsets(innerPadding.vertical())
             ) {
                 Spacer(Modifier.height(innerPadding.calculateTopPadding()))
+                val modifier = Modifier.safeDrawingPadding().padding(start = gutter / 2, end = pageHorizontalPadding).fillMaxWidth()
                 openDialog?.let { index ->
                     val detail = details[index]
-                    Text(detail.title, style = MaterialTheme.typography.titleLarge)
-                    Text(detail.subtitle, style = MaterialTheme.typography.titleMedium)
-                    Text(detail.body, style = MaterialTheme.typography.bodyMedium)
+                    Text(detail.title, modifier, style = MaterialTheme.typography.titleLarge)
+                    Text(detail.subtitle, modifier, style = MaterialTheme.typography.titleMedium)
+                    Text(detail.body, modifier, style = MaterialTheme.typography.bodyMedium)
                 } ?: run {
-                    Text(stringResource(R.string.detail_placeholder))
+                    Text(stringResource(R.string.detail_placeholder), modifier)
                 }
                 Spacer(Modifier.height(innerPadding.calculateBottomPadding()))
             }
@@ -146,9 +157,9 @@ fun DetailsList(
 }
 
 @Composable
-fun DetailEntry(detail: Detail, onClick: (Detail) -> Unit) {
+fun DetailEntry(detail: Detail, modifier: Modifier, onClick: (Detail) -> Unit) {
     Row(
-        Modifier
+        modifier
             .clickable { onClick(detail) }
             .fillMaxWidth()
             .padding(horizontal = pageHorizontalPadding, vertical = listVerticalPadding),

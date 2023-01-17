@@ -28,13 +28,13 @@
             android:resizeableActivity="true"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme"
+            android:theme="@style/NewTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning"
             tools:targetApi="n">
         <activity
                 android:name=".ui.MainActivity"
                 android:exported="true"
-                android:theme="@style/AppTheme">
+                android:theme="@style/NewTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

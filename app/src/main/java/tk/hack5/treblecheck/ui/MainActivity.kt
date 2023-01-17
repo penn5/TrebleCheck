@@ -29,6 +29,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.*
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.*
 import androidx.compose.material3.windowsizeclass.*
 import androidx.compose.runtime.Composable
@@ -40,6 +41,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -56,6 +58,7 @@ import tk.hack5.treblecheck.ui.theme.TrebleCheckTheme
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         setContent {
             val treble = remember {
@@ -215,16 +218,20 @@ fun MainActivityContent(
     donate: () -> Unit,
 ) {
     val navController = rememberNavController()
+    val topAppBarState = remember(navController.currentBackStackEntryAsState().value) { TopAppBarState(-Float.MAX_VALUE, 0f, 0f) }
+    val topAppBarScrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(topAppBarState)
 
     TrebleCheckTheme(darkTheme = false) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(stringResource(id = R.string.title)) },
+                    title = { Text(stringResource(id = R.string.title), Modifier.safeDrawingPadding()) },
+                    scrollBehavior = topAppBarScrollBehavior,
                 )
             },
             bottomBar = {
                 NavigationBar(Modifier.fillMaxWidth()) {
+                    // TODO add safeContentPadding
                     val navBackStackEntry by navController.currentBackStackEntryAsState()
                     screens.forEach { screen ->
                         val selected = remember(navBackStackEntry) { navController.backQueue.lastOrNull { entry -> screens.any { it.route == entry.destination.route } }?.destination?.route == screen.route }
@@ -250,6 +257,8 @@ fun MainActivityContent(
         ) { innerPadding ->
             NavHost(navController = navController, startDestination = "images") {
                 composable(Screens.Images.route) { Images(
+                    innerPadding,
+                    topAppBarScrollBehavior.nestedScrollConnection,
                     browseImages,
                     {
                         navController.navigate(Screens.Details.route) {
@@ -261,21 +270,21 @@ fun MainActivityContent(
                         }
                     },
                     reportABug,
-                    innerPadding,
                     treble.supported,
                     fileName
                 ) }
                 composable(Screens.Details.route) {
-                    DetailsList(innerPadding, windowSizeClass.widthSizeClass > WindowWidthSizeClass.Compact, treble, ab, dynamic, sar, binderArch, cpuArch)
+                    DetailsList(innerPadding, topAppBarScrollBehavior.nestedScrollConnection, windowSizeClass.widthSizeClass > WindowWidthSizeClass.Compact, treble, ab, dynamic, sar, binderArch, cpuArch)
                 }
-                composable(Screens.Licenses.route) { Licenses(innerPadding) }
+                composable(Screens.Licenses.route) { Licenses(innerPadding, topAppBarScrollBehavior.nestedScrollConnection) }
                 composable(Screens.Contribute.route) { Contribute(
+                    innerPadding,
+                    topAppBarScrollBehavior.nestedScrollConnection,
                     askAQuestion,
                     reportABug,
                     helpTranslate,
                     contributeCode,
-                    donate,
-                    innerPadding
+                    donate
                 ) }
             }
         }

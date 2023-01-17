@@ -26,6 +26,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -36,20 +38,24 @@ import tk.hack5.treblecheck.ui.imagesIconSize
 import tk.hack5.treblecheck.ui.pageHorizontalPadding
 import tk.hack5.treblecheck.ui.verticalSpacer
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun Images(
+    innerPadding: PaddingValues,
+    scrollConnection: NestedScrollConnection,
     browseImages: () -> Unit,
     navigateToDetails: () -> Unit,
     reportBug: () -> Unit,
-    innerPadding: PaddingValues,
     treble: Boolean?,
     fileName: String?,
 ) {
     Column(
         Modifier
             .verticalScroll(rememberScrollState())
+            .nestedScroll(scrollConnection)
             .fillMaxSize()
             .padding(innerPadding.horizontal())
+            .consumeWindowInsets(innerPadding)
             .padding(horizontal = pageHorizontalPadding),
         Arrangement.Center,
         Alignment.CenterHorizontally
@@ -58,14 +64,14 @@ fun Images(
         val icon: Painter
         val title: String
         val body: String
-        if (treble == null || fileName == null) {
-            icon = painterResource(R.drawable.bug)
-            title = stringResource(R.string.detection_error_title)
-            body = stringResource(R.string.detection_error_body)
-        } else if (treble == false) {
+         if (treble == false) {
             icon = painterResource(R.drawable.no_treble)
             title = stringResource(R.string.no_treble_title)
             body = stringResource(R.string.no_treble_body)
+        } else if (treble == null || fileName == null) {
+            icon = painterResource(R.drawable.bug)
+            title = stringResource(R.string.detection_error_title)
+            body = stringResource(R.string.detection_error_body)
         } else {
             icon = painterResource(R.drawable.images_found)
             title = stringResource(R.string.images_found_title)

@@ -18,26 +18,31 @@
 
 package tk.hack5.treblecheck.ui.screens
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.mikepenz.aboutlibraries.Libs
 import com.mikepenz.aboutlibraries.entity.*
 import com.mikepenz.aboutlibraries.ui.compose.Libraries
 import com.mikepenz.aboutlibraries.util.withContext
-import tk.hack5.treblecheck.BuildConfig
+import tk.hack5.treblecheck.*
 import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.ui.listVerticalPadding
 import tk.hack5.treblecheck.ui.pageHorizontalPadding
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun Licenses(innerPadding: PaddingValues) {
+fun Licenses(
+    innerPadding: PaddingValues,
+    scrollConnection: NestedScrollConnection,
+) {
     val libraries = remember { mutableStateOf<Libs?>(null) }
 
     val context = LocalContext.current
@@ -72,10 +77,19 @@ fun Licenses(innerPadding: PaddingValues) {
         null
     )
     val libs = libraries.value?.libraries ?: emptyList()
-    Libraries(
-        libraries = listOf(thisLibrary) + libs,
-        contentPadding = innerPadding,
-        itemContentPadding = PaddingValues(horizontal = pageHorizontalPadding, vertical = listVerticalPadding),
-        modifier = Modifier.fillMaxSize()
-    )
+    Box(Modifier.consumeWindowInsets(innerPadding)) {
+        val insets = WindowInsets.safeDrawing
+        Libraries(
+            libraries = listOf(thisLibrary) + libs,
+            contentPadding = innerPadding,
+            itemContentPadding = PaddingValues(
+                horizontal = pageHorizontalPadding,
+                vertical = listVerticalPadding
+            ) + insets.asPaddingValues().horizontal(),
+            modifier = Modifier
+                .fillMaxSize()
+                .nestedScroll(scrollConnection)
+                .consumeWindowInsets(WindowInsets.safeDrawing)
+        )
+    }
 }

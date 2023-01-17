@@ -22,7 +22,7 @@ package tk.hack5.treblecheck
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import tk.hack5.treblecheck.data.TrebleResult
 
@@ -69,15 +69,20 @@ val Optional<TrebleResult?>.supported: Boolean?
     }
 
 fun PaddingValues.horizontal(): PaddingValues = HorizontalPaddingValues(this)
+fun PaddingValues.vertical(): PaddingValues = PaddingValues(0.dp, calculateTopPadding(), 0.dp, calculateBottomPadding())
 
 private class HorizontalPaddingValues(private val paddingValues: PaddingValues) : PaddingValues by paddingValues {
-    override fun calculateTopPadding(): Dp {
-        return 0.dp
-    }
+    override fun calculateTopPadding() = 0.dp
+    override fun calculateBottomPadding() = 0.dp
+}
 
-    override fun calculateBottomPadding(): Dp {
-        return 0.dp
-    }
+operator fun PaddingValues.plus(other: PaddingValues): PaddingValues = SumPaddingValues(this, other)
+
+class SumPaddingValues(private val left: PaddingValues, private val right: PaddingValues) : PaddingValues {
+    override fun calculateTopPadding() = left.calculateTopPadding() + right.calculateTopPadding()
+    override fun calculateLeftPadding(layoutDirection: LayoutDirection) = left.calculateLeftPadding(layoutDirection) + right.calculateLeftPadding(layoutDirection)
+    override fun calculateBottomPadding() = left.calculateBottomPadding() + right.calculateBottomPadding()
+    override fun calculateRightPadding(layoutDirection: LayoutDirection) = left.calculateRightPadding(layoutDirection) + right.calculateRightPadding(layoutDirection)
 }
 
 private const val tag = "Utils"

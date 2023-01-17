@@ -158,7 +158,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
     implementation("com.google.android.material:material:1.7.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.github.penn5:donations:3.6.1")
     implementation("androidx.compose.ui:ui:1.3.3")
     implementation("androidx.compose.material3:material3:1.1.0-alpha04")
     implementation("androidx.compose.material3:material3-window-size-class:1.1.0-alpha04")
