@@ -1,0 +1,45 @@
+<!--
+  ~     Treble Info
+  ~     Copyright (C) 2019 RKBDI
+  ~
+  ~     This program is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     This program is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="108dp"
+        android:height="108dp"
+        android:viewportWidth="432"
+        android:viewportHeight="432">
+    <group>
+        <path
+                android:pathData="M0,0h432v432h-432z"
+                android:fillColor="#000000" />
+        <path
+                android:pathData="M432,0H0V432H432V0ZM216,348C288.902,348 348,288.902 348,216C348,143.098 288.902,84 216,84C143.098,84 84,143.098 84,216C84,288.902 143.098,348 216,348Z"
+                android:fillColor="#ffffff"
+                android:fillType="evenOdd" />
+        <path
+                android:pathData="M207,208H224V257H207V208Z"
+                android:fillColor="#ffffff" />
+        <path
+                android:pathData="M207,175H224V192H207V175Z"
+                android:fillColor="#ffffff" />
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h432v432h-432z M 0,0" />
+        <path
+                android:pathData="M258.917,121.669L173.084,121.583C163.642,121.583 155.917,129.308 155.917,138.75V293.25C155.917,302.692 163.642,310.417 173.084,310.417H258.917C268.359,310.417 276.084,302.692 276.084,293.25V138.75C276.084,129.308 268.359,121.669 258.917,121.669ZM258.917,276.083H173.084V155.917H258.917V276.083Z"
+                android:fillColor="#ffffff" />
+    </group>
+</vector>

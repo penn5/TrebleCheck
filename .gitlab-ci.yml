@@ -73,20 +73,12 @@ assembleDebug:
     paths:
       - app/build/outputs/
 
-# Run all tests, if any fails, interrupt the pipeline(fail it)
-debugTests:
+check:
   interruptible: true
   stage: test
   script:
-    - ./gradlew -Pci --console=plain :app:testDebug
+    - ./gradlew -Pci --console=plain :app:lintReportFreeDebug lintReportFreeRelease lintReportNonfreeDebug lintReportNonfreeRelease test
+    - '! grep -qv "^No issues found.$" app/build/reports/lint-results-*.txt || ( cat app/build/reports/lint-results-*.txt; exit 1; )'
   artifacts:
     reports:
       junit: app/build/test-results/**/TEST-*.xml
-
-# Check linting
-lintDebug:
-  interruptible: true
-  stage: test
-  script:
-    - ./gradlew -Pci --console=plain :app:lintDebug
-    - '[ "$(cat app/build/reports/lint-results-debug.txt)" = "No issues found." ] || ( cat app/build/reports/lint-results-debug.txt; exit 1; )'

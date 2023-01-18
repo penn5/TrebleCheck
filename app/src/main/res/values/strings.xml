@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="title">Treble Info</string>
-    <string name="back">Back</string>
     <!--
     <string name="sar_header">System as Root</string>
     <string name="arch_header">Architecture</string>
@@ -145,24 +144,6 @@
     <string name="dynamicpartitions_unknown">Unknown</string>
     <string name="dynamicpartitions_true">Enabled</string>
     <string name="dynamicpartitions_false">Unsupported</string>
-
-    <string name="vab_title">Virtual A/B</string>
-    <string name="vab_explanation">Virtual A/B allows a device to perform Seamless Upgrades without needing to permanently keep two copies of Android.</string>
-    <string name="vab_unknown">Unknown</string>
-    <string name="vab_true">Enabled</string>
-    <string name="vab_false">Unsupported</string>
-
-    <string name="vabr_title">Virtual A/B Retrofit</string>
-    <string name="vabr_explanation">Devices with retrofitted Virtual A/B have enough space in the super partition for two copies of Android.</string>
-    <string name="vabr_unknown">Unknown</string>
-    <string name="vabr_true">Retrofitted</string>
-    <string name="vabr_false">Not retrofitted</string>
-
-    <string name="vabc_title">Virtual A/B compression</string>
-    <string name="vabc_explanation">On devices that use Virtual A/B, the changes during updates made can be compressed. This reduces performance but decreases storage requirements.</string>
-    <string name="vabc_unknown">Unknown</string>
-    <string name="vabc_true">Enabled</string>
-    <string name="vabc_false">Unsupported</string>
 
     <string name="sar_title">System as Root</string>
     <string name="sar_explanation">The system partition can be mounted either as the root filesystem (System-as-Root) or in a subdirectory of the root ramdisk (System-as-System). Many GSIs incorrectly refer to this property as A/B. If a device uses System-as-Root, it requires an A/B GSI. Otherwise, it requires an A-only GSI.</string>

@@ -19,7 +19,6 @@
 package tk.hack5.treblecheck.ui.theme
 
 import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
@@ -38,13 +37,17 @@ private val LightColorPalette = lightColorScheme(
 )
 
 @Composable
-fun TrebleCheckTheme(darkTheme: Boolean = isSystemInDarkTheme(), dynamicColors: Boolean = true, content: @Composable () -> Unit) {
-    val supportsDynamicColors = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-    val colorScheme = when {
-        darkTheme && dynamicColors && supportsDynamicColors -> dynamicDarkColorScheme(LocalContext.current)
-        darkTheme -> DarkColorPalette
-        dynamicColors && supportsDynamicColors -> dynamicLightColorScheme(LocalContext.current)
-        else -> LightColorPalette
+fun TrebleCheckTheme(darkTheme: Boolean, content: @Composable () -> Unit) {
+    val colorScheme = if (darkTheme) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            dynamicDarkColorScheme(LocalContext.current)
+        } else {
+            DarkColorPalette
+        }
+    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        dynamicLightColorScheme(LocalContext.current)
+    } else {
+        LightColorPalette
     }
 
     MaterialTheme(
