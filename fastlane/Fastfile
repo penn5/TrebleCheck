@@ -20,9 +20,9 @@ platform :android do
     capture_android_screenshots()
   end
 
-  desc "Import translations and generate screenshots if release-ready"
+  desc "Import translations and icons and generate screenshots if release-ready"
   lane :pre_release do
-    gradle(task: "importTranslations importTranslationsForFastlane lint testDebugUnitTest")
+    gradle(task: "importTranslations importTranslationsForFastlane updateDrawables lint testDebugUnitTest")
     build_and_screengrab()
   end
 

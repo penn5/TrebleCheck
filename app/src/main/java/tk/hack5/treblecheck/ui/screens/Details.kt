@@ -162,7 +162,7 @@ fun DetailEntry(detail: Detail, modifier: Modifier, onClick: (Detail) -> Unit) {
         modifier
             .clickable { onClick(detail) }
             .fillMaxWidth()
-            .padding(horizontal = pageHorizontalPadding, vertical = listVerticalPadding),
+            .padding(vertical = listVerticalPadding),
         verticalAlignment = Alignment.Top
     ) {
         Icon(detail.icon, null, Modifier.size(36.dp), detail.iconTint)

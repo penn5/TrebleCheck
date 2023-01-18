@@ -19,9 +19,8 @@
 buildscript {
     val kotlinVersion = "1.8.0"
     extra["kotlinVersion"] = kotlinVersion
-    val composeVersion by extra("1.3.0")
+    val composeVersion by extra("1.4.0")
     repositories {
-        mavenLocal()
         google()
         mavenCentral()
         maven("https://jitpack.io")

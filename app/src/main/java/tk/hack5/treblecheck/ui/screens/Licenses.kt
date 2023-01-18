@@ -36,6 +36,7 @@ import tk.hack5.treblecheck.*
 import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.ui.listVerticalPadding
 import tk.hack5.treblecheck.ui.pageHorizontalPadding
+import tk.hack5.treblecheck.ui.theme.libraryColors
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -82,6 +83,7 @@ fun Licenses(
         Libraries(
             libraries = listOf(thisLibrary) + libs,
             contentPadding = innerPadding,
+            colors = libraryColors,
             itemContentPadding = PaddingValues(
                 horizontal = pageHorizontalPadding,
                 vertical = listVerticalPadding

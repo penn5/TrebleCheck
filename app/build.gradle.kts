@@ -189,7 +189,6 @@ dependencies {
     testImplementation("io.mockk:mockk:$mockkVersion")
     testImplementation("io.mockk:mockk-agent-jvm:$mockkVersion")
     testImplementation("xmlpull:xmlpull:1.1.3.1")
-    testImplementation("net.sf.kxml:kxml2:2.3.0")
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("tools.fastlane:screengrab:2.1.0")
