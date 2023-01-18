@@ -77,7 +77,7 @@ check:
   interruptible: true
   stage: test
   script:
-    - ./gradlew -Pci --console=plain :app:lintReportFreeDebug lintReportFreeRelease lintReportNonfreeDebug lintReportNonfreeRelease test
+    - ./gradlew -Pci --console=plain lintReportFreeDebug lintReportFreeRelease lintReportNonfreeDebug lintReportNonfreeRelease test
     - '! grep -qv "^No issues found.$" app/build/reports/lint-results-*.txt || ( cat app/build/reports/lint-results-*.txt; exit 1; )'
   artifacts:
     reports:

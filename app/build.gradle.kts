@@ -16,6 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import com.android.build.gradle.tasks.MergeResources
 import org.jetbrains.kotlin.konan.properties.loadProperties
 
 /*
@@ -201,4 +202,9 @@ dependencies {
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+}
+
+tasks.withType<MergeResources>().configureEach {
+    mustRunAfter("updateDrawables")
+    mustRunAfter("importTranslations")
 }

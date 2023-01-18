@@ -83,29 +83,23 @@ fun DetailsList(
     if (!twoColumn) {
         openDialog?.let { index ->
             val detail = details[index]
-            AlertDialog(onDismissRequest = { openDialog = null }) {
-                Surface(
-                    modifier = Modifier
-                        .wrapContentWidth()
-                        .wrapContentHeight(),
-                    shape = MaterialTheme.shapes.large
-                ) {
-                    Column(
-                        Modifier.padding(dialogPadding)
+            AlertDialog(
+                onDismissRequest = { openDialog = null },
+                confirmButton = {
+                    TextButton(
+                        onClick = { openDialog = null }
                     ) {
-                        Text(detail.title, style = MaterialTheme.typography.titleLarge)
+                        Text(stringResource(R.string.close_dialog))
+                    }
+                },
+                title = { Text(detail.title) },
+                text = {
+                    Column {
                         Text(detail.subtitle, style = MaterialTheme.typography.titleMedium)
                         Text(detail.body, style = MaterialTheme.typography.bodyMedium)
-                        Spacer(Modifier.height(verticalSpacer))
-                        TextButton(
-                            onClick = { openDialog = null },
-                            modifier = Modifier.align(Alignment.End)
-                        ) {
-                            Text(stringResource(R.string.close_dialog))
-                        }
                     }
                 }
-            }
+            )
         }
     }
 

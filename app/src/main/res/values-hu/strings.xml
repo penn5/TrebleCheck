@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">Treble Info</string>
+	<string name="sar_title">Rendszer Gyökérként</string>
+	<string name="ab_title">Zökkenőmentesen Frissítések</string>
+	<string name="donate">Adományozás</string>
+	<string name="dynamicpartitions_title">Dinamikus partíciók</string>
+</resources>

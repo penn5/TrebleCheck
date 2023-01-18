@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">ट्रेबल इन्फ़ो</string>
+	<string name="sar_title">सिस्टम एस रूट</string>
+	<string name="ab_title">सीमलेस अपग्रेड</string>
+	<string name="donate">दान करे</string>
+	<string name="dynamicpartitions_title">डायनेमिक विभाजनों</string>
+</resources>

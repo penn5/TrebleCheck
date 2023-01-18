@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">ព័ត៌មានខ្លីៗ</string>
+	<string name="sar_title">ប្រព័ន្ធជា Root</string>
+	<string name="ab_title">Seamless បាន​ upgrade</string>
+	<string name="donate">បរិច្ចាគ</string>
+	<string name="dynamicpartitions_title">Dynamic Partitions</string>
+</resources>

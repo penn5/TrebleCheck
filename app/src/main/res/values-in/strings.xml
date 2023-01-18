@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">Info Treble</string>
+	<string name="sar_title">Sistem sebagai Root</string>
+	<string name="ab_title">Seamless Upgrade</string>
+	<string name="donate">Donasi</string>
+	<string name="dynamicpartitions_title">Partisi Dinamis</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">Treble Info</string>
+	<string name="sar_title">Sistema como Root</string>
+	<string name="ab_title">Actualizaciones en segundo plano</string>
+	<string name="donate">Donar</string>
+	<string name="dynamicpartitions_title">Particiones Dinámicas</string>
+</resources>

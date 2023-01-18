@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">ട്രെബിൾ ഇൻഫോ</string>
+	<string name="sar_title">System as Root</string>
+	<string name="ab_title">തടസ്സമില്ലാത്ത പുതുക്കങ്ങൾ</string>
+	<string name="donate">സംഭാവനചെയ്യുക</string>
+	<string name="dynamicpartitions_title">ഡൈനാമിക് പാർട്ടീഷൻ</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">Thông tin Treble</string>
+	<string name="sar_title">System-as-Root</string>
+	<string name="ab_title">Nâng cấp Liền mạch</string>
+	<string name="donate">Ủng hộ</string>
+</resources>

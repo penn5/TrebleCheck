@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">Treble Bilgisi</string>
+	<string name="sar_title">System-as-root</string>
+	<string name="ab_title">Pürüzsüz Yükseltme</string>
+	<string name="donate">Bağış</string>
+	<string name="dynamicpartitions_title">Dinamik Bölümler</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">Treble 信息</string>
+	<string name="sar_title">System as Root</string>
+	<string name="ab_title">无缝系统更新</string>
+	<string name="donate">捐赠</string>
+	<string name="dynamicpartitions_title">动态分区</string>
+</resources>

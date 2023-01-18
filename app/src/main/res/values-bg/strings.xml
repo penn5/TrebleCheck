@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">Treble Info</string>
+	<string name="sar_title">System as Root</string>
+	<string name="ab_title">Seamless Upgrades</string>
+	<string name="donate">Дарете</string>
+	<string name="dynamicpartitions_title">Динамични Дялове</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="title">Treble informatie</string>
+	<string name="sar_title">Systeem als root</string>
+	<string name="ab_title">Naadloze upgrades</string>
+	<string name="donate">Doneer</string>
+	<string name="dynamicpartitions_title">Dynamische partities</string>
+</resources>
