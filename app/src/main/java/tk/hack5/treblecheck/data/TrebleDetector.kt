@@ -44,7 +44,7 @@ object TrebleDetector {
         Log.v(tag, "lite: $liteProp")
         if (liteProp == null)
             return null
-        val lite = liteProp == "lite"
+        val lite = liteProp == "true"
 
         val (manifests, legacy) = locateManifestFiles()
         Log.v(tag, "manifests: ${manifests.joinToString { it.absolutePath }}, legacy: $legacy")
