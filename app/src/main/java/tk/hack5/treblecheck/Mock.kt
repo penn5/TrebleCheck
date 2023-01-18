@@ -29,7 +29,7 @@ class Mock(
     val dynamic: Boolean?,
     val sar: Boolean?,
     val treble: Optional<TrebleResult?>,
-    val theme: Int,
+    val theme: Boolean,
 ) {
     companion object {
         @JvmField // needed for R8 to optimise away properly

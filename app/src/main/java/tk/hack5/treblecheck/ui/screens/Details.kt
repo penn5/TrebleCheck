@@ -166,7 +166,7 @@ fun DetailEntry(detail: Detail, modifier: Modifier, onClick: (Detail) -> Unit) {
         verticalAlignment = Alignment.Top
     ) {
         Icon(detail.icon, null, Modifier.size(36.dp), detail.iconTint)
-        Spacer(Modifier.width(cardIconSpacerWidth)) // TODO rename
+        Spacer(Modifier.width(cardIconSpacerWidth))
         Column {
             Text(detail.title, maxLines = 1, style = MaterialTheme.typography.titleMedium)
             Text(detail.subtitle, maxLines = 1, style = MaterialTheme.typography.bodyMedium)

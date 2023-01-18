@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~     Treble Info
   ~     Copyright (C) 2023 Hackintosh Five
   ~
@@ -18,6 +17,10 @@
   -->
 
 <resources>
-    <color name="colorPrimary">#092F42</color>
-    <color name="text">#FFFFFF</color>
+
+    <style name="NewTheme.29" parent="NewTheme.27">
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
+        <item name="android:enforceStatusBarContrast">false</item>
+    </style>
 </resources>

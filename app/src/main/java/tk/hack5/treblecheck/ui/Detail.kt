@@ -233,7 +233,7 @@ fun dynamicPartitionsEntry(dynamic: Boolean?): Detail {
 fun cpuArchEntry(cpuArch: CPUArch): Detail {
     val icon = painterResource(
         when (cpuArch) {
-            CPUArch.ARM64, CPUArch.X86_64 -> R.drawable.binder_arch_64_bit
+            CPUArch.ARM64, CPUArch.X86_64 -> R.drawable.cpu_arch_64_bit
             CPUArch.ARM32, CPUArch.X86 -> R.drawable.cpu_arch_32_bit
             is CPUArch.Unknown -> R.drawable.unknown
         }

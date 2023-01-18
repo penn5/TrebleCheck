@@ -18,8 +18,7 @@
   -->
 
 <resources>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
-        <item name="android:textColorPrimary">@color/text</item>
+    <style name="NewTheme.30" parent="NewTheme.29">
         <item name="android:windowLayoutInDisplayCutoutMode">always</item>
     </style>
 </resources>

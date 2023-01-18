@@ -18,7 +18,7 @@
   -->
 
 <resources>
-    <style name="AppTheme" parent="BaseAppTheme.27">
+    <style name="NewTheme.27.DayNight" parent="NewTheme.23">
         <item name="android:windowLightNavigationBar">true</item>
     </style>
 </resources>

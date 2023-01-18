@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~     Treble Info
   ~     Copyright (C) 2023 Hackintosh Five
   ~
@@ -17,10 +16,8 @@
   ~     along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="BaseAppTheme.27" parent="BaseAppTheme.23">
-        <!-- DO NOT TOUCH - b/158777985 -->
-        <item name="android:navigationBarColor">@color/translucent</item>
-        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+<resources>
+    <style name="NewTheme.27" parent="NewTheme.27.DayNight">
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
     </style>
 </resources>

@@ -28,13 +28,13 @@ import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.*
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.*
 import androidx.compose.material3.windowsizeclass.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -47,11 +47,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import tk.hack5.treblecheck.Optional
+import kotlinx.coroutines.launch
+import tk.hack5.treblecheck.*
 import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.data.*
-import tk.hack5.treblecheck.getOrNull
-import tk.hack5.treblecheck.supported
 import tk.hack5.treblecheck.ui.screens.*
 import tk.hack5.treblecheck.ui.theme.TrebleCheckTheme
 
@@ -61,6 +60,22 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         setContent {
+            var donationPopup by rememberSaveable { mutableStateOf<Boolean?>(null) }
+
+            val listener = remember {
+                object : IABListener {
+                    override fun paymentFailed() {
+                        donationPopup = false
+                    }
+
+                    override fun paymentSuccess() {
+                        donationPopup = true
+                    }
+                }
+            }
+            val scope = rememberCoroutineScope()
+            val iabHelper = remember { IABHelper(this, listener, scope) }
+
             val treble = remember {
                 try {
                     Optional.Value(TrebleDetector.getVndkData())
@@ -178,7 +193,9 @@ class MainActivity : ComponentActivity() {
                         Log.w(tag, "Launch browser failed", e)
                     }
                 },
-                { TODO() },
+                { scope.launch { iabHelper.makePayment() } },
+                donationPopup,
+                { donationPopup = null },
             )
         }
     }
@@ -190,7 +207,6 @@ sealed class RootScreen(route: String, @StringRes val title: Int, @DrawableRes v
 
 object Screens {
     object Images : RootScreen("images", R.string.screen_images, R.drawable.screen_images)
-    // TODO change icons
     object Details : RootScreen("details", R.string.screen_details, R.drawable.screen_details)
     object Licenses : RootScreen("licenses", R.string.screen_licenses, R.drawable.screen_licenses)
     object Contribute : RootScreen("contribute", R.string.screen_contribute, R.drawable.screen_contribute)
@@ -216,12 +232,14 @@ fun MainActivityContent(
     helpTranslate: () -> Unit,
     contributeCode: () -> Unit,
     donate: () -> Unit,
+    donationPopup: Boolean?,
+    dismissDonationPopup: () -> Unit,
 ) {
     val navController = rememberNavController()
     val topAppBarState = remember(navController.currentBackStackEntryAsState().value) { TopAppBarState(-Float.MAX_VALUE, 0f, 0f) }
     val topAppBarScrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(topAppBarState)
 
-    TrebleCheckTheme(darkTheme = false) {
+    TrebleCheckTheme(darkTheme = Mock.data?.theme ?: isSystemInDarkTheme()) {
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -255,6 +273,18 @@ fun MainActivityContent(
                 }
             }
         ) { innerPadding ->
+            donationPopup?.let {
+                AlertDialog(onDismissRequest = { dismissDonationPopup() }) {
+                    if (it) {
+                        Text(stringResource(R.string.donation_successful_title), style = MaterialTheme.typography.titleLarge)
+                        Text(stringResource(R.string.donation_successful_body), style = MaterialTheme.typography.bodyMedium)
+                    } else {
+                        Text(stringResource(R.string.donation_failed_title), style = MaterialTheme.typography.titleLarge)
+                        Text(stringResource(R.string.donation_failed_body), style = MaterialTheme.typography.bodyMedium)
+                    }
+                }
+            }
+
             NavHost(navController = navController, startDestination = "images") {
                 composable(Screens.Images.route) { Images(
                     innerPadding,
@@ -313,6 +343,8 @@ fun MainActivityPreview() {
             { },
             { },
             { },
+            { },
+            null,
             { },
         )
     }

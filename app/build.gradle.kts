@@ -33,6 +33,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("poeditor-android")
+    id("materialdesignicons-android")
     id("com.mikepenz.aboutlibraries.plugin") version "10.5.2"
 }
 
@@ -44,10 +45,14 @@ val kotlinVersion = rootProject.extra["kotlinVersion"]
 val mockkVersion = "1.12.3"
 
 fun com.android.build.api.dsl.BuildType.setupBilling(debugByDefault: Boolean) {
-    if (project.properties["gplayDebug"] as Boolean? ?: debugByDefault || !file("billing.properties").exists()) {
+    buildConfigField("String", "GPLAY_PRODUCT", "\"donate_4\"") // TODO
+
+    buildConfigField("String", "PAYPAL_EMAIL", "\"example@example.com\"")
+    buildConfigField("String", "PAYPAL_CURRENCY", "\"USD\"")
+    buildConfigField("String", "PAYPAL_DESCRIPTION", "\"Testing!\"")
+    /*if (project.properties["gplayDebug"] as Boolean? ?: debugByDefault || !file("billing.properties").exists()) {
         buildConfigField("boolean", "DONATIONS_DEBUG", "true")
-        buildConfigField("String", "GPLAY_PUBK", "\"\"")
-        buildConfigField("String[]", "GPLAY_KEYS", "{}")
+        buildConfigField("String", "GPLAY_PRODUCT", "\"android.test.purchased\"")
         buildConfigField("int[]", "GPLAY_VALS", "{}")
         buildConfigField("String", "PAYPAL_EMAIL", "\"example@example.com\"")
         buildConfigField("String", "PAYPAL_CURRENCY", "\"USD\"")
@@ -62,7 +67,7 @@ fun com.android.build.api.dsl.BuildType.setupBilling(debugByDefault: Boolean) {
             buildConfigField("String", "PAYPAL_CURRENCY", getProperty("paypalCurrency"))
             buildConfigField("String", "PAYPAL_DESCRIPTION", getProperty("paypalDescription"))
         }
-    }
+    }*/
 }
 
 android {
@@ -80,6 +85,15 @@ android {
         }
     }
 
+    flavorDimensions += "freedom"
+    productFlavors {
+        create("free") {
+            dimension = "freedom"
+        }
+        create("nonfree") {
+            dimension = "freedom"
+        }
+    }
 
     if (file("signing.properties").exists()) {
         loadProperties(file("signing.properties").absolutePath).run {
@@ -102,8 +116,8 @@ android {
             } else {
                 setupBilling(true)
             }
-            isMinifyEnabled = true
-            isShrinkResources = true
+            isMinifyEnabled = false // TODO true
+            isShrinkResources = false // TODO true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
         getByName("debug") {
@@ -169,6 +183,8 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.5.3")
     implementation("com.mikepenz:aboutlibraries-core:10.5.2")
     implementation("com.mikepenz:aboutlibraries-compose:10.5.2")
+    "nonfreeImplementation"("com.android.billingclient:billing:5.1.0")
+    "nonfreeImplementation"("com.android.billingclient:billing-ktx:5.1.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:$mockkVersion")
     testImplementation("io.mockk:mockk-agent-jvm:$mockkVersion")

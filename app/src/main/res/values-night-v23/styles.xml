@@ -18,8 +18,7 @@
   -->
 
 <resources>
-
-    <style name="BaseAppTheme.23" parent="BaseAppTheme">
+    <style name="NewTheme.23" parent="NewTheme.1">
         <item name="android:windowLightStatusBar">false</item>
     </style>
 </resources>

@@ -185,8 +185,16 @@
     <string name="binder_arch_32_bit">32-bit</string>
     <string name="binder_arch_64_bit">64-bit</string>
     <string name="binder_arch_unknown_version">Unknown, using version %d</string>
+
     <string name="no_browser">No web browser installed!</string>
+
     <string name="no_email">No email client installed!</string>
+
     <string name="close_dialog">Close</string>
     <string name="detail_placeholder">Select an item to view details</string>
+
+    <string name="donation_successful_title">Donation successful!</string>
+    <string name="donation_successful_body">Thank you for your support.</string>
+    <string name="donation_failed_title">Donation failed.</string>
+    <string name="donation_failed_body">Sorry, something went wrong… Please do try again later!</string>
 </resources>

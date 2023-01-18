@@ -17,57 +17,17 @@
   -->
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-
-    <style name="NewTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
-    </style>
-
-    <!-- Base application theme. -->
-    <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item> <!-- otherwise weird coloring of statusbar/navbar overlapping area in landscape -->
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColor">@color/text</item>
-        <item name="android:textColorPrimary">@color/text</item>
-        <item name="android:textColorSecondary">@color/text</item>
-        <item name="android:textColorTertiary">@color/text</item>
-        <item name="android:statusBarColor">@color/colorPrimary</item>
-        <item name="materialButtonStyle">@style/ButtonColor</item>
-
-        <item name="materialAlertDialogTheme">@style/DialogTheme</item>
-
-        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+    <style name="NewTheme.1" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
 
         <!-- DO NOT TOUCH - b/158777985 -->
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
-    <style name="BaseAppTheme.23" parent="BaseAppTheme" />
-    <style name="BaseAppTheme.27" parent="BaseAppTheme.23" />
+    <style name="NewTheme.23" parent="NewTheme.1" />
+    <style name="NewTheme.27" parent="NewTheme.23" />
+    <style name="NewTheme.29" parent="NewTheme.27" />
+    <style name="NewTheme.30" parent="NewTheme.29" />
 
-    <style name="AppTheme" parent="BaseAppTheme.27" />
-
-    <style name="AppTheme.NoActionBar" parent="AppTheme">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
-        <item name="android:textColorPrimary">@color/text</item>
-    </style>
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
-
-    <style name="ButtonColor" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">@color/text</item>
-    </style>
-
-    <style name="DialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="android:textColor">@color/text</item>
-        <item name="android:textColorPrimary">@color/text</item>
-        <item name="android:textColorSecondary">@color/text</item>
-        <item name="android:textColorTertiary">@color/text</item>
-    </style>
+    <style name="NewTheme" parent="NewTheme.30" />
 </resources>
