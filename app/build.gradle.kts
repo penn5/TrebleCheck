@@ -1,6 +1,6 @@
 /*
  *     Treble Info
- *     Copyright (C) 2023 Hackintosh Five
+ *     Copyright (C) 2019-2023 Hackintosh Five
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -15,19 +15,10 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 import com.android.build.gradle.tasks.MergeResources
 import org.jetbrains.kotlin.konan.properties.loadProperties
-
-/*
- * Sub-licenses:
- *         https://github.com/google/material-design-icons/blob/master/LICENSE
- *         https://github.com/Templarian/MaterialDesign/blob/master/LICENSE
- *         https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt
- * This project:
- *         Copyright (C) 2019 Penn Mackintosh
- *         Licensed under https://www.gnu.org/licenses/gpl-3.0.en.html
- */
 
 plugins {
     id("com.gladed.androidgitversion") version "0.4.14"
@@ -124,7 +115,6 @@ android {
         }
     }
     buildFeatures {
-        viewBinding = true
         compose = true
     }
 

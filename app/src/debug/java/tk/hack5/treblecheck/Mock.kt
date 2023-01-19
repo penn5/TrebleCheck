@@ -1,6 +1,6 @@
 /*
  *     Treble Info
- *     Copyright (C) 2023 Hackintosh Five
+ *     Copyright (C) 2021-2023 Hackintosh Five
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -15,6 +15,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 package tk.hack5.treblecheck
 

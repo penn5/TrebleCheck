@@ -1,6 +1,6 @@
 /*
  *     Treble Info
- *     Copyright (C) 2023 Hackintosh Five
+ *     Copyright (C) 2022-2023 Hackintosh Five
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -15,6 +15,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 package tk.hack5.treblecheck
 
@@ -23,7 +24,10 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import tk.hack5.treblecheck.data.Mount
 import tk.hack5.treblecheck.data.MountDetector
-import java.io.*
+import java.io.BufferedReader
+import java.io.InputStream
+import java.io.InputStreamReader
+import java.io.StringReader
 
 class MountDetectorTest {
     @Test

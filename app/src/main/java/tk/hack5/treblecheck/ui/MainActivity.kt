@@ -1,6 +1,6 @@
 /*
  *     Treble Info
- *     Copyright (C) 2023 Hackintosh Five
+ *     Copyright (C) 2022-2023 Hackintosh Five
  *
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -15,6 +15,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 package tk.hack5.treblecheck.ui
 
@@ -52,7 +53,6 @@ import tk.hack5.treblecheck.*
 import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.data.*
 import tk.hack5.treblecheck.ui.screens.*
-import tk.hack5.treblecheck.ui.theme.TrebleCheckTheme
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 class MainActivity : ComponentActivity() {
@@ -249,7 +249,7 @@ fun MainActivityContent(
             },
             bottomBar = {
                 NavigationBar(Modifier.fillMaxWidth()) {
-                    // TODO add safeContentPadding
+                    // TODO add safeContentPadding to navbar items
                     val navBackStackEntry by navController.currentBackStackEntryAsState()
                     screens.forEach { screen ->
                         val selected = remember(navBackStackEntry) { navController.backQueue.lastOrNull { entry -> screens.any { it.route == entry.destination.route } }?.destination?.route == screen.route }
@@ -274,15 +274,24 @@ fun MainActivityContent(
             }
         ) { innerPadding ->
             donationPopup?.let {
-                AlertDialog(onDismissRequest = { dismissDonationPopup() }) {
-                    if (it) {
-                        Text(stringResource(R.string.donation_successful_title), style = MaterialTheme.typography.titleLarge)
-                        Text(stringResource(R.string.donation_successful_body), style = MaterialTheme.typography.bodyMedium)
-                    } else {
-                        Text(stringResource(R.string.donation_failed_title), style = MaterialTheme.typography.titleLarge)
-                        Text(stringResource(R.string.donation_failed_body), style = MaterialTheme.typography.bodyMedium)
-                    }
-                }
+                AlertDialog(
+                    onDismissRequest = dismissDonationPopup,
+                    confirmButton = { TextButton(onClick = dismissDonationPopup) { Text(stringResource(R.string.close_dialog)) } },
+                    title = {
+                        if (it) {
+                            Text(stringResource(R.string.donation_successful_title))
+                        } else {
+                            Text(stringResource(R.string.donation_failed_title))
+                        }
+                    },
+                    text = {
+                        if (it) {
+                            Text(stringResource(R.string.donation_successful_body), style = MaterialTheme.typography.bodyMedium)
+                        } else {
+                            Text(stringResource(R.string.donation_failed_body), style = MaterialTheme.typography.bodyMedium)
+                        }
+                    },
+                )
             }
 
             NavHost(navController = navController, startDestination = "images") {
@@ -322,6 +331,7 @@ fun MainActivityContent(
 }
 
 
+@Suppress("BooleanLiteralArgument")
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Preview
 @Composable

@@ -15,12 +15,17 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+// SPDX-License-Identifier: GPL-3.0-or-later
 
-package tk.hack5.treblecheck.ui.theme
+package tk.hack5.treblecheck.ui
 
-import androidx.compose.material3.MaterialTheme
+import android.os.Build
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import com.mikepenz.aboutlibraries.ui.compose.LibraryColors
 import com.mikepenz.aboutlibraries.ui.compose.LibraryDefaults
 
@@ -37,3 +42,47 @@ val libraryColors: LibraryColors
         badgeBackgroundColor = MaterialTheme.colorScheme.primary,
         badgeContentColor = MaterialTheme.colorScheme.onPrimary,
     )
+
+// TODO better colors
+private val DarkColorPalette = darkColorScheme(
+    primary = Purple200,
+    secondary = Teal200,
+    tertiary = Purple700
+)
+
+private val LightColorPalette = lightColorScheme(
+    primary = Purple500,
+    secondary = Teal200,
+    tertiary = Purple700
+)
+
+val Shapes = Shapes(
+    small = RoundedCornerShape(4.dp),
+    medium = RoundedCornerShape(4.dp),
+    large = RoundedCornerShape(0.dp)
+)
+
+val Typography = Typography()
+
+@Composable
+fun TrebleCheckTheme(darkTheme: Boolean, content: @Composable () -> Unit) {
+    val colorScheme = if (darkTheme) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            dynamicDarkColorScheme(LocalContext.current)
+        } else {
+            DarkColorPalette
+        }
+    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        dynamicLightColorScheme(LocalContext.current)
+    } else {
+        LightColorPalette
+    }
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = Typography,
+        shapes = Shapes,
+        content = content
+    )
+
+}

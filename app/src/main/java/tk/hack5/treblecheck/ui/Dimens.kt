@@ -15,14 +15,13 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 package tk.hack5.treblecheck.ui
 
 import androidx.compose.ui.unit.dp
 
 val pageHorizontalPadding = 16.dp
-
-val dialogPadding = 16.dp
 
 val verticalSpacer = 32.dp
 

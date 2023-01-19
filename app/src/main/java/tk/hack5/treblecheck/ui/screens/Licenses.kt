@@ -15,6 +15,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 package tk.hack5.treblecheck.ui.screens
 
@@ -36,7 +37,7 @@ import tk.hack5.treblecheck.*
 import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.ui.listVerticalPadding
 import tk.hack5.treblecheck.ui.pageHorizontalPadding
-import tk.hack5.treblecheck.ui.theme.libraryColors
+import tk.hack5.treblecheck.ui.libraryColors
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
