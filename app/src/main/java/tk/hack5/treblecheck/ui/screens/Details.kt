@@ -43,7 +43,7 @@ import tk.hack5.treblecheck.getOrNull
 import tk.hack5.treblecheck.ui.*
 import tk.hack5.treblecheck.vertical
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun DetailsList(
     innerPadding: PaddingValues,
@@ -159,7 +159,7 @@ fun DetailEntry(detail: Detail, modifier: Modifier, onClick: (Detail) -> Unit) {
             .padding(vertical = listVerticalPadding),
         verticalAlignment = Alignment.Top
     ) {
-        Icon(detail.icon, null, Modifier.size(36.dp), detail.iconTint)
+        Icon(detail.icon, null, Modifier.size(36.dp), MaterialTheme.colorScheme.primary)
         Spacer(Modifier.width(cardIconSpacerWidth))
         Column {
             Text(detail.title, maxLines = 1, style = MaterialTheme.typography.titleMedium)

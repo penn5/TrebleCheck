@@ -18,9 +18,7 @@
 
 package tk.hack5.treblecheck.ui
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -30,7 +28,7 @@ import tk.hack5.treblecheck.data.BinderArch
 import tk.hack5.treblecheck.data.CPUArch
 import tk.hack5.treblecheck.data.TrebleResult
 
-data class Detail(val icon: Painter, val iconTint: Color, val title: String, val subtitle: String, val body: String)
+data class Detail(val icon: Painter, val title: String, val subtitle: String, val body: String)
 
 
 @Composable
@@ -44,13 +42,6 @@ fun trebleDetail(treble: Optional<TrebleResult?>): Detail {
             }
         }
     )
-    val tint = when (treble) {
-        is Optional.Nothing -> Error
-        is Optional.Value -> when (treble.value) {
-            null -> Red
-            else -> Green
-        }
-    }
     val subtitle = stringResource(
         when (treble) {
             is Optional.Nothing -> R.string.treble_unknown
@@ -62,7 +53,6 @@ fun trebleDetail(treble: Optional<TrebleResult?>): Detail {
     )
     return Detail(
         icon,
-        tint,
         stringResource(R.string.treble_title),
         subtitle,
         stringResource(R.string.treble_explanation)
@@ -72,11 +62,9 @@ fun trebleDetail(treble: Optional<TrebleResult?>): Detail {
 @Composable
 fun trebleVersionEntry(treble: TrebleResult): Detail {
     val icon = painterResource(R.drawable.treble_version)
-    val tint = Green
     val subtitle = stringResource(R.string.treble_version_subtitle, treble.vndkVersion, treble.vndkSubVersion)
     return Detail(
         icon,
-        tint,
         stringResource(R.string.treble_version_title),
         subtitle,
         stringResource(R.string.treble_version_explanation)
@@ -91,10 +79,6 @@ fun trebleLiteEntry(treble: TrebleResult): Detail {
             true -> R.drawable.treble_lite_true
         }
     )
-    val tint = when (treble.lite) {
-        false -> Green
-        true -> Orange
-    }
     val subtitle = stringResource(
         when (treble.lite) {
             false -> R.string.treble_lite_false
@@ -103,7 +87,6 @@ fun trebleLiteEntry(treble: TrebleResult): Detail {
     )
     return Detail(
         icon,
-        tint,
         stringResource(R.string.treble_lite_title),
         subtitle,
         stringResource(R.string.treble_lite_explanation)
@@ -118,10 +101,6 @@ fun trebleLegacyEntry(treble: TrebleResult): Detail {
             true -> R.drawable.treble_legacy_true
         }
     )
-    val tint = when (treble.legacy) {
-        false -> Green
-        true -> Orange
-    }
     val subtitle = stringResource(
         when (treble.legacy) {
             false -> R.string.treble_legacy_false
@@ -130,7 +109,6 @@ fun trebleLegacyEntry(treble: TrebleResult): Detail {
     )
     return Detail(
         icon,
-        tint,
         stringResource(R.string.treble_legacy_title),
         subtitle,
         stringResource(R.string.treble_legacy_explanation)
@@ -146,11 +124,6 @@ fun sarEntry(sar: Boolean?): Detail {
             true -> R.drawable.sar_true
         }
     )
-    val tint = when (sar) {
-        null -> Error
-        false -> Red
-        true -> Green
-    }
     val subtitle = stringResource(
         when (sar) {
             null -> R.string.sar_unknown
@@ -160,7 +133,6 @@ fun sarEntry(sar: Boolean?): Detail {
     )
     return Detail(
         icon,
-        tint,
         stringResource(R.string.sar_title),
         subtitle,
         stringResource(R.string.sar_explanation)
@@ -176,11 +148,6 @@ fun abEntry(ab: Boolean?): Detail {
             true -> R.drawable.ab_true
         }
     )
-    val tint = when (ab) {
-        null -> Error
-        false -> Red
-        true -> Green
-    }
     val subtitle = stringResource(
         when (ab) {
             null -> R.string.ab_unknown
@@ -190,7 +157,6 @@ fun abEntry(ab: Boolean?): Detail {
     )
     return Detail(
         icon,
-        tint,
         stringResource(R.string.ab_title),
         subtitle,
         stringResource(R.string.ab_explanation)
@@ -207,11 +173,6 @@ fun dynamicPartitionsEntry(dynamic: Boolean?): Detail {
             true -> R.drawable.dynamicpartitions_true
         }
     )
-    val tint = when (dynamic) {
-        null -> Error
-        false -> Red
-        true -> Green
-    }
     val subtitle = stringResource(
         when (dynamic) {
             null -> R.string.dynamicpartitions_unknown
@@ -221,7 +182,6 @@ fun dynamicPartitionsEntry(dynamic: Boolean?): Detail {
     )
     return Detail(
         icon,
-        tint,
         stringResource(R.string.dynamicpartitions_title),
         subtitle,
         stringResource(R.string.dynamicpartitions_explanation)
@@ -238,11 +198,6 @@ fun cpuArchEntry(cpuArch: CPUArch): Detail {
             is CPUArch.Unknown -> R.drawable.unknown
         }
     )
-    val tint = when (cpuArch) {
-        CPUArch.ARM64, CPUArch.X86_64 -> Green
-        CPUArch.ARM32, CPUArch.X86 -> Red
-        is CPUArch.Unknown -> Error
-    }
     val subtitle = if (cpuArch is CPUArch.Unknown) {
         cpuArch.archName?.let { stringResource(R.string.cpu_arch_unknown_name, it) } ?: stringResource(R.string.cpu_arch_unknown)
     } else {
@@ -258,7 +213,6 @@ fun cpuArchEntry(cpuArch: CPUArch): Detail {
     }
     return Detail(
         icon,
-        tint,
         stringResource(R.string.cpu_arch_title),
         subtitle,
         stringResource(R.string.cpu_arch_explanation)
@@ -274,11 +228,6 @@ fun binderArchEntry(binderArch: BinderArch): Detail {
             is BinderArch.Unknown -> R.drawable.unknown
         }
     )
-    val tint = when (binderArch) {
-        BinderArch.Binder8 -> Green
-        BinderArch.Binder7 -> Red
-        is BinderArch.Unknown -> Error
-    }
     val subtitle = if (binderArch is BinderArch.Unknown) {
         binderArch.binderVersion?.let { stringResource(R.string.binder_arch_unknown_version, it) } ?: stringResource(R.string.binder_arch_unknown)
     } else {
@@ -292,17 +241,8 @@ fun binderArchEntry(binderArch: BinderArch): Detail {
     }
     return Detail(
         icon,
-        tint,
         stringResource(R.string.binder_arch_title),
         subtitle,
         stringResource(R.string.binder_arch_explanation)
     )
 }
-
-
-private val Red: Color @Composable get() = MaterialTheme.colorScheme.primary
-private val Error: Color @Composable get() = Color.Red
-private val Orange: Color @Composable get() = MaterialTheme.colorScheme.primary
-private val Green: Color @Composable get() = MaterialTheme.colorScheme.primary
-private val Blue: Color @Composable get() = MaterialTheme.colorScheme.primary
-private val Neutral: Color @Composable get() = Green
