@@ -10,7 +10,7 @@ Code improvements are welcome! Just submit a merge request to this project.
 
 ## Translating
 
-You can translate at https://poeditor.com/join/project/Ol1euLyZSr and https://poeditor.com/join/project/XE92nUJKqN. Please request to join both then [send me an email](mailto:treble@hack5.dev) so that I can approve you.
+You can translate at https://poeditor.com/join/project/XE92nUJKqN. Please request to join then [send me an email](mailto:treble@hack5.dev) so that I can approve you.
 
 ## Download
 
