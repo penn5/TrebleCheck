@@ -91,6 +91,7 @@ class ScreenshotTaker(
     fun takeScreenshots() {
         Mock.data = Mock(ab, binderArch, cpuArch, dynamic, sar, Optional.Value(treble), theme)
         Snapshot.sendApplyNotifications()
+        composeTestRule.activityRule.scenario.recreate()
 
         runBlocking(Dispatchers.Main) {
             composeTestRule.activity.setTurnScreenOn(true)
