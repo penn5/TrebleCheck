@@ -25,7 +25,15 @@ import tk.hack5.treblecheck.data.BinderArch
 import tk.hack5.treblecheck.data.CPUArch
 import tk.hack5.treblecheck.data.TrebleResult
 
-class Mock {
+class Mock(
+    val ab: Boolean?,
+    val binderArch: BinderArch,
+    val cpuArch: CPUArch,
+    val dynamic: Boolean?,
+    val sar: Boolean?,
+    val treble: Optional<TrebleResult?>,
+    val theme: Boolean,
+) {
     companion object {
         @JvmField // needed for R8 to optimise away properly
         var data: Mock? = null
