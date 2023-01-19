@@ -100,6 +100,7 @@ fun Images(
         if (button) {
             OutlinedButton(navigateToDetails) { Text(stringResource(R.string.view_details)) }
         } else {
+            Spacer(Modifier.height(verticalSpacer))
             Button(navigateToDetails) { Text(stringResource(R.string.view_details)) }
         }
         Spacer(Modifier.height(innerPadding.calculateBottomPadding()))
