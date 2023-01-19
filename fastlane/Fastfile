@@ -38,13 +38,18 @@ platform :android do
                          release_status: "draft",
                          apk: "app/build/outputs/apk/nonfree/release/app-nonfree-release.apk",
                          skip_upload_images: true,
-                         mapping: "app/build/outputs/mapping/nonfree/release/mapping.txt")
+                         mapping: "app/build/outputs/mapping/nonfreeRelease/mapping.txt")
   end
 
   lane :release_to_gitlab do |options|
     upload_to_gitlab(version_name: options[:version] ? options[:version] : gradle(task: "androidGitVersionName", flags: "--quiet", print_command: false, print_command_output: false).strip,
                      project_id: 30453147,
-                     asset_paths: {"TrebleInfo-free.apk": "app/build/outputs/apk/free/release/app-free-release.apk", "TrebleInfo-nonfree.apk": "app/build/outputs/apk/nonfree/release/app-nonfree-release.apk"},
+                     asset_paths: {
+                                   "TrebleInfo-free.apk": "app/build/outputs/apk/free/release/app-free-release.apk",
+                                   "TrebleInfo-free.apk.mapping.txt": "app/build/outputs/mapping/freeRelease/mapping.txt",
+                                   "TrebleInfo-nonfree.apk": "app/build/outputs/apk/nonfree/release/app-nonfree-release.apk",
+                                   "TrebleInfo-nonfree.apk.mapping.txt": "app/build/outputs/mapping/nonfreeRelease/mapping.txt",
+                     },
                      token: File.read("../gitlab_token.txt").strip)
   end
 end
