@@ -19,6 +19,7 @@
 package tk.hack5.treblecheck
 
 import android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+import androidx.compose.runtime.snapshots.Snapshot
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
@@ -50,10 +51,6 @@ class ScreenshotTaker(
     private val theme: Boolean,
     private val tab: Int,
 ) {
-    init {
-        Mock.data = Mock(ab, BinderArch.Unknown(null), cpuArch, dynamic, sar, Optional.Value(treble), theme)
-    }
-
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
@@ -80,10 +77,10 @@ class ScreenshotTaker(
     }
 
     fun takeIdleScreenshot(i: Int) {
-
         runBlocking(Dispatchers.IO) {
             composeTestRule.waitForIdle()
         }
+
         Screengrab.screenshot(
             "$ab-${binderArch.bits}-${cpuArch.bits}-$dynamic-$sar-" +
                     "${treble?.legacy}-${treble?.lite}-${treble?.vndkVersion}-" +
@@ -94,6 +91,9 @@ class ScreenshotTaker(
 
     @Test
     fun takeScreenshots() {
+        Mock.data = Mock(ab, binderArch, cpuArch, dynamic, sar, Optional.Value(treble), theme)
+        Snapshot.sendApplyNotifications()
+
         runBlocking(Dispatchers.Main) {
             composeTestRule.activity.setTurnScreenOn(true)
             composeTestRule.activity.window.addFlags(FLAG_KEEP_SCREEN_ON)

@@ -18,7 +18,6 @@
   -->
 
 <resources>
-
     <style name="NewTheme.23" parent="NewTheme.1">
         <item name="android:windowLightStatusBar">true</item>
     </style>
