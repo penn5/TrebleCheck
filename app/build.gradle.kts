@@ -46,29 +46,21 @@ val kotlinVersion = rootProject.extra["kotlinVersion"]
 val mockkVersion = "1.12.3"
 
 fun com.android.build.api.dsl.BuildType.setupBilling(debugByDefault: Boolean) {
-    buildConfigField("String", "GPLAY_PRODUCT", "\"donate_4\"") // TODO
+    if (project.properties["gplayDebug"] as Boolean? ?: debugByDefault || !file("billing.properties").exists()) {
+        buildConfigField("String", "GPLAY_PRODUCT", "\"donate_4\"")
 
-    buildConfigField("String", "PAYPAL_EMAIL", "\"example@example.com\"")
-    buildConfigField("String", "PAYPAL_CURRENCY", "\"USD\"")
-    buildConfigField("String", "PAYPAL_DESCRIPTION", "\"Testing!\"")
-    /*if (project.properties["gplayDebug"] as Boolean? ?: debugByDefault || !file("billing.properties").exists()) {
-        buildConfigField("boolean", "DONATIONS_DEBUG", "true")
-        buildConfigField("String", "GPLAY_PRODUCT", "\"android.test.purchased\"")
-        buildConfigField("int[]", "GPLAY_VALS", "{}")
         buildConfigField("String", "PAYPAL_EMAIL", "\"example@example.com\"")
         buildConfigField("String", "PAYPAL_CURRENCY", "\"USD\"")
         buildConfigField("String", "PAYPAL_DESCRIPTION", "\"Testing!\"")
     } else {
         loadProperties(file("billing.properties").absolutePath).run {
-            buildConfigField("boolean", "DONATIONS_DEBUG", "false")
-            buildConfigField("String", "GPLAY_PUBK", getProperty("gplayPubk"))
-            buildConfigField("String[]", "GPLAY_KEYS", getProperty("gplayKeys"))
-            buildConfigField("int[]", "GPLAY_VALS", getProperty("gplayVals"))
+            buildConfigField("String", "GPLAY_PRODUCT", getProperty("gplayProduct"))
+
             buildConfigField("String", "PAYPAL_EMAIL", getProperty("paypalEmail"))
             buildConfigField("String", "PAYPAL_CURRENCY", getProperty("paypalCurrency"))
             buildConfigField("String", "PAYPAL_DESCRIPTION", getProperty("paypalDescription"))
         }
-    }*/
+    }
 }
 
 android {
@@ -117,8 +109,8 @@ android {
             } else {
                 setupBilling(true)
             }
-            isMinifyEnabled = false // TODO true
-            isShrinkResources = false // TODO true
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
         getByName("debug") {

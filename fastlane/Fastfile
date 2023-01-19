@@ -36,15 +36,15 @@ platform :android do
   lane :upload_to_play do |options|
     upload_to_play_store(track: options[:production] ? "production" : "beta",
                          release_status: "draft",
-                         apk: "app/build/outputs/apk/release/app-release.apk",
+                         apk: "app/build/outputs/apk/nonfree/release/app-nonfree-release.apk",
                          skip_upload_images: true,
-                         mapping: "app/build/outputs/mapping/release/mapping.txt")
+                         mapping: "app/build/outputs/mapping/nonfree/release/mapping.txt")
   end
 
   lane :release_to_gitlab do |options|
     upload_to_gitlab(version_name: options[:version] ? options[:version] : gradle(task: "androidGitVersionName", flags: "--quiet", print_command: false, print_command_output: false).strip,
                      project_id: 30453147,
-                     asset_paths: {"TrebleInfo.apk": "app/build/outputs/apk/release/app-release.apk"},
+                     asset_paths: {"TrebleInfo-free.apk": "app/build/outputs/apk/free/release/app-free-release.apk", "TrebleInfo-nonfree.apk": "app/build/outputs/apk/nonfree/release/app-nonfree-release.apk"},
                      token: File.read("../gitlab_token.txt").strip)
   end
 end

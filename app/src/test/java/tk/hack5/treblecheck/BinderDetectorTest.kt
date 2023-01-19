@@ -22,26 +22,29 @@ import io.mockk.every
 import io.mockk.mockkObject
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import tk.hack5.treblecheck.data.ArchDetector
-import tk.hack5.treblecheck.data.CPUArch
+import tk.hack5.treblecheck.data.BinderArch
+import tk.hack5.treblecheck.data.BinderDetector
 
-class ArchDetectorTest {
+class BinderDetectorTest {
     @Test
-    fun getArch() {
-        assertEquals(CPUArch.ARM32, testGetArch(arrayOf("armeabi-v7a")))
-        assertEquals(CPUArch.ARM64, testGetArch(arrayOf("arm64-v8a")))
-        assertEquals(CPUArch.X86_64, testGetArch(arrayOf("x86_64")))
-        assertEquals(CPUArch.X86, testGetArch(arrayOf("x86")))
-
-        assertEquals(CPUArch.Unknown("fancy new cpu"), testGetArch(arrayOf("fancy new cpu", "x86_64", "x86")))
+    fun getBinder() {
+        assertEquals(BinderArch.Unknown(6), testGetArch(6))
+        assertEquals(BinderArch.Unknown(null), testGetArch(null))
+        assertEquals(BinderArch.Binder7, testGetArch(7))
+        assertEquals(BinderArch.Binder8, testGetArch(8))
+        assertEquals(BinderArch.Unknown(9), testGetArch(9))
     }
 
-    private fun testGetArch(supportedAbis: Array<String>): CPUArch {
-        lateinit var ret: CPUArch
+    private fun testGetArch(binderVersion: Int?): BinderArch {
+        lateinit var ret: BinderArch
+        mockkObject(BinderDetector) {
+            if (binderVersion != null) {
+                every { BinderDetector.getBinderVersion() } returns binderVersion
+            } else {
+                every { BinderDetector.getBinderVersion() } throws UnsatisfiedLinkError()
+            }
 
-        mockkObject(ArchDetector) {
-            every { ArchDetector.SUPPORTED_ABIS } returns supportedAbis
-            ret = ArchDetector.getCPUArch()
+            ret = BinderDetector.getBinderArch()
         }
 
         return ret

@@ -34,6 +34,6 @@ val libraryColors: LibraryColors
     get() = LibraryDefaults.libraryColors(
         backgroundColor = MaterialTheme.colorScheme.background,
         contentColor = MaterialTheme.colorScheme.onBackground,
-        badgeBackgroundColor = MaterialTheme.colorScheme.primaryContainer,
-        badgeContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+        badgeBackgroundColor = MaterialTheme.colorScheme.primary,
+        badgeContentColor = MaterialTheme.colorScheme.onPrimary,
     )

@@ -64,31 +64,44 @@ fun Images(
         val icon: Painter
         val title: String
         val body: String
-         if (treble == false) {
+        val bug: Boolean
+        if (treble == false) {
             icon = painterResource(R.drawable.no_treble)
             title = stringResource(R.string.no_treble_title)
             body = stringResource(R.string.no_treble_body)
+            bug = false
         } else if (treble == null || fileName == null) {
             icon = painterResource(R.drawable.bug)
             title = stringResource(R.string.detection_error_title)
             body = stringResource(R.string.detection_error_body)
+            bug = true
         } else {
             icon = painterResource(R.drawable.images_found)
             title = stringResource(R.string.images_found_title)
             body = stringResource(R.string.images_found_body)
+            bug = false
         }
         Icon(icon, null, Modifier.size(imagesIconSize), tint = MaterialTheme.colorScheme.primary)
         Text(title, style = MaterialTheme.typography.titleLarge, textAlign = TextAlign.Center)
         Text(body, textAlign = TextAlign.Center)
-        if (treble == null || fileName == null) {
+        val button: Boolean
+        if (bug) {
             Spacer(Modifier.height(verticalSpacer))
             Button(reportBug) { Text(stringResource(R.string.report_this_bug)) }
-        } else {
+            button = true
+        } else if (treble != false && fileName != null) {
             Text(fileName, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
             Spacer(Modifier.height(verticalSpacer))
             Button(browseImages) { Text(stringResource(R.string.browse_images)) }
+            button = true
+        } else {
+            button = false
         }
-        OutlinedButton(navigateToDetails) { Text(stringResource(R.string.view_details)) }
+        if (button) {
+            OutlinedButton(navigateToDetails) { Text(stringResource(R.string.view_details)) }
+        } else {
+            Button(navigateToDetails) { Text(stringResource(R.string.view_details)) }
+        }
         Spacer(Modifier.height(innerPadding.calculateBottomPadding()))
     }
 }

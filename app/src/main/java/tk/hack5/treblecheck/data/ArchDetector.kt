@@ -23,11 +23,12 @@ import android.util.Log
 import tk.hack5.treblecheck.Mock
 
 object ArchDetector {
+    internal val SUPPORTED_ABIS get() = Build.SUPPORTED_ABIS
 
     fun getCPUArch(): CPUArch {
         Mock.data?.let { return it.cpuArch }
 
-        val cpuArch = Build.SUPPORTED_ABIS.firstOrNull()
+        val cpuArch = SUPPORTED_ABIS.firstOrNull()
 
         Log.v(tag, "cpuArch: $cpuArch")
 

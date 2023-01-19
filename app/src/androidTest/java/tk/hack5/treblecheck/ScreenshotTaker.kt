@@ -50,6 +50,10 @@ class ScreenshotTaker(
     private val theme: Boolean,
     private val tab: Int,
 ) {
+    init {
+        Mock.data = Mock(ab, BinderArch.Unknown(null), cpuArch, dynamic, sar, Optional.Value(treble), theme)
+    }
+
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
@@ -90,8 +94,6 @@ class ScreenshotTaker(
 
     @Test
     fun takeScreenshots() {
-        Mock.data = Mock(ab, binderArch, cpuArch, dynamic, sar, Optional.Value(treble), theme)
-
         runBlocking(Dispatchers.Main) {
             composeTestRule.activity.setTurnScreenOn(true)
             composeTestRule.activity.window.addFlags(FLAG_KEEP_SCREEN_ON)
@@ -100,9 +102,5 @@ class ScreenshotTaker(
         val tabs = composeTestRule.onAllNodes(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Tab))
         tabs.get(tab).performClick()
         takeIdleScreenshot(tab)
-
-        composeTestRule.activityRule.scenario.close()
     }
 }
-
-private const val tag = "ScreenshotTaker"
