@@ -17,7 +17,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-locales Dir.entries("fastlane/metadata/android").select { |entry| entry != "." && entry != ".." }
+locales Dir.entries("fastlane/metadata/android").select { |entry| !entry.start_with?(".") && Dir.exist?("fastlane/metadata/android/#{entry}") }
 clear_previous_screenshots true
 tests_apk_path 'app/build/outputs/apk/androidTest/free/debug/app-free-debug-androidTest.apk'
 app_apk_path 'app/build/outputs/apk/free/debug/app-free-debug.apk'
