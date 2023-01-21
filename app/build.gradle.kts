@@ -66,9 +66,6 @@ android {
             versionName = getProperty("versionName")
         }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     flavorDimensions += "freedom"
@@ -156,15 +153,11 @@ project.poeditor.projectId = 285385
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
     implementation("com.google.android.material:material:1.7.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.compose.ui:ui:1.3.3")
     implementation("androidx.compose.material3:material3:1.1.0-alpha04")
     implementation("androidx.compose.material3:material3-window-size-class:1.1.0-alpha04")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.3.3")
     implementation("androidx.compose.animation:animation:1.4.0-alpha04")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation("androidx.activity:activity-compose:1.6.1")
-    implementation("androidx.compose.animation:animation-graphics:1.3.3")
     implementation("androidx.navigation:navigation-compose:2.5.3")
     implementation("com.mikepenz:aboutlibraries-core:10.5.2")
     "nonfreeImplementation"("com.android.billingclient:billing:5.1.0")
@@ -175,16 +168,11 @@ dependencies {
     testImplementation("xmlpull:xmlpull:1.1.3.1")
     testImplementation("net.sf.kxml:kxml2:2.3.0")
     androidTestImplementation("androidx.test:runner:1.5.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("tools.fastlane:screengrab:2.1.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.3.3")
     debugImplementation("androidx.compose.ui:ui-tooling:1.3.3")
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+    implementation("androidx.compose.ui:ui-tooling-preview:1.3.3")
 }
 
 tasks.withType<MergeResources>().configureEach {
