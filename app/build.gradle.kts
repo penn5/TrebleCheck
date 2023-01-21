@@ -62,7 +62,7 @@ android {
         minSdk = 22
         targetSdk = 33
         loadProperties(file("version.properties").absolutePath).run {
-            versionCode = getProperty("versionCode").filter { it.isDigit() }.toInt(10)
+            versionCode = getProperty("versionCode").toInt()
             versionName = getProperty("versionName")
         }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
