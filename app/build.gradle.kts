@@ -21,7 +21,6 @@ import com.android.build.gradle.tasks.MergeResources
 import org.jetbrains.kotlin.konan.properties.loadProperties
 
 plugins {
-    id("com.gladed.androidgitversion") version "0.4.14"
     id("com.android.application")
     kotlin("android")
     id("poeditor-android")
@@ -62,8 +61,10 @@ android {
         applicationId = "tk.hack5.treblecheck"
         minSdk = 22
         targetSdk = 33
-        versionCode = androidGitVersion.code()
-        versionName = androidGitVersion.name()
+        loadProperties(file("version.properties").absolutePath).run {
+            versionCode = getProperty("versionCode").filter { it.isDigit() }.toInt(10)
+            versionName = getProperty("versionName")
+        }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -189,4 +190,10 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 tasks.withType<MergeResources>().configureEach {
     mustRunAfter("updateDrawables")
     mustRunAfter("importTranslations")
+}
+
+tasks.register("versionName") {
+    doLast {
+        println(android.defaultConfig.versionName)
+    }
 }

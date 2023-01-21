@@ -61,7 +61,7 @@ platform :android do
   end
 
   lane :release_to_gitlab do |options|
-    upload_to_gitlab(version_name: options[:version] ? options[:version] : gradle(task: "androidGitVersionName", flags: "--quiet", print_command: false, print_command_output: false).strip,
+    upload_to_gitlab(version_name: options[:version] ? options[:version] : gradle(task "versionName", flags: "--quiet", print_command: false, print_command_output: false).strip,
                      project_id: 30453147,
                      asset_paths: {
                                    "TrebleInfo-free.apk": "app/build/outputs/apk/free/release/app-free-release.apk",
