@@ -21,3 +21,4 @@ locales Dir.entries("fastlane/metadata/android").select { |entry| entry != "." &
 clear_previous_screenshots true
 tests_apk_path 'app/build/outputs/apk/androidTest/free/debug/app-free-debug-androidTest.apk'
 app_apk_path 'app/build/outputs/apk/free/debug/app-free-debug.apk'
+use_timestamp_suffix false
