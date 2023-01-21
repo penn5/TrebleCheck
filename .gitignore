@@ -324,7 +324,7 @@ obj/
 # Fastlane
 /gitlab_token.txt
 /fastlane/report.xml
-
+/fastlane/metadata/android/screenshots.html
 
 # Contains private data
 /.idea/deploymentTargetDropDown.xml
