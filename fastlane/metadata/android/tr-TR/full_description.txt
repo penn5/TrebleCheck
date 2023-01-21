@@ -1,0 +1,15 @@
+Bu uygulama Treble GSI gereksinimlerini kontrol etmenize ve cihazına uygun GSI türünü seçmenize yardımcı olur.
+
+Ana özellikler:
+* Treble desteğini kontrol eder
+* Treble/VNDK sürümünü kontrol eder
+* Sistem mimarisini kontrol eder
+* A-Only - A/B durumunu kontrol eder
+* binder64 durumunu kontrol eder
+* System-as-root durumunu kontrol eder
+* Root izni gerektirmez
+* Karanlık mod ve MD3'yi destekler
+
+GSI'ları internetten bulabilirsiniz (mesela XDA forumları)
+
+Kaynak Kodu: https://gitlab.com/hackintosh5/TrebleInfo

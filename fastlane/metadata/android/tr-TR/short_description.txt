@@ -1,0 +1,1 @@
+Project Treble, A/B ve GSI kurulumu için mimariyi kontrol etmenize yarar.

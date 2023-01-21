@@ -1,0 +1,1 @@
+Verifica a existência de Treble, layout e arquitetura da imagem necessária.

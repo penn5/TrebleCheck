@@ -1,0 +1,2 @@
+- Fully rewritten to use Material 3 and Jetpack Compose UI
+- Support Monet theming by default

@@ -1,0 +1,15 @@
+Ši programa leidžia jums patikrinti Treble GSI reikalavimus ir nustatyti tinkamą jūsų prietaiso GSI tipą.
+
+Pagrindiniai bruožai:
+* Patikrinkite Treble palaikymo būseną
+* Patikrinkite Treble/VNDK versiją
+* Patikrinkite sistemos architektūrą
+* Patikrinkite tik A arba A/B būseną
+* Patikrinkite „binderšė“
+* Patikrinkite, ar įrenginys palaiko Sistema kaip Šaknį
+* Nereikia prieigos prie šaknies
+* Palaiko tamsiąją temą ir „Material Design 3“
+
+Galite atsisiųsti GSI iš viso interneto. Peržiūrėkite XDA forumus (nesusijusius), kur rasite paprastų instrukcijų.
+
+Pirminis Kodas: https://gitlab.com/hackintosh5/TrebleInfo

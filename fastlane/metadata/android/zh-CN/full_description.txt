@@ -1,0 +1,17 @@
+这个应用可以帮助您检查您的设备是否符合 Treble 通用系统镜像（GSI）的运行需求，以及为您的设备确定匹配的通用系统镜像类别。
+
+主要功能：
+* 检查 Treble 支持情况
+* 检查 Treble/VNDK 版本
+* 检查 系统架构
+* 检查 A-Only 或 A/B 状态
+* 检查 是否带 binder64
+* 检查 是否为 System-as-Root
+* 无需 Root 权限
+* 支持深色模式和 MD2
+
+你可以在网络上找到通用系统映像，在 XDA 论坛（非开发者附属）上也可以找到一些简单的教程。
+
+源代码：https://gitlab.com/hackintosh5/TrebleInfo
+贡献翻译：https://poeditor.com/join/project/Ol1euLyZSr 以及 https://poeditor.com/join/project/XE92nUJKqN
+（为避免广告骚扰，在 POEditor 上贡献翻译需要获得我的批准，请通过应用内的按钮用英语联系我）

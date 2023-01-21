@@ -1,0 +1,1 @@
+Vérifier la compatibilité Treble, partitions A/B et l'architecture pour les GSIs

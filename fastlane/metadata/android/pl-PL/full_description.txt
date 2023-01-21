@@ -1,0 +1,19 @@
+
+Ta aplikacja pozwala ci sprawdzić wymagania Treble GSI i potwierdzić
+ obsługiwany typ GSI na Twoje urządzenie.
+
+
+Funkcje:
+
+* Sprawdzanie obsługi projektu Treble
+* Sprawdzanie wersji Treble/VDNK
+* Sprawdzanie architektury systemu
+* Sprawdzanie obsługi A-Only bądź A/B
+* Sprawdzanie Binder64
+* Sprawdzanie System As Root
+* Nie wymaga roota
+* Obsługuje Ciemny Motyw i MD3
+
+Możesz pobrać systemy GSI z całego internetu. Sprawdź Fora XDA (nie jesteśmy z nimi związani) po proste poradniki.
+
+Kod Źródłowy: https://gitlab.com/hackintosh5/TrebleInfo

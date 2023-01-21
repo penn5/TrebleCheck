@@ -1,0 +1,15 @@
+此應用程式允許您檢查 Treble GSI 要求並確定設備的正確 GSI 類型。
+
+主要特點：
+* 檢查 Treble 支援狀態
+* 檢查 Treble / VNDK 版本
+* 檢查系統架構
+* 檢查 A-Only 或 A/B 狀態
+* 檢查 binder64
+* 檢查 SaR(System-as-Root)
+* 不需要 root 權限
+* 支持深色主題並使用 Material Design 3
+
+您可以從網路上下載 GSI。 瀏覽 XDA 論壇以獲得一些簡單的教學。
+
+原始碼：https://gitlab.com/hackintosh5/TrebleInfo

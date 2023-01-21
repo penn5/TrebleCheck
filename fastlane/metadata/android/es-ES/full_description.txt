@@ -1,0 +1,15 @@
+Esta App te permite verificar los requisitos de Treble GSI y determinar el tipo correcto de GSI para el dispositivo.
+
+Características clave:
+* Verifica el status Treble
+* Verifica la version Treble/VNDK
+* Verifica la arquitectura de sistema
+* Verifica si tu dispositivo es A-only o A/B
+* Comprueba si tu dispositivo usa binder64
+* Comprueba si tu dispositivo usa System-as-root
+* No necesita acceso root
+* Soporta el tema oscuro y MD3
+
+Puedes descargar GSIs en la Internet. Visita XDA Forums (no afiliados) para tutoriales fáciles.
+
+Código fuente: https://gitlab.com/hackintosh5/TrebleInfo

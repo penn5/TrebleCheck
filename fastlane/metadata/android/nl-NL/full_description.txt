@@ -1,0 +1,16 @@
+Met deze applicatie kan je checken of jouw apparaat voldoet aan de vereisten voor project Treble, ook kan je kijken welk type GSI je gebruiken moet.
+
+Belangrijkste functies:
+* Check Treble ondersteuningsstatus
+* Check Treble/VNDK versie
+* Check systeem architectuur
+* Check A-Only of A/B status
+* Check voor binder64
+* Check voor System-as-Root
+* Heeft geen root nodig
+* Heeft een donkere modus en MD3
+
+Je kan GSIs van internet downloaden. Check het XDA Forum (geen partner)
+voor goed te begrijpen instructies
+
+Source Code: https://gitlab.com/hackintosh5/TrebleInfo
