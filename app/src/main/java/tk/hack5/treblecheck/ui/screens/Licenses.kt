@@ -68,12 +68,12 @@ fun Licenses(
         ),
         setOf(
             License(
-                SpdxLicense.GPL_3_0_only.fullName,
-                SpdxLicense.GPL_3_0_only.getUrl(),
+                SpdxLicense.GPL_3_0_or_later.fullName,
+                SpdxLicense.GPL_3_0_or_later.getUrl(),
                 null,
-                SpdxLicense.GPL_3_0_only.id,
+                SpdxLicense.GPL_3_0_or_later.id,
                 context.resources.openRawResource(R.raw.license).bufferedReader().readText(),
-                SpdxLicense.GPL_3_0_only.id
+                SpdxLicense.GPL_3_0_or_later.id
             )
         ),
         setOf(),
