@@ -2,7 +2,7 @@
 <resources>
 	<string name="title">Treble Info</string>
 	<string name="sar_title">Sistema com a Root</string>
-	<string name="ab_title">Actualitzacions en segon pla.</string>
+	<string name="ab_title">Actualitzacions en segon pla</string>
 	<string name="donate">Donar</string>
 	<string name="dynamicpartitions_title">Particions Dinàmiques</string>
 </resources>
