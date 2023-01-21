@@ -17,4 +17,13 @@
  */
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    includeBuild("poeditor-android")
+    includeBuild("materialdesignicons-android")
+}
 include(":app")
