@@ -20,24 +20,25 @@
 package tk.hack5.treblecheck.ui.screens
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import com.mikepenz.aboutlibraries.Libs
 import com.mikepenz.aboutlibraries.entity.*
-import com.mikepenz.aboutlibraries.ui.compose.Libraries
 import com.mikepenz.aboutlibraries.util.withContext
 import tk.hack5.treblecheck.*
 import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.ui.listVerticalPadding
 import tk.hack5.treblecheck.ui.pageHorizontalPadding
-import tk.hack5.treblecheck.ui.libraryColors
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -79,20 +80,80 @@ fun Licenses(
         null
     )
     val libs = libraries.value?.libraries ?: emptyList()
-    Box(Modifier.consumeWindowInsets(innerPadding)) {
-        val insets = WindowInsets.safeDrawing
-        Libraries(
-            libraries = listOf(thisLibrary) + libs,
-            contentPadding = innerPadding,
-            colors = libraryColors,
-            itemContentPadding = PaddingValues(
-                horizontal = pageHorizontalPadding,
-                vertical = listVerticalPadding
-            ) + insets.asPaddingValues().horizontal(),
-            modifier = Modifier
-                .fillMaxSize()
-                .nestedScroll(scrollConnection)
-                .consumeWindowInsets(WindowInsets.safeDrawing)
+
+    val allLibs = listOf(thisLibrary) + libs
+
+    Libraries(innerPadding, scrollConnection, allLibs)
+}
+
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
+@Composable
+fun Libraries(innerPadding: PaddingValues, scrollConnection: NestedScrollConnection, allLibs: List<Library>) {
+    val columnPadding = WindowInsets.safeDrawing.asPaddingValues().vertical() + innerPadding
+    var openLicense by remember { mutableStateOf<License?>(null) }
+
+    openLicense?.let {
+        AlertDialog(
+            onDismissRequest = { openLicense = null },
+            confirmButton = {
+                TextButton(onClick = { openLicense = null }) {
+                    Text(stringResource(R.string.close_dialog))
+                }
+            },
+            title = {
+                Text(it.name)
+            },
+            text = {
+                it.licenseContent?.let { content ->
+                    Column(Modifier.verticalScroll(rememberScrollState())) {
+                        Text(content)
+                    }
+                }
+            }
         )
+    }
+
+    LazyColumn(
+        Modifier
+            .fillMaxSize()
+            .nestedScroll(scrollConnection)
+            .consumeWindowInsets(columnPadding),
+        contentPadding = columnPadding
+    ) {
+        for (library in allLibs) {
+            item {
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = listVerticalPadding, horizontal = pageHorizontalPadding)
+                        .safeDrawingPadding()
+                ) {
+                    Row {
+                        Text(
+                            library.name,
+                            Modifier.weight(1f),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                        library.artifactVersion?.let {
+                            Text(
+                                it,
+                                Modifier
+                                    .padding(start = 8.dp),
+                                style = MaterialTheme.typography.bodySmall
+                            )
+                        }
+                    }
+                    (library.organization?.name ?: library.developers.firstOrNull()?.name)?.let { Text(it) }
+                    library.licenses.forEach {
+                        SuggestionChip(
+                            onClick = { openLicense = it },
+                            label = { Text(it.name) }
+                        )
+                    }
+                }
+            }
+        }
     }
 }

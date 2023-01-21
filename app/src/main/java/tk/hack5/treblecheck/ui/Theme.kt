@@ -26,22 +26,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.mikepenz.aboutlibraries.ui.compose.LibraryColors
-import com.mikepenz.aboutlibraries.ui.compose.LibraryDefaults
 
 val Purple200 = Color(0xFFBB86FC)
 val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
-
-val libraryColors: LibraryColors
-    @Composable
-    get() = LibraryDefaults.libraryColors(
-        backgroundColor = MaterialTheme.colorScheme.background,
-        contentColor = MaterialTheme.colorScheme.onBackground,
-        badgeBackgroundColor = MaterialTheme.colorScheme.primary,
-        badgeContentColor = MaterialTheme.colorScheme.onPrimary,
-    )
 
 // TODO better colors
 private val DarkColorPalette = darkColorScheme(

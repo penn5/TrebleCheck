@@ -31,6 +31,7 @@ plugins {
 
 aboutLibraries {
     configPath = projectDir.resolve("librariesConfig").toString()
+    excludeFields = arrayOf("generated")
 }
 
 val kotlinVersion = rootProject.extra["kotlinVersion"]
@@ -165,7 +166,6 @@ dependencies {
     implementation("androidx.compose.animation:animation-graphics:1.3.3")
     implementation("androidx.navigation:navigation-compose:2.5.3")
     implementation("com.mikepenz:aboutlibraries-core:10.5.2")
-    implementation("com.mikepenz:aboutlibraries-compose:10.5.2")
     "nonfreeImplementation"("com.android.billingclient:billing:5.1.0")
     "nonfreeImplementation"("com.android.billingclient:billing-ktx:5.1.0")
     testImplementation("junit:junit:4.13.2")
