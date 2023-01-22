@@ -21,6 +21,7 @@ package tk.hack5.treblecheck.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
@@ -89,7 +90,7 @@ fun Licenses(
 @OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun Libraries(innerPadding: PaddingValues, scrollConnection: NestedScrollConnection, allLibs: List<Library>) {
-    val columnPadding = WindowInsets.safeDrawing.asPaddingValues().vertical() + innerPadding
+    val columnPadding = innerPadding
     var openLicense by remember { mutableStateOf<License?>(null) }
 
     openLicense?.let {
@@ -120,38 +121,36 @@ fun Libraries(innerPadding: PaddingValues, scrollConnection: NestedScrollConnect
             .consumeWindowInsets(columnPadding),
         contentPadding = columnPadding
     ) {
-        for (library in allLibs) {
-            item {
-                Column(
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = listVerticalPadding, horizontal = pageHorizontalPadding)
-                        .safeDrawingPadding()
-                ) {
-                    Row {
+        items(allLibs) { library ->
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = listVerticalPadding, horizontal = pageHorizontalPadding)
+                    .safeDrawingPadding()
+            ) {
+                Row {
+                    Text(
+                        library.name,
+                        Modifier.weight(1f),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                    library.artifactVersion?.let {
                         Text(
-                            library.name,
-                            Modifier.weight(1f),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            style = MaterialTheme.typography.titleLarge
-                        )
-                        library.artifactVersion?.let {
-                            Text(
-                                it,
-                                Modifier
-                                    .padding(start = 8.dp),
-                                style = MaterialTheme.typography.bodySmall
-                            )
-                        }
-                    }
-                    (library.organization?.name ?: library.developers.firstOrNull()?.name)?.let { Text(it) }
-                    library.licenses.forEach {
-                        SuggestionChip(
-                            onClick = { openLicense = it },
-                            label = { Text(it.name) }
+                            it,
+                            Modifier
+                                .padding(start = 8.dp),
+                            style = MaterialTheme.typography.bodySmall
                         )
                     }
+                }
+                (library.organization?.name ?: library.developers.firstOrNull()?.name)?.let { Text(it) }
+                library.licenses.forEach {
+                    SuggestionChip(
+                        onClick = { openLicense = it },
+                        label = { Text(it.name) }
+                    )
                 }
             }
         }

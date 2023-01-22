@@ -30,8 +30,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.*
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.material3.windowsizeclass.*
 import androidx.compose.runtime.*
@@ -243,13 +242,20 @@ fun MainActivityContent(
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(stringResource(id = R.string.title), Modifier.safeDrawingPadding()) },
+                    title = {
+                        Text(stringResource(id = R.string.title), Modifier.padding(WindowInsets.safeDrawing.asPaddingValues().horizontal()))
+                            },
                     scrollBehavior = topAppBarScrollBehavior,
+                    // disable elevation
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.surface, scrolledContainerColor = MaterialTheme.colorScheme.surface)
                 )
             },
             bottomBar = {
-                NavigationBar(Modifier.fillMaxWidth()) {
-                    // TODO add safeContentPadding to navbar items
+                NavigationBar(
+                    Modifier.fillMaxWidth(),
+                    // handle large waterfalls
+                    windowInsets = WindowInsets.safeContent.only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal)
+                ) {
                     val navBackStackEntry by navController.currentBackStackEntryAsState()
                     screens.forEach { screen ->
                         val selected = remember(navBackStackEntry) { navController.backQueue.lastOrNull { entry -> screens.any { it.route == entry.destination.route } }?.destination?.route == screen.route }
@@ -274,6 +280,7 @@ fun MainActivityContent(
             }
         ) { innerPadding ->
             donationPopup?.let {
+                // TODO does a dialog handle inset padding automatically?
                 AlertDialog(
                     onDismissRequest = dismissDonationPopup,
                     confirmButton = { TextButton(onClick = dismissDonationPopup) { Text(stringResource(R.string.close_dialog)) } },

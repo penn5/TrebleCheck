@@ -104,14 +104,7 @@ fun DetailsList(
         }
     }
 
-    Row(
-        Modifier
-            .fillMaxSize(),
-            //.padding(innerPadding.horizontal())
-            //.consumeWindowInsets(innerPadding.horizontal())
-            //.padding(horizontal = pageHorizontalPadding),
-        //if (twoColumn) Arrangement.Center else Arrangement.Start
-    ) {
+    Row(Modifier.fillMaxSize()) {
         Column(
             Modifier
                 .nestedScroll(scrollConnection)
@@ -153,18 +146,18 @@ fun DetailsList(
 
 @Composable
 fun DetailEntry(detail: Detail, modifier: Modifier, onClick: (Detail) -> Unit) {
-    Row(
-        modifier
-            .clickable { onClick(detail) }
+    Box(
+        Modifier
             .fillMaxWidth()
-            .padding(vertical = listVerticalPadding),
-        verticalAlignment = Alignment.Top
+            .clickable { onClick(detail) }
     ) {
-        Icon(detail.icon, null, Modifier.size(36.dp), MaterialTheme.colorScheme.primary)
-        Spacer(Modifier.width(cardIconSpacerWidth))
-        Column {
-            Text(detail.title, maxLines = 1, style = MaterialTheme.typography.titleMedium)
-            Text(detail.subtitle, maxLines = 1, style = MaterialTheme.typography.bodyMedium)
+        Row(modifier.padding(vertical = listVerticalPadding), verticalAlignment = Alignment.Top) {
+            Icon(detail.icon, null, Modifier.size(36.dp), MaterialTheme.colorScheme.primary)
+            Spacer(Modifier.width(cardIconSpacerWidth))
+            Column {
+                Text(detail.title, maxLines = 1, style = MaterialTheme.typography.titleMedium)
+                Text(detail.subtitle, maxLines = 1, style = MaterialTheme.typography.bodyMedium)
+            }
         }
     }
 }
