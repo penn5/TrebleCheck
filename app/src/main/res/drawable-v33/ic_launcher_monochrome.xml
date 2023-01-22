@@ -25,13 +25,6 @@
         android:viewportHeight="432">
     <group>
         <path
-                android:pathData="M0,0h432v432h-432z"
-                android:fillColor="#000000" />
-        <path
-                android:pathData="M432,0H0V432H432V0ZM216,348C288.902,348 348,288.902 348,216C348,143.098 288.902,84 216,84C143.098,84 84,143.098 84,216C84,288.902 143.098,348 216,348Z"
-                android:fillColor="#ffffff"
-                android:fillType="evenOdd" />
-        <path
                 android:pathData="M207,208H224V257H207V208Z"
                 android:fillColor="#ffffff" />
         <path

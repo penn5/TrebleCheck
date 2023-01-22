@@ -109,7 +109,7 @@ fun DetailsList(
             Modifier
                 .nestedScroll(scrollConnection)
                 .verticalScroll(rememberScrollState())
-                .weight(0.35f)
+                .weight(0.5f)
                 .consumeWindowInsets(innerPadding.vertical()),
             horizontalAlignment = if (twoColumn) Alignment.End else Alignment.Start
         ) {
@@ -125,7 +125,7 @@ fun DetailsList(
             Column(
                 Modifier
                     .verticalScroll(rememberScrollState())
-                    .weight(0.65f)
+                    .weight(0.5f)
                     .consumeWindowInsets(innerPadding.vertical())
             ) {
                 Spacer(Modifier.height(innerPadding.calculateTopPadding()))

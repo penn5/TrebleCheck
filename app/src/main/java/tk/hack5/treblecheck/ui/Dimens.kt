@@ -33,4 +33,4 @@ val imagesIconSize = 48.dp
 
 val gutter = 16.dp
 
-// TODO https://m3.material.io/foundations/adaptive-design/large-screens/overview#f42c09a8-0bd5-4cca-8960-5471e515f1da
+// maybe we should implement https://m3.material.io/foundations/adaptive-design/large-screens/overview#f42c09a8-0bd5-4cca-8960-5471e515f1da

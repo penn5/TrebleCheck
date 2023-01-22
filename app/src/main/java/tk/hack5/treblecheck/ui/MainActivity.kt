@@ -254,7 +254,7 @@ fun MainActivityContent(
                 NavigationBar(
                     Modifier.fillMaxWidth(),
                     // handle large waterfalls
-                    windowInsets = WindowInsets.safeContent.only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal)
+                    windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom + WindowInsetsSides.Horizontal)
                 ) {
                     val navBackStackEntry by navController.currentBackStackEntryAsState()
                     screens.forEach { screen ->
@@ -262,7 +262,7 @@ fun MainActivityContent(
                         NavigationBarItem(
                             selected = selected,
                             icon = { Icon(painterResource(screen.icon), null) },
-                            label = { Text(stringResource(screen.title)) },
+                            label = { Text(stringResource(screen.title), maxLines = 1) },
                             onClick = {
                                 if (navController.currentDestination?.route != screen.route) {
                                     navController.navigate(screen.route) {
@@ -280,7 +280,6 @@ fun MainActivityContent(
             }
         ) { innerPadding ->
             donationPopup?.let {
-                // TODO does a dialog handle inset padding automatically?
                 AlertDialog(
                     onDismissRequest = dismissDonationPopup,
                     confirmButton = { TextButton(onClick = dismissDonationPopup) { Text(stringResource(R.string.close_dialog)) } },
