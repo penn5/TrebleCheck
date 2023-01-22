@@ -44,4 +44,7 @@ allprojects {
 
 tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
+    gradle.includedBuilds.forEach {
+        dependsOn(it.task(":clean"))
+    }
 }
