@@ -1,0 +1,3 @@
+- Réécriture totale de l'application pour utiliser Material 3 et Jetpack Compose UI
+- Utiliser le système de thèmes Monet par défaut
+- Ajout d'informations sur les droits d'auteur des libraries
