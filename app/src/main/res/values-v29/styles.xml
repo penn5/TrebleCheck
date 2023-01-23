@@ -21,7 +21,7 @@
 
     <style name="NewTheme.29" parent="NewTheme.27">
         <item name="android:forceDarkAllowed">false</item>
-        <item name="android:enforceNavigationBarContrast">true</item>
-        <item name="android:enforceStatusBarContrast">true</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
+        <item name="android:enforceStatusBarContrast">false</item>
     </style>
 </resources>
