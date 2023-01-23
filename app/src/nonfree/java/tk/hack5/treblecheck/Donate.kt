@@ -130,10 +130,16 @@ class GoogleIABHelper(private val activity: Activity, private val listener: IABL
             .build()
         val products = billingClient.queryProductDetails(query)
         if (products.billingResult.responseCode != BillingClient.BillingResponseCode.OK) {
-            throw RuntimeException("Query product details failed with ${products.billingResult}")
+            Log.e(tag, "Query product details failed with ${products.billingResult}")
+            listener.paymentFailed()
+            return
         }
         val productDetails = products.productDetailsList?.singleOrNull()
-        productDetails ?: throw RuntimeException("Query product details failed with $products")
+        productDetails ?: run {
+            Log.e(tag, "Query product details failed with $products")
+            listener.paymentFailed()
+            return
+        }
         val productDetailsParams = ProductDetailsParams.newBuilder()
             .setProductDetails(productDetails)
             .build()
@@ -145,36 +151,10 @@ class GoogleIABHelper(private val activity: Activity, private val listener: IABL
         val billingResult = billingClient.launchBillingFlow(activity, billingFlowParams)
 
         if (billingResult.responseCode != BillingClient.BillingResponseCode.OK) {
-            throw RuntimeException("Launch billing flow failed with $billingResult")
+            Log.e(tag, "Launch billing flow failed with $billingResult")
+            listener.paymentFailed()
+            return
         }
-
-        /*
-
-        Log.d(tag, "Getting SKUs for $productId")
-        val skuDetails = SkuDetailsParams.newBuilder()
-            .setSkusList(listOf(productId))
-            .setType(BillingClient.SkuType.INAPP)
-            .build()
-        ensureConnected {
-            billingClient.querySkuDetailsAsync(skuDetails) {
-                    billingResult: BillingResult, skuDetails: MutableList<SkuDetails>? ->
-                if (billingResult.responseCode != BillingClient.BillingResponseCode.OK)
-                    listener.donationFailed()
-                else {
-                    if (skuDetails?.size != 1) {
-                        Log.e(tag, "No SKU available for donation. Check you are passing correct productId and that it is valid on Google servers $skuDetails")
-                        listener.donationFailed()
-                    } else {
-                        val params = BillingFlowParams.newBuilder()
-                            .setSkuDetails(skuDetails[0])
-                            .build()
-                        ensureConnected {
-                            billingClient.launchBillingFlow(activity, params)
-                        }
-                    }
-                }
-            }
-        }*/
     }
 }
 
