@@ -63,7 +63,7 @@ fun trebleDetail(treble: Optional<TrebleResult?>): Detail {
 @Composable
 fun trebleVersionEntry(treble: TrebleResult): Detail {
     val icon = painterResource(R.drawable.treble_version)
-    val subtitle = stringResource(R.string.treble_version_subtitle, treble.vndkVersion, treble.vndkSubVersion)
+    val subtitle = "${treble.vndkVersion}.${treble.vndkSubVersion}"
     return Detail(
         icon,
         stringResource(R.string.treble_version_title),
