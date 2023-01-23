@@ -97,6 +97,7 @@ fun DetailsList(
                 text = {
                     Column {
                         Text(detail.subtitle, style = MaterialTheme.typography.titleMedium)
+                        Spacer(Modifier.height(spacerBelowStatusInDetailDialog))
                         Text(detail.body, style = MaterialTheme.typography.bodyMedium)
                     }
                 }

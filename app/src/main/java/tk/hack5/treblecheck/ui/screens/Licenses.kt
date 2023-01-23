@@ -41,7 +41,6 @@ import tk.hack5.treblecheck.R
 import tk.hack5.treblecheck.ui.listVerticalPadding
 import tk.hack5.treblecheck.ui.pageHorizontalPadding
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun Licenses(
     innerPadding: PaddingValues,
@@ -87,10 +86,9 @@ fun Licenses(
     Libraries(innerPadding, scrollConnection, allLibs)
 }
 
-@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun Libraries(innerPadding: PaddingValues, scrollConnection: NestedScrollConnection, allLibs: List<Library>) {
-    val columnPadding = innerPadding
     var openLicense by remember { mutableStateOf<License?>(null) }
 
     openLicense?.let {
@@ -118,8 +116,8 @@ fun Libraries(innerPadding: PaddingValues, scrollConnection: NestedScrollConnect
         Modifier
             .fillMaxSize()
             .nestedScroll(scrollConnection)
-            .consumeWindowInsets(columnPadding),
-        contentPadding = columnPadding
+            .consumeWindowInsets(innerPadding),
+        contentPadding = innerPadding
     ) {
         items(allLibs) { library ->
             Column(
@@ -145,12 +143,19 @@ fun Libraries(innerPadding: PaddingValues, scrollConnection: NestedScrollConnect
                         )
                     }
                 }
-                (library.organization?.name ?: library.developers.firstOrNull()?.name)?.let { Text(it) }
-                library.licenses.forEach {
-                    SuggestionChip(
-                        onClick = { openLicense = it },
-                        label = { Text(it.name) }
+                (library.organization?.name ?: library.developers.firstOrNull()?.name)?.let {
+                    Text(
+                        it
                     )
+                }
+                FlowRow {
+                    library.licenses.forEach {
+                        OutlinedButton(
+                            onClick = { openLicense = it }
+                        ) {
+                            Text(it.name)
+                        }
+                    }
                 }
             }
         }
