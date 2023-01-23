@@ -31,7 +31,7 @@
 	<string name="treble_version_title">VNDK version</string>
 	<string name="treble_version_explanation">The VNDK version is the version of Android that the vendor was designed to run with. Using a newer version of Android may result in missing features, and you cannot use an older version.</string>
 	<string name="treble_lite_title">VNDK Lite</string>
-	<string name="treble_lite_explanation">VNDK Lite does not isolate all libraries between the vendor and system partitions. This reduces storage requirements but reduces compatibility guarantees, compared to a fully isolated VNDK configuration.</string>
+	<string name="treble_lite_explanation">The VNDK configuration is responsible for enforcing separation between different parts of the system. VNDK Lite relaxes this requirement, reducing storage requirements at the cost of compatibility guarantees.</string>
 	<string name="treble_lite_true">VNDK is in lite mode</string>
 	<string name="treble_lite_false">Full linker separation available</string>
 	<string name="treble_legacy_title">Manifest location</string>
