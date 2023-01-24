@@ -176,7 +176,7 @@ class MainActivity : ComponentActivity() {
                     }
                 },
                 {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://gitlab.com/hackintosh5/TrebleInfo#translating"))
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://gitlab.com/hackintosh5/TrebleInfo/-/blob/dev/TRANSLATING.md"))
                     try {
                         startActivity(intent)
                     } catch (e: ActivityNotFoundException) {
