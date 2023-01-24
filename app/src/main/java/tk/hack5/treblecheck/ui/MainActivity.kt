@@ -154,7 +154,7 @@ class MainActivity : ComponentActivity() {
                 {
                     val intent = Intent(Intent.ACTION_SENDTO).apply {
                         data = Uri.parse("mailto:")
-                        putExtra(Intent.EXTRA_EMAIL, arrayOf("contact-project+hackintosh5-trebleinfo-30453147-issue-@incoming.gitlab.com"))
+                        putExtra(Intent.EXTRA_EMAIL, arrayOf("contact-project+trebleinfo-trebleinfo-30453147-issue-@incoming.gitlab.com"))
                     }
                     try {
                         startActivity(intent)
@@ -176,7 +176,7 @@ class MainActivity : ComponentActivity() {
                     }
                 },
                 {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://gitlab.com/hackintosh5/TrebleInfo/-/blob/dev/TRANSLATING.md"))
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://gitlab.com/TrebleInfo/TrebleInfo/-/blob/dev/TRANSLATING.md"))
                     try {
                         startActivity(intent)
                     } catch (e: ActivityNotFoundException) {
@@ -185,7 +185,7 @@ class MainActivity : ComponentActivity() {
                     }
                 },
                 {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://gitlab.com/hackintosh5/TrebleInfo#contributing"))
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://gitlab.com/TrebleInfo/TrebleInfo#contributing"))
                     try {
                         startActivity(intent)
                     } catch (e: ActivityNotFoundException) {

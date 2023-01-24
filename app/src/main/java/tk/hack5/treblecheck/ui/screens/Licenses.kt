@@ -63,8 +63,8 @@ fun Licenses(
         null,
         Scm(
             "https://hack5.dev/about/projects/TrebleInfo",
-            "scm:git:ssh://git@gitlab.com/hackintosh5/TrebleInfo.git",
-            "scm:git:https://gitlab.com/hackintosh5/TrebleInfo.git"
+            "scm:git:ssh://git@gitlab.com/TrebleInfo/TrebleInfo.git",
+            "scm:git:https://gitlab.com/TrebleInfo/TrebleInfo.git"
         ),
         setOf(
             License(
