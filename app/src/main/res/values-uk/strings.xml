@@ -16,7 +16,6 @@
 	<string name="images_found_body">Ваш пристрій повідомляє про підтримку Project Treble. Необхідний тип зображення:</string>
 	<string name="browse_images">Дивитися фото</string>
 	<string name="view_details">Дивитися деталі</string>
-	<string name="report_this_bug">Повідомити про баг</string>
 	<string name="ask_a_question">Запитати питання</string>
 	<string name="report_a_bug">Повідомити про баг</string>
 	<string name="help_translate">Допомогти перекласти</string>
@@ -24,7 +23,6 @@
 	<string name="treble_explanation">Project Treble надає стандартний інтерфейс для спілкування з обладнанням пристрою. Це дозволяє виробникам пристроїв створювати оновлення швидше, оскільки апаратні інтерфейси не потребують оновлення.</string>
 	<string name="treble_unknown">Невідомий</string>
 	<string name="treble_true">Підтримуваний</string>
-	<string name="treble_false">ґНепідтримуваний</string>
 	<string name="treble_version_title">VNDK версія</string>
 	<string name="treble_version_explanation">Версія VNDK — це версія Android, для роботи з якою розроблявся вендор. Використання новішої версії Android може призвести до втрати функцій, і ви не зможете використовувати старішу версію.</string>
 	<string name="treble_lite_explanation">Конфігурація VNDK відповідає за забезпечення поділу між різними частинами системи. VNDK Lite послаблює цю вимогу, зменшуючи вимоги до пам’яті за рахунок гарантій сумісності.</string>

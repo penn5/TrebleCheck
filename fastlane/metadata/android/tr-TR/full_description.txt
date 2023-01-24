@@ -11,5 +11,3 @@ Ana özellikler:
 * Karanlık mod ve MD3'yi destekler
 
 GSI'ları internetten bulabilirsiniz (mesela XDA forumları)
-
-Kaynak Kodu: https://gitlab.com/hackintosh5/TrebleInfo

@@ -11,5 +11,3 @@
 * 支持深色主題並使用 Material Design 3
 
 您可以從網路上下載 GSI。 瀏覽 XDA 論壇以獲得一些簡單的教學。
-
-原始碼：https://gitlab.com/hackintosh5/TrebleInfo

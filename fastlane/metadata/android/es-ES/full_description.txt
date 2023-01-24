@@ -11,5 +11,3 @@ Características clave:
 * Soporta el tema oscuro y MD3
 
 Puedes descargar GSIs en la Internet. Visita XDA Forums (no afiliados) para tutoriales fáciles.
-
-Código fuente: https://gitlab.com/hackintosh5/TrebleInfo

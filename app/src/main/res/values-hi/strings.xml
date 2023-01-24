@@ -5,4 +5,8 @@
 	<string name="ab_title">सीमलेस अपग्रेड</string>
 	<string name="donate">दान करे</string>
 	<string name="dynamicpartitions_title">डायनेमिक विभाजनों</string>
+	<string name="screen_images">इमेजिस</string>
+	<string name="screen_details">जानकारी</string>
+	<string name="screen_licenses">लाइसेंस</string>
+	<string name="screen_contribute">योगदान</string>
 </resources>

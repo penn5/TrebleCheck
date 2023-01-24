@@ -11,5 +11,3 @@ Key features:
 * Supports dark theme and uses Material Design 3
 
 You can download GSIs from all over the internet. Check the XDA Forums (not affiliated) for some easy tutorials.
-
-Source Code: https://gitlab.com/hackintosh5/TrebleInfo

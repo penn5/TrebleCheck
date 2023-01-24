@@ -1,4 +1,6 @@
-Ez az alkalmazás lehetővé teszi a Treble GSI követelményeinek ellenőrzését és a készülék megfelelő GSI típusának meghatározását. Főbb jellemzők: 
+Ez az alkalmazás lehetővé teszi a Treble GSI követelményeinek ellenőrzését és a készülék megfelelő GSI típusának meghatározását.
+
+Főbb jellemzők:
 * Ellenőrizze a Treble támogatás állapotát 
 * Ellenőrizze a Treble / VNDK verziót 
 * Ellenőrizze a rendszer architektúráját 
@@ -6,7 +8,6 @@ Ez az alkalmazás lehetővé teszi a Treble GSI követelményeinek ellenőrzés�
 * Ellenőrizze a kötőanyagot64 
 * Ellenőrizze, hogy van-e Rendszer Gyökérként 
 * Nem igényel root hozzáférést 
-* Támogatja a sötét témát és az MD3 
-A GSI-ket az egész internetről letöltheti. Keresse meg az XDA fórumokat (nem tagjai) néhány egyszerű oktatóanyagért.
+* Támogatja a sötét témát és az MD3
 
-Forráskód: https://gitlab.com/hackintosh5/TrebleInfo
+A GSI-ket az egész internetről letöltheti. Keresse meg az XDA fórumokat (nem tagjai) néhány egyszerű oktatóanyagért.

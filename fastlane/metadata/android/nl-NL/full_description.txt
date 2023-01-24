@@ -10,7 +10,4 @@ Belangrijkste functies:
 * Heeft geen root nodig
 * Heeft een donkere modus en MD3
 
-Je kan GSIs van internet downloaden. Check het XDA Forum (geen partner)
-voor goed te begrijpen instructies
-
-Source Code: https://gitlab.com/hackintosh5/TrebleInfo
+Je kan GSIs van internet downloaden. Check het XDA Forum (geen partner) voor goed te begrijpen instructies.

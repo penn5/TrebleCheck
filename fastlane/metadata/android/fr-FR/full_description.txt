@@ -8,8 +8,6 @@ Cette application vous permet de vérifier les exigences Treble des images syst�
  * Détecter l'utilisation du 'binder64'
  * Détecter le système en tant que racine
  * Ne nécessite pas l'accès racine (root)
- * Prend en charge le thème sombre et MD2 3
+ * Prend en charge le thème sombre et MD3
 
  Vous pouvez télécharger des images système génériques (GSI) partout sur Internet.  Consultez les forums XDA (non affiliés) pour des tutoriels simples.
-
- Code source: https://gitlab.com/hackintosh5/TrebleInfo

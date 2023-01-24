@@ -11,5 +11,3 @@ Característiques clau:
 * Admet el tema fosc i MD3
 
 Podeu descarregar GSIs des de tot Internet. Comproveu els fòrums XDA (no afiliats) per trobar un tutorial fàcil.
-
-Codi Font: https://gitlab.com/hackintosh5/TrebleInfo

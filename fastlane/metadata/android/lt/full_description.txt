@@ -11,5 +11,3 @@ Pagrindiniai bruožai:
 * Palaiko tamsiąją temą ir „Material Design 3“
 
 Galite atsisiųsti GSI iš viso interneto. Peržiūrėkite XDA forumus (nesusijusius), kur rasite paprastų instrukcijų.
-
-Pirminis Kodas: https://gitlab.com/hackintosh5/TrebleInfo

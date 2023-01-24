@@ -11,5 +11,3 @@ Fitur utama:
 * Mendukung tema gelap dan MD3
 
 Anda dapat mengunduh GSI dari seluruh internet. Periksa Forum XDA (tidak terafiliasi) untuk beberapa tutorial mudah.
-
-Kode Sumber: https://gitlab.com/hackintosh5/TrebleInfo

@@ -11,5 +11,3 @@ Caratteristiche principali:
 * Supporta tema scuro e MD3
 
 Puoi scaricare GSI ovunque da Internet. Controlla i forum XDA (non affiliati) per alcuni tutorial facili.
-
-Codice sorgente: https://gitlab.com/hackintosh5/TrebleInfo

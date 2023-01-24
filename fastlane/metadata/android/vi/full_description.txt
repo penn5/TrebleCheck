@@ -11,5 +11,3 @@ Các tính năng chính:
 * Hỗ trợ giao diện tối và MD3
 
 Bạn có thể tải GSI trên Internet. Truy cập Diễn đàn XDA (không liên kết) để được hướng dẫn.
-
-Mã nguồn: https://gitlab.com/hackintosh5/TrebleInfo

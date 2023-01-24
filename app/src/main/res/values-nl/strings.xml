@@ -5,12 +5,11 @@
 	<string name="ab_title">Naadloze upgrades</string>
 	<string name="donate">Doneer</string>
 	<string name="dynamicpartitions_title">Dynamische partities</string>
-	<string name="screen_images">Afbeeldingen </string>
+	<string name="screen_images">Afbeeldingen</string>
 	<string name="screen_details">Details</string>
 	<string name="screen_licenses">Licenties</string>
 	<string name="screen_contribute">Bijdragen</string>
 	<string name="no_treble_title">Uw apparaat ondersteunt Project Treble niet</string>
-	<string name="no_treble_body">Helaas ondersteunt uw apparaat het installeren van GSIs niet. Op sommige apparaten is het mogelijk om een apparaat specifieke ROM te installeren.</string>
 	<string name="detection_error_title">Oops!</string>
 	<string name="detection_error_body">Helaas is er iets misgegaan tijdens het laden van deze data.</string>
 	<string name="images_found_title">Generic System Image gevonden!</string>

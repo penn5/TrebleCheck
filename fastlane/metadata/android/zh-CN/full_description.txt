@@ -11,5 +11,3 @@
 * 支持深色模式和 MD3
 
 你可以在网络上找到通用系统映像，在 XDA 论坛（非开发者附属）上也可以找到一些简单的教程。
-
-源代码：https://gitlab.com/hackintosh5/TrebleInfo

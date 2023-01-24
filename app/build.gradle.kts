@@ -149,6 +149,10 @@ if (file("poeditor.properties").exists()) {
 
 project.poeditor.projectId = 285385
 
+tasks.withType(com.github.penn5.ImportPoEditorStringsBaseTask::class) {
+    allowFuzzy = false
+}
+
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")

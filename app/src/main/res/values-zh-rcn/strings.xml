@@ -33,7 +33,7 @@
 	<string name="treble_lite_title">VNDK Lite</string>
 	<string name="treble_lite_explanation">VNDK 配置负责强制分离系统的不同部分。 VNDK Lite 放宽了这一要求，以兼容性保证为代价降低了存储要求。</string>
 	<string name="treble_lite_true">VNDK 处于 Lite 模式</string>
-	<string name="treble_lite_false">可用的完整链接器分离</string>
+	<string name="treble_lite_false">提供完整链接器分离</string>
 	<string name="treble_legacy_title">清单位置</string>
 	<string name="treble_legacy_explanation">设备可以为 Android 提供的支持功能列表存储在 VINTF 清单中。过去此文件是存储在供应商分区的根目录中，但这不再是一种好的做法。</string>
 	<string name="treble_legacy_true">传统</string>

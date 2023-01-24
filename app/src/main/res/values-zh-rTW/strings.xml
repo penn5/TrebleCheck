@@ -11,7 +11,6 @@
 	<string name="screen_contribute">貢獻</string>
 	<string name="no_treble_title">你的裝置不支援 Project Treble</string>
 	<string name="no_treble_body">遺憾的是，您的設備不支持安裝 GSI。 在某些設備上，可以從網路上安裝特定於設備的 ROM。</string>
-	<string name="detection_error_title">Oops! 尷尬</string>
 	<string name="detection_error_body">不幸的是，在嘗試載入此資料時出了點問題。</string>
 	<string name="images_found_title">找到 GSI 了！</string>
 	<string name="images_found_body">您的裝置支援 Project Treble。 所需的映像類型是：</string>

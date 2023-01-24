@@ -10,6 +10,4 @@ Ciri-ciri utama:
 * Tidak memerlukan akses root
 * Menyokong tema gelap dan MD3
 
-Anda boleh memuat turun GSI-GSI daripada seluruh internet. Lawat Forum XDA (tidak berafiliasi) untuk mengetahui beberapa tutorial mudah.
-
-Kod Sumber: https://gitlab.com/hackintosh5/TrebleInfo
+Anda boleh memuat turun GSI daripada seluruh internet. Lawat Forum XDA (tidak berafiliasi) untuk mengetahui beberapa tutorial mudah.
