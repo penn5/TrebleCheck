@@ -1,0 +1,3 @@
+- 完全重寫以使用 Material 3 和 Jetpack Compose UI
+- 預設支援 Monet 主題
+- 增加許可證資訊
